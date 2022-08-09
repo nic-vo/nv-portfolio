@@ -1,9 +1,0 @@
-.pad {
-	background-color: white;
-	color: black;
-}
-
-.padGrid {
-	display: grid;
-	grid-column: repeat(3, 30%);
-}

@@ -1,5 +1,5 @@
-import CalcButton from "./calculator/CalcButton";
+import Pad from "./drummachine/Pad";
 
 export {
-	CalcButton
+	Pad
 };
