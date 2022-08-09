@@ -1,9 +1,24 @@
+.container {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
 .pad {
+	position: relative;
+	width: 100%;
+	display: block;
 	background-color: white;
 	color: black;
 }
 
-.padGrid {
+.grid {
+	position: relative;
 	display: grid;
-	grid-column: repeat(3, 30%);
+	grid-template-columns: 1fr 1fr 1fr;
+}
+
+.controls {
+	display: block;
 }
