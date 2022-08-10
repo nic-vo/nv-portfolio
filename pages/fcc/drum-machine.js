@@ -1,5 +1,5 @@
 import { React, useState } from 'react';
-import { Pad } from '../../components/fcc';
+import { Pad, ControlPanel  } from '../../components/fcc/drummachine';
 
 import styles from '../../styles/fcc/DrumMachine.module.css';
 
@@ -29,7 +29,7 @@ const DrumMachine = () => {
 		}
 	};
 
-	const mVolumeonInputHandler = (e) => {
+	const mVolumeHandler = (e) => {
 		setMVolume(e.target.value);
 	};
 
@@ -42,10 +42,9 @@ const DrumMachine = () => {
 	}
 
 	return (
-		<>
+		<section className={styles.drumContainer}>
 			<h1>Drum Machine</h1>
-			<input type="range" min="0" max="1" step="0.05" value={mVolume} onInput={mVolumeonInputHandler} />
-			<p>Active sound: {displaySound}</p>
+			<ControlPanel displaySound={displaySound} mVolume={mVolume} mVolumeHandler={mVolumeHandler}/>
 			<div className={styles.grid} tabIndex="0" onKeyPress={keyPressHandler}>
 				{chars.map((char, index) => {
 					return <Pad
@@ -59,7 +58,7 @@ const DrumMachine = () => {
 					/>
 				})}
 			</div>
-		</>
+		</section>
 	);
 };
 
