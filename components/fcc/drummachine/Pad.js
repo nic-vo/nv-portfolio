@@ -1,7 +1,7 @@
 import { React, useRef, useState, useEffect } from 'react';
 import soundList from './soundList';
 
-import styles from '../../../styles/fcc/DrumMachine.module.css';
+import styles from '../../../styles/fcc/DrumMachine/Pad.module.css';
 
 const Pad = ({ char, padIndex, bank, mVolume, setDisplaySound, activate }) => {
 	// Build file path from props but keep filename ready

@@ -1,7 +1,7 @@
 import { React, useState } from 'react';
 import { Pad, ControlPanel  } from '../../components/fcc/drummachine';
 
-import styles from '../../styles/fcc/DrumMachine.module.css';
+import styles from '../../styles/fcc/DrumMachine/DrumMachine.module.css';
 
 
 

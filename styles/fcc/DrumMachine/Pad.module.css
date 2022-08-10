@@ -13,12 +13,8 @@
 	color: black;
 }
 
-.grid {
-	position: relative;
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
-}
-
 .controls {
-	display: block;
+	position: absolute;
+	display: flex;
+	flex-direction: row;
 }

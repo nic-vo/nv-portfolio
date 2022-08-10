@@ -1,0 +1,12 @@
+.drumContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.grid {
+	position: relative;
+	display: grid;
+	width: 100%;
+	grid-template-columns: 1fr 1fr 1fr;
+}
