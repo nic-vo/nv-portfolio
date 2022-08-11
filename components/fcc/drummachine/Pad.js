@@ -40,18 +40,23 @@ const Pad = ({ char, padIndex, bank, mVolume, setDisplaySound, activate, stopAll
 	};
 
 	const muteOnClick = () => {
-		setMuted(!muted);
-		soundRef.current.muted = muted;
+		// Mute button changes state and set soundRef to state
+		if (muteAll === false) {
+			setMuted(!muted);
+			soundRef.current.muted = !muted;
+		}
 	};
 
 	const stopOnClick = () => {
+		// Stops sound
 		soundRef.current.pause();
 		soundRef.current.currentTime = 0;
 	};
 
 	const loopOnClick = () => {
+		// Loop button changes state sets soundRef to state
 		setLoop(!loop);
-		soundRef.current.loop = loop;
+		soundRef.current.loop = !loop;
 	};
 
 	// Update sound volume when either pad volume or master volume change
