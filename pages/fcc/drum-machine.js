@@ -12,12 +12,15 @@ const DrumMachine = () => {
 			Keeps track of sound last played, active sound bank, master volume,
 	*/
 	const [displaySound, setDisplaySound] = useState("");
-	const [activeKey, setActiveKey] = useState("test")
 	const [bankIndex, setBankIndex] = useState(0);
-	const [mVolume, setMVolume] = useState(1);
+	const [bank, setBank] = useState("FlumeSounds");
+	const [mVolume, setMVolume] = useState(0.5);
+	const [muteAll, setMuteAll] = useState(false);
 
-	// bank name / dir based on bankIndex
-	const bank = `${bankIndex === 2 ? "Synths @100 BPM" : bankIndex === 1 ? "Hip Hop @186 BPM" : "FlumeSounds"}`
+	// Pulsers: when set to true, a setTimeout immediately falses them; trigger useEffects in children
+	const [activeKey, setActiveKey] = useState("");
+	const [stopAll, setStopAll] = useState(false);
+
 
 	const setDisplaySoundHandler = (sound, playing = true) => {
 		// Updates displaySound based on last activated sound
@@ -33,18 +36,45 @@ const DrumMachine = () => {
 		setMVolume(e.target.value);
 	};
 
+	const bankIndexHandler = (e) => {
+		setBankIndex(e.target.value);
+		setBank(`${e.target.value === "2" ? "Synths @100 BPM" : e.target.value === "1" ? "Hip Hop @186 BPM" : "FlumeSounds"}`);
+		setDisplaySound("");
+	};
+
+	// Triggers sounds
 	const keyPressHandler = (e) => {
 		setActiveKey(e.key);
 		// Set timeout that instantly resets the activate prop to the active key
 		const pulser = setTimeout(() => {
 			setActiveKey("");
 		});
+	};
+
+	const stopAllHandler = () => {
+		setStopAll(true);
+		const pulser = setTimeout(() => {
+			setStopAll(false);
+		});
+	};
+
+	const muteAllHandler = () => {
+		setMuteAll(!muteAll);
 	}
 
 	return (
 		<section className={styles.drumContainer}>
 			<h1>Drum Machine</h1>
-			<ControlPanel displaySound={displaySound} mVolume={mVolume} mVolumeHandler={mVolumeHandler}/>
+			<ControlPanel
+				displaySound={displaySound}
+				mVolume={mVolume}
+				bankIndex={bankIndex}
+				bank={bank}
+				muteAll={muteAll}
+				mVolumeHandler={mVolumeHandler}
+				bankIndexHandler={bankIndexHandler}
+				stopAllHandler={stopAllHandler}
+				muteAllHandler={muteAllHandler} />
 			<div className={styles.grid} tabIndex="0" onKeyPress={keyPressHandler}>
 				{chars.map((char, index) => {
 					return <Pad
@@ -53,6 +83,8 @@ const DrumMachine = () => {
 						bank={bank}
 						mVolume={mVolume}
 						activate={activeKey === char ? true : false}
+						stopAll={stopAll}
+						muteAll={muteAll}
 						setDisplaySound={setDisplaySoundHandler}
 						key={`pad-${index}`}
 					/>
