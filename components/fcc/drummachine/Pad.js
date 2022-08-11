@@ -96,12 +96,11 @@ const Pad = ({ char, padIndex, bank, mVolume, setDisplaySound, activate, stopAll
 			<div className={styles.controls}>
 				<p>{pVolume.toString()}</p>
 				<input type="range" min="0" max="1" step="0.05" value={pVolume} onInput={volumeOnInputHandler} />
-				<button onClick={muteOnClick}>MUTE</button>
-				<button onClick={stopOnClick}>STOP</button>
-				<button onClick={loopOnClick}>LOOP</button>
+				<button onClick={muteOnClick} className={`${styles.mute} ${muted ? styles.on : styles.off}`}>MUTE</button>
+				<button onClick={stopOnClick} className={styles.stop}>STOP</button>
+				<button onClick={loopOnClick} className={`${styles.loop} ${loop ? styles.on : styles.off}`}>LOOP</button>
 			</div>
-			<audio ref={soundRef} onEnded={onEndedHandler}>
-			</audio>
+			<audio ref={soundRef} onEnded={onEndedHandler} />
 		</div>
 	);
 };

@@ -18,3 +18,29 @@
 	display: flex;
 	flex-direction: row;
 }
+
+.mute {
+	background-color: yellow;
+}
+
+.stop {
+	background-color: red;
+	filter: saturate(25%);
+	transition: filter 167ms;
+}
+
+.stop:hover {
+	filter: saturate(100%);
+}
+
+.loop {
+	background-color: blue;
+}
+
+.off {
+	filter: saturate(25%);
+}
+
+.on {
+	filter: saturate(100%);
+}
