@@ -66,8 +66,27 @@ const Pad = ({ char, padIndex, bank, mVolume, setDisplaySound, activate, stopAll
 
 	// Play sound if activate prop is true
 	useEffect(() => {
-		if (activate === true) { playSound(); }
-	}, [activate])
+		if (activate === true) { playSound(); };
+	}, [activate]);
+
+	// Triggers is master stop in control panel is clicked
+	useEffect(() => {
+		if (stopAll === true) {
+			stopOnClick();
+			onEndedHandler();
+		};
+	}, [stopAll]);
+
+	useEffect(() => {
+		setMuted(muteAll);
+		soundRef.current.muted = muteAll;
+	}, [muteAll]);
+
+	// Stop sound and update src on bank prop change
+	useEffect(() => {
+		stopOnClick();
+		soundRef.current.src = srcString;
+	}, [bank]);
 
 	return (
 		<div className={styles.container}>
@@ -81,8 +100,7 @@ const Pad = ({ char, padIndex, bank, mVolume, setDisplaySound, activate, stopAll
 				<button onClick={stopOnClick}>STOP</button>
 				<button onClick={loopOnClick}>LOOP</button>
 			</div>
-			<audio id={char} ref={soundRef} onEnded={onEndedHandler}>
-				<source src={srcString} type="audio/mpeg" />
+			<audio ref={soundRef} onEnded={onEndedHandler}>
 			</audio>
 		</div>
 	);
