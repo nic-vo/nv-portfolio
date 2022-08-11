@@ -3,7 +3,7 @@ import soundList from './soundList';
 
 import styles from '../../../styles/fcc/DrumMachine/Pad.module.css';
 
-const Pad = ({ char, padIndex, bank, mVolume, setDisplaySound, activate }) => {
+const Pad = ({ char, padIndex, bank, mVolume, setDisplaySound, activate, stopAll, muteAll }) => {
 	// Build file path from props but keep filename ready
 	const fileString = soundList[bank][padIndex]
 	const srcString = `/assets/fcc/DrumMachine/${bank}/${fileString}.mp3`;
