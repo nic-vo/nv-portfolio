@@ -1,11 +1,11 @@
 import { React, useState } from 'react';
-import { Pad, ControlPanel  } from '../../components/fcc/drummachine';
+import { Pad, ControlPanel } from '../../components/fcc/drummachine';
 
 import styles from '../../styles/fcc/DrumMachine/DrumMachine.module.css';
 
 
 
-const chars = ["q", "w", "e", "a", "s", "d", "z", "x", "c"]
+const chars = ["q", "w", "e", "a", "s", "d", "z", "x", "c"];
 
 const DrumMachine = () => {
 	/*
