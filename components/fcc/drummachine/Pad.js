@@ -1,12 +1,15 @@
 import { React, useRef, useState, useEffect } from 'react';
 import soundList from './soundList';
 
-import styles from '../../../styles/fcc/DrumMachine/Pad.module.css';
+import machineStyles from '../../../styles/fcc/DrumMachine/DrumMachine.module.css';
+import padStyles from '../../../styles/fcc/DrumMachine/Pad.module.css';
+
+const bankNames = ["FlumeSounds", "Hip Hop @186 BPM", "Synths @100 BPM"];
 
 const Pad = ({ char, padIndex, bank, mVolume, setDisplaySound, activate, stopAll, muteAll }) => {
 	// Build file path from props but keep filename ready
 	const fileString = soundList[bank][padIndex]
-	const srcString = `/assets/fcc/DrumMachine/${bank}/${fileString}.mp3`;
+	const srcString = `/assets/fcc/DrumMachine/${bankNames[bank]}/${fileString}.mp3`;
 
 	// if pad is playing sound (for styling)
 	const [isPlaying, setIsPlaying] = useState(false);
