@@ -101,7 +101,7 @@ const Pad = ({ char, padIndex, bank, mVolume, setDisplaySound, activate, stopAll
 				<input type="range" min="0" max="1" step="0.05" value={pVolume} onInput={volumeOnInputHandler} />
 				<button onClick={muteOnClick} className={`${machineStyles.button} ${muted ? machineStyles.muteon : machineStyles.mute}`}>MUTE</button>
 				<button onClick={stopOnClick} className={`${machineStyles.button} ${machineStyles.stop}`}>STOP</button>
-				<button onClick={loopOnClick} className={`${machineStyles.button} ${machineStyles.loop} ${loop ? machineStyles.on : machineStyles.off}`}>LOOP</button>
+				<button onClick={loopOnClick} className={`${machineStyles.button} ${loop ? machineStyles.loopon : machineStyles.loop}`}>LOOP</button>
 			</div>
 			<audio ref={soundRef} onEnded={onEndedHandler} />
 		</div>
