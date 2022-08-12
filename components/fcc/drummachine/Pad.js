@@ -92,16 +92,16 @@ const Pad = ({ char, padIndex, bank, mVolume, setDisplaySound, activate, stopAll
 	}, [bank]);
 
 	return (
-		<div className={styles.container}>
-			<div className={styles.pad} onClick={playSound} >
+		<div className={padStyles.container}>
+			<div className={padStyles.pad} onClick={playSound} >
 				<p>{char.toUpperCase()}</p>
 			</div>
-			<div className={styles.controls}>
+			<div className={padStyles.controls}>
 				<p>{pVolume.toString()}</p>
 				<input type="range" min="0" max="1" step="0.05" value={pVolume} onInput={volumeOnInputHandler} />
-				<button onClick={muteOnClick} className={`${styles.mute} ${muted ? styles.on : styles.off}`}>MUTE</button>
-				<button onClick={stopOnClick} className={styles.stop}>STOP</button>
-				<button onClick={loopOnClick} className={`${styles.loop} ${loop ? styles.on : styles.off}`}>LOOP</button>
+				<button onClick={muteOnClick} className={`${machineStyles.button} ${muted ? machineStyles.muteon : machineStyles.mute}`}>MUTE</button>
+				<button onClick={stopOnClick} className={`${machineStyles.button} ${machineStyles.stop}`}>STOP</button>
+				<button onClick={loopOnClick} className={`${machineStyles.button} ${machineStyles.loop} ${loop ? machineStyles.on : machineStyles.off}`}>LOOP</button>
 			</div>
 			<audio ref={soundRef} onEnded={onEndedHandler} />
 		</div>

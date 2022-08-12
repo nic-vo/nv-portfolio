@@ -1,6 +1,7 @@
 import React from 'react'
 
-import styles from '../../../styles/fcc/DrumMachine/ControlPanel.module.css';
+import machineStyles from '../../../styles/fcc/DrumMachine/DrumMachine.module.css';
+import controlStyles from '../../../styles/fcc/DrumMachine/ControlPanel.module.css';
 
 const bankNames = ["FlumeSounds", "Hip Hop @186 BPM", "Synths @100 BPM"];
 
@@ -15,9 +16,9 @@ const ControlPanel = ({ displaySound, mVolume, bank, muteAll, mVolumeHandler, se
 				<input id="bank" type="range" min="0" max="2" step="1" value={bank} onInput={setBankHandler} />
 				<p>{bankNames[bank]}</p>
 			</label>
-			<p>Active sound: {displaySound}</p>
-			<button onClick={stopAllHandler}>STOP ALL</button>
-			<button onClick={muteAllHandler}>MUTE ALL</button>
+			<p>Active: {displaySound}</p>
+			<button className={`${machineStyles.button} ${machineStyles.stop}`} onClick={stopAllHandler}>STOP ALL</button>
+			<button className={` ${machineStyles.button} ${muteAll ? machineStyles.muteon : machineStyles.mute}`} onClick={muteAllHandler}>MUTE ALL</button>
 		</div>
 	);
 };
