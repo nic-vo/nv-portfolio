@@ -12,8 +12,7 @@ const DrumMachine = () => {
 			Keeps track of sound last played, active sound bank, master volume,
 	*/
 	const [displaySound, setDisplaySound] = useState("");
-	const [bankIndex, setBankIndex] = useState(0);
-	const [bank, setBank] = useState("FlumeSounds");
+	const [bank, setBank] = useState(0);
 	const [mVolume, setMVolume] = useState(0.5);
 	const [muteAll, setMuteAll] = useState(false);
 
@@ -36,9 +35,8 @@ const DrumMachine = () => {
 		setMVolume(e.target.value);
 	};
 
-	const bankIndexHandler = (e) => {
-		setBankIndex(e.target.value);
-		setBank(`${e.target.value === "2" ? "Synths @100 BPM" : e.target.value === "1" ? "Hip Hop @186 BPM" : "FlumeSounds"}`);
+	const setBankHandler = (e) => {
+		setBank(parseInt(e.target.value));
 		setDisplaySound("");
 	};
 
@@ -68,11 +66,10 @@ const DrumMachine = () => {
 			<ControlPanel
 				displaySound={displaySound}
 				mVolume={mVolume}
-				bankIndex={bankIndex}
 				bank={bank}
 				muteAll={muteAll}
 				mVolumeHandler={mVolumeHandler}
-				bankIndexHandler={bankIndexHandler}
+				setBankHandler={setBankHandler}
 				stopAllHandler={stopAllHandler}
 				muteAllHandler={muteAllHandler} />
 			<div className={styles.grid} tabIndex="0" onKeyPress={keyPressHandler}>
