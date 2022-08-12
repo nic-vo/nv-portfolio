@@ -1,9 +1,7 @@
 import { React, useState } from 'react';
 import { Pad, ControlPanel } from '../../components/fcc/drummachine';
 
-import styles from '../../styles/fcc/DrumMachine/DrumMachine.module.css';
-
-
+import machineStyles from '../../styles/fcc/DrumMachine/DrumMachine.module.css';
 
 const chars = ["q", "w", "e", "a", "s", "d", "z", "x", "c"];
 
@@ -61,7 +59,7 @@ const DrumMachine = () => {
 	}
 
 	return (
-		<section className={styles.drumContainer}>
+		<section className={machineStyles.drumContainer}>
 			<h1>Drum Machine</h1>
 			<ControlPanel
 				displaySound={displaySound}
@@ -72,7 +70,7 @@ const DrumMachine = () => {
 				setBankHandler={setBankHandler}
 				stopAllHandler={stopAllHandler}
 				muteAllHandler={muteAllHandler} />
-			<div className={styles.grid} tabIndex="0" onKeyPress={keyPressHandler}>
+			<div className={machineStyles.grid} tabIndex="0" onKeyPress={keyPressHandler}>
 				{chars.map((char, index) => {
 					return <Pad
 						char={char}
