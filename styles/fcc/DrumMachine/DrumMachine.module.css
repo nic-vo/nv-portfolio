@@ -10,3 +10,61 @@
 	width: 100%;
 	grid-template-columns: 1fr 1fr 1fr;
 }
+
+.button {
+	box-shadow: none;
+	box-sizing: border-box;
+	border: 4px solid;
+	border-radius: 5px;
+	transition: background-color var(--fast-transition), color var(--fast-transition), filter var(--fast-transition);
+}
+
+.mute {
+	background-color: var(--global-background);
+	border-color: var(--mute-orange);
+	color: var(--mute-orange);
+	filter: saturate(50%);
+}
+
+.mute:hover {
+	background-color: var(--mute-orange);
+	color: var(--global-color);
+	filter: saturate(100%);
+}
+
+.muteon {
+	background-color: var(--mute-orange);
+	border-color: var(--mute-orange);
+	color: var(--global-color);
+}
+
+.muteon:hover {
+	background-color: var(--global-background);
+	filter: saturate(50%);
+}
+
+.stop {
+	background-color: var(--global-background);
+	border-color: var(--stop-red);
+	color: var(--stop-red);
+	filter: saturate(50%);
+}
+
+.stop:hover {
+	filter: saturate(100%);
+	color: var(--global-color);
+	background-color: var(--stop-red);
+}
+
+.loop {
+	background-color: var(--global-background);
+	color: var(--loop-blue);
+	border-color: var(--loop-blue);
+	filter: saturate(25%);
+}
+
+.loop:hover {
+	filter: saturate(100%);
+	color: var(--global-color);
+	background-color: var(--loop-blue);
+}
