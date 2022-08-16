@@ -30,7 +30,7 @@ const DrumMachine = () => {
 	};
 
 	const mVolumeHandler = (e) => {
-		setMVolume(e.target.value);
+		setMVolume(parseFloat(e.target.value));
 	};
 
 	const setBankHandler = (e) => {
@@ -60,7 +60,6 @@ const DrumMachine = () => {
 
 	return (
 		<section className={machineStyles.drumContainer}>
-			<h1>Drum Machine</h1>
 			<ControlPanel
 				displaySound={displaySound}
 				mVolume={mVolume}
