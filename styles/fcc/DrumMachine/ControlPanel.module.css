@@ -1,0 +1,47 @@
+.panel {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 5vh;
+}
+
+.panel label {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.panel button {
+	width: 60px;
+}
+
+.sounds {
+	width: 80%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.soundDisplay {
+	height: 100px;
+	width: 40%;
+	display: flex;
+	flex-direction: column;
+	align-items: baseline;
+	justify-content: center;
+}
+
+.playback {
+	width: 80%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+
+@media (min-aspect-ratio: 1) {
+	.panel {
+		max-width: 50vw;
+	}
+}
