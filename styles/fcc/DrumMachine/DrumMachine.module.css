@@ -7,16 +7,23 @@
 .grid {
 	position: relative;
 	display: grid;
-	width: 100%;
+	width: 90%;
 	grid-template-columns: 1fr 1fr 1fr;
+	column-gap: 1vw;
+	row-gap: 1vw;
 }
 
 .button {
 	box-shadow: none;
 	box-sizing: border-box;
-	border: 4px solid;
+	border: 2px solid;
 	border-radius: 5px;
-	transition: background-color var(--fast-transition), color var(--fast-transition), filter var(--fast-transition);
+	transition: background-color var(--fast-transition), color var(--fast-transition), filter var(--fast-transition), border-color var(--fast-transition);
+}
+
+.button svg {
+	display: block;
+	margin: auto;
 }
 
 .mute {
@@ -28,19 +35,15 @@
 
 .mute:hover {
 	background-color: var(--mute-orange);
-	color: var(--global-color);
+	border-color: var(--mute-orange);
+	color: var(--global-background);
 	filter: saturate(100%);
 }
 
 .muteon {
 	background-color: var(--mute-orange);
 	border-color: var(--mute-orange);
-	color: var(--global-color);
-}
-
-.muteon:hover {
-	background-color: var(--global-background);
-	filter: saturate(50%);
+	color: var(--global-background);
 }
 
 .stop {
@@ -51,9 +54,10 @@
 }
 
 .stop:hover {
-	filter: saturate(100%);
-	color: var(--global-color);
 	background-color: var(--stop-red);
+	border-color: var(--stop-red);
+	color: var(--global-color);
+	filter: saturate(100%);
 }
 
 .loop {
@@ -64,7 +68,21 @@
 }
 
 .loop:hover {
-	filter: saturate(100%);
-	color: var(--global-color);
 	background-color: var(--loop-blue);
+	border-color: var(--loop-blue);
+	color: var(--global-background);
+	filter: saturate(100%);
+}
+
+.loopon {
+	background-color: var(--loop-blue);
+	border-color: var(--loop-blue);
+	color: var(--global-background);
+	border-color: var(--loop-blue);
+}
+
+@media (min-aspect-ratio: 1) {
+	.grid {
+		max-width: 50vw;
+	}
 }
