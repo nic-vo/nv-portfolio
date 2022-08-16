@@ -1,4 +1,6 @@
 import { React, useRef, useState, useEffect } from 'react';
+import { FaVolumeMute, FaVolumeUp, FaStop, FaUndoAlt } from 'react-icons/fa';
+
 import soundList from './soundList';
 
 import machineStyles from '../../../styles/fcc/DrumMachine/DrumMachine.module.css';
@@ -39,7 +41,7 @@ const Pad = ({ char, padIndex, bank, mVolume, setDisplaySound, activate, stopAll
 	};
 
 	const volumeOnInputHandler = (e) => {
-		setPVolume(e.target.value);
+		setPVolume(parseFloat(e.target.value));
 	};
 
 	const muteOnClick = () => {
@@ -96,12 +98,11 @@ const Pad = ({ char, padIndex, bank, mVolume, setDisplaySound, activate, stopAll
 			<div className={padStyles.pad} onClick={playSound} >
 				<p>{char.toUpperCase()}</p>
 			</div>
-			<div className={padStyles.controls}>
-				<p>{pVolume.toString()}</p>
-				<input type="range" min="0" max="1" step="0.05" value={pVolume} onInput={volumeOnInputHandler} />
-				<button onClick={muteOnClick} className={`${machineStyles.button} ${muted ? machineStyles.muteon : machineStyles.mute}`}>MUTE</button>
-				<button onClick={stopOnClick} className={`${machineStyles.button} ${machineStyles.stop}`}>STOP</button>
-				<button onClick={loopOnClick} className={`${machineStyles.button} ${loop ? machineStyles.loopon : machineStyles.loop}`}>LOOP</button>
+			<input type="range" min="0" max="1" step="0.05" value={pVolume} onInput={volumeOnInputHandler} />
+			<div className={padStyles.buttons}>
+				<button onClick={muteOnClick} className={`${machineStyles.button} ${muted ? machineStyles.muteon : machineStyles.mute}`}>{muted ? <FaVolumeMute /> : <FaVolumeUp />}</button>
+				<button onClick={stopOnClick} className={`${machineStyles.button} ${machineStyles.stop}`}><FaStop /></button>
+				<button onClick={loopOnClick} className={`${machineStyles.button} ${loop ? machineStyles.loopon : machineStyles.loop}`}><FaUndoAlt /></button>
 			</div>
 			<audio ref={soundRef} onEnded={onEndedHandler} />
 		</div>
