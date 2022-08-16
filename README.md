@@ -2,6 +2,14 @@ This is the repo for my personal portfolio
 
 # CHANGELOG
 
+## 0.4.1
+	- Drum Machine
+		- Parent
+			- Begin mobile styling
+			- General button polish
+		- Control Panel
+			- Begin styling
+
 ## 0.4.0
 	- Drum Machine
 		- Parent
