@@ -1,5 +1,5 @@
-import Pad from "./Pad";
-import ControlPanel from "./ControlPanel";
+import Pad from "./Pad/Pad";
+import ControlPanel from "./ControlPanel/ControlPanel";
 
 export {
 	Pad,
