@@ -11,7 +11,8 @@ const ControlPanel = ({ displaySound, mVolume, bank, muteAll, mVolumeHandler, se
 		<div className={controlStyles.panel}>
 			<div className={controlStyles.sounds}>
 				<div className={controlStyles.soundDisplay}>
-					<p>{bankNames[bank]}: {displaySound}</p>
+					<p>{bankNames[bank]}:</p>
+					<p>{displaySound}</p>
 				</div>
 				<label htmlFor="bank">Sound Bank<input id="bank" type="range" min="0" max="2" step="1" value={bank} onInput={setBankHandler} /></label>
 			</div>
