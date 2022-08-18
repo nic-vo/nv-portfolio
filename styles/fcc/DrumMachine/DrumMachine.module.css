@@ -9,8 +9,8 @@
 	display: grid;
 	width: 90%;
 	grid-template-columns: 1fr 1fr 1fr;
-	column-gap: 5vw;
-	row-gap: 3vw;
+	column-gap: 2vw;
+	row-gap: 2vw;
 }
 
 .button {
