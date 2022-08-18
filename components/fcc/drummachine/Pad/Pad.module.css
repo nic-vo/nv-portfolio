@@ -59,7 +59,7 @@
 .pad {
 	position: relative;
 	width: 100%;
-	height: 15vh;
+	height: 12vh;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -67,23 +67,43 @@
 	border-radius: 5px;
 	font-family: Silkscreen, sans-serif;
 	font-size: 1.6rem;
-}
-
-.padInactive {
-	background-image: radial-gradient(#771918 0%, rgba(20, 20, 20, 1) 60%);
-	border: 1rem outset rgba(20, 20, 20, 1);
-	color: var(--global-color);
-}
-
-.padActive {
-	background-image: radial-gradient(var(--global-color) 0%, #ECACB9 60%);
-	border: 1rem solid #ECACB9;
-	box-shadow: 0px 0px 40px 10px #ECACB9;
-	color: var(--global-background);
+	transition: background-color var(--fast-transition), color var(--fast-transition), border var(--fast-transition), box-shadow var(--fast-transition);
 }
 
 .pad p {
 	text-align: center;
+	border-radius: 50%;
+	height: auto;
+	transition: width var(--fast-transition), text-shadow var(--fast-transition), filter var(--fast-transition), background-color var(--fast-transition), box-shadow var(--fast-transition);
+}
+
+.padInactive {
+	border: 10px solid rgba(20, 20, 20, 1);
+	background-color: rgba(10, 10, 10, 1);
+	color: var(--pad-overexpose);
+}
+
+.padInactive p {
+	width: 20%;
+	background-color: var(--pad-glow);
+	box-shadow: 0px 0px 30px 20px var(--pad-glow);
+	text-shadow: 0px 0px 5px var(--pad-glow);
+	filter: drop-shadow(0px 0px 10px var(--pad-glow));
+}
+
+.padActive {
+	border: 10px solid var(--pad-overexpose);
+	box-shadow: 0px 0px 40px 10px var(--pad-glow);
+	background-color: var(--pad-overexpose);
+	color: var(--global-background);
+}
+
+.padActive p {
+	width: 40%;
+	background-color: var(--global-color);
+	box-shadow: 0px 0px 30px 20px var(--global-color);
+	text-shadow: 0px 0px 5px var(--global-color);
+	filter: drop-shadow(0px 0px 10px var(--global-color));
 }
 
 .buttons {
