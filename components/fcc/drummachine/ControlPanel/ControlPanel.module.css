@@ -52,6 +52,75 @@
 	justify-content: space-between;
 }
 
+.sliders {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+
+.sliders svg {
+	margin: 0.5rem;
+	font-size: 1.5rem;
+	color: var(--cpanel-overexpose);
+	filter: drop-shadow(0px 0px 5px var(--cpanel-glow));
+}
+
+.sliders input {
+	cursor: pointer;
+	-webkit-appearance: none;
+	margin: 0.5rem;
+	border-radius: 5px;
+	background-color: rgba(20, 20, 20, 1);
+	transition: box-shadow var(--fast-transition), background-color var(--fast-transition), border var(--fast-transition);
+}
+
+.sliders input:active {
+	border: 2px solid var(--cpanel-overexpose)
+}
+
+.sliders input::-moz-range-thumb {
+	appearance: none;
+	background-color: var(--cpanel-glow);
+	border: none;
+}
+
+.sliders input::-moz-range-thumb:focus {
+	background-color: var(--cpanel-overexpose);
+	box-shadow: 0px 0px 20px 5px var(--cpanel-glow);
+}
+
+.sliders input:active::-moz-range-thumb {
+	background-color: var(--cpanel-overexpose);
+	box-shadow: 0px 0px 20px 5px var(--cpanel-glow);
+}
+
+.sliders input::-webkit-range-thumb {
+	appearance: none;
+	background-color: var(--cpanel-glow);
+	border: none;
+}
+
+.sliders input::-webkit-range-thumb:focus {
+	background-color: var(--cpanel-overexpose);
+	box-shadow: 0px 0px 20px 5px var(--cpanel-glow);
+}
+
+.sliders input:active::-webkit-range-thumb {
+	background-color: var(--cpanel-overexpose);
+	box-shadow: 0px 0px 20px 5px var(--cpanel-glow);
+}
+
+.buttons {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+
+.buttons button {
+	height: 2rem;
+	cursor: pointer;
+	width: 5rem;
+}
 
 @media (min-aspect-ratio: 9/15) {
 	.controls {
