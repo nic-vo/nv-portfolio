@@ -56,6 +56,7 @@ const Pad = ({ char, padIndex, bank, mVolume, setDisplaySound, activate, stopAll
 		// Stops sound
 		soundRef.current.pause();
 		soundRef.current.currentTime = 0;
+		setIsPlaying(false);
 	};
 
 	const loopOnClick = () => {
@@ -95,7 +96,7 @@ const Pad = ({ char, padIndex, bank, mVolume, setDisplaySound, activate, stopAll
 
 	return (
 		<div className={padStyles.container}>
-			<div className={padStyles.pad} onClick={playSound} >
+			<div className={`${padStyles.pad} ${isPlaying === true ? padStyles.padActive : padStyles.padInactive}`} onClick={playSound} >
 				<p>{char.toUpperCase()}</p>
 			</div>
 			<input type="range" min="0" max="1" step="0.05" value={pVolume} onInput={volumeOnInputHandler} />

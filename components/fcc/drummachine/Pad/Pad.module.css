@@ -14,13 +14,26 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	background-color: var(--global-color);
-	color: var(--global-background);
 	border-radius: 5px;
+	font-family: Silkscreen, sans-serif;
+	font-size: 1.6rem;
+}
+
+.padInactive {
+	background-image: radial-gradient(#771918 0%, rgba(20, 20, 20, 1) 60%);
+	border: 1rem outset rgba(20, 20, 20, 1);
+	color: var(--global-color);
+}
+
+.padActive {
+	background-image: radial-gradient(var(--global-color) 0%, #ECACB9 60%);
+	border: 1rem solid #ECACB9;
+	box-shadow: 0px 0px 40px 10px #ECACB9;
+	color: var(--global-background);
 }
 
 .pad p {
-	display: block;
+	text-align: center;
 }
 
 .buttons {
