@@ -61,6 +61,7 @@ const Pad = ({ char, padIndex, bank, mVolume, setDisplaySound, activate, stopAll
 
 	const loopOnClick = () => {
 		// Loop button changes state sets soundRef to state
+		soundRef.current.pause();
 		setLoop(!loop);
 		soundRef.current.loop = !loop;
 	};
