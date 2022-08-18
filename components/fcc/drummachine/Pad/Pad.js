@@ -1,5 +1,5 @@
 import { React, useRef, useState, useEffect } from 'react';
-import { FaVolumeMute, FaVolumeUp, FaStop, FaUndoAlt } from 'react-icons/fa';
+import { FaVolumeMute, FaVolumeOff, FaStop, FaUndoAlt } from 'react-icons/fa';
 
 import soundList from '../soundList';
 
@@ -102,7 +102,7 @@ const Pad = ({ char, padIndex, bank, mVolume, setDisplaySound, activate, stopAll
 			</div>
 			<input type="range" min="0" max="1" step="0.05" value={pVolume} onInput={volumeOnInputHandler} />
 			<div className={padStyles.buttons}>
-				<button onClick={muteOnClick} className={`${machineStyles.button} ${muted ? machineStyles.muteon : machineStyles.mute}`}>{muted ? <FaVolumeMute /> : <FaVolumeUp />}</button>
+				<button onClick={muteOnClick} className={`${machineStyles.button} ${muted ? machineStyles.muteon : machineStyles.mute}`}>{muted ? <FaVolumeMute /> : <FaVolumeOff />}</button>
 				<button onClick={stopOnClick} className={`${machineStyles.button} ${machineStyles.stop}`}><FaStop /></button>
 				<button onClick={loopOnClick} className={`${machineStyles.button} ${loop ? machineStyles.loopon : machineStyles.loop}`}><FaUndoAlt /></button>
 			</div>
