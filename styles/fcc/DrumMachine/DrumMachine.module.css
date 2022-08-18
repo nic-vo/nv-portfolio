@@ -9,8 +9,8 @@
 	display: grid;
 	width: 90%;
 	grid-template-columns: 1fr 1fr 1fr;
-	column-gap: 1vw;
-	row-gap: 1vw;
+	column-gap: 5vw;
+	row-gap: 3vw;
 }
 
 .button {
@@ -84,5 +84,6 @@
 @media (min-aspect-ratio: 1) {
 	.grid {
 		max-width: 50vw;
+		row-gap: 1vw;
 	}
 }
