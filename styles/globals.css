@@ -15,9 +15,14 @@ body {
 
 	--transparent: rgba(0,0,0,0);
 
-	--mute-orange: #F7B32B;
-	--stop-red: #832232;
-	--loop-blue: #0094C6;
+	--mute-overexpose: #FBD589;
+	--mute-glow: #F7B32B;
+	--loop-overexpose: #47D1FF;
+	--loop-glow: #0094C6;
+	--pad-overexpose: #ECACB9;
+	--pad-glow: #AF3E4D;
+	--cpanel-overexpose: #B0FE76;
+	--cpanel-glow: #81E979;
 }
 
 a {
