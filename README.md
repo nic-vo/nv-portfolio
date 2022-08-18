@@ -2,6 +2,17 @@ This is the repo for my personal portfolio
 
 # CHANGELOG
 
+## 0.4.2
+	- Drum Machine
+		- Parent
+			- New Silkscreen font for global use
+		- Control Panel
+			- Add glowy effect
+		- Grid
+			- Adjust mobile gaps
+		- Pad
+			- Add glowy class-based effect upon state change
+
 ## 0.4.1
 	- Drum Machine
 		- Parent
