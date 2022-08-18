@@ -107,26 +107,27 @@
 }
 
 .buttons {
-	width: 100%;
-	margin: 1vh 0 1vh 0;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
+	display: none;
 }
 
-.container input {
-	width: 100%;
-	margin: 1vh 0 1vh 0;
-}
+@media (min-aspect-ratio: 9/15) {
+	.buttons {
+		width: 100%;
+		margin: 1vh 0 1vh 0;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+	}
 
-.buttons button {
-	width: 40px;
-	height: 30px;
-}
-
-@media (min-aspect-ratio: 1) {
 	.buttons button {
 		width: 48px;
 		height: 35px;
+		cursor: pointer;
+	}
+}
+
+@media (min-aspect-ratio: 1) {
+	.pad {
+		height: 15vh;
 	}
 }
