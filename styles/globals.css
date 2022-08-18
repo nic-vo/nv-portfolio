@@ -29,6 +29,11 @@ a {
 	box-sizing: border-box;
 }
 
+@font-face {
+	font-family: "Silkscreen";
+	src: url('../public/fonts/Silkscreen/Silkscreen-Regular.ttf') format('truetype');
+}
+
 @media (prefers-color-scheme: dark) {
 	html {
 		color-scheme: dark;
