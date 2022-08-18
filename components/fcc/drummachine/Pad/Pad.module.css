@@ -17,6 +17,14 @@
 	transition: border var(--fast-transition);
 }
 
+.container input:hover {
+	border: 2px solid var(--pad-overexpose)
+}
+
+.container input:focus {
+	border: 2px solid var(--pad-overexpose)
+}
+
 .container input:active {
 	border: 2px solid var(--pad-overexpose)
 }
@@ -28,8 +36,12 @@
 	transition: box-shadow var(--fast-transition);
 }
 
+.container input:hover::-moz-range-thumb {
+	background: var(--pad-overexpose);
+	box-shadow: 0px 0px 20px 5px var(--pad-glow);
+}
 
-.container input::-moz-range-thumb:focus {
+.container input:focus::-moz-range-thumb {
 	background: var(--pad-overexpose);
 	box-shadow: 0px 0px 20px 5px var(--pad-glow);
 }
@@ -46,7 +58,12 @@
 	box-shadow: 0px 0px 20px 5px var(--pad-glow);
 }
 
-.container input::-webkit-range-thumb:focus {
+.container input:hover::-webkit-range-thumb {
+	background: var(--pad-overexpose);
+	box-shadow: 0px 0px 20px 5px var(--pad-glow);
+}
+
+.container input:focus::-webkit-range-thumb {
 	background: var(--pad-overexpose);
 	box-shadow: 0px 0px 20px 5px var(--pad-glow);
 }
