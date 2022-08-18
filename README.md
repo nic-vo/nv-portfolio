@@ -2,6 +2,17 @@ This is the repo for my personal portfolio
 
 # CHANGELOG
 
+## 0.4.3
+	- Drum Machine
+		- Parent
+			- Reworked global variables for use
+		- Control Panel
+			- Mobile layout
+			- Good glowy effect
+		- Pad
+			- Fine pad controls now hidden on mobile (who's using them anyway)
+			- Good glowy effect
+
 ## 0.4.2
 	- Drum Machine
 		- Parent
