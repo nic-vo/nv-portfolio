@@ -4,12 +4,44 @@ import { Keypad, KeypadCharacters as keyChars, History, KeypadCharacters } from 
 const keyList = Object.keys(keyChars);
 
 const Calculator = () => {
-	const [active, setActive] = useState("");
+	const [chunk, setChunk] = useState("");
 	const [entire, setEntire] = useState("");
+	const [evaluated, setEvaluated] = useState("")
 	const [history, setHistory] = useState([]);
 
-	const keyPressHandler = (e) => {
-		setActive(e.target.value);
+	/* BEGIN Keypad Handlers */
+	const numberHandler = (e) => {
+		setChunk(e.target.value);
+	};
+
+	const operatorHandler = (e) => {
+		setChunk(e.target.value);
+	};
+
+	const zeroHandler = (e) => {
+
+	};
+
+	const decimalHandler = (e) => {
+
+	};
+
+	const subtractHandler = (e) => {
+
+	};
+
+	const equalsHandler = () => {
+
+	};
+
+	const clearHandler = () => {
+		setChunk("");
+	};
+
+	/* END Keypad Handlers */
+
+	const clearHistory = () => {
+		setHistory([]);
 	};
 
 	return (
@@ -20,13 +52,17 @@ const Calculator = () => {
 				<div>
 					<h3>Screen</h3>
 					<p>entire</p>
-					<p>active: {active}</p>
+					<p>chunk: {chunk}</p>
 				</div>
 				<div tabIndex={0}>
 					<h3>Key Grid</h3>
 					{
 						keyList.map((char) => {
-							return <Keypad keyId={keyChars[char]} activate={keyPressHandler} key={`${char}-pad`} />
+							if (char === "zero") { return <Keypad keyId={keyChars[char]} activate={zeroHandler} key={`${char}-pad`} /> }
+							else if (char === "subtract") { return <Keypad keyId={keyChars[char]} activate={subtractHandler} key={`${char}-pad`} /> }
+							else if (char === "add" || char === "multiply" || char === "divide") { return <Keypad keyId={keyChars[char]} activate={operatorHandler} key={`${char}-pad`} /> }
+							else if (char === "clear") { return <Keypad keyId={keyChars[char]} activate={clearHandler} key={`${char}-pad`} /> }
+							else { return <Keypad keyId={keyChars[char]} activate={numberHandler} key={`${char}-pad`} /> }
 						})
 					}
 				</div>
