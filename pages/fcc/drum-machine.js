@@ -6,15 +6,15 @@ import machineStyles from '../../styles/fcc/DrumMachine/DrumMachine.module.css';
 const chars = ["q", "w", "e", "a", "s", "d", "z", "x", "c"];
 
 const DrumMachine = () => {
-	/*
-			Keeps track of sound last played, active sound bank, master volume,
-	*/
+
+	// Keeps track of sound last played, active sound bank, master volume
 	const [displaySound, setDisplaySound] = useState("");
 	const [bank, setBank] = useState(0);
 	const [mVolume, setMVolume] = useState(0.5);
 	const [muteAll, setMuteAll] = useState(false);
 
 	// Pulsers: when set to true, a setTimeout immediately falses them; trigger useEffects in children
+	// MAY BE A PERFORMANCE HIT -- UNNECESSARY RENDERS
 	const [activeKey, setActiveKey] = useState("");
 	const [stopAll, setStopAll] = useState(false);
 
@@ -49,6 +49,7 @@ const DrumMachine = () => {
 
 	const stopAllHandler = () => {
 		setStopAll(true);
+		// Same timeout pulser pattern as the above keyPressHandler
 		const pulser = setTimeout(() => {
 			setStopAll(false);
 		});
