@@ -6,7 +6,17 @@ import controlStyles from './ControlPanel.module.css';
 
 const bankNames = ["FlumeSounds", "Hip Hop @186 BPM", "Synths @100 BPM"];
 
-const ControlPanel = ({ displaySound, mVolume, bank, muteAll, mVolumeHandler, setBankHandler, stopAllHandler, muteAllHandler }) => {
+const ControlPanel = ({
+	displaySound,
+	mVolume,
+	bank,
+	muteAll,
+	mVolumeHandler,
+	setBankHandler,
+	stopAllHandler,
+	muteAllHandler
+}) => {
+	/* This component sets master volume and active sound bank; also displays them in a stylized screen */
 	return (
 		<div className={controlStyles.panel}>
 			<div className={controlStyles.display}>
