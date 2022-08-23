@@ -2,7 +2,7 @@ import React from 'react';
 
 const Keypad = ({ keyId, activate }) => {
 	return (
-		<button value={keyId} onClick={activate} style={{ width: "500px", "background-color": "red", height: "500px" }}>
+		<button value={keyId} onClick={activate}>
 			{keyId}
 		</button>
 	);
