@@ -1,13 +1,15 @@
 import { React, useState } from 'react';
 import { Keypad, KeypadCharacters as keyChars, History, KeypadCharacters } from '../../components/fcc/calculator';
 
+const keyList = Object.keys(keyChars);
+
 const Calculator = () => {
 	const [active, setActive] = useState("");
 	const [entire, setEntire] = useState("");
 	const [history, setHistory] = useState([]);
 
 	const keyPressHandler = (e) => {
-		setActive(e.target.id);
+		setActive(e.target.value);
 	};
 
 	return (
@@ -23,8 +25,8 @@ const Calculator = () => {
 				<div tabIndex={0}>
 					<h3>Key Grid</h3>
 					{
-						Object.keys(keyChars).map((char) => {
-							return <Keypad keyId={keyChars[char]} activate={keyPressHandler} key={`${char}-pad`}/>
+						keyList.map((char) => {
+							return <Keypad keyId={keyChars[char]} activate={keyPressHandler} key={`${char}-pad`} />
 						})
 					}
 				</div>
