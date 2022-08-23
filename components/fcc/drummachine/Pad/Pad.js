@@ -8,7 +8,22 @@ import padStyles from './Pad.module.css';
 
 const bankNames = ["FlumeSounds", "Hip Hop @186 BPM", "Synths @100 BPM"];
 
-const Pad = ({ char, padIndex, bank, mVolume, setDisplaySound, activate, stopAll, muteAll }) => {
+const Pad = ({
+	char,
+	padIndex,
+	bank,
+	mVolume,
+	setDisplaySound,
+	activate,
+	stopAll,
+	muteAll
+}) => {
+
+/*
+	This component receives props to determine which sound to load
+	Can play on click or upon receiving keypress event pulse activate boolean prop from the parent grid onKeyPress event
+*/
+
 	// Build file path from props but keep filename ready
 	const fileString = soundList[bank][padIndex]
 	const srcString = `/assets/fcc/DrumMachine/${bankNames[bank]}/${fileString}.mp3`;

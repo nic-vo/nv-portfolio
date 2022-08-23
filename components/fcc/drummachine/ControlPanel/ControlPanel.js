@@ -16,7 +16,9 @@ const ControlPanel = ({
 	stopAllHandler,
 	muteAllHandler
 }) => {
-	/* This component sets master volume and active sound bank; also displays them in a stylized screen */
+
+	// This component sets master volume and active sound bank; also displays them in a stylized screen
+
 	return (
 		<div className={controlStyles.panel}>
 			<div className={controlStyles.display}>
