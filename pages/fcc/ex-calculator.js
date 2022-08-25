@@ -67,21 +67,15 @@ const Calculator = () => {
 			if (isNaN(evaluated) === false) {
 				const curEvaluated = evaluated
 				addToEntire(curEvaluated + op);
-				replaceChunk(op);
 				setEvaluated("");
-				setOpToggle(false);
 			}
 			// If fresh page load / full clear
-			else {
-				addToEntire("0" + op);
-				replaceChunk(op);
-				setOpToggle(false);
-			};
+			else { addToEntire("0" + op); };
+			replaceChunk(op);
+			setOpToggle(false);
 		}
 		// Special functionality: if last in eval string is an operator, replace
-		else if (opToggle === false) {
-			replaceOp(op);
-		}
+		else if (opToggle === false) { replaceOp(op); }
 		// Typical use: if last input is a number or decimal(?), add new operator and prepare for replace
 		else {
 			addToEntire(op);
