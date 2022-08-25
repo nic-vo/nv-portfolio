@@ -49,12 +49,11 @@ const Calculator = () => {
 	const numberHandler = (e) => {
 		const newNum = e.target.value;
 		if (evaluated) { clearHandler(); };
+		addToEntire(newNum);
 		if (opToggle === false) {
-			addToEntire(newNum);
 			replaceChunk(newNum);
 			setOpToggle(true);
 		} else {
-			addToEntire(newNum);
 			addToChunk(newNum);
 		}
 	};
