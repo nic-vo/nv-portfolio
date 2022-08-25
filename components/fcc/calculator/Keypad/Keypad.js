@@ -1,9 +1,13 @@
 import React from 'react';
 
-const Keypad = ({ keyId, activate }) => {
+const Keypad = ({
+	keyId,
+	keyVal,
+	activate
+}) => {
 	return (
-		<button value={keyId} onClick={activate}>
-			{keyId}
+		<button id={keyId} value={keyVal} onClick={activate}>
+			{keyVal}
 		</button>
 	);
 };
