@@ -2,6 +2,18 @@ This is the repo for my personal portfolio
 
 # CHANGELOG
 
+# 0.5.0
+	- Calculator
+		- History
+			- Accepts array of arrays (1 level of nest)
+			- Can insert any value back into active calculation
+		- Keypad (component)
+			- Accepts handler and value
+		- Parent
+			- Add most handlers
+				- Operator and subtract handlers need work
+			- Simple state to control flow
+
 ## 0.4.3
 	- Drum Machine
 		- Parent
