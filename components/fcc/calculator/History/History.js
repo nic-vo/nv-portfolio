@@ -1,8 +1,16 @@
 import React from 'react';
+import { FaArrowRight } from 'react-icons/fa';
 
-const History = () => {
+const History = ({
+	history,
+	pickHistory,
+	clearHistory
+}) => {
 	return (
-		<div>History</div>
+		<div>
+			{history.map((item, index) => { return <div key={`his-${index}`}><p>{item[0]} = {item[1]}</p><button value={item[1]} onClick={pickHistory}>Enter</button></div> })}
+			<button onClick={clearHistory}>Clear History</button>
+		</div >
 	);
 };
 
