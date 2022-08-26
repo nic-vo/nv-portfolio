@@ -1,0 +1,136 @@
+.panel {
+	width: 100%;
+	max-width: 800px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 2vh 0 2vh 0;
+}
+
+.panel label {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.panel button {
+	width: 60px;
+}
+
+.sounds {
+	width: 80%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+.display {
+	height: 16vh;
+	width: 90%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	background-color: rgba(10, 10, 10, 1);
+	border: 10px inset var(--global-background);
+	font-family: Silkscreen, sans-serif;
+}
+
+.display p {
+	text-align: center;
+	font-size: 1.2rem;
+	color: var(--cpanel-overexpose);
+	text-shadow: 0px 0px 20px var(--cpanel-glow);
+	filter: drop-shadow(0px 0px 5px var(--cpanel-glow));
+	margin-bottom: 0;
+}
+
+.controls {
+	width: 80%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.sliders {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+
+.sliders svg {
+	margin: 0.5rem;
+	font-size: 1.5rem;
+	color: var(--cpanel-overexpose);
+	filter: drop-shadow(0px 0px 5px var(--cpanel-glow));
+}
+
+.sliders input {
+	cursor: pointer;
+	-webkit-appearance: none;
+	margin: 0.5rem;
+	border-radius: 5px;
+	border: 2px solid rgba(20, 20, 20, 1);
+	background-color: rgba(20, 20, 20, 1);
+	transition: box-shadow var(--fast-transition), background-color var(--fast-transition), border var(--fast-transition);
+}
+
+.sliders input:hover {
+	border: 2px solid var(--cpanel-overexpose)
+}
+.sliders input:focus {
+	border: 2px solid var(--cpanel-overexpose)
+}
+.sliders input:active {
+	border: 2px solid var(--cpanel-overexpose)
+}
+
+.sliders input::-moz-range-thumb {
+	appearance: none;
+	background-color: var(--cpanel-glow);
+	border: none;
+}
+
+.sliders input:focus::-moz-range-thumb {
+	background-color: var(--cpanel-overexpose);
+	box-shadow: 0px 0px 20px 5px var(--cpanel-glow);
+}
+
+.sliders input:active::-moz-range-thumb {
+	background-color: var(--cpanel-overexpose);
+	box-shadow: 0px 0px 20px 5px var(--cpanel-glow);
+}
+
+.sliders input::-webkit-range-thumb {
+	appearance: none;
+	background-color: var(--cpanel-glow);
+	border: none;
+}
+
+.sliders input:focus::-webkit-range-thumb {
+	background-color: var(--cpanel-overexpose);
+	box-shadow: 0px 0px 20px 5px var(--cpanel-glow);
+}
+
+.sliders input:active::-webkit-range-thumb {
+	background-color: var(--cpanel-overexpose);
+	box-shadow: 0px 0px 20px 5px var(--cpanel-glow);
+}
+
+.buttons {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+
+.buttons button {
+	height: 2rem;
+	cursor: pointer;
+	width: 5rem;
+}
+
+@media (min-aspect-ratio: 9/15) {
+	.controls {
+		width: 50%;
+	}
+}

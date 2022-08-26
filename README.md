@@ -2,6 +2,61 @@ This is the repo for my personal portfolio
 
 # CHANGELOG
 
+## 0.4.3
+	- Drum Machine
+		- Parent
+			- Reworked global variables for use
+		- Control Panel
+			- Mobile layout
+			- Good glowy effect
+		- Pad
+			- Fine pad controls now hidden on mobile (who's using them anyway)
+			- Good glowy effect
+
+## 0.4.2
+	- Drum Machine
+		- Parent
+			- New Silkscreen font for global use
+		- Control Panel
+			- Add glowy effect
+		- Grid
+			- Adjust mobile gaps
+		- Pad
+			- Add glowy class-based effect upon state change
+
+## 0.4.1
+	- Drum Machine
+		- Parent
+			- Begin mobile styling
+			- General button polish
+		- Control Panel
+			- Begin styling
+
+## 0.4.0
+	- Drum Machine
+		- Parent
+			- Remove unnecessary state for bank
+			- Move globalish CSS styles to the global DrumMachine module
+		- Control Panel
+			- Style buttons based on mVolume prop
+			- Remove unnecessary bank prop in favor of index
+		- Control panel
+			- Remove unnecessary bank prop in favor of index
+			- Style buttons based on mVolume, muteAll props
+			- Style buttons based on local muted and loop state
+
+## 0.3.0
+	- Drum Machine
+		- Parent
+			- Global mute added
+			- Global sound pause added
+			- Switching sound banks now switches sound src for each pad
+		- Pad
+			- Now interacts properly with global mute
+			- Switching sound banks calls HTML5 audio DOM stuff
+			- Receives pulse events in form of stopAll prop and activate prop
+			- Loop bugfix
+
 ## 0.2.0
 	- Drum Machine
 		- Keypress triggers for all audio

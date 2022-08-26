@@ -1,0 +1,88 @@
+.drumContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.grid {
+	position: relative;
+	display: grid;
+	width: 90%;
+	grid-template-columns: 1fr 1fr 1fr;
+	column-gap: 2vw;
+	row-gap: 2vw;
+}
+
+.button {
+	box-shadow: none;
+	box-sizing: border-box;
+	border: 2px solid;
+	border-radius: 5px;
+	transition: background-color var(--fast-transition), color var(--fast-transition), filter var(--fast-transition), border-color var(--fast-transition), box-shadow var(--fast-transition);
+}
+
+.button svg {
+	display: block;
+	margin: auto;
+}
+
+.mute {
+	background-color: var(--global-background);
+	border-color: var(--mute-glow);
+	color: var(--mute-glow);
+}
+
+.mute:hover {
+	background-color: var(--mute-overexpose);
+	border-color: var(--mute-overexpose);
+	color: var(--global-background);
+	box-shadow: 0px 0px 20px 5px var(--mute-glow);
+}
+
+.muteon {
+	background-color: var(--mute-overexpose);
+	border-color: var(--mute-overexpose);
+	color: var(--global-background);
+	box-shadow: 0px 0px 20px 5px var(--mute-glow);
+}
+
+.stop {
+	background-color: var(--global-background);
+	border-color: var(--pad-glow);
+	color: var(--pad-glow);
+}
+
+.stop:hover {
+	background-color: var(--pad-overexpose);
+	border-color: var(--pad-overexpose);
+	color: var(--global-background);
+	box-shadow: 0px 0px 20px 5px var(--pad-glow);
+}
+
+.loop {
+	background-color: var(--global-background);
+	color: var(--loop-glow);
+	border-color: var(--loop-glow);
+}
+
+.loop:hover {
+	background-color: var(--loop-overexpose);
+	border-color: var(--loop-overexpose);
+	color: var(--global-background);
+	box-shadow: 0px 0px 20px 5px var(--loop-glow);
+
+}
+
+.loopon {
+	background-color: var(--loop-overexpose);
+	border-color: var(--loop-overexpose);
+	color: var(--global-background);
+	box-shadow: 0px 0px 20px 5px var(--loop-glow);
+}
+
+@media (min-aspect-ratio: 1) {
+	.grid {
+		max-width: 50vw;
+		row-gap: 1vw;
+	}
+}

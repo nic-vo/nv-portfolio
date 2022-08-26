@@ -1,23 +1,23 @@
 import { React, useState } from 'react';
-import { Pad } from '../../components/fcc';
+import { Pad, ControlPanel } from '../../components/fcc/drummachine';
 
-import styles from '../../styles/fcc/DrumMachine.module.css';
+import machineStyles from '../../styles/fcc/DrumMachine/DrumMachine.module.css';
 
-
-
-const chars = ["q", "w", "e", "a", "s", "d", "z", "x", "c"]
+const chars = ["q", "w", "e", "a", "s", "d", "z", "x", "c"];
 
 const DrumMachine = () => {
-	/*
-			Keeps track of sound last played, active sound bank, master volume,
-	*/
-	const [displaySound, setDisplaySound] = useState("");
-	const [activeKey, setActiveKey] = useState("test")
-	const [bankIndex, setBankIndex] = useState(0);
-	const [mVolume, setMVolume] = useState(1);
 
-	// bank name / dir based on bankIndex
-	const bank = `${bankIndex === 2 ? "Synths @100 BPM" : bankIndex === 1 ? "Hip Hop @186 BPM" : "FlumeSounds"}`
+	// Keeps track of sound last played, active sound bank, master volume
+	const [displaySound, setDisplaySound] = useState("");
+	const [bank, setBank] = useState(0);
+	const [mVolume, setMVolume] = useState(0.5);
+	const [muteAll, setMuteAll] = useState(false);
+
+	// Pulsers: when set to true, a setTimeout immediately falses them; trigger useEffects in children
+	// MAY BE A PERFORMANCE HIT -- UNNECESSARY RENDERS
+	const [activeKey, setActiveKey] = useState("");
+	const [stopAll, setStopAll] = useState(false);
+
 
 	const setDisplaySoundHandler = (sound, playing = true) => {
 		// Updates displaySound based on last activated sound
@@ -29,24 +29,48 @@ const DrumMachine = () => {
 		}
 	};
 
-	const mVolumeonInputHandler = (e) => {
-		setMVolume(e.target.value);
+	const mVolumeHandler = (e) => {
+		setMVolume(parseFloat(e.target.value));
 	};
 
+	const setBankHandler = (e) => {
+		setBank(parseInt(e.target.value));
+		setDisplaySound("");
+	};
+
+	// Triggers sounds
 	const keyPressHandler = (e) => {
 		setActiveKey(e.key);
 		// Set timeout that instantly resets the activate prop to the active key
 		const pulser = setTimeout(() => {
 			setActiveKey("");
 		});
+	};
+
+	const stopAllHandler = () => {
+		setStopAll(true);
+		// Same timeout pulser pattern as the above keyPressHandler
+		const pulser = setTimeout(() => {
+			setStopAll(false);
+		});
+	};
+
+	const muteAllHandler = () => {
+		setMuteAll(!muteAll);
 	}
 
 	return (
-		<>
-			<h1>Drum Machine</h1>
-			<input type="range" min="0" max="1" step="0.05" value={mVolume} onInput={mVolumeonInputHandler} />
-			<p>Active sound: {displaySound}</p>
-			<div className={styles.grid} tabIndex="0" onKeyPress={keyPressHandler}>
+		<section className={machineStyles.drumContainer}>
+			<ControlPanel
+				displaySound={displaySound}
+				mVolume={mVolume}
+				bank={bank}
+				muteAll={muteAll}
+				mVolumeHandler={mVolumeHandler}
+				setBankHandler={setBankHandler}
+				stopAllHandler={stopAllHandler}
+				muteAllHandler={muteAllHandler} />
+			<div className={machineStyles.grid} tabIndex="0" onKeyPress={keyPressHandler}>
 				{chars.map((char, index) => {
 					return <Pad
 						char={char}
@@ -54,12 +78,14 @@ const DrumMachine = () => {
 						bank={bank}
 						mVolume={mVolume}
 						activate={activeKey === char ? true : false}
+						stopAll={stopAll}
+						muteAll={muteAll}
 						setDisplaySound={setDisplaySoundHandler}
 						key={`pad-${index}`}
 					/>
 				})}
 			</div>
-		</>
+		</section>
 	);
 };
 
