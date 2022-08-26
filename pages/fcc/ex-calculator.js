@@ -2,9 +2,12 @@ import { React, useState } from 'react';
 import { Keypad, KeypadCharacters as keyChars, History, KeypadCharacters } from '../../components/fcc/calculator';
 
 const keyList = Object.keys(keyChars);
-const opArr = ["add", "multiply", "subtract", "divide"];
+const opRegex = /[+\-*/]-*$/
 
 const Calculator = () => {
+	/*
+		Because javascript, the only acceptable blank state is empty string
+	*/
 	// "entire" is the actual string to be evaluated
 	const [entire, setEntire] = useState("");
 	// "chunk" is like a running string
@@ -12,10 +15,7 @@ const Calculator = () => {
 	const [evaluated, setEvaluated] = useState("")
 	const [history, setHistory] = useState([]);
 
-	// true === operator is new and will not be replaced
-	const [opToggle, setOpToggle] = useState(true);
-	const [negToggle, setNegToggle] = useState(true);
-	const [decToggle, setDecToggle] = useState(true);
+	const [oldAllowed, setOldAllowed] = useState(true);
 
 	/*
 
@@ -25,94 +25,179 @@ const Calculator = () => {
 
 	/* Helpers */
 
-	const replaceChunk = (value) => {
-		setChunk(value);
-	};
+	const replaceChunk = (value) => { setChunk(value) };
 
-	const addToChunk = (value) => {
-		setChunk(chunk + value);
-	};
+	const addToChunk = (value) => { setChunk(chunk + value) };
 
-	const addToEntire = (value) => {
-		setEntire(entire + value);
-	};
+	const addToEntire = (value) => { setEntire(entire + value) };
 
-	const replaceOp = (op) => {
-		// This func will replace the last char in entire with the new op
-		const entireArr = entire.split("");
-		entireArr[entireArr.length - 1] = op;
-		setEntire(entireArr.join(""));
-	};
+	const opCheck = () => { return chunk.match(/[+\-*/]-*$/) };
+
+	const zeroCheck = () => { return chunk.match(/^0(?!\.)/) };
+
+	// allow/denyOld will only be called when new chunks are prepared to prevent decimal fuckery
+	const allowOld = () => { setOldAllowed(true) };
+	const denyOld = () => { setOldAllowed(false) };
+
+	const clearEvaluated = () => { setEvaluated("") };
+
+	const clearChunk = () => { setChunk("") };
+
+	const clearEntire = () => { setEntire("") };
 
 	/* Event Handlers */
 
 	const numberHandler = (e) => {
 		const newNum = e.target.value;
-		if (evaluated) { clearHandler(); };
-		addToEntire(newNum);
-		if (opToggle === false) {
+		// If there's an evaluated answer, clear everything to start anew
+		if (evaluated !== "") { clearHandler(); };
+		// Short circuit preventing number from being added if chunk starts with 0 (leading 0s)
+		if (zeroCheck() !== null) { return };
+		// If an operator has been placed, start a new chunk
+		denyOld();
+		if (opCheck() !== null) {
 			replaceChunk(newNum);
-			setOpToggle(true);
 		} else {
 			addToChunk(newNum);
-		}
+		};
+		// If passes short circuit, lways add new number to entire
+		addToEntire(newNum);
+	};
+
+	const zeroHandler = () => {
+		// If there's an evaluated answer, clear everything to start anew
+		if (evaluated !== "") { clearHandler(); };
+		// If this is a fresh reset or an operator has been placed, start a new chunk
+		if (!chunk || opCheck() !== null) {
+			denyOld();
+			replaceChunk("0");
+			addToEntire("0");
+			// Only add new 0 if the chunk begins with either non-zero or a decimal
+		} else if (zeroCheck() === null) {
+			denyOld();
+			addToEntire("0");
+			addToChunk("0");
+		};
+	}
+
+	const replaceOp = (op) => {
+		// This func will replace the last char in entire with the new op
+		const newEntire = entire.replace(opRegex, op);
+		setEntire(newEntire);
+		replaceChunk(op);
 	};
 
 	const operatorHandler = (e) => {
 		const op = e.target.value
 		// If the eval string is blank, either already evaluated fresh page load / full clear
-		if (!entire) {
+		// Because javascript, the only acceptable blank state is empty string
+		if (entire === "") {
 			// If evaluated is a number (may not be)
 			// Replace eval string and add new operator
-			if (isNaN(evaluated) === false) {
+			if (evaluated !== "") {
 				const curEvaluated = evaluated
 				addToEntire(curEvaluated + op);
-				setEvaluated("");
+				replaceChunk(op);
+				clearEvaluated();
 			}
 			// If fresh page load / full clear
 			else { addToEntire("0" + op); };
-			replaceChunk(op);
-			setOpToggle(false);
+			allowOld();
 		}
 		// Special functionality: if last in eval string is an operator, replace
-		else if (opToggle === false) { replaceOp(op); }
+		else if (opCheck() !== null) {
+			replaceOp(op);
+		}
 		// Typical use: if last input is a number or decimal(?), add new operator and prepare for replace
 		else {
+			allowOld();
 			addToEntire(op);
 			replaceChunk(op);
-			setOpToggle(false);
 		};
 	};
 
 	const decimalHandler = () => {
-		if (evaluated) { clearHandler(); };
-		if (!chunk) {
+		if (evaluated !== "") { clearHandler(); };
+		if (!chunk || opCheck() !== null) {
+			denyOld();
+			addToEntire("0.");
 			replaceChunk("0.");
-			setDecToggle(false);
-		} else if (decToggle === true && opToggle === true) {
+		} else if (chunk.match(/\./) === null) {
+			denyOld();
+			addToEntire(".");
 			addToChunk(".");
-			setDecToggle(false);
 		};
 	};
 
-	const subtractHandler = (e) => {
-		setChunk(e.target.value);
+	const subtractHandler = () => {
+		const subtract = "-";
+		const negative = "-";
+		// If the eval string is blank, either already evaluated fresh page load / full clear
+		// Because javascript, the only acceptable blank state is empty string
+		if (entire === "") {
+			// If evaluated is a number (may not be)
+			// Replace eval string and add new operator
+			if (evaluated !== "") {
+				const curEvaluated = evaluated
+				addToEntire(curEvaluated + subtract);
+				replaceChunk(subtract);
+				clearEvaluated();
+			}
+			// If fresh page load / full clear
+			else { addToEntire("0" + subtract); };
+			allowOld();
+		}
+		// Special functionality 01: if last in eval string is an operator, add a negative
+		else if (chunk.match(/[+\-*/]$/) !== null) {
+			addToEntire(negative);
+			addToChunk(negative);
+		}
+		// Special functionality 02: if last in eval string is an operator w/ negative, replace
+		else if (opCheck() !== null) { replaceOp(subtract); }
+		// Typical use: if last input is a number or decimal(?), add new operator and prepare for replace
+		else {
+			allowOld();
+			addToEntire(subtract);
+			replaceChunk(subtract);
+		};
+	};
+
+	// To prevent unnecessary toFixed decimal points if not needed
+	const abridger = (value) => {
+		const stringed = value.toString();
+		// Check if evaluated string contains decimal more precise than 100-thousandth
+		if (stringed.match(/^\d+\.\d{5,}$/) !== null) {
+			return value.toFixed(5);
+		};
+		return value;
+	};
+
+	// Parses double negatives as addition
+	const dblNeg = (entire) => {
+		return entire.replace(/--/, "+");
 	};
 
 	const equalsHandler = () => {
-		const solved = eval(entire);
-		setHistory[history.push([entire, solved])]
-		setEvaluated(solved);
-		setEntire("");
-		setChunk("");
+		// If already solved, add
+		if (evaluated !== "") {
+			const newHistory = [...history, [evaluated, evaluated]]
+			setHistory(newHistory);
+		} else {
+			const abridged = abridger(eval(dblNeg(entire)));
+			setEvaluated(abridged);
+			const newHistory = [...history, [entire, abridged]];
+			setHistory(newHistory);
+		}
+		allowOld();
+		clearEntire();
+		clearChunk();
 	};
 
 	const clearHandler = () => {
-		setEntire("");
-		setChunk("");
-		setEvaluated("");
-		setDecToggle(true);
-		setOpToggle(true);
+		allowOld();
+		clearEntire();
+		clearChunk();
+		clearEvaluated();
 	};
 
 	/* END Keypad Handlers */
@@ -121,12 +206,15 @@ const Calculator = () => {
 		setHistory([]);
 	};
 
+	// Adds history items as chunks back into equation
 	const pickHistory = (e) => {
+		// Only if allowed, to prevent decimal fuckery from happening
+		if (allowOld === false) { return };
 		const histItem = e.target.value;
 		addToEntire(histItem);
-		setOpToggle(true);
-		setNegToggle(true);
-		if (entire.split("").indexOf(".") < 0) { setDecToggle(true); };
+		replaceChunk(histItem);
+		denyOld();
+		clearEvaluated();
 	}
 
 	return (
@@ -145,6 +233,8 @@ const Calculator = () => {
 					{
 						keyList.map((char) => {
 							switch (char) {
+								case "zero":
+									return <Keypad keyId={char} keyVal={keyChars[char]} activate={zeroHandler} key={`${char}-pad`} />;
 								case "decimal":
 									return <Keypad keyId={char} keyVal={keyChars[char]} activate={decimalHandler} key={`${char}-pad`} />;
 								case "subtract":
@@ -164,7 +254,7 @@ const Calculator = () => {
 					}
 				</div>
 			</div>
-			<History history={history} pickHistory={pickHistory} clearHistory={clearHistory} />
+			<History history={history} pickHistory={pickHistory} clearHistory={clearHistory} oldAllowed={oldAllowed} />
 		</div>
 	);
 };
