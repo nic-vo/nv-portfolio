@@ -2,7 +2,18 @@ This is the repo for my personal portfolio
 
 # CHANGELOG
 
-# 0.5.0
+# 0.6.0
+  - Calculator
+    - History
+      - Items now disable when a history chunk has been inserted
+    - Parent
+      - Removes all flow state and uses function that checks chunks where conditionals are needed
+      - Allow history chunks to be inserted into eval string only when operators are used
+      - Round evaluated strings to the 100 thousandth place
+      - Parse double "-" as addition
+
+
+## 0.5.0
   - Calculator
     - History
       - Accepts array of arrays (1 level of nest)
