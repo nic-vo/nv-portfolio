@@ -46,6 +46,27 @@ const Calculator = () => {
 	const clearEntire = () => { setEntire("") };
 
 	/* Event Handlers */
+	const keyDownHandler = (e) => {
+		console.log(e.key);
+		switch (e.key) {
+			case "0":
+				return zeroHandler();
+			case ".":
+				return decimalHandler();
+			case "-":
+				return subtractHandler();
+			case "+":
+			case "*":
+			case "/":
+				return operatorHandler({ target: { value: e.key } });
+			case "Delete":
+				return clearHandler();
+			case "Enter":
+				return equalsHandler();
+			default:
+				if (e.key >= 1 && e.key < 10) { return numberHandler({ target: { value: e.key } }) };
+		};
+	};
 
 	const numberHandler = (e) => {
 		const newNum = e.target.value;
@@ -180,7 +201,7 @@ const Calculator = () => {
 	const equalsHandler = () => {
 		// If already solved, add
 		if (evaluated !== "") {
-			const newHistory = [...history, [evaluated, evaluated]]
+			const newHistory = [...history, [evaluated, evaluated]];
 			setHistory(newHistory);
 		} else {
 			const abridged = abridger(eval(dblNeg(entire)));
