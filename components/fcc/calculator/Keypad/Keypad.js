@@ -3,11 +3,13 @@ import React from 'react';
 const Keypad = ({
 	keyId,
 	keyVal,
-	activate
+	content,
+	handler
 }) => {
+
 	return (
-		<button id={keyId} value={keyVal} onClick={activate}>
-			{keyVal}
+		<button id={keyId} value={keyVal} onClick={handler} style={{"gridArea": keyId}}>
+			{content}
 		</button>
 	);
 };

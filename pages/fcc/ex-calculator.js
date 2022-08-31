@@ -12,7 +12,7 @@ const Calculator = () => {
 	const [entire, setEntire] = useState("");
 	// "chunk" is like a running string
 	const [chunk, setChunk] = useState("");
-	const [evaluated, setEvaluated] = useState("")
+	const [evaluated, setEvaluated] = useState("");
 	const [history, setHistory] = useState([]);
 
 	const [oldAllowed, setOldAllowed] = useState(true);
@@ -219,36 +219,32 @@ const Calculator = () => {
 
 	return (
 		<div>
-			<h1>Container</h1>
 			<div>
-				<h2>Calculator</h2>
 				<div>
-					<h3>Screen</h3>
 					<p>entire: {entire}</p>
 					<p>chunk: {chunk}</p>
 					<p>solved: {evaluated}</p>
 				</div>
-				<div tabIndex={0}>
-					<h3>Key Grid</h3>
+				<div className={calcStyles.grid} tabIndex={0} onKeyDown={keyDownHandler}>
 					{
 						keyList.map((char) => {
 							switch (char) {
 								case "zero":
-									return <Keypad keyId={char} keyVal={keyChars[char]} activate={zeroHandler} key={`${char}-pad`} />;
+									return <Keypad keyId={char} keyVal={keyChars[char]} content={keyChars[char]} handler={zeroHandler} key={`${char}-pad`} />;
 								case "decimal":
-									return <Keypad keyId={char} keyVal={keyChars[char]} activate={decimalHandler} key={`${char}-pad`} />;
+									return <Keypad keyId={char} keyVal={keyChars[char]} content={keyChars[char]} handler={decimalHandler} key={`${char}-pad`} />;
 								case "subtract":
-									return <Keypad keyId={char} keyVal={keyChars[char]} activate={subtractHandler} key={`${char}-pad`} />;
+									return <Keypad keyId={char} keyVal={keyChars[char]} content={keyChars[char]} handler={subtractHandler} key={`${char}-pad`} />;
 								case "add":
 								case "multiply":
 								case "divide":
-									return <Keypad keyId={char} keyVal={keyChars[char]} activate={operatorHandler} key={`${char}-pad`} />;
+									return <Keypad keyId={char} keyVal={keyChars[char]} content={keyChars[char]} handler={operatorHandler} key={`${char}-pad`} />;
 								case "clear":
-									return <Keypad keyId={char} keyVal={keyChars[char]} activate={clearHandler} key={`${char}-pad`} />;
+									return <Keypad keyId={char} keyVal={null} content={keyChars[char]} handler={clearHandler} key={`${char}-pad`} />;
 								case "equals":
-									return <Keypad keyId={char} keyVal={keyChars[char]} activate={equalsHandler} key={`${char}-pad`} />;
+									return <Keypad keyId={char} keyVal={null} content={keyChars[char]} handler={equalsHandler} key={`${char}-pad`} />;
 								default:
-									return <Keypad keyId={char} keyVal={keyChars[char]} activate={numberHandler} key={`${char}-pad`} />;
+									return <Keypad keyId={char} keyVal={keyChars[char]} content={keyChars[char]} handler={numberHandler} key={`${char}-pad`} />;
 							}
 						})
 					}
