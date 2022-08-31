@@ -255,10 +255,9 @@ const Calculator = () => {
 	return (
 		<div tabIndex={0} onKeyDown={keyDownHandler}>
 			<div>
-				<div>
-					<p>entire: {entire}</p>
-					<p>chunk: {chunk}</p>
-					<p>solved: {evaluated}</p>
+				<div className={calcStyles.screen}>
+					<p>{entire !== "" ? entire : "Ready"}</p>
+					<p>{chunk !== "" ? chunk : "Ready"}</p>
 				</div>
 				<div className={calcStyles.grid}>
 					{
