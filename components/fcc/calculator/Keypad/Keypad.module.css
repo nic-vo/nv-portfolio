@@ -1,0 +1,14 @@
+.keypad {
+	background-color: #E8EEF2;
+	color: #37393A;
+	border-radius: 5px;
+}
+
+.keypad:hover {
+	filter: brightness(0%);
+}
+
+.clear {
+	background-color: #B97375;
+	color: #37393A
+}

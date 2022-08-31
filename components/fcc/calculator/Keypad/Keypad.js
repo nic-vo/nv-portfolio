@@ -1,6 +1,6 @@
 import React from 'react';
 
-import calcStyles from './Keypad.module.css';
+import keyStyles from './Keypad.module.css';
 
 const Keypad = ({
 	keyId,
@@ -10,7 +10,7 @@ const Keypad = ({
 }) => {
 
 	return (
-		<button id={keyId} value={keyVal} onClick={handler} style={{"gridArea": keyId}}>
+		<button className={`${keyStyles.keypad}${keyId === "clear" ? ` ${keyStyles.clear}` : ""}`} id={keyId} value={keyVal} onClick={handler} style={{ "gridArea": keyId }}>
 			{content}
 		</button>
 	);
