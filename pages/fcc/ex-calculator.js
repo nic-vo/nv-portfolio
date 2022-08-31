@@ -187,7 +187,7 @@ const Calculator = () => {
 	const abridger = (value) => {
 		const stringed = value.toString();
 		// Check if evaluated string contains decimal more precise than 100-thousandth
-		if (stringed.match(/^\d+\.\d{5,}$/) !== null) {
+		if (stringed.match(/^[-]{0,1}\d+\.\d{5,}$/) !== null) {
 			return value.toFixed(5);
 		};
 		return value;
