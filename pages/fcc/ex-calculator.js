@@ -202,18 +202,26 @@ const Calculator = () => {
 		return entire.replace(/--/, "+");
 	};
 
+	const historyUpdater = (entry) => {
+		if (history.length === 5) {
+			const newHistory = [...history[1, 4], entry];
+			setHistory(newHistory);
+		} else {
+			const newHistory = [...history, entry];
+			setHistory(newHistory);
+		}
+	}
+
 	const equalsHandler = () => {
 		// If someone accidentally solves after adding op
 		const replacedEntire = entire.replace(/[-]$/, "").replace(/[+\-*/]$/, "")
 		// If already solved, add
 		if (evaluated !== "") {
-			const newHistory = [...history, [evaluated, evaluated]];
-			setHistory(newHistory);
+			historyUpdater([evaluated, evaluated]);
 		} else {
 			const abridged = abridger(eval(dblNeg(replacedEntire)));
 			setEvaluated(abridged);
-			const newHistory = [...history, [replacedEntire, abridged]];
-			setHistory(newHistory);
+			historyUpdater([replacedEntire, abridged]);
 		}
 		allowOld();
 		clearEntire();
