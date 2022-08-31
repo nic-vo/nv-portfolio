@@ -1,6 +1,10 @@
 import { React, useState } from 'react';
 import { Keypad, KeypadCharacters as keyChars, History, KeypadCharacters } from '../../components/fcc/calculator';
 
+import calcStyles from '../../styles/fcc/Calculator/Calculator.module.css';
+
+
+
 const keyList = Object.keys(keyChars);
 const opRegex = /[+\-*/]-*$/
 

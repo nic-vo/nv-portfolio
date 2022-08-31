@@ -1,5 +1,7 @@
 import React from 'react';
 
+import calcStyles from './Keypad.module.css';
+
 const Keypad = ({
 	keyId,
 	keyVal,
