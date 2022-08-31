@@ -203,14 +203,16 @@ const Calculator = () => {
 	};
 
 	const equalsHandler = () => {
+		// If someone accidentally solves after adding op
+		const replacedEntire = entire.replace(/[-]$/, "").replace(/[+\-*/]$/, "")
 		// If already solved, add
 		if (evaluated !== "") {
 			const newHistory = [...history, [evaluated, evaluated]];
 			setHistory(newHistory);
 		} else {
-			const abridged = abridger(eval(dblNeg(entire)));
+			const abridged = abridger(eval(dblNeg(replacedEntire)));
 			setEvaluated(abridged);
-			const newHistory = [...history, [entire, abridged]];
+			const newHistory = [...history, [replacedEntire, abridged]];
 			setHistory(newHistory);
 		}
 		allowOld();
