@@ -239,14 +239,14 @@ const Calculator = () => {
 	}
 
 	return (
-		<div>
+		<div tabIndex={0} onKeyDown={keyDownHandler}>
 			<div>
 				<div>
 					<p>entire: {entire}</p>
 					<p>chunk: {chunk}</p>
 					<p>solved: {evaluated}</p>
 				</div>
-				<div className={calcStyles.grid} tabIndex={0} onKeyDown={keyDownHandler}>
+				<div className={calcStyles.grid}>
 					{
 						keyList.map((char) => {
 							switch (char) {
