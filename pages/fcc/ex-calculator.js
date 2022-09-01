@@ -209,7 +209,8 @@ const Calculator = () => {
 
 	const historyUpdater = (entry) => {
 		if (history.length === 5) {
-			const newHistory = [...history[1, 4], entry];
+			const oldHistory = history.slice(1,4);
+			const newHistory = [...oldHistory, entry];
 			setHistory(newHistory);
 		} else {
 			const newHistory = [...history, entry];
@@ -288,6 +289,7 @@ const Calculator = () => {
 						})
 					}
 				</div>
+				<History history={history} pickHistory={pickHistory} clearHistory={clearHistory} oldAllowed={oldAllowed} />
 			</div>
 			<button onClick={splodeHandler} style={{zIndex: 10}}>?</button>
 		</section>
