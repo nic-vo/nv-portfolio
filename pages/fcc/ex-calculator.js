@@ -259,11 +259,11 @@ const Calculator = () => {
 	}
 
 	return (
-		<div tabIndex={0} onKeyDown={keyDownHandler}>
-			<div>
+		<section className={calcStyles.container} tabIndex={0} onKeyDown={keyDownHandler}>
+			<div className={calcStyles.calculator}>
 				<div className={calcStyles.screen}>
 					<p>{entire !== "" ? entire : "Ready"}</p>
-					<p>{chunk !== "" ? chunk : "Ready"}</p>
+					<p>{chunk !== "" ? chunk : "--"}</p>
 				</div>
 				<div className={calcStyles.grid}>
 					{
