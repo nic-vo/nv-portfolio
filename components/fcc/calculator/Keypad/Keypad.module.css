@@ -2,6 +2,10 @@
 	background-color: #E8EEF2;
 	color: #37393A;
 	border-radius: 5px;
+	min-height: 4rem;
+	transform-origin: center;
+	z-index: 1;
+	transition: transform var(--slow-transition);
 }
 
 .keypad:hover {
