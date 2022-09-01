@@ -20,6 +20,7 @@ const Calculator = () => {
 	const [history, setHistory] = useState([]);
 
 	const [oldAllowed, setOldAllowed] = useState(true);
+	const [splode, setSplode] = useState(false);
 
 	/*
 
@@ -70,6 +71,10 @@ const Calculator = () => {
 			default:
 				if (e.key >= 1 && e.key < 10) { return numberHandler({ target: { value: e.key } }) };
 		};
+	};
+
+	const splodeHandler = () => {
+		setSplode(!splode);
 	};
 
 	const numberHandler = (e) => {
@@ -264,28 +269,28 @@ const Calculator = () => {
 						keyList.map((char) => {
 							switch (char) {
 								case "zero":
-									return <Keypad keyId={char} keyVal={keyChars[char]} content={keyChars[char]} handler={zeroHandler} key={`${char}-pad`} />;
+									return <Keypad keyId={char} keyVal={keyChars[char]} content={keyChars[char]} handler={zeroHandler} key={`${char}-pad`} splode={splode} />;
 								case "decimal":
-									return <Keypad keyId={char} keyVal={keyChars[char]} content={keyChars[char]} handler={decimalHandler} key={`${char}-pad`} />;
+									return <Keypad keyId={char} keyVal={keyChars[char]} content={keyChars[char]} handler={decimalHandler} key={`${char}-pad`} splode={splode} />;
 								case "subtract":
-									return <Keypad keyId={char} keyVal={keyChars[char]} content={keyChars[char]} handler={subtractHandler} key={`${char}-pad`} />;
+									return <Keypad keyId={char} keyVal={keyChars[char]} content={keyChars[char]} handler={subtractHandler} key={`${char}-pad`} splode={splode} />;
 								case "add":
 								case "multiply":
 								case "divide":
-									return <Keypad keyId={char} keyVal={keyChars[char]} content={keyChars[char]} handler={operatorHandler} key={`${char}-pad`} />;
+									return <Keypad keyId={char} keyVal={keyChars[char]} content={keyChars[char]} handler={operatorHandler} key={`${char}-pad`} splode={splode} />;
 								case "clear":
-									return <Keypad keyId={char} keyVal={null} content={keyChars[char]} handler={clearHandler} key={`${char}-pad`} />;
+									return <Keypad keyId={char} keyVal={null} content={keyChars[char]} handler={clearHandler} key={`${char}-pad`} splode={splode} />;
 								case "equals":
-									return <Keypad keyId={char} keyVal={null} content={keyChars[char]} handler={equalsHandler} key={`${char}-pad`} />;
+									return <Keypad keyId={char} keyVal={null} content={keyChars[char]} handler={equalsHandler} key={`${char}-pad`} splode={splode} />;
 								default:
-									return <Keypad keyId={char} keyVal={keyChars[char]} content={keyChars[char]} handler={numberHandler} key={`${char}-pad`} />;
+									return <Keypad keyId={char} keyVal={keyChars[char]} content={keyChars[char]} handler={numberHandler} key={`${char}-pad`} splode={splode} />;
 							}
 						})
 					}
 				</div>
 			</div>
-			<History history={history} pickHistory={pickHistory} clearHistory={clearHistory} oldAllowed={oldAllowed} />
-		</div>
+			<button onClick={splodeHandler} style={{zIndex: 10}}>?</button>
+		</section>
 	);
 };
 
