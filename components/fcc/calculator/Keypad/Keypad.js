@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from 'react';
+import React, { memo, useState, useEffect } from 'react';
 
 import keyStyles from './Keypad.module.css';
 
@@ -62,4 +62,6 @@ const Keypad = ({
 	);
 };
 
-export default Keypad;
+const KeypadMemo = memo(Keypad);
+
+export default KeypadMemo;
