@@ -10,6 +10,17 @@ const Keypad = ({
 	splode
 }) => {
 
+	const classer = () => {
+		switch(keyId) {
+			case "clear":
+				return keyStyles.clear;
+			case "equals":
+				return keyStyles.equals;
+			default:
+				return keyStyles.numpad;
+		};
+	};
+
 	const [sploded, setSploded] = useState([[0, 0, 0, 0], [0, 0, 0]]);
 
 	const resetSploded = () => {
@@ -52,7 +63,7 @@ const Keypad = ({
 			id={keyId}
 			value={keyVal}
 			onClick={handler}
-			className={`${keyStyles.keypad}${keyId === "clear" ? ` ${keyStyles.clear}` : ""}`}
+			className={`${keyStyles.keypad} ${classer()}`}
 			style={{
 				"gridArea": keyId,
 				"transform": `rotate3d(${sploded[0][0]}, ${sploded[0][1]}, ${sploded[0][2]}, ${sploded[0][3]*360}deg) translate3d(${sploded[1][0]},${sploded[1][1]},${sploded[1][2]})`
