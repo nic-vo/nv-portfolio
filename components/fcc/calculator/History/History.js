@@ -11,6 +11,7 @@ const History = ({
 }) => {
 	return (
 		<div className={calcStyles.history}>
+			<button onClick={clearHistory}>Clear History</button>
 			{history.map((item, index) => {
 				return (
 					<div className={calcStyles.historyitem} key={`his-${index}`}>
@@ -18,7 +19,6 @@ const History = ({
 						<button value={item[1]} onClick={pickHistory} disabled={!oldAllowed}>Enter</button>
 					</div>)
 			})}
-			<button onClick={clearHistory}>Clear History</button>
 		</div >
 	);
 };
