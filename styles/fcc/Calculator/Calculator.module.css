@@ -63,6 +63,8 @@
 		"one two three equals"
 		"zero zero decimal equals"
 	;
+	margin: 2vh;
+	gap: 5px;
 }
 
 .history {
