@@ -2,6 +2,7 @@ import { React, useState } from 'react';
 import { Keypad, KeypadCharacters as keyChars, History, KeypadCharacters } from '../../components/fcc/calculator';
 
 import calcStyles from '../../styles/fcc/Calculator/Calculator.module.css';
+import keyStyles from '../../components/fcc/calculator/Keypad/Keypad.module.css';
 
 
 
@@ -263,7 +264,7 @@ const Calculator = () => {
 			<div className={calcStyles.calculator}>
 				<div className={calcStyles.screen}>
 					<p>{entire !== "" ? entire : "Ready"}</p>
-					<p>{chunk !== "" ? chunk : "--"}</p>
+					<p>{evaluated !== "" ? evaluated : chunk !== "" ? chunk : "--"}</p>
 				</div>
 				<div className={calcStyles.grid}>
 					{
@@ -288,10 +289,11 @@ const Calculator = () => {
 							}
 						})
 					}
+					<button onClick={splodeHandler} className={`${keyStyles.keypad} ${keyStyles.numpad}`} style={{ height: "auto", zIndex: 10 }}>?</button>
+
 				</div>
-				<History history={history} pickHistory={pickHistory} clearHistory={clearHistory} oldAllowed={oldAllowed} />
 			</div>
-			<button onClick={splodeHandler} style={{zIndex: 10}}>?</button>
+			<History history={history} pickHistory={pickHistory} clearHistory={clearHistory} oldAllowed={oldAllowed} />
 		</section>
 	);
 };
