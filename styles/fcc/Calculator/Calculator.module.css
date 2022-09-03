@@ -5,12 +5,6 @@
 	overflow: hidden;
 }
 
-@media (min-aspect-ratio: 3/4) {
-	.container {
-		overflow: visible;
-	}
-}
-
 .calculator {
 	width: 90%;
 	max-width: 500px;
@@ -21,6 +15,18 @@
 @media (min-aspect-ratio: 3/4) {
 	.calculator {
 		width: 50%;
+	}
+
+	.container {
+		overflow: visible;
+	}
+}
+
+@media (min-aspect-ratio: 99/100) {
+	.container {
+		flex-direction: row-reverse;
+		justify-content: center;
+		align-items: stretch;
 	}
 }
 
