@@ -31,7 +31,27 @@
 }
 
 .screen {
+	height: 15vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 	text-align: right;
+	margin: 2vh;
+	border: 10px inset #60683C;
+	border-radius: 5px;
+	background-color: #60683C;
+}
+
+.screen p {
+	display: block;
+	margin: 0 1rem 0 1rem;
+	color: #28292A;
+	font-family: Silkscreen, sans-serif;
+	font-size: 2rem;
+	font-weight: 800;
+	text-shadow: 5px 5px 5px #464749;
+	overflow-x: auto;
+	scrollbar-width: thin;
 }
 
 .grid {
