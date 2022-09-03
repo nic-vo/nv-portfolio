@@ -210,12 +210,9 @@ const Calculator = () => {
 
 	const historyUpdater = (entry) => {
 		if (history.length === 5) {
-			const oldHistory = history.slice(1,4);
-			const newHistory = [...oldHistory, entry];
-			setHistory(newHistory);
+			setHistory([...history.slice(1, 5), entry]);
 		} else {
-			const newHistory = [...history, entry];
-			setHistory(newHistory);
+			setHistory([...history, entry]);
 		}
 	}
 
@@ -269,7 +266,7 @@ const Calculator = () => {
 				<div className={calcStyles.grid}>
 					{
 						keyList.map((char) => {
-							switch (char) {
+								switch (char) {
 								case "zero":
 									return <Keypad keyId={char} keyVal={keyChars[char]} content={keyChars[char]} handler={zeroHandler} key={`${char}-pad`} splode={splode} />;
 								case "decimal":
