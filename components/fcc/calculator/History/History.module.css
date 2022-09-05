@@ -3,18 +3,12 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	width: 100%;
+	min-width: 12rem;
 	min-height: 30vh;
 	padding: 2vh;
 	margin: 2vh;
 	border-radius: 5px;
 	background-color: #28292A;
-}
-
-@media (min-aspect-ratio: 3/4) {
-	.history {
-	width: 25%;
-}
 }
 
 .historyitem {
