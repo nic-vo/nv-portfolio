@@ -8,8 +8,8 @@
 .calculator {
 	width: 90%;
 	max-width: 500px;
-	background-color: silver;
 	border-radius: 10px;
+	transition: background-color var(--fast-transition);
 }
 
 @media (min-aspect-ratio: 3/4) {
