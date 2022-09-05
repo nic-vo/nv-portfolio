@@ -66,7 +66,7 @@ const Keypad = ({
 			className={`${keyStyles.keypad} ${classer()}`}
 			style={{
 				gridArea: keyId,
-				transform: `rotate3d(${sploded[0][0]}, ${sploded[0][1]}, ${sploded[0][2]}, ${sploded[0][3]*180}deg) translate3d(${sploded[1][0]},${sploded[1][1]},${sploded[1][2]})`,
+				transform: `rotate3d(${sploded[0][0]}, ${sploded[0][1]}, ${sploded[0][2]}, ${sploded[0][3]*180}deg) translate3d(${sploded[1][0]},${sploded[1][1]},${sploded[1][2]})`
 			}}>
 			{content}
 		</button>
