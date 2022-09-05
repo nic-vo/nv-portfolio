@@ -1,6 +1,11 @@
 import { React, useState } from 'react';
 import { Keypad, KeypadCharacters as keyChars, History, KeypadCharacters } from '../../components/fcc/calculator';
 
+import calcStyles from '../../styles/fcc/Calculator/Calculator.module.css';
+import keyStyles from '../../components/fcc/calculator/Keypad/Keypad.module.css';
+
+
+
 const keyList = Object.keys(keyChars);
 const opRegex = /[+\-*/]-*$/
 
@@ -12,10 +17,11 @@ const Calculator = () => {
 	const [entire, setEntire] = useState("");
 	// "chunk" is like a running string
 	const [chunk, setChunk] = useState("");
-	const [evaluated, setEvaluated] = useState("")
+	const [evaluated, setEvaluated] = useState("");
 	const [history, setHistory] = useState([]);
 
 	const [oldAllowed, setOldAllowed] = useState(true);
+	const [splode, setSplode] = useState(false);
 
 	/*
 
@@ -46,6 +52,29 @@ const Calculator = () => {
 	const clearEntire = () => { setEntire("") };
 
 	/* Event Handlers */
+	const keyDownHandler = (e) => {
+		console.log(e.key);
+		switch (e.key) {
+			case "0":
+				return zeroHandler();
+			case ".":
+				return decimalHandler();
+			case "-":
+				return subtractHandler();
+			case "+":
+			case "*":
+			case "/":
+				return operatorHandler({ target: { value: e.key } });
+			case "Delete":
+				return clearHandler();
+			case "Enter":
+				return equalsHandler();
+			default:
+				if (e.key >= 1 && e.key < 10) { return numberHandler({ target: { value: e.key } }) };
+		};
+	};
+
+	const splodeHandler = () => { setSplode(!splode); };
 
 	const numberHandler = (e) => {
 		const newNum = e.target.value;
@@ -55,11 +84,8 @@ const Calculator = () => {
 		if (zeroCheck() !== null) { return };
 		// If an operator has been placed, start a new chunk
 		denyOld();
-		if (opCheck() !== null) {
-			replaceChunk(newNum);
-		} else {
-			addToChunk(newNum);
-		};
+		if (opCheck() !== null) { replaceChunk(newNum); }
+		else { addToChunk(newNum); };
 		// If passes short circuit, lways add new number to entire
 		addToEntire(newNum);
 	};
@@ -105,9 +131,7 @@ const Calculator = () => {
 			allowOld();
 		}
 		// Special functionality: if last in eval string is an operator, replace
-		else if (opCheck() !== null) {
-			replaceOp(op);
-		}
+		else if (opCheck() !== null) { replaceOp(op); }
 		// Typical use: if last input is a number or decimal(?), add new operator and prepare for replace
 		else {
 			allowOld();
@@ -166,27 +190,30 @@ const Calculator = () => {
 	const abridger = (value) => {
 		const stringed = value.toString();
 		// Check if evaluated string contains decimal more precise than 100-thousandth
-		if (stringed.match(/^\d+\.\d{5,}$/) !== null) {
-			return value.toFixed(5);
-		};
+		if (stringed.match(/^[-]{0,1}\d+\.\d{5,}$/) !== null) { return value.toFixed(5); };
 		return value;
 	};
 
 	// Parses double negatives as addition
-	const dblNeg = (entire) => {
-		return entire.replace(/--/, "+");
+	const dblNeg = (entire) => { return entire.replace(/--/, "+"); };
+
+	const historyUpdater = (entry) => {
+		if (history.length === 5) {
+			setHistory([...history.slice(1, 5), entry]);
+		} else {
+			setHistory([...history, entry]);
+		};
 	};
 
 	const equalsHandler = () => {
+		// If someone accidentally solves after adding op
+		const replacedEntire = entire.replace(/[-]$/, "").replace(/[+\-*/]$/, "")
 		// If already solved, add
-		if (evaluated !== "") {
-			const newHistory = [...history, [evaluated, evaluated]]
-			setHistory(newHistory);
-		} else {
-			const abridged = abridger(eval(dblNeg(entire)));
+		if (evaluated !== "") { historyUpdater([evaluated, evaluated]); }
+		else {
+			const abridged = abridger(eval(dblNeg(replacedEntire)));
 			setEvaluated(abridged);
-			const newHistory = [...history, [entire, abridged]];
-			setHistory(newHistory);
+			historyUpdater([replacedEntire, abridged]);
 		}
 		allowOld();
 		clearEntire();
@@ -218,44 +245,41 @@ const Calculator = () => {
 	}
 
 	return (
-		<div>
-			<h1>Container</h1>
-			<div>
-				<h2>Calculator</h2>
-				<div>
-					<h3>Screen</h3>
-					<p>entire: {entire}</p>
-					<p>chunk: {chunk}</p>
-					<p>solved: {evaluated}</p>
+		<section className={calcStyles.container} tabIndex={0} onKeyDown={keyDownHandler}>
+			<div className={calcStyles.calculator} style={{backgroundColor: `${splode ? "#707070" : "#CCCCCC"}`}}>
+				<div className={calcStyles.screen}>
+					<p>{entire !== "" ? entire : "Ready"}</p>
+					<p>{evaluated !== "" ? evaluated : chunk !== "" ? chunk : "--"}</p>
 				</div>
-				<div tabIndex={0}>
-					<h3>Key Grid</h3>
+				<div className={calcStyles.grid}>
 					{
 						keyList.map((char) => {
-							switch (char) {
+								switch (char) {
 								case "zero":
-									return <Keypad keyId={char} keyVal={keyChars[char]} activate={zeroHandler} key={`${char}-pad`} />;
+									return <Keypad keyId={char} keyVal={keyChars[char]} content={keyChars[char]} handler={zeroHandler} key={`${char}-pad`} splode={splode} />;
 								case "decimal":
-									return <Keypad keyId={char} keyVal={keyChars[char]} activate={decimalHandler} key={`${char}-pad`} />;
+									return <Keypad keyId={char} keyVal={keyChars[char]} content={keyChars[char]} handler={decimalHandler} key={`${char}-pad`} splode={splode} />;
 								case "subtract":
-									return <Keypad keyId={char} keyVal={keyChars[char]} activate={subtractHandler} key={`${char}-pad`} />;
+									return <Keypad keyId={char} keyVal={keyChars[char]} content={keyChars[char]} handler={subtractHandler} key={`${char}-pad`} splode={splode} />;
 								case "add":
 								case "multiply":
 								case "divide":
-									return <Keypad keyId={char} keyVal={keyChars[char]} activate={operatorHandler} key={`${char}-pad`} />;
+									return <Keypad keyId={char} keyVal={keyChars[char]} content={keyChars[char]} handler={operatorHandler} key={`${char}-pad`} splode={splode} />;
 								case "clear":
-									return <Keypad keyId={char} keyVal={keyChars[char]} activate={clearHandler} key={`${char}-pad`} />;
+									return <Keypad keyId={char} keyVal={null} content={keyChars[char]} handler={clearHandler} key={`${char}-pad`} splode={splode} />;
 								case "equals":
-									return <Keypad keyId={char} keyVal={keyChars[char]} activate={equalsHandler} key={`${char}-pad`} />;
+									return <Keypad keyId={char} keyVal={null} content={keyChars[char]} handler={equalsHandler} key={`${char}-pad`} splode={splode} />;
 								default:
-									return <Keypad keyId={char} keyVal={keyChars[char]} activate={numberHandler} key={`${char}-pad`} />;
+									return <Keypad keyId={char} keyVal={keyChars[char]} content={keyChars[char]} handler={numberHandler} key={`${char}-pad`} splode={splode} />;
 							}
 						})
 					}
+					<button onClick={splodeHandler} className={`${keyStyles.keypad} ${keyStyles.numpad}`} style={{ height: "auto", zIndex: 10 }}>?</button>
+
 				</div>
 			</div>
 			<History history={history} pickHistory={pickHistory} clearHistory={clearHistory} oldAllowed={oldAllowed} />
-		</div>
+		</section>
 	);
 };
 

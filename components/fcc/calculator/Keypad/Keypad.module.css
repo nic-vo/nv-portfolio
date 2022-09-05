@@ -1,0 +1,42 @@
+.keypad {
+	cursor: pointer;
+	border-radius: 5px;
+	font-size: 1rem;
+	transform-origin: center;
+	z-index: 1;
+	transition: transform var(--medium-transition);
+}
+
+.numpad {
+	height: 4rem;
+	background-color: #28292A;
+	color: #E8EEF2;
+	border: 8px outset #28292A;
+}
+
+.numpad:hover {
+	border: 8px inset #28292A;
+}
+
+.clear {
+	height: 4rem;
+	background-color: #B97375;
+	color: #E8EEF2;
+	border: 8px outset #B97375;
+	justify-self: stretch;
+}
+
+.clear:hover {
+	border: 8px inset #B97375;
+}
+
+.equals {
+	height: auto;
+	background-color: #28292A;
+	color: #E8EEF2;
+	border: 8px outset #28292A;
+}
+
+.equals:hover {
+	border: 8px inset #28292A;
+}

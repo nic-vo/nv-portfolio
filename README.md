@@ -2,7 +2,19 @@ This is the repo for my personal portfolio
 
 # CHANGELOG
 
-# 0.6.0
+# 0.7.0
+  - Calculator
+    - History
+      - Refine styling
+    - Keypad
+      - Memoize (?)
+      - Manually normalize vectors for explode
+      - Oh yeah, explodes now
+    - Parent
+      - History state updates correctly (length = 5)
+      - Explode simple boolean
+
+## 0.6.0
   - Calculator
     - History
       - Items now disable when a history chunk has been inserted
@@ -11,7 +23,6 @@ This is the repo for my personal portfolio
       - Allow history chunks to be inserted into eval string only when operators are used
       - Round evaluated strings to the 100 thousandth place
       - Parse double "-" as addition
-
 
 ## 0.5.0
   - Calculator

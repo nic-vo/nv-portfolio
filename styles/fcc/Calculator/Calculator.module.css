@@ -1,0 +1,68 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	overflow: hidden;
+}
+
+.calculator {
+	width: 90%;
+	max-width: 500px;
+	border-radius: 10px;
+	transition: background-color var(--fast-transition);
+}
+
+@media (min-aspect-ratio: 3/4) {
+	.calculator {
+		width: 50%;
+	}
+
+	.container {
+		overflow: visible;
+	}
+}
+
+@media (min-aspect-ratio: 99/100) {
+	.container {
+		flex-direction: row-reverse;
+		justify-content: center;
+		align-items: stretch;
+	}
+}
+
+.screen {
+	height: 15vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	text-align: right;
+	margin: 2vh;
+	border: 10px inset #60683C;
+	border-radius: 5px;
+	background-color: #60683C;
+}
+
+.screen p {
+	display: block;
+	margin: 0 1rem 0 1rem;
+	color: #28292A;
+	font-family: Silkscreen, sans-serif;
+	font-size: 2rem;
+	font-weight: 800;
+	text-shadow: 5px 5px 5px #464749;
+	overflow-x: auto;
+	scrollbar-width: thin;
+}
+
+.grid {
+	display: grid;
+	grid-template-areas:
+		"clear clear divide multiply"
+		"seven eight nine subtract"
+		"four five six add"
+		"one two three equals"
+		"zero zero decimal equals"
+	;
+	margin: 2vh;
+	gap: 5px;
+}
