@@ -11,7 +11,7 @@ const Keypad = ({
 }) => {
 
 	const classer = () => {
-		switch(keyId) {
+		switch (keyId) {
 			case "clear":
 				return keyStyles.clear;
 			case "equals":
@@ -41,7 +41,7 @@ const Keypad = ({
 			return Math.abs(current) + Math.abs(newTotal);
 		});
 		return newArr.map((vec) => {
-			return vec/total;
+			return vec / total;
 		});
 	};
 
@@ -58,6 +58,10 @@ const Keypad = ({
 		newSploded();
 	}, [splode]);
 
+	const transStr = () => {
+		return `rotate3d(${sploded[0][0]}, ${sploded[0][1]}, ${sploded[0][2]}, ${sploded[0][3] * 180}deg) translate3d(${sploded[1][0]},${sploded[1][1]},${sploded[1][2]})`
+	}
+
 	return (
 		<button
 			id={keyId}
@@ -66,7 +70,7 @@ const Keypad = ({
 			className={`${keyStyles.keypad} ${classer()}`}
 			style={{
 				gridArea: keyId,
-				transform: `rotate3d(${sploded[0][0]}, ${sploded[0][1]}, ${sploded[0][2]}, ${sploded[0][3]*180}deg) translate3d(${sploded[1][0]},${sploded[1][1]},${sploded[1][2]})`
+				transform: transStr()
 			}}>
 			{content}
 		</button>
