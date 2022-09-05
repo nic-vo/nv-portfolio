@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaArrowRight } from 'react-icons/fa';
+import { FaUndoAlt } from 'react-icons/fa';
 
 import histStyles from './History.module.css';
 
@@ -11,12 +11,12 @@ const History = ({
 }) => {
 	return (
 		<div className={histStyles.history}>
-			<button onClick={clearHistory}>Clear History</button>
+			<button className={histStyles.clearhistory} onClick={clearHistory}>Clear History</button>
 			{history.map((item, index) => {
 				return (
 					<div className={histStyles.historyitem} key={`his-${index}`}>
-						<p>{item[0]} = {item[1]}</p>
-						<button value={item[1]} onClick={pickHistory} disabled={!oldAllowed}>Enter</button>
+						<p>{item[0].replaceAll(/([+*/]|(?<![+*/\-])-)/g, " $1 ")} = {item[1]}</p>
+						<button value={item[1]} onClick={pickHistory} disabled={!oldAllowed}><FaUndoAlt /></button>
 					</div>)
 			})}
 		</div >

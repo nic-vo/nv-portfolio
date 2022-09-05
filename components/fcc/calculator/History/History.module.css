@@ -3,8 +3,12 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding: 2vh;
 	width: 100%;
+	min-height: 30vh;
+	padding: 2vh;
+	margin: 2vh;
+	border-radius: 5px;
+	background-color: #28292A;
 }
 
 @media (min-aspect-ratio: 3/4) {
@@ -19,19 +23,44 @@
 	align-items: center;
 	justify-content: flex-end;
 	width: 100%;
-	border-bottom: 2px solid #E8EEF2;
 }
 
 .historyitem p {
 	display: block;
 	padding: 0.5rem;
+	padding-right: 1rem;
 	width: 80%;
 	text-align: right;
 	white-space: nowrap;
 	overflow-x: auto;
 	scrollbar-width: thin;
+	border-right: 2px solid #E8EEF2;
 }
 
 .historyitem button {
+	cursor: pointer;
+	display: flex;
+	flex-direction: row;
+	font-size: 1rem;
 	margin-left: 1rem;
+	padding: 0.5rem;
+	align-items: center;
+}
+
+.clearhistory {
+	cursor: pointer;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	background-color: #A35255;
+	height: 2rem;
+	width: 10rem;
+	padding: 1rem;
+	border-radius: 5px;
+	border: 5px solid #A35255;
+}
+
+.clearhistory:hover {
+	border: 5px outset #A35255
 }
