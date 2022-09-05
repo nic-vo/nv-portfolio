@@ -74,9 +74,7 @@ const Calculator = () => {
 		};
 	};
 
-	const splodeHandler = () => {
-		setSplode(!splode);
-	};
+	const splodeHandler = () => { setSplode(!splode); };
 
 	const numberHandler = (e) => {
 		const newNum = e.target.value;
@@ -86,11 +84,8 @@ const Calculator = () => {
 		if (zeroCheck() !== null) { return };
 		// If an operator has been placed, start a new chunk
 		denyOld();
-		if (opCheck() !== null) {
-			replaceChunk(newNum);
-		} else {
-			addToChunk(newNum);
-		};
+		if (opCheck() !== null) { replaceChunk(newNum); }
+		else { addToChunk(newNum); };
 		// If passes short circuit, lways add new number to entire
 		addToEntire(newNum);
 	};
@@ -136,9 +131,7 @@ const Calculator = () => {
 			allowOld();
 		}
 		// Special functionality: if last in eval string is an operator, replace
-		else if (opCheck() !== null) {
-			replaceOp(op);
-		}
+		else if (opCheck() !== null) { replaceOp(op); }
 		// Typical use: if last input is a number or decimal(?), add new operator and prepare for replace
 		else {
 			allowOld();
@@ -197,32 +190,27 @@ const Calculator = () => {
 	const abridger = (value) => {
 		const stringed = value.toString();
 		// Check if evaluated string contains decimal more precise than 100-thousandth
-		if (stringed.match(/^[-]{0,1}\d+\.\d{5,}$/) !== null) {
-			return value.toFixed(5);
-		};
+		if (stringed.match(/^[-]{0,1}\d+\.\d{5,}$/) !== null) { return value.toFixed(5); };
 		return value;
 	};
 
 	// Parses double negatives as addition
-	const dblNeg = (entire) => {
-		return entire.replace(/--/, "+");
-	};
+	const dblNeg = (entire) => { return entire.replace(/--/, "+"); };
 
 	const historyUpdater = (entry) => {
 		if (history.length === 5) {
 			setHistory([...history.slice(1, 5), entry]);
 		} else {
 			setHistory([...history, entry]);
-		}
-	}
+		};
+	};
 
 	const equalsHandler = () => {
 		// If someone accidentally solves after adding op
 		const replacedEntire = entire.replace(/[-]$/, "").replace(/[+\-*/]$/, "")
 		// If already solved, add
-		if (evaluated !== "") {
-			historyUpdater([evaluated, evaluated]);
-		} else {
+		if (evaluated !== "") { historyUpdater([evaluated, evaluated]); }
+		else {
 			const abridged = abridger(eval(dblNeg(replacedEntire)));
 			setEvaluated(abridged);
 			historyUpdater([replacedEntire, abridged]);
