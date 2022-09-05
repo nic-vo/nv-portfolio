@@ -21,12 +21,14 @@ const Keypad = ({
 		};
 	};
 
+	// Stores vectors for the explode transition
 	const [sploded, setSploded] = useState([[0, 0, 0, 0], [0, 0, 0]]);
 
 	const resetSploded = () => {
 		setSploded([[0, 0, 0, 0], [0, 0, 0]]);
 	};
 
+	// Creates values for vector
 	const newRan = () => {
 		const negFifty = () => {
 			if (Math.random() < 0.5) { return "-" };
@@ -35,6 +37,7 @@ const Keypad = ({
 		return `${negFifty()}${Math.random().toFixed(4)}`;
 	};
 
+	// I do the normalization kinda so browser doesn't have to
 	const normalizedVecs = () => {
 		const newArr = [parseFloat(newRan()), parseFloat(newRan()), parseFloat(newRan())]
 		const total = newArr.reduce((newTotal, current) => {
@@ -45,6 +48,7 @@ const Keypad = ({
 		});
 	};
 
+	// Determines how far each keypad explodes
 	const newTran = () => {
 		return `${newRan() * 150}px`;
 	};
