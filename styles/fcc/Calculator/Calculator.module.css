@@ -3,6 +3,8 @@
 	flex-direction: column;
 	align-items: center;
 	overflow: hidden;
+	margin-top: 5vh;
+	width: 100%;
 }
 
 .calculator {
