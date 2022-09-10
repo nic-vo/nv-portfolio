@@ -60,32 +60,34 @@ const DrumMachine = () => {
 	}
 
 	return (
-		<section className={machineStyles.drumContainer}>
-			<ControlPanel
-				displaySound={displaySound}
-				mVolume={mVolume}
-				bank={bank}
-				muteAll={muteAll}
-				mVolumeHandler={mVolumeHandler}
-				setBankHandler={setBankHandler}
-				stopAllHandler={stopAllHandler}
-				muteAllHandler={muteAllHandler} />
-			<div className={machineStyles.grid} tabIndex="0" onKeyPress={keyPressHandler}>
-				{chars.map((char, index) => {
-					return <Pad
-						char={char}
-						padIndex={index}
-						bank={bank}
-						mVolume={mVolume}
-						activate={activeKey === char ? true : false}
-						stopAll={stopAll}
-						muteAll={muteAll}
-						setDisplaySound={setDisplaySoundHandler}
-						key={`pad-${index}`}
-					/>
-				})}
-			</div>
-		</section>
+		<main className={machineStyles.main}>
+			<section className={machineStyles.machine}>
+				<ControlPanel
+					displaySound={displaySound}
+					mVolume={mVolume}
+					bank={bank}
+					muteAll={muteAll}
+					mVolumeHandler={mVolumeHandler}
+					setBankHandler={setBankHandler}
+					stopAllHandler={stopAllHandler}
+					muteAllHandler={muteAllHandler} />
+				<div className={machineStyles.grid} tabIndex="0" onKeyPress={keyPressHandler}>
+					{chars.map((char, index) => {
+						return <Pad
+							char={char}
+							padIndex={index}
+							bank={bank}
+							mVolume={mVolume}
+							activate={activeKey === char ? true : false}
+							stopAll={stopAll}
+							muteAll={muteAll}
+							setDisplaySound={setDisplaySoundHandler}
+							key={`pad-${index}`}
+						/>
+					})}
+				</div>
+			</section>
+		</main>
 	);
 };
 
