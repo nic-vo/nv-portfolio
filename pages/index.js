@@ -17,16 +17,20 @@ export default function Home({ pageList }) {
 			<main className={styles.main}>
 				{pageList.map((category) => {
 					return (
-						<div key={`${category}-links`}>
+						<div key={`${category.category}-links`}>
 							<h2>{category.category}</h2>
 							<ul>
-								{category.pages.map((page) => {
-									return <li key={`${page}-link`}>
-										<Link href={`/${category.category}/${page}`}>
-											<a>{page}</a>
-										</Link>
-									</li>
-								})}
+								{
+									category.pages.map((page) => {
+										return (<li key={`${page}-link`}>
+											<Link href={`/${category.category}/${page}`}>
+												<a>{page.replaceAll(/([A-Z])/g, " $1")}
+													<Image src={`/thumbs/${page}.jpg`} height="1440" width="2560" layout="intrinsic" />
+												</a>
+											</Link>
+										</li>)
+									})
+								}
 							</ul>
 						</div>
 					)
