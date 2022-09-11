@@ -1,10 +1,10 @@
 .panel {
 	width: 100%;
-	max-width: 800px;
+	max-width: 400px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	margin: 2vh 0 2vh 0;
+	margin: 5vh;
 }
 
 .panel label {
@@ -26,11 +26,11 @@
 }
 
 .display {
-	height: 16vh;
+	height: 120px;
 	width: 90%;
 	display: flex;
 	flex-direction: column;
-	justify-content: flex-start;
+	justify-content: center;
 	background-color: rgba(10, 10, 10, 1);
 	border: 10px inset var(--global-background);
 	font-family: Silkscreen, sans-serif;
@@ -42,7 +42,7 @@
 	color: var(--cpanel-overexpose);
 	text-shadow: 0px 0px 20px var(--cpanel-glow);
 	filter: drop-shadow(0px 0px 5px var(--cpanel-glow));
-	margin-bottom: 0;
+	margin: 0.5rem;
 }
 
 .controls {
@@ -56,6 +56,16 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
+}
+
+@media (min-aspect-ratio: 1) {
+	.display {
+		width: 100%;
+	}
+
+	.controls {
+		width: 100%;
+	}
 }
 
 .sliders svg {
@@ -78,9 +88,11 @@
 .sliders input:hover {
 	border: 2px solid var(--cpanel-overexpose)
 }
+
 .sliders input:focus {
 	border: 2px solid var(--cpanel-overexpose)
 }
+
 .sliders input:active {
 	border: 2px solid var(--cpanel-overexpose)
 }
@@ -129,8 +141,8 @@
 	width: 5rem;
 }
 
-@media (min-aspect-ratio: 9/15) {
-	.controls {
-		width: 50%;
+@media (min-aspect-ratio: 1) {
+	.buttons button {
+		width: 4rem;
 	}
 }
