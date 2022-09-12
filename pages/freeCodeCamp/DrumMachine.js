@@ -1,3 +1,5 @@
+import Head from 'next/head';
+
 import { React, useState } from 'react';
 import { Pad, ControlPanel } from '../../components/fcc/drummachine';
 
@@ -59,7 +61,13 @@ const DrumMachine = () => {
 		setMuteAll(!muteAll);
 	}
 
-	return (
+	return (<>
+		<Head>
+			<title>A Calculator</title>
+			<meta name="description" content="A React drum machine completed for freeCodeCamp's frontend certificate" />
+			<link rel="icon" href="/favicon.ico" />
+		</Head>
+
 		<main className={machineStyles.main}>
 			<section className={machineStyles.machine}>
 				<ControlPanel
@@ -88,7 +96,7 @@ const DrumMachine = () => {
 				</div>
 			</section>
 		</main>
-	);
+	</>);
 };
 
 export default DrumMachine;

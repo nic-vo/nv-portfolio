@@ -1,3 +1,5 @@
+import Head from 'next/head';
+
 import { React, useState } from 'react';
 import { Keypad, KeypadCharacters as keyChars, History, KeypadCharacters } from '../../components/fcc/calculator';
 
@@ -244,7 +246,13 @@ const Calculator = () => {
 		clearEvaluated();
 	}
 
-	return (
+	return (<>
+		<Head>
+			<title>A Calculator</title>
+			<meta name="description" content="A React calculator completed for freeCodeCamp's frontend certificate" />
+			<link rel="icon" href="/favicon.ico" />
+		</Head>
+
 		<main>
 			<h1>A{splode ? "n Exploding " : " "}Calculator</h1>
 			<section className={calcStyles.container} tabIndex={0} onKeyDown={keyDownHandler}>
@@ -283,7 +291,7 @@ const Calculator = () => {
 				<History history={history} pickHistory={pickHistory} clearHistory={clearHistory} oldAllowed={oldAllowed} />
 			</section>
 		</main>
-	);
+	</>);
 };
 
 export default Calculator;
