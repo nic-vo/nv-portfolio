@@ -5,6 +5,7 @@
 	overflow: hidden;
 	margin-top: 5vh;
 	width: 100%;
+	gap: 2vh;
 }
 
 .calculator {
