@@ -1,34 +1,34 @@
-
 .history {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	min-width: 12rem;
+	max-width: 15rem;
 	min-height: 30vh;
 	padding: 2vh;
-	margin: 2vh;
-	border-radius: 5px;
+	border-radius: 10px;
 	background-color: #28292A;
 }
 
 .historyitem {
 	display: flex;
+	padding-right: 1rem;
+	margin: 1rem;
 	flex-direction: row;
 	align-items: center;
 	justify-content: flex-end;
 	width: 100%;
+	border-right: 2px solid #E8EEF2;
 }
 
 .historyitem p {
 	display: block;
-	padding: 0.5rem;
-	padding-right: 1rem;
 	width: 80%;
+	padding: 0.5rem 0 0.5rem 0;
+	margin: 0;
 	text-align: right;
 	white-space: nowrap;
 	overflow-x: auto;
 	scrollbar-width: thin;
-	border-right: 2px solid #E8EEF2;
 }
 
 .historyitem button {
