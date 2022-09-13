@@ -1,3 +1,5 @@
+import Head from 'next/head';
+
 import { React, useState } from 'react';
 import { Pad, ControlPanel } from '../../components/fcc/drummachine';
 
@@ -59,34 +61,42 @@ const DrumMachine = () => {
 		setMuteAll(!muteAll);
 	}
 
-	return (
-		<section className={machineStyles.drumContainer}>
-			<ControlPanel
-				displaySound={displaySound}
-				mVolume={mVolume}
-				bank={bank}
-				muteAll={muteAll}
-				mVolumeHandler={mVolumeHandler}
-				setBankHandler={setBankHandler}
-				stopAllHandler={stopAllHandler}
-				muteAllHandler={muteAllHandler} />
-			<div className={machineStyles.grid} tabIndex="0" onKeyPress={keyPressHandler}>
-				{chars.map((char, index) => {
-					return <Pad
-						char={char}
-						padIndex={index}
-						bank={bank}
-						mVolume={mVolume}
-						activate={activeKey === char ? true : false}
-						stopAll={stopAll}
-						muteAll={muteAll}
-						setDisplaySound={setDisplaySoundHandler}
-						key={`pad-${index}`}
-					/>
-				})}
-			</div>
-		</section>
-	);
+	return (<>
+		<Head>
+			<title>A Calculator</title>
+			<meta name="description" content="A React drum machine completed for freeCodeCamp's frontend certificate" />
+			<link rel="icon" href="/favicon.ico" />
+		</Head>
+
+		<main className={machineStyles.main}>
+			<section className={machineStyles.machine}>
+				<ControlPanel
+					displaySound={displaySound}
+					mVolume={mVolume}
+					bank={bank}
+					muteAll={muteAll}
+					mVolumeHandler={mVolumeHandler}
+					setBankHandler={setBankHandler}
+					stopAllHandler={stopAllHandler}
+					muteAllHandler={muteAllHandler} />
+				<div className={machineStyles.grid} tabIndex="0" onKeyPress={keyPressHandler}>
+					{chars.map((char, index) => {
+						return <Pad
+							char={char}
+							padIndex={index}
+							bank={bank}
+							mVolume={mVolume}
+							activate={activeKey === char ? true : false}
+							stopAll={stopAll}
+							muteAll={muteAll}
+							setDisplaySound={setDisplaySoundHandler}
+							key={`pad-${index}`}
+						/>
+					})}
+				</div>
+			</section>
+		</main>
+	</>);
 };
 
 export default DrumMachine;

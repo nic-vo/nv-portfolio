@@ -2,7 +2,16 @@ This is the repo for my personal portfolio
 
 # CHANGELOG
 
-# 0.7.0
+# 0.8.0
+	- Home
+		- Link lists based on scanning pages dir
+			- Contains thumbs via next/image
+	- DrumMachine
+		- More desktop friendly
+	- Calculator
+		- History layout shift fixed
+
+## 0.7.0
   - Calculator
     - History
       - Refine styling

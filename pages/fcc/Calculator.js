@@ -1,3 +1,5 @@
+import Head from 'next/head';
+
 import { React, useState } from 'react';
 import { Keypad, KeypadCharacters as keyChars, History, KeypadCharacters } from '../../components/fcc/calculator';
 
@@ -244,43 +246,52 @@ const Calculator = () => {
 		clearEvaluated();
 	}
 
-	return (
-		<section className={calcStyles.container} tabIndex={0} onKeyDown={keyDownHandler}>
-			<div className={calcStyles.calculator} style={{backgroundColor: `${splode ? "#707070" : "#CCCCCC"}`}}>
-				<div className={calcStyles.screen}>
-					<p>{entire !== "" ? entire : "Ready"}</p>
-					<p>{evaluated !== "" ? evaluated : chunk !== "" ? chunk : "--"}</p>
-				</div>
-				<div className={calcStyles.grid}>
-					{
-						keyList.map((char) => {
-								switch (char) {
-								case "zero":
-									return <Keypad keyId={char} keyVal={keyChars[char]} content={keyChars[char]} handler={zeroHandler} key={`${char}-pad`} splode={splode} />;
-								case "decimal":
-									return <Keypad keyId={char} keyVal={keyChars[char]} content={keyChars[char]} handler={decimalHandler} key={`${char}-pad`} splode={splode} />;
-								case "subtract":
-									return <Keypad keyId={char} keyVal={keyChars[char]} content={keyChars[char]} handler={subtractHandler} key={`${char}-pad`} splode={splode} />;
-								case "add":
-								case "multiply":
-								case "divide":
-									return <Keypad keyId={char} keyVal={keyChars[char]} content={keyChars[char]} handler={operatorHandler} key={`${char}-pad`} splode={splode} />;
-								case "clear":
-									return <Keypad keyId={char} keyVal={null} content={keyChars[char]} handler={clearHandler} key={`${char}-pad`} splode={splode} />;
-								case "equals":
-									return <Keypad keyId={char} keyVal={null} content={keyChars[char]} handler={equalsHandler} key={`${char}-pad`} splode={splode} />;
-								default:
-									return <Keypad keyId={char} keyVal={keyChars[char]} content={keyChars[char]} handler={numberHandler} key={`${char}-pad`} splode={splode} />;
-							}
-						})
-					}
-					<button onClick={splodeHandler} className={`${keyStyles.keypad} ${keyStyles.numpad}`} style={{ height: "auto", zIndex: 10 }}>?</button>
+	return (<>
+		<Head>
+			<title>A Calculator</title>
+			<meta name="description" content="A React calculator completed for freeCodeCamp's frontend certificate" />
+			<link rel="icon" href="/favicon.ico" />
+		</Head>
 
+		<main>
+			<h1>A{splode ? "n Exploding " : " "}Calculator</h1>
+			<section className={calcStyles.container} tabIndex={0} onKeyDown={keyDownHandler}>
+				<div className={calcStyles.calculator} style={{ backgroundColor: `${splode ? "#707070" : "#CCCCCC"}` }}>
+					<div className={calcStyles.screen}>
+						<p>{entire !== "" ? entire : "Ready"}</p>
+						<p>{evaluated !== "" ? evaluated : chunk !== "" ? chunk : "--"}</p>
+					</div>
+					<div className={calcStyles.grid}>
+						{
+							keyList.map((char) => {
+								switch (char) {
+									case "zero":
+										return <Keypad keyId={char} keyVal={keyChars[char]} content={keyChars[char]} handler={zeroHandler} key={`${char}-pad`} splode={splode} />;
+									case "decimal":
+										return <Keypad keyId={char} keyVal={keyChars[char]} content={keyChars[char]} handler={decimalHandler} key={`${char}-pad`} splode={splode} />;
+									case "subtract":
+										return <Keypad keyId={char} keyVal={keyChars[char]} content={keyChars[char]} handler={subtractHandler} key={`${char}-pad`} splode={splode} />;
+									case "add":
+									case "multiply":
+									case "divide":
+										return <Keypad keyId={char} keyVal={keyChars[char]} content={keyChars[char]} handler={operatorHandler} key={`${char}-pad`} splode={splode} />;
+									case "clear":
+										return <Keypad keyId={char} keyVal={null} content={keyChars[char]} handler={clearHandler} key={`${char}-pad`} splode={splode} />;
+									case "equals":
+										return <Keypad keyId={char} keyVal={null} content={keyChars[char]} handler={equalsHandler} key={`${char}-pad`} splode={splode} />;
+									default:
+										return <Keypad keyId={char} keyVal={keyChars[char]} content={keyChars[char]} handler={numberHandler} key={`${char}-pad`} splode={splode} />;
+								}
+							})
+						}
+						<button onClick={splodeHandler} className={`${keyStyles.keypad} ${keyStyles.numpad}`} style={{ height: "auto", zIndex: 10 }}>?</button>
+
+					</div>
 				</div>
-			</div>
-			<History history={history} pickHistory={pickHistory} clearHistory={clearHistory} oldAllowed={oldAllowed} />
-		</section>
-	);
+				<History history={history} pickHistory={pickHistory} clearHistory={clearHistory} oldAllowed={oldAllowed} />
+			</section>
+		</main>
+	</>);
 };
 
 export default Calculator;
