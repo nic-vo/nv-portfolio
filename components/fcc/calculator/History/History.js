@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { FaUndoAlt } from 'react-icons/fa';
 
 import histStyles from './History.module.css';
@@ -23,4 +23,4 @@ const History = ({
 	);
 };
 
-export default History;
+export default memo(History);
