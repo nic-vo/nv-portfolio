@@ -1,7 +1,5 @@
-import Pad from "./Pad/Pad";
-import ControlPanel from "./ControlPanel/ControlPanel";
+import DrumMachineComp from "./DrumMachineComp";
 
 export {
-	Pad,
-	ControlPanel
+	DrumMachineComp
 };

@@ -1,7 +1,7 @@
 import React from 'react'
 import { FaVolumeMute, FaStop, FaMusic, FaVolumeUp, FaVolumeOff } from 'react-icons/fa';
 
-import machineStyles from '../../../../styles/fcc/DrumMachine/DrumMachine.module.css';
+import machineStyles from '../DrumMachine.module.css';
 import controlStyles from './ControlPanel.module.css';
 
 const bankNames = ["FlumeSounds", "Hip Hop @186 BPM", "Synths @100 BPM"];
