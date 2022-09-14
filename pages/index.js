@@ -15,29 +15,55 @@ export default function Home({ pageList }) {
 			</Head>
 
 			<main className={styles.main}>
-				{pageList.map((category) => {
-					return (
-						<div key={`${category.category}-links`}>
-							<h2>{category.category === "fcc" ? "freeCodeCamp" : category.category}</h2>
-							{category.pages.length !== 0 ?
-								<ul>
-									{
-										category.pages.map((page) => {
-											return (
-												<li key={`${page}-link`}>
-													<Link href={`/${category.category}/${page}`}>
-														<a>{page.replaceAll(/([A-Z])/g, " $1")}
-															<Image src={`/thumbs/${page}.jpg`} height="1440" width="2560" layout="intrinsic" />
-														</a>
-													</Link>
-												</li>)
-										})
-									}
-								</ul> : <em>There's nothing here...yet</em>
-							}
-						</div>
-					)
-				})}
+				<h1>Hi, you've reached Nicolas Vo</h1>
+				<section>
+					<p>
+						Starting out
+					</p>
+				</section>
+				<nav>
+					{pageList.map((category) => {
+						return (
+							<div key={`${category.category}-links`}>
+								<h2>{category.category === "fcc" ? "freeCodeCamp" : category.category}</h2>
+								{category.pages.length !== 0 ?
+									<ul>
+										{
+											category.pages.map((page) => {
+												return (
+													<li key={`${page}-link`}>
+														<Link href={`/${category.category}/${page}`}>
+															<a>{page.replaceAll(/([A-Z])/g, " $1")}
+																<Image src={`/thumbs/${page}.jpg`} height="1440" width="2560" layout="intrinsic" />
+															</a>
+														</Link>
+													</li>)
+											})
+										}
+									</ul> : <em>There's nothing here...yet</em>
+								}
+							</div>
+						)
+					})}
+				</nav>
+				<section>
+					<h1>
+						Contact Me
+					</h1>
+					<form>
+						<fieldset>
+							<label htmlFor='name'>
+								<p>Name</p>
+								<input id='name' type='text' />
+							</label>
+							<label htmlFor='email'>
+								<p>Email</p>
+								<input id='email' type='email' />
+							</label>
+							<input type="submit" value="hello"></input>
+						</fieldset>
+					</form>
+				</section>
 			</main>
 
 			<footer className={styles.footer}>
