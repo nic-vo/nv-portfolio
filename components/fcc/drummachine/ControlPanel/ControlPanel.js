@@ -23,7 +23,7 @@ const ControlPanel = ({
 		<div className={controlStyles.panel}>
 			<div className={controlStyles.display}>
 				<p>{bankNames[bank]}:</p>
-				<p>{displaySound}</p>
+				<p>{displaySound ? displaySound : "--"}</p>
 			</div>
 			<div className={controlStyles.controls}>
 				<div className={controlStyles.sliders}>
