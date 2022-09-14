@@ -60,7 +60,7 @@ export default function Home({ pageList }) {
 								<p>Email</p>
 								<input id='email' type='email' />
 							</label>
-							<input type="submit" value="hello"></input>
+							<button type="submit">Submit</button>
 						</fieldset>
 					</form>
 				</section>
