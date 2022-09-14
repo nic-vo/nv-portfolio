@@ -63,7 +63,7 @@ const DrumMachine = () => {
 
 	return (<>
 		<Head>
-			<title>A Calculator</title>
+			<title>A Drum Machine</title>
 			<meta name="description" content="A React drum machine completed for freeCodeCamp's frontend certificate" />
 			<link rel="icon" href="/favicon.ico" />
 		</Head>
