@@ -10,11 +10,9 @@ const bankNames = ["FlumeSounds", "Hip Hop @186 BPM", "Synths @100 BPM"];
 
 const Pad = ({
 	char,
-	padIndex,
 	bank,
 	mVolume,
 	setDisplaySound,
-	activate,
 	stopAll,
 	muteAll
 }) => {
@@ -25,7 +23,7 @@ const Pad = ({
 */
 
 	// Build file path from props but keep filename ready
-	const fileString = soundList[bank][padIndex]
+	const fileString = soundList[bank][char]
 	const srcString = `/assets/fcc/DrumMachine/${bankNames[bank]}/${fileString}.mp3`;
 
 	// if pad is playing sound (for styling)
@@ -61,6 +59,7 @@ const Pad = ({
 
 	const muteOnClick = () => {
 		// Mute button changes state and set soundRef to state
+		// Only if global mute is false; true = forced mute
 		if (muteAll === false) {
 			setMuted(!muted);
 			soundRef.current.muted = !muted;
@@ -85,11 +84,6 @@ const Pad = ({
 	useEffect(() => {
 		soundRef.current.volume = pVolume * mVolume;
 	}, [mVolume, pVolume]);
-
-	// Play sound if activate prop is true
-	useEffect(() => {
-		if (activate === true) { playSound(); };
-	}, [activate]);
 
 	// Triggers is master stop in control panel is clicked
 	useEffect(() => {
