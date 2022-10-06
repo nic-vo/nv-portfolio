@@ -1,38 +1,38 @@
 const SoundList =
 	[
-		[
-			"Granular Twinkle",
-			"Mario Coin Block",
-			"Zelda Boom Bap",
-			"Jewel Flip",
-			"Weekend Morning",
-			"Zelda Forest",
-			"Daze 22.00 v. 2.0",
-			"Basic Beatch",
-			"ChonkStomp"
-		],
-		[
-			"Kick 01",
-			"Snare 01",
-			"Kick 02",
-			"Snare 02",
-			"Closed Hat",
-			"Bassline",
-			"Sub 01",
-			"Sub 02",
-			"Meme"
-		],
-		[
-			"Kick",
-			"Snare",
-			"Ride",
-			"Hat",
-			"Vinyl Sound",
-			"Chords",
-			"Bassline",
-			"Arpeg",
-			"Bass Hit"
-		]
+		{
+			"q": "Granular Twinkle",
+			"w": "Mario Coin Block",
+			"e": "Zelda Boom Bap",
+			"a": "Jewel Flip",
+			"s": "Weekend Morning",
+			"d": "Zelda Forest",
+			"z": "Daze 22.00 v. 2.0",
+			"x": "Basic Beatch",
+			"c": "ChonkStomp"
+		},
+		{
+			"q": "Kick 01",
+			"w": "Snare 01",
+			"e": "Kick 02",
+			"a": "Snare 02",
+			"s": "Closed Hat",
+			"d": "Bassline",
+			"z": "Sub 01",
+			"x": "Sub 02",
+			"c": "Meme"
+		},
+		{
+			"q": "Kick",
+			"w": "Snare",
+			"e": "Ride",
+			"a": "Hat",
+			"s": "Vinyl Sound",
+			"d": "Chords",
+			"z": "Bassline",
+			"x": "Arpeg",
+			"c": "Bass Hit"
+		}
 	]
 
 export default SoundList;
