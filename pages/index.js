@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import { getProjectLists } from '../lib/projects';
+import { getProjectLists } from '../lib/root/projects';
 
 import styles from '../styles/Home.module.css';
 
@@ -15,7 +15,7 @@ export default function Home({ pageList }) {
 			</Head>
 
 			<main className={styles.main}>
-				<h1>Hi, you've reached Nicolas Vo</h1>
+				<h1>Hi, you&apos;ve reached Nicolas Vo</h1>
 				<section>
 					<p>
 						Starting out
@@ -34,13 +34,13 @@ export default function Home({ pageList }) {
 													<li key={`${page}-link`}>
 														<Link href={`/${category.category}/${page}`}>
 															<a>{page.replaceAll(/([A-Z])/g, " $1")}
-																<Image src={`/thumbs/${page}.jpg`} height="1440" width="2560" layout="intrinsic" />
+																<Image src={`/thumbs/${page}.jpg`} height="1440" width="2560" layout="intrinsic" alt=""/>
 															</a>
 														</Link>
 													</li>)
 											})
 										}
-									</ul> : <em>There's nothing here...yet</em>
+									</ul> : <em>There&apos;s nothing here...yet</em>
 								}
 							</div>
 						)
