@@ -43,11 +43,11 @@ const DrumMachineComp = () => {
 
 	// Triggers sounds
 	const keyPressHandler = (e) => {
-		setActiveKey(e.key);
-		// Set timeout that instantly resets the activate prop to the active key
-		const pulser = setTimeout(() => {
-			setActiveKey("");
-		});
+		if (chars.includes(e.key)) {
+			const player = document.getElementById(e.key);
+			player.currentTime = 0;
+			player.play();
+		};
 	};
 
 	const stopAllHandler = () => {
@@ -81,17 +81,15 @@ const DrumMachineComp = () => {
 					stopAllHandler={stopAllHandler}
 					muteAllHandler={muteAllHandler} />
 				<div className={machineStyles.grid} tabIndex="0" onKeyPress={keyPressHandler}>
-					{chars.map((char, index) => {
+					{chars.map((char) => {
 						return <Pad
 							char={char}
-							padIndex={index}
 							bank={bank}
 							mVolume={mVolume}
-							activate={activeKey === char ? true : false}
 							stopAll={stopAll}
 							muteAll={muteAll}
 							setDisplaySound={setDisplaySoundHandler}
-							key={`pad-${index}`}
+							key={`pad-${char}`}
 						/>
 					})}
 				</div>
