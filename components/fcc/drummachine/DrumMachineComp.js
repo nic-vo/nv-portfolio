@@ -18,18 +18,17 @@ const DrumMachineComp = () => {
 
 	// Pulsers: when set to true, a setTimeout immediately falses them; trigger useEffects in children
 	// MAY BE A PERFORMANCE HIT -- UNNECESSARY RENDERS
-	const [activeKey, setActiveKey] = useState("");
 	const [stopAll, setStopAll] = useState(false);
 
 
 	const setDisplaySoundHandler = (sound, playing = true) => {
 		// Updates displaySound based on last activated sound
 		// Clears upon the last sound ending
-		if (sound === displaySound) {
-			if (playing === false) { setDisplaySound(""); }
+		if (playing === false && sound === displaySound) {
+			setDisplaySound("")
 		} else if (playing === true) {
 			setDisplaySound(sound);
-		}
+		};
 	};
 
 	const mVolumeHandler = (e) => {
