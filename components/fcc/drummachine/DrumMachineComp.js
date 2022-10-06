@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-import { React, useState } from 'react';
+import React, { useState } from 'react';
 import Pad from './Pad/Pad';
 import ControlPanel from './ControlPanel/ControlPanel';
 
@@ -8,7 +8,7 @@ import machineStyles from './DrumMachine.module.css';
 
 const chars = ["q", "w", "e", "a", "s", "d", "z", "x", "c"];
 
-const DrumMachineComp = () => {
+const DrumMachineComp = ({ banks, numberOfBanks, soundList }) => {
 
 	// Keeps track of sound last played, active sound bank, master volume
 	const [displaySound, setDisplaySound] = useState("");
