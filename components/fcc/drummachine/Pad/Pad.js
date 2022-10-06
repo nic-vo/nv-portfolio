@@ -1,4 +1,4 @@
-import { React, useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, useMemo } from 'react';
 import { FaVolumeMute, FaVolumeOff, FaStop, FaUndoAlt } from 'react-icons/fa';
 
 import soundList from '../soundList';
@@ -42,6 +42,9 @@ const Pad = ({
 		// Reset sound to time 0 and play
 		soundRef.current.currentTime = 0;
 		soundRef.current.play();
+	};
+
+	const onPlayHandler = () => {
 		// Update parent display state
 		setDisplaySound(fileString, true);
 		// Set playing to true for styling
@@ -70,7 +73,6 @@ const Pad = ({
 		// Stops sound
 		soundRef.current.pause();
 		soundRef.current.currentTime = 0;
-		setIsPlaying(false);
 	};
 
 	const loopOnClick = () => {
@@ -115,7 +117,7 @@ const Pad = ({
 				<button onClick={stopOnClick} className={`${machineStyles.button} ${machineStyles.stop}`}><FaStop /></button>
 				<button onClick={loopOnClick} className={`${machineStyles.button} ${loop ? machineStyles.loopon : machineStyles.loop}`}><FaUndoAlt /></button>
 			</div>
-			<audio ref={soundRef} onEnded={onEndedHandler} />
+			<audio id={char} ref={soundRef} onPlay={onPlayHandler} onPause={onEndedHandler} onEnded={onEndedHandler} />
 		</div>
 	);
 };
