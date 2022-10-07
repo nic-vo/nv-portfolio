@@ -24,11 +24,11 @@ const DrumMachineComp = ({ banks, numberOfBanks, soundList }) => {
 		if (sound === displaySound) {
 			setDisplaySound("");
 		};
-	};
+	}, [displaySound]);
 
-	const mVolumeHandler = (e) => {
+	const mVolumeHandler = useCallback((e) => {
 		setMVolume(parseFloat(e.target.value));
-	};
+	}, [mVolume])
 
 	const bankIndexHandler = useCallback((e) => {
 		setBankIndex(parseInt(e.target.value));
@@ -54,7 +54,7 @@ const DrumMachineComp = ({ banks, numberOfBanks, soundList }) => {
 		};
 	}, []);
 
-	const muteAllHandler = () => {
+	const muteAllHandler = useCallback(() => {
 		setMuteAll(!muteAll);
 	}, [muteAll]);
 
