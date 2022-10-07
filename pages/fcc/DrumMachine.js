@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import React from 'react'
 import { DrumMachineComp } from '../../components/fcc/drummachine';
 import { ProjectLayout } from '../../components/global';
@@ -5,7 +6,13 @@ import { ProjectLayout } from '../../components/global';
 import { getBankNames, getSoundList } from '../../lib/fcc/drummachine/drummachine';
 
 const DrumMachine = ({ banks, numberOfBanks, soundList }) => {
-	return (
+	return (<>
+		<Head>
+			<title>A Drum Machine</title>
+			<meta name="description" content="A React drum machine completed for freeCodeCamp's frontend certificate" />
+			<link rel="icon" href="/favicon.ico" />
+		</Head>
+
 		<ProjectLayout>
 			<DrumMachineComp banks={banks} numberOfBanks={numberOfBanks} soundList={soundList} />
 			<section>
@@ -14,7 +21,7 @@ const DrumMachine = ({ banks, numberOfBanks, soundList }) => {
 				</p>
 			</section>
 		</ProjectLayout>
-	);
+	</>);
 };
 
 export default DrumMachine;

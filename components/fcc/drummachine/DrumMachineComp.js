@@ -1,5 +1,3 @@
-import Head from 'next/head';
-
 import React, { useState, useCallback, useMemo } from 'react';
 import Pad from './Pad/Pad';
 import ControlPanel from './ControlPanel/ControlPanel';
@@ -62,13 +60,7 @@ const DrumMachineComp = ({ banks, numberOfBanks, soundList }) => {
 		return soundList[bankIndex]
 	}, [bankIndex])
 
-	return (<>
-		<Head>
-			<title>A Drum Machine</title>
-			<meta name="description" content="A React drum machine completed for freeCodeCamp's frontend certificate" />
-			<link rel="icon" href="/favicon.ico" />
-		</Head>
-
+	return (
 		<section className={machineStyles.main}>
 			<section className={machineStyles.machine}>
 				<ControlPanel
@@ -98,7 +90,7 @@ const DrumMachineComp = ({ banks, numberOfBanks, soundList }) => {
 				</div>
 			</section>
 		</section>
-	</>);
+	);
 };
 
 export default DrumMachineComp;
