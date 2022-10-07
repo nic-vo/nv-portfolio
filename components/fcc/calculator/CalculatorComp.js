@@ -1,5 +1,3 @@
-import Head from 'next/head';
-
 import { React, useState } from 'react';
 import Keypad from './Keypad/Keypad';
 import keyChars from './Keypad/KeypadChars';
@@ -249,12 +247,6 @@ const CalculatorComp = () => {
 	}
 
 	return (<>
-		<Head>
-			<title>A Calculator</title>
-			<meta name="description" content="A React calculator completed for freeCodeCamp's frontend certificate" />
-			<link rel="icon" href="/favicon.ico" />
-		</Head>
-
 		<section>
 			<h1>A{splode ? "n Exploding " : " "}Calculator</h1>
 			<div className={calcStyles.container} tabIndex={0} onKeyDown={keyDownHandler}>
