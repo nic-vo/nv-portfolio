@@ -69,7 +69,7 @@ const DrumMachineComp = ({ banks, numberOfBanks, soundList }) => {
 			<link rel="icon" href="/favicon.ico" />
 		</Head>
 
-		<main className={machineStyles.main}>
+		<section className={machineStyles.main}>
 			<section className={machineStyles.machine}>
 				<ControlPanel
 					banks={banks}
@@ -97,7 +97,7 @@ const DrumMachineComp = ({ banks, numberOfBanks, soundList }) => {
 					})}
 				</div>
 			</section>
-		</main>
+		</section>
 	</>);
 };
 
