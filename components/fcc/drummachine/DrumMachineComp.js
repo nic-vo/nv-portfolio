@@ -16,18 +16,13 @@ const DrumMachineComp = ({ banks, numberOfBanks, soundList }) => {
 	const [mVolume, setMVolume] = useState(0.5);
 	const [muteAll, setMuteAll] = useState(false);
 
-	// Pulsers: when set to true, a setTimeout immediately falses them; trigger useEffects in children
-	// MAY BE A PERFORMANCE HIT -- UNNECESSARY RENDERS
-	const [stopAll, setStopAll] = useState(false);
+	const setDisplaySoundHandler = useCallback((sound) => {
+		setDisplaySound(sound);
+	}, [displaySound]);
 
-
-	const setDisplaySoundHandler = (sound, playing = true) => {
-		// Updates displaySound based on last activated sound
-		// Clears upon the last sound ending
-		if (playing === false && sound === displaySound) {
-			setDisplaySound("")
-		} else if (playing === true) {
-			setDisplaySound(sound);
+	const clearDisplaySoundHandler = useCallback((sound) => {
+		if (sound === displaySound) {
+			setDisplaySound("");
 		};
 	};
 
@@ -49,13 +44,15 @@ const DrumMachineComp = ({ banks, numberOfBanks, soundList }) => {
 		};
 	};
 
-	const stopAllHandler = () => {
-		setStopAll(true);
-		// Same timeout pulser pattern as the above keyPressHandler
-		const pulser = setTimeout(() => {
-			setStopAll(false);
-		});
-	};
+	// Iterate through all audio elements and stop them
+	const stopAllHandler = useCallback(() => {
+		const audios = document.getElementsByTagName("audio");
+		for (let i = 0; i < audios.length; i++) {
+			const active = audios.item(i);
+			active.pause();
+			active.currentTime = 0;
+		};
+	}, []);
 
 	const muteAllHandler = () => {
 		setMuteAll(!muteAll);
@@ -92,7 +89,6 @@ const DrumMachineComp = ({ banks, numberOfBanks, soundList }) => {
 							name={activeBank[char]["name"]}
 							path={activeBank[char].path}
 							mVolume={mVolume}
-							stopAll={stopAll}
 							muteAll={muteAll}
 							setDisplaySound={setDisplaySoundHandler}
 							clearDisplaySound={clearDisplaySoundHandler}
