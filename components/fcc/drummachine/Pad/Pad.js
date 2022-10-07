@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, useMemo } from 'react';
+import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { FaVolumeMute, FaVolumeOff, FaStop, FaUndoAlt } from 'react-icons/fa';
 
 import machineStyles from '../DrumMachine.module.css';
@@ -12,7 +12,7 @@ const Pad = ({
 	path,
 	mVolume,
 	setDisplaySound,
-	stopAll,
+	clearDisplaySound,
 	muteAll
 }) => {
 
@@ -33,11 +33,11 @@ const Pad = ({
 	const soundRef = useRef();
 
 	// Sound fires whenever div clicked or keydown event in parent grid
-	const playSound = () => {
+	const playSound = useCallback(() => {
 		// Reset sound to time 0 and play
 		soundRef.current.currentTime = 0;
 		soundRef.current.play();
-	};
+	}, [])
 
 	const onPlayHandler = () => {
 		// Update parent display state
@@ -51,44 +51,35 @@ const Pad = ({
 		setIsPlaying(false);
 	};
 
-	const volumeOnInputHandler = (e) => {
+	const volumeOnInputHandler = useCallback((e) => {
 		setPVolume(parseFloat(e.target.value));
-	};
+	}, [pVolume]);
 
-	const muteOnClick = () => {
+	const muteOnClick = useCallback(() => {
 		// Mute button changes state and set soundRef to state
 		// Only if global mute is false; true = forced mute
 		if (muteAll === false) {
 			setMuted(!muted);
 			soundRef.current.muted = !muted;
 		}
-	};
+	}, [muted]);
 
-	const stopOnClick = () => {
+	const stopOnClick = useCallback(() => {
 		// Stops sound
 		soundRef.current.pause();
 		soundRef.current.currentTime = 0;
-	};
+	}, []);
 
-	const loopOnClick = () => {
+	const loopOnClick = useCallback(() => {
 		// Loop button changes state sets soundRef to state
-		soundRef.current.pause();
 		setLoop(!loop);
 		soundRef.current.loop = !loop;
-	};
+	}, [loop]);
 
 	// Update sound volume when either pad volume or master volume change
 	useEffect(() => {
 		soundRef.current.volume = pVolume * mVolume;
 	}, [mVolume, pVolume]);
-
-	// Triggers is master stop in control panel is clicked
-	useEffect(() => {
-		if (stopAll === true) {
-			stopOnClick();
-			onEndedHandler();
-		};
-	}, [stopAll]);
 
 	useEffect(() => {
 		setMuted(muteAll);
