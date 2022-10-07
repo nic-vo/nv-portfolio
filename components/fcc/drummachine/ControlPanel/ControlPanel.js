@@ -4,7 +4,23 @@ import { FaVolumeMute, FaStop, FaMusic, FaVolumeUp, FaVolumeOff } from 'react-ic
 import machineStyles from '../DrumMachine.module.css';
 import controlStyles from './ControlPanel.module.css';
 
-const bankNames = ["FlumeSounds", "Hip Hop @186 BPM", "Synths @100 BPM"];
+
+
+const MasterSlider = ({ mVolume, mVolumeHandler }) => {
+
+	const [master, setMaster] = useState(mVolume);
+
+	const masterOnChangeHandler = useCallback((e) => {
+		setMaster(parseFloat(e.target.value))
+	}, [mVolume, master]);
+
+	return (
+		<label htmlFor="mVolume">
+			<FaVolumeUp />
+			<input id="mVolume" type="range" min="0" max="1" step="0.05" value={master} onChange={masterOnChangeHandler} onPointerUp={mVolumeHandler} />
+		</label>
+	);
+};
 
 const ControlPanel = ({
 	displaySound,
@@ -27,9 +43,8 @@ const ControlPanel = ({
 			</div>
 			<div className={controlStyles.controls}>
 				<div className={controlStyles.sliders}>
-					<label htmlFor="bank"><FaMusic /><input id="bank" type="range" min="0" max="2" step="1" value={bank} onInput={setBankHandler} /></label>
-					<label htmlFor="mVolume"><FaVolumeUp /><input id="mVolume" type="range" min="0" max="1" step="0.05" value={mVolume} onInput={mVolumeHandler} />
-					</label>
+					<label htmlFor="bank"><FaMusic /><input id="bank" type="range" min="0" max={numberOfBanks} step="1" value={bankIndex} onChange={bankIndexHandler} /></label>
+					<MasterSlider mVolume={mVolume} mVolumeHandler={mVolumeHandler} />
 				</div>
 				<div className={controlStyles.buttons}>
 					<button className={`${machineStyles.button} ${machineStyles.stop}`} onClick={stopAllHandler}><FaStop /></button>
