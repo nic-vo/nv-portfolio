@@ -4,25 +4,22 @@ import { FaVolumeMute, FaVolumeOff, FaStop, FaUndoAlt } from 'react-icons/fa';
 import machineStyles from '../DrumMachine.module.css';
 import padStyles from './Pad.module.css';
 
-const bankNames = ["FlumeSounds", "Hip Hop @186 BPM", "Synths @100 BPM"];
+
 
 const Pad = ({
 	char,
-	bank,
+	name,
+	path,
 	mVolume,
 	setDisplaySound,
 	stopAll,
 	muteAll
 }) => {
 
-/*
-	This component receives props to determine which sound to load
-	Can play on click or upon receiving keypress event pulse activate boolean prop from the parent grid onKeyPress event
-*/
-
-	// Build file path from props but keep filename ready
-	const fileString = soundList[bank][char]
-	const srcString = `/assets/fcc/DrumMachine/${bankNames[bank]}/${fileString}.mp3`;
+	/*
+		This component receives props to determine which sound to load
+		Can play on click or upon receiving keypress event pulse activate boolean prop from the parent grid onKeyPress event
+	*/
 
 	// if pad is playing sound (for styling)
 	const [isPlaying, setIsPlaying] = useState(false);
@@ -44,13 +41,13 @@ const Pad = ({
 
 	const onPlayHandler = () => {
 		// Update parent display state
-		setDisplaySound(fileString, true);
+		setDisplaySound(name);
 		// Set playing to true for styling
 		setIsPlaying(true);
 	};
 
 	const onEndedHandler = () => {
-		setDisplaySound(fileString, false);
+		clearDisplaySound(name);
 		setIsPlaying(false);
 	};
 
@@ -98,12 +95,6 @@ const Pad = ({
 		soundRef.current.muted = muteAll;
 	}, [muteAll]);
 
-	// Stop sound and update src on bank prop change
-	useEffect(() => {
-		stopOnClick();
-		soundRef.current.src = srcString;
-	}, [bank]);
-
 	return (
 		<div className={padStyles.container}>
 			<div className={`${padStyles.pad} ${isPlaying === true ? padStyles.padActive : padStyles.padInactive}`} onClick={playSound} >
@@ -115,7 +106,7 @@ const Pad = ({
 				<button onClick={stopOnClick} className={`${machineStyles.button} ${machineStyles.stop}`}><FaStop /></button>
 				<button onClick={loopOnClick} className={`${machineStyles.button} ${loop ? machineStyles.loopon : machineStyles.loop}`}><FaUndoAlt /></button>
 			</div>
-			<audio id={char} ref={soundRef} onPlay={onPlayHandler} onPause={onEndedHandler} onEnded={onEndedHandler} />
+			<audio src={path} id={char} ref={soundRef} onPlay={onPlayHandler} onPause={onEndedHandler} onEnded={onEndedHandler} />
 		</div>
 	);
 };
