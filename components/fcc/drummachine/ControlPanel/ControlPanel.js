@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useCallback } from 'react'
 import { FaVolumeMute, FaStop, FaMusic, FaVolumeUp, FaVolumeOff } from 'react-icons/fa';
 
 import machineStyles from '../DrumMachine.module.css';
@@ -23,12 +23,14 @@ const MasterSlider = ({ mVolume, mVolumeHandler }) => {
 };
 
 const ControlPanel = ({
+	banks,
 	displaySound,
 	mVolume,
-	bank,
+	bankIndex,
+	numberOfBanks,
 	muteAll,
 	mVolumeHandler,
-	setBankHandler,
+	bankIndexHandler,
 	stopAllHandler,
 	muteAllHandler
 }) => {
@@ -38,7 +40,7 @@ const ControlPanel = ({
 	return (
 		<div className={controlStyles.panel}>
 			<div className={controlStyles.display}>
-				<p>{bankNames[bank]}:</p>
+				<p>{banks[bankIndex]}:</p>
 				<p>{displaySound ? displaySound : "--"}</p>
 			</div>
 			<div className={controlStyles.controls}>
