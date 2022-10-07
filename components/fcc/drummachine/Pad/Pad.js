@@ -1,8 +1,6 @@
 import React, { useRef, useState, useEffect, useMemo } from 'react';
 import { FaVolumeMute, FaVolumeOff, FaStop, FaUndoAlt } from 'react-icons/fa';
 
-import soundList from '../soundList';
-
 import machineStyles from '../DrumMachine.module.css';
 import padStyles from './Pad.module.css';
 
