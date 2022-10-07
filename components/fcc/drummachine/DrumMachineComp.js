@@ -1,12 +1,12 @@
 import Head from 'next/head';
 
-import React, { useState } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 import Pad from './Pad/Pad';
 import ControlPanel from './ControlPanel/ControlPanel';
 
 import machineStyles from './DrumMachine.module.css';
 
-const chars = ["q", "w", "e", "a", "s", "d", "z", "x", "c"];
+
 
 const DrumMachineComp = ({ banks, numberOfBanks, soundList }) => {
 
@@ -59,7 +59,11 @@ const DrumMachineComp = ({ banks, numberOfBanks, soundList }) => {
 
 	const muteAllHandler = () => {
 		setMuteAll(!muteAll);
-	}
+	}, [muteAll]);
+
+	const activeBank = useMemo(() => {
+		return soundList[bankIndex]
+	}, [bankIndex])
 
 	return (<>
 		<Head>
@@ -80,7 +84,7 @@ const DrumMachineComp = ({ banks, numberOfBanks, soundList }) => {
 					stopAllHandler={stopAllHandler}
 					muteAllHandler={muteAllHandler} />
 				<div className={machineStyles.grid} tabIndex="0" onKeyPress={keyPressHandler}>
-					{chars.map((char) => {
+					{Object.keys(activeBank).map(char => {
 						return <Pad
 							char={char}
 							bank={bank}
