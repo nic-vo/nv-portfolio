@@ -32,11 +32,9 @@ export default function Home({ pageList }) {
 											category.pages.map((page) => {
 												return (
 													<li key={`${page}-link`}>
-														<Link href={`/${category.category}/${page}`}>
-															<a>{page.replaceAll(/([A-Z])/g, " $1")}
+															<a href={`/${category.category}/${page}`}>{page.replaceAll(/([A-Z])/g, " $1")}
 																<Image src={`/thumbs/${page}.jpg`} height="1440" width="2560" layout="intrinsic" alt=""/>
 															</a>
-														</Link>
 													</li>)
 											})
 										}
@@ -87,6 +85,7 @@ export async function getStaticProps() {
 	return {
 		props: {
 			pageList
-		}
+		},
+		revalidate: 3600
 	}
 }

@@ -33,6 +33,7 @@ export async function getStaticProps() {
 			banks: allBanks.banks,
 			numberOfBanks: allBanks.numberOfBanks,
 			soundList
-		}
+		},
+		revalidate: 604800
 	};
 };
