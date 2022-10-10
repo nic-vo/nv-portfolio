@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react'
+import { useState, useCallback } from 'react'
 import { FaVolumeMute, FaStop, FaMusic, FaVolumeUp, FaVolumeOff } from 'react-icons/fa';
 
 import machineStyles from '../DrumMachine.module.css';

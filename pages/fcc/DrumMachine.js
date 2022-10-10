@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import React from 'react'
 import { DrumMachineComp } from '../../components/fcc/drummachine';
 import { ProjectLayout } from '../../components/global';
 

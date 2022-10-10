@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo } from 'react';
+import { useState, useCallback, useMemo } from 'react';
 import Pad from './Pad/Pad';
 import ControlPanel from './ControlPanel/ControlPanel';
 

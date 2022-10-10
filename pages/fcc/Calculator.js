@@ -1,4 +1,3 @@
-import React from 'react';
 import Head from 'next/head';
 import { ProjectLayout } from '../../components/global';
 import { CalculatorComp } from '../../components/fcc/calculator';

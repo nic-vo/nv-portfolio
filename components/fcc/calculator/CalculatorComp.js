@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import { useState } from 'react';
 import Keypad from './Keypad/Keypad';
 import keyChars from './Keypad/KeypadChars';
 import History from './History/History';
