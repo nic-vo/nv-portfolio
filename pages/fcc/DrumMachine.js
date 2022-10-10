@@ -13,6 +13,7 @@ const DrumMachine = ({ banks, numberOfBanks, soundList }) => {
 		</Head>
 
 		<ProjectLayout>
+			<h1>Drum Machine</h1>
 			<DrumMachineComp banks={banks} numberOfBanks={numberOfBanks} soundList={soundList} />
 			<section>
 				<p>
