@@ -247,8 +247,8 @@ const CalculatorComp = () => {
 	}
 
 	return (<>
+		<h1>A{splode ? "n Exploding " : " "}Calculator</h1>
 		<section>
-			<h1>A{splode ? "n Exploding " : " "}Calculator</h1>
 			<div className={calcStyles.container} tabIndex={0} onKeyDown={keyDownHandler}>
 				<div className={calcStyles.calculator} style={{ backgroundColor: `${splode ? "#707070" : "#CCCCCC"}` }}>
 					<div className={calcStyles.screen}>
