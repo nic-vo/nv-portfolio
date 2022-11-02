@@ -2,7 +2,12 @@ This is the repo for my personal portfolio
 
 # CHANGELOG
 
-# 0.8.0
+# 0.9.0
+	- DrumMachine
+		- Lowered some state to pad component and master volume slider component
+		- Made more use of document api for keypress and global stops / mutes
+
+## 0.8.0
 	- Home
 		- Link lists based on scanning pages dir
 			- Contains thumbs via next/image
