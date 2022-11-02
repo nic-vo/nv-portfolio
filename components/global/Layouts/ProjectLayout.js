@@ -1,4 +1,4 @@
-import projectStyles from './ProjectLayout.css';
+import projectStyles from './ProjectLayout.module.css';
 
 const ProjectLayout = ({ children }) => {
 	return (
