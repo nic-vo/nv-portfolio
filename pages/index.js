@@ -18,7 +18,7 @@ export default function Home({ pageList }) {
 				<h1>Hi, you&apos;ve reached Nicolas Vo</h1>
 				<section>
 					<p>
-						Starting out
+						A junior web dev
 					</p>
 				</section>
 				<nav>
@@ -31,10 +31,11 @@ export default function Home({ pageList }) {
 										{
 											category.pages.map((page) => {
 												return (
-													<li key={`${page}-link`}>
-															<a href={`/${category.category}/${page}`}>{page.replaceAll(/([A-Z])/g, " $1")}
-																<Image src={`/thumbs/${page}.jpg`} height="1440" width="2560" layout="intrinsic" alt=""/>
-															</a>
+													<li key={`${page}-link`} style={{listStyle: "none"}}>
+														<a href={`/${category.category}/${page}`}><p style={{ fontSize: "4rem" }}>{page.replaceAll(/([A-Z])/g, " $1")}</p>
+															{/*<Image src={`/thumbs/${page}.jpg`} height="1440" width="2560" layout="intrinsic" alt=""/>*/}
+															{page.rep}
+														</a>
 													</li>)
 											})
 										}
@@ -44,7 +45,7 @@ export default function Home({ pageList }) {
 						)
 					})}
 				</nav>
-				<section>
+				<section style={{paddingTop: "25vh"}}>
 					<h1>
 						Contact Me
 					</h1>
