@@ -208,6 +208,7 @@ const CalculatorComp = () => {
 	};
 
 	const equalsHandler = () => {
+		if (entire === "") { return }
 		// If someone accidentally solves after adding op
 		const replacedEntire = entire.replace(/[-]$/, "").replace(/[+\-*/]$/, "")
 		// If already solved, add
