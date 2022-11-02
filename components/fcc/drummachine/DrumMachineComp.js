@@ -61,34 +61,32 @@ const DrumMachineComp = ({ banks, numberOfBanks, soundList }) => {
 	}, [bankIndex])
 
 	return (
-		<section className={machineStyles.main}>
-			<section className={machineStyles.machine}>
-				<ControlPanel
-					banks={banks}
-					displaySound={displaySound}
-					mVolume={mVolume}
-					bankIndex={bankIndex}
-					numberOfBanks={numberOfBanks}
-					muteAll={muteAll}
-					mVolumeHandler={mVolumeHandler}
-					bankIndexHandler={bankIndexHandler}
-					stopAllHandler={stopAllHandler}
-					muteAllHandler={muteAllHandler} />
-				<div className={machineStyles.grid} tabIndex="0" onKeyPress={keyPressHandler}>
-					{Object.keys(activeBank).map(char => {
-						return <Pad
-							char={char}
-							name={activeBank[char]["name"]}
-							path={activeBank[char].path}
-							mVolume={mVolume}
-							muteAll={muteAll}
-							setDisplaySound={setDisplaySoundHandler}
-							clearDisplaySound={clearDisplaySoundHandler}
-							key={`pad-${activeBank[char]["name"]}`}
-						/>
-					})}
-				</div>
-			</section>
+		<section className={machineStyles.machine}>
+			<ControlPanel
+				banks={banks}
+				displaySound={displaySound}
+				mVolume={mVolume}
+				bankIndex={bankIndex}
+				numberOfBanks={numberOfBanks}
+				muteAll={muteAll}
+				mVolumeHandler={mVolumeHandler}
+				bankIndexHandler={bankIndexHandler}
+				stopAllHandler={stopAllHandler}
+				muteAllHandler={muteAllHandler} />
+			<div className={machineStyles.grid} tabIndex="0" onKeyPress={keyPressHandler}>
+				{Object.keys(activeBank).map(char => {
+					return <Pad
+						char={char}
+						name={activeBank[char]["name"]}
+						path={activeBank[char].path}
+						mVolume={mVolume}
+						muteAll={muteAll}
+						setDisplaySound={setDisplaySoundHandler}
+						clearDisplaySound={clearDisplaySoundHandler}
+						key={`pad-${activeBank[char]["name"]}`}
+					/>
+				})}
+			</div>
 		</section>
 	);
 };
