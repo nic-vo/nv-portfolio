@@ -1,4 +1,4 @@
-import React, { memo, useState, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 
 import keyStyles from './Keypad.module.css';
 
@@ -21,13 +21,6 @@ const Keypad = ({
 		};
 	};
 
-	// Stores vectors for the explode transition
-	const [sploded, setSploded] = useState([[0, 0, 0, 0], [0, 0, 0]]);
-
-	const resetSploded = () => {
-		setSploded([[0, 0, 0, 0], [0, 0, 0]]);
-	};
-
 	// Creates values for vector
 	const newRan = () => {
 		const negFifty = () => {
@@ -43,27 +36,41 @@ const Keypad = ({
 		const total = newArr.reduce((newTotal, current) => {
 			return Math.abs(current) + Math.abs(newTotal);
 		});
-		return newArr.map((vec) => {
-			return vec / total;
-		});
+		return {
+			rx: newArr[0] / total,
+			ry: newArr[1] / total,
+			rz: newArr[2] / total
+		};
 	};
 
 	// Determines how far each keypad explodes
-	const newTran = () => {
-		return `${newRan() * 150}px`;
+	const newTran = (ran) => {
+		return `${parseFloat(ran) * 150}px`;
 	};
 
-	const newSploded = () => {
-		setSploded([[...normalizedVecs(), parseFloat(newRan()).toFixed(5)], [newTran(), newTran(), newTran()]]);
-	}
+	const splodeRef = useRef({ rx: 0.33, ry: 0.33, rz: 0.33, rm: 0.5, tx: 0.5, ty: 0.5, tz: 0.5 })
 
 	useEffect(() => {
-		if (splode === false) { return resetSploded(); }
-		newSploded();
+		if (splode === true) {
+			const vecObj = normalizedVecs();
+			Object.keys(splodeRef.current).forEach(
+				(key, index) => {
+					switch (key) {
+						case "rx":
+						case "ry":
+						case "rz":
+							splodeRef.current[key] = vecObj[key];
+							break;
+						default:
+							splodeRef.current[key] = parseFloat(newRan());
+					}
+				}
+			)
+		}
 	}, [splode]);
 
 	const transStr = () => {
-		return `rotate3d(${sploded[0][0]}, ${sploded[0][1]}, ${sploded[0][2]}, ${sploded[0][3] * 180}deg) translate3d(${sploded[1][0]},${sploded[1][1]},${sploded[1][2]})`
+		return `rotate3d(${splode === true ? splodeRef.current["rx"] : 0}, ${splode === true ? splodeRef.current["ry"] : 0}, ${splode === true ? splodeRef.current["rz"] : 0}, ${splode === true ? splodeRef.current["rm"] * 180 : 0}deg) translate3d(${splode === true ? splodeRef.current["tx"] * 150 : 0}px,${splode === true ? splodeRef.current["ty"] * 150 : 0}px,${splode === true ? splodeRef.current["tz"] * 150 : 0}px)`
 	}
 
 	return (
@@ -81,6 +88,4 @@ const Keypad = ({
 	);
 };
 
-const KeypadMemo = memo(Keypad);
-
-export default KeypadMemo;
+export default Keypad;

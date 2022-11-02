@@ -1,32 +1,25 @@
-import { React, useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, useCallback } from 'react';
 import { FaVolumeMute, FaVolumeOff, FaStop, FaUndoAlt } from 'react-icons/fa';
 
-import soundList from '../soundList';
-
-import machineStyles from '../../../../styles/fcc/DrumMachine/DrumMachine.module.css';
+import machineStyles from '../DrumMachine.module.css';
 import padStyles from './Pad.module.css';
 
-const bankNames = ["FlumeSounds", "Hip Hop @186 BPM", "Synths @100 BPM"];
+
 
 const Pad = ({
 	char,
-	padIndex,
-	bank,
+	name,
+	path,
 	mVolume,
 	setDisplaySound,
-	activate,
-	stopAll,
+	clearDisplaySound,
 	muteAll
 }) => {
 
-/*
-	This component receives props to determine which sound to load
-	Can play on click or upon receiving keypress event pulse activate boolean prop from the parent grid onKeyPress event
-*/
-
-	// Build file path from props but keep filename ready
-	const fileString = soundList[bank][padIndex]
-	const srcString = `/assets/fcc/DrumMachine/${bankNames[bank]}/${fileString}.mp3`;
+	/*
+		This component receives props to determine which sound to load
+		Can play on click or upon receiving keypress event pulse activate boolean prop from the parent grid onKeyPress event
+	*/
 
 	// if pad is playing sound (for styling)
 	const [isPlaying, setIsPlaying] = useState(false);
@@ -40,75 +33,58 @@ const Pad = ({
 	const soundRef = useRef();
 
 	// Sound fires whenever div clicked or keydown event in parent grid
-	const playSound = () => {
+	const playSound = useCallback(() => {
 		// Reset sound to time 0 and play
 		soundRef.current.currentTime = 0;
 		soundRef.current.play();
+	}, [])
+
+	const onPlayHandler = () => {
 		// Update parent display state
-		setDisplaySound(fileString, true);
+		setDisplaySound(name);
 		// Set playing to true for styling
 		setIsPlaying(true);
 	};
 
 	const onEndedHandler = () => {
-		setDisplaySound(fileString, false);
+		clearDisplaySound(name);
 		setIsPlaying(false);
 	};
 
-	const volumeOnInputHandler = (e) => {
+	const volumeOnInputHandler = useCallback((e) => {
 		setPVolume(parseFloat(e.target.value));
-	};
+	}, [pVolume]);
 
-	const muteOnClick = () => {
+	const muteOnClick = useCallback(() => {
 		// Mute button changes state and set soundRef to state
+		// Only if global mute is false; true = forced mute
 		if (muteAll === false) {
 			setMuted(!muted);
 			soundRef.current.muted = !muted;
 		}
-	};
+	}, [muted]);
 
-	const stopOnClick = () => {
+	const stopOnClick = useCallback(() => {
 		// Stops sound
 		soundRef.current.pause();
 		soundRef.current.currentTime = 0;
-		setIsPlaying(false);
-	};
+	}, []);
 
-	const loopOnClick = () => {
+	const loopOnClick = useCallback(() => {
 		// Loop button changes state sets soundRef to state
-		soundRef.current.pause();
 		setLoop(!loop);
 		soundRef.current.loop = !loop;
-	};
+	}, [loop]);
 
 	// Update sound volume when either pad volume or master volume change
 	useEffect(() => {
 		soundRef.current.volume = pVolume * mVolume;
 	}, [mVolume, pVolume]);
 
-	// Play sound if activate prop is true
-	useEffect(() => {
-		if (activate === true) { playSound(); };
-	}, [activate]);
-
-	// Triggers is master stop in control panel is clicked
-	useEffect(() => {
-		if (stopAll === true) {
-			stopOnClick();
-			onEndedHandler();
-		};
-	}, [stopAll]);
-
 	useEffect(() => {
 		setMuted(muteAll);
 		soundRef.current.muted = muteAll;
 	}, [muteAll]);
-
-	// Stop sound and update src on bank prop change
-	useEffect(() => {
-		stopOnClick();
-		soundRef.current.src = srcString;
-	}, [bank]);
 
 	return (
 		<div className={padStyles.container}>
@@ -121,7 +97,7 @@ const Pad = ({
 				<button onClick={stopOnClick} className={`${machineStyles.button} ${machineStyles.stop}`}><FaStop /></button>
 				<button onClick={loopOnClick} className={`${machineStyles.button} ${loop ? machineStyles.loopon : machineStyles.loop}`}><FaUndoAlt /></button>
 			</div>
-			<audio ref={soundRef} onEnded={onEndedHandler} />
+			<audio src={path} id={char} ref={soundRef} onPlay={onPlayHandler} onPause={onEndedHandler} onEnded={onEndedHandler} />
 		</div>
 	);
 };

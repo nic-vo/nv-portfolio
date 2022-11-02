@@ -1,9 +1,5 @@
-import Keypad from "./Keypad/Keypad";
-import KeypadCharacters from "./Keypad/KeypadChars";
-import History from "./History/History";
+import CalculatorComp from "./CalculatorComp";
 
 export {
-	Keypad,
-	KeypadCharacters,
-	History
-}
+	CalculatorComp
+};
