@@ -1,4 +1,4 @@
-import Head from "next/head";
+import projectStyles from './ProjectLayout.css';
 
 const ProjectLayout = ({ children }) => {
 	return (
@@ -19,7 +19,7 @@ const ProjectLayout = ({ children }) => {
 					</ul>
 				</nav>
 			</header>
-			<main>
+			<main className={projectStyles.projectMain}>
 				{children}
 			</main>
 			<footer><h1>Footer</h1></footer>
