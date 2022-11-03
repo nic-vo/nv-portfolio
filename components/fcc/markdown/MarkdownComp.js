@@ -37,11 +37,8 @@ const MarkdownComp = () => {
 	};
 
 	const markedHandler = () => {
-		const start = new Date();
 		const dirty = mParse(googleLinkProcessor(input));
 		setOutput(sanitize(dirty, { USE_PROFILES: { html: true } }));
-		const end = new Date();
-		console.log(end.getMilliseconds() - start.getMilliseconds());
 	};
 
 	const updatePreview = useCallback((e) => {
