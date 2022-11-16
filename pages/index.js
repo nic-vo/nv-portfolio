@@ -66,7 +66,7 @@ export default function Home({ pageList }) {
 			</main>
 
 			<footer className={styles.footer}>
-				DIS IS DA FOOTER
+				v. 0.10.0 by nicolas vo
 			</footer>
 		</div>
 	)

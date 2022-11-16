@@ -2,7 +2,13 @@ This is the repo for my personal portfolio
 
 # CHANGELOG
 
-# 0.9.0
+# 0.10.0
+  - Pomodoro
+    - Initialize
+  - Homepage
+    - Remove bootstrapped header
+
+## 0.9.0
   - DrumMachine
     - Lowered some state to pad component and master volume slider component
     - Made more use of document api for keypress and global stops / mutes
