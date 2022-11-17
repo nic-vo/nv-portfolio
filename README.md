@@ -6,7 +6,8 @@ This is the repo for my personal portfolio
   - Pomodoro
     - Initialize
   - Homepage
-    - Remove bootstrapped header
+    - Remove bootstrapped footer
+    - Replace with version # static prop
 
 ## 0.9.0
   - DrumMachine

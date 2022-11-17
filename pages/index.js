@@ -2,10 +2,11 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { getProjectLists } from '../lib/root/projects';
+import { getVersionNumber } from '../lib/root/homepage';
 
 import styles from '../styles/Home.module.css';
 
-export default function Home({ pageList }) {
+export default function Home({ pageList, version }) {
 	return (
 		<div className={styles.container}>
 			<Head>
@@ -66,7 +67,7 @@ export default function Home({ pageList }) {
 			</main>
 
 			<footer className={styles.footer}>
-				v. 0.10.0 by nicolas vo
+				v. {version} by nicolas vo
 			</footer>
 		</div>
 	)
@@ -74,9 +75,11 @@ export default function Home({ pageList }) {
 
 export async function getStaticProps() {
 	const pageList = getProjectLists();
+	const version = getVersionNumber().version;
 	return {
 		props: {
-			pageList
+			pageList,
+			version
 		},
 		revalidate: 3600
 	}
