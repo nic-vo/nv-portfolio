@@ -2,7 +2,10 @@ This is the repo for my personal portfolio
 
 # CHANGELOG
 
-# 0.10.0
+# 0.11.0
+  - Update to Next 13
+
+## 0.10.0
   - Pomodoro
     - Initialize
   - Homepage
