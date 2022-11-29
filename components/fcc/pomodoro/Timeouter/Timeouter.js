@@ -39,7 +39,6 @@ const Timeouter = ({ work, rest, activate, activator, skipper, workActive, workT
 
 	useEffect(() => {
 		if (activate === true) {
-			playSound(workActive);
 			setExpected(Date.now() + 1000);
 			setLoop(() => {
 				const now = Date.now();
@@ -50,13 +49,9 @@ const Timeouter = ({ work, rest, activate, activator, skipper, workActive, workT
 				}, 1000 - diff);
 			});
 		} else {
-			workRef.current.pause();
-			restRef.current.pause();
-			workRef.current.currentTime = 0;
-			restRef.current.currentTime = 0;
 			clearTimeout(loop);
-			setExpected(null);
 			setLoop(null);
+			setExpected(null);
 		};
 	}, [activate]);
 
@@ -91,6 +86,19 @@ const Timeouter = ({ work, rest, activate, activator, skipper, workActive, workT
 		if (workActive === true) { return }
 		setCurrentTime(rest * 60);
 	}, [rest]);
+
+	useEffect(() => {
+		if (activate === false) { return };
+		if (workActive === true) {
+			workRef.current.pause();
+			workRef.current.currentTime = 0;
+			workRef.current.play();
+		} else {
+			restRef.current.pause();
+			restRef.current.currentTime = 0;
+			restRef.current.play();
+		};
+	}, [activate, workActive])
 
 	const resetHandler = () => {
 		if (activate === true) { return }
