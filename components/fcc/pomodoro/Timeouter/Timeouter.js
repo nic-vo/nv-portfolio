@@ -13,14 +13,29 @@ const Timeouter = ({ work, rest, activate, activator, skipper, workActive, workT
 	const restRef = useRef();
 	const assetPath = '../assets/fcc/Pomodoro/';
 
-	const playSound = (workActive) => {
+	useEffect(() => {
+		clearTimeout(loop);
+		setLoop(null);
+		setExpected(null);
+		let newTime;
 		if (workActive === true) {
-			workRef.current.play();
+			newTime = work * 60;
 		} else {
-			restRef.current.play();
+			newTime = rest * 60;
 		};
-	};
-
+		setCurrentTime(newTime);
+		if (activate === true) {
+			setExpected(Date.now() + 1000);
+			setLoop(() => {
+				const now = Date.now();
+				const diff = now - now;
+				return setTimeout(() => {
+					setCurrentTime(newTime - 1);
+					setExpected(now + 1000);
+				}, 1000 - diff);
+			});
+		};
+	}, [workActive])
 
 	useEffect(() => {
 		if (activate === true) {
@@ -50,12 +65,11 @@ const Timeouter = ({ work, rest, activate, activator, skipper, workActive, workT
 		if (currentTime < 0) {
 			clearTimeout(loop);
 			setLoop(null);
+			setExpected(null);
 			if (workActive === true) {
 				workToggle(false);
-				setCurrentTime(rest * 60);
 			} else {
 				workToggle(true);
-				setCurrentTime(work * 60);
 			};
 		};
 		setLoop(() => {
