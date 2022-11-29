@@ -42,15 +42,15 @@
 }
 
 .inactive {
-	background-color: #3954aa;
+	background-color: #263669;
 }
 
 .workin {
-	background-color: #5d8955;
+	background-color: #4c7a44;
 }
 
 .restin {
-	background-color: #a65959;
+	background-color: #6b2424;
 }
 
 .timeControls {
@@ -90,15 +90,18 @@
 	color: inherit;
 	border: 2px solid var(--global-color);
 	border-radius: 10%;
+	transition: color var(--fast-transition), background-color var(--fast-transition);
 }
 
 .menter:hover {
-	background-color: var(--global-background);
+	background-color: var(--global-color);
+	color: var(--global-background)
 }
 
 .menter:disabled {
 	cursor: auto;
 	color: var(--global-background);
+	opacity: 0.2;
 	border-color: var(--global-background);
 }
 
