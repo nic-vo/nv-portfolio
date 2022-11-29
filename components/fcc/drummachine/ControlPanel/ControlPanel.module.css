@@ -32,7 +32,8 @@
 	flex-direction: column;
 	justify-content: center;
 	background-color: rgba(10, 10, 10, 1);
-	border: 10px inset var(--global-background);
+	border: 10px inset rgba(20, 20, 20, 1);
+	border-radius: 10px;
 	font-family: Silkscreen, sans-serif;
 }
 
