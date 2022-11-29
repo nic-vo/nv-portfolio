@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 import compLook from '../PomodoroComp.module.css';
 import timeLook from './Timeouter.module.css';
 
-const Timeouter = ({ work, rest, activate, activator, workActive, workToggle }) => {
+const Timeouter = ({ work, rest, activate, activator, skipper, workActive, workToggle }) => {
 
 	const [loop, setLoop] = useState(null);
 	const [expected, setExpected] = useState(null);
@@ -90,7 +90,8 @@ const Timeouter = ({ work, rest, activate, activator, workActive, workToggle }) 
 			<p className={timeLook.timeOutput}>{`${currentTime >= 600 ? Math.floor(currentTime / 60) : `0${Math.floor(currentTime / 60)}`}`}:{`${currentTime % 60 >= 10 ? currentTime % 60 : `0${currentTime % 60}`}`}</p>
 			<div className={timeLook.controls}>
 				<button onClick={resetHandler} className={compLook.menter} disabled={activate}>Reset</button>
-				<button onClick={activator} className={compLook.menter} >Activate</button>
+				<button onClick={activator} className={compLook.menter} >{activate === true ? "Stop" : "Start"}</button>
+				<button onClick={skipper} className={compLook.menter} >Skip</button>
 			</div>
 			<audio src={assetPath + "work.mp3"} id='workaudio' ref={workRef} />
 			<audio src={assetPath + "rest.mp3"} id='restaudio' ref={restRef} />

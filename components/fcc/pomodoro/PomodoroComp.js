@@ -38,6 +38,10 @@ const PomodoroComp = () => {
 		setActivate(prev => { return !prev });
 	};
 
+	const skipper = () => {
+		setWorkActive(!workActive);
+	};
+
 	const workToggle = (boo) => {
 		setWorkActive(boo);
 	};
@@ -58,7 +62,7 @@ const PomodoroComp = () => {
 
 	return (
 		<section id="pomcon" className={containerClass}>
-			<Timeouter work={work} rest={rest} activate={activate} activator={activator} workActive={workActive} workToggle={workToggle} />
+			<Timeouter work={work} rest={rest} activate={activate} activator={activator} workActive={workActive} workToggle={workToggle} skipper={skipper} />
 			<div className={compLook.timeControls}>
 				<div className={compLook.controllerCategory}>
 					<h3>Work Time</h3>
