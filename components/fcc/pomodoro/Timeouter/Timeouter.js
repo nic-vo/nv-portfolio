@@ -115,8 +115,8 @@ const Timeouter = ({ work, rest, activate, activator, skipper, workActive, workT
 				<button onClick={activator} className={compLook.menter} >{activate === true ? "Stop" : "Start"}</button>
 				<button onClick={skipper} className={compLook.menter} >Skip</button>
 			</div>
-			<audio src={assetPath + "work.mp3"} id='workaudio' ref={workRef} />
-			<audio src={assetPath + "rest.mp3"} id='restaudio' ref={restRef} />
+			<audio autoPlay={false} src={assetPath + "work.mp3"} id='workaudio' ref={workRef} />
+			<audio autoPlay={false} src={assetPath + "rest.mp3"} id='restaudio' ref={restRef} />
 		</div>
 	);
 };
