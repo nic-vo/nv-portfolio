@@ -1,15 +1,19 @@
 .machine {
 	display: flex;
+	width: 90%;
+	max-width: 800px;
 	flex-direction: column;
 	align-items: center;
 }
 
-@media (min-aspect-ratio: 4/3) {
+@media (min-aspect-ratio: 3/2) {
 	.machine {
-		width: 70%;
+		width: 80%;
+		max-width: 1200px;
 		height: 100vh;
 		flex-direction: row;
 		align-items: center;
+		justify-content: space-evenly;
 	}
 }
 
@@ -24,6 +28,7 @@
 
 @media (min-aspect-ratio: 1) {
 	.grid {
+		column-gap: 1vw;
 		row-gap: 1vw;
 	}
 }
