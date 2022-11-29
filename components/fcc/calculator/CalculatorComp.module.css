@@ -16,16 +16,16 @@
 }
 
 @media (min-aspect-ratio: 3/4) {
-	.calculator {
-		width: 50%;
-	}
-
 	.container {
 		overflow: visible;
 	}
 }
 
 @media (min-aspect-ratio: 99/100) {
+	.calculator {
+		width: 50%;
+	}
+
 	.container {
 		flex-direction: row-reverse;
 		justify-content: center;

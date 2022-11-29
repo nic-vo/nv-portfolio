@@ -1,4 +1,4 @@
-import { FaUndoAlt } from 'react-icons/fa';
+import { FaShare } from 'react-icons/fa';
 
 import histStyles from './History.module.css';
 
@@ -16,7 +16,7 @@ const History = ({
 					return (
 						<div className={histStyles.historyitem} key={`his-${index}`}>
 							<p>{item[0].replaceAll(/([+*/]|(?<!([+*/\-]|^))-)/g, " $1 ")} = {item[1]}</p>
-							<button value={item[1]} onClick={pickHistory} disabled={!oldAllowed}><FaUndoAlt /></button>
+							<button value={item[1]} onClick={pickHistory} disabled={!oldAllowed}><FaShare /></button>
 						</div>
 					)
 				})

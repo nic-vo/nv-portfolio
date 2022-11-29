@@ -2,11 +2,18 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	width: 15rem;
+	width: 90%;
+	max-width: 500px;
 	min-height: 30vh;
 	padding: 2vh;
 	border-radius: 10px;
 	background-color: #28292A;
+}
+
+@media (min-aspect-ratio:99/100) {
+	.history {
+		width: 15rem;
+	}
 }
 
 .historyitem {
