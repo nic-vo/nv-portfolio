@@ -4,6 +4,11 @@ This is the repo for my personal portfolio
 
 # 0.11.0
   - Update to Next 13
+  - Calculator
+    - Minor style / layout changes
+  - Pomodoro
+    - Add skip phase functionality
+    - Styling
 
 ## 0.10.0
   - Pomodoro
