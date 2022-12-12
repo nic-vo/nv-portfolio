@@ -1,7 +1,7 @@
 import Head from "next/head";
 
 import { ProjectLayout } from "../../components/global";
-import { AimTrainer } from "../../components/personal";
+import { AimTrainerComp } from "../../components/personal";
 
 const ATrainer = () => {
 	return (<>
@@ -12,7 +12,7 @@ const ATrainer = () => {
 		</Head>
 		<ProjectLayout>
 			<h1>Aim Trainer</h1>
-			<AimTrainer />
+			<AimTrainerComp />
 			<section>
 				<p>
 					Description blurb
