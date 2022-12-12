@@ -4,25 +4,25 @@ import Link from 'next/link';
 import { getProjectLists } from '../lib/root/projects';
 import { getVersionNumber } from '../lib/root/homepage';
 
-import styles from '../styles/Home.module.css';
+import { Duckies } from '../components/homepage';
+
+import homeLook from '../styles/Home.module.css';
 
 export default function Home({ pageList, version }) {
 	return (
-		<div className={styles.container}>
+		<div className={homeLook.container}>
 			<Head>
 				<title>Dive in - Nicolas Vo</title>
 				<meta name="description" content="Nicolas Vo's Portfolio" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<main className={styles.main}>
-				<h1>Hi, you&apos;ve reached Nicolas Vo</h1>
-				<section>
-					<p>
-						A junior web dev
-					</p>
+			<main className={homeLook.main}>
+				<section className={homeLook.hero}>
+					<h1 className={homeLook.biggest}>Hi, I'm Nicolas!</h1>
 				</section>
-				<nav>
+				<nav style={{position: 'relative', width: '100%'}}>
+					<Duckies />
 					{pageList.map((category) => {
 						return (
 							<div key={`${category.category}-links`}>
@@ -32,7 +32,7 @@ export default function Home({ pageList, version }) {
 										{
 											category.pages.map((page) => {
 												return (
-													<li key={`${page}-link`} style={{listStyle: "none"}}>
+													<li key={`${page}-link`} style={{ listStyle: "none" }}>
 														<a href={`/${category.category}/${page}`}><p style={{ fontSize: "4rem" }}>{page.replaceAll(/([A-Z])/g, " $1")}</p>
 															{/*<Image src={`/thumbs/${page}.jpg`} height="1440" width="2560" layout="intrinsic" alt=""/>*/}
 															{page.rep}
@@ -46,7 +46,7 @@ export default function Home({ pageList, version }) {
 						)
 					})}
 				</nav>
-				<section style={{paddingTop: "25vh"}}>
+				<section style={{ paddingTop: "25vh" }}>
 					<h1>
 						Contact Me
 					</h1>
@@ -66,7 +66,7 @@ export default function Home({ pageList, version }) {
 				</section>
 			</main>
 
-			<footer className={styles.footer}>
+			<footer className={homeLook.footer}>
 				v. {version} by nicolas vo
 			</footer>
 		</div>
