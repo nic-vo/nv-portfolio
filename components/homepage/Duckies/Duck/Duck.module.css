@@ -1,0 +1,44 @@
+.empty {
+	pointer-events: none;
+	position: absolute;
+	width: 10%;
+	border-radius: 4px;
+	transform-origin: center;
+	animation-name: bobbing;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-in-out;
+	animation-duration: 5s;
+}
+
+.empty svg {
+	width: 100%;
+	height: auto;
+}
+
+.eager {
+	transition: top 3.5s, left 3.5s;
+	transition-timing-function: ease-out;
+}
+
+.sad {
+	transition: top 6s, left 6s;
+	transition-timing-function: ease-in-out;
+}
+
+@keyframes bobbing {
+	0% {
+		translate: -50% -50%;
+	}
+
+	25% {
+		translate: -50% -46%;
+	}
+
+	75% {
+		translate: -50% -54%;
+	}
+
+	100% {
+		translate: -50% -50%;
+	}
+}
