@@ -1,7 +1,7 @@
 import CollatzComp from "./collatz/CollatzComp.js";
-import AimTrainer from "./aimtrainer/AimTrainer.js";
+import AimTrainerComp from "./aimtrainer/AimTrainerComp.js";
 
 export {
 	CollatzComp,
-	AimTrainer
+	AimTrainerComp
 }
