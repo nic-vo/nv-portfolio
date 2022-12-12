@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+import collLook from './CollatzComp.module.css'
 
 const CollatzComp = () => {
 	const [steps, setSteps] = useState([]);
@@ -6,6 +8,7 @@ const CollatzComp = () => {
 	const [highest, setHighest] = useState(null);
 
 	const solveHandler = (e) => {
+		if (solved === true) { return };
 		e.preventDefault();
 		let val = parseInt(document.getElementById("starting").value);
 		let newHighest = parseInt(document.getElementById("starting").value);
@@ -16,7 +19,7 @@ const CollatzComp = () => {
 			if (val > newHighest) { newHighest = val }
 			arr.push(val);
 		};
-		setHighest(newHighest)
+		setHighest(newHighest);
 		setSteps(arr);
 		setSolved(true);
 	};
@@ -27,19 +30,38 @@ const CollatzComp = () => {
 		setSteps([]);
 	};
 
+	useEffect(() => {
+		if (solved === true) {
+			setTimeout(() => {
+				const active = document.getElementById("output");
+				active.scrollTo({
+					left: 0,
+					top: active.scrollHeight,
+					behavior: "smooth"
+				});
+			}, 500)
+		}
+	}, [solved])
+
 	return (
 		<section>
 			<input id="starting" type="number" step="1" min="1" onChange={resetHandler} />
 			<button onClick={solveHandler}>Get Steps</button>
-			<div>
-				<p>Start: {solved === true && steps[0].toLocaleString()}</p>
-				<p>Number of steps: {steps.length > 0 && steps.length.toLocaleString()}</p>
-				<p>Highest: {solved === true && highest.toLocaleString()}</p>
-				<ol>
-					{
-						steps.map(number => { return <li key={`${number}-key`} style={{ color: `${number === steps[0] ? "red" : "inherit"}` }}>{number.toLocaleString()}</li> })
-					}
-				</ol>
+			<button onClick={resetHandler}>Reset</button>
+
+			<p>Start: {solved === true && steps[0].toLocaleString()}</p>
+			<p>Number of steps: {steps.length > 0 && steps.length.toLocaleString()}</p>
+			<p>Highest: {solved === true && highest.toLocaleString()}</p>
+			<div id="output" className={collLook.output}>
+				{
+					solved === true ? (
+						<ol>
+							{
+								steps.map((number, index) => { return <li key={`${number}-key`} ><span style={{ color: `${index >= steps.length - 9 ? "red" : "inherit"}` }}>{number.toLocaleString()}</span></li> })
+							}
+						</ol>
+					) : <p>Pending...</p>
+				}
 			</div>
 		</section>
 	);
