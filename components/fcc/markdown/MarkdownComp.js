@@ -4,7 +4,7 @@ import { parse as mParse } from 'marked';
 import { sanitize } from 'dompurify';
 
 import { FaArrowsAltH } from 'react-icons/fa';
-import markLook from './MarkdownComp.module.css';
+import markLook from './MarkdownComp.module.scss';
 
 const MarkdownComp = () => {
 	const [allowLiveUpdates, setAllowLiveUpdates] = useState(false);

@@ -4,7 +4,7 @@ import Timeouter from "./Timeouter/Timeouter";
 
 import { FaPlus, FaMinus, FaCompressArrowsAlt, FaExpandArrowsAlt } from "react-icons/fa";
 
-import compLook from './PomodoroComp.module.css';
+import compLook from './PomodoroComp.module.scss';
 
 const PomodoroComp = () => {
 	const [work, setWork] = useState(1);

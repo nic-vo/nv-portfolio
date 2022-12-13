@@ -3,8 +3,8 @@ import Keypad from './Keypad/Keypad';
 import keyChars from './Keypad/KeypadChars';
 import History from './History/History';
 
-import calcStyles from './CalculatorComp.module.css';
-import keyStyles from './Keypad/Keypad.module.css';
+import calcStyles from './CalculatorComp.module.scss';
+import keyStyles from './Keypad/Keypad.module.scss';
 
 
 

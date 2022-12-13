@@ -6,7 +6,7 @@ import { getVersionNumber } from '../lib/root/homepage';
 
 import { Duckies } from '../components/homepage';
 
-import homeLook from '../styles/Home.module.css';
+import homeLook from '../styles/Home.module.scss';
 
 export default function Home({ pageList, version }) {
 	return (

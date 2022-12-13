@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import collLook from './CollatzComp.module.css'
+import collLook from './CollatzComp.module.scss'
 
 const CollatzComp = () => {
 	const [steps, setSteps] = useState([]);

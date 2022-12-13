@@ -1,6 +1,6 @@
 import { FaShare } from 'react-icons/fa';
 
-import histStyles from './History.module.css';
+import histStyles from './History.module.scss';
 
 const History = ({
 	history,

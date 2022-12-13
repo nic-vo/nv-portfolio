@@ -1,6 +1,6 @@
 import { useRef, useEffect } from 'react';
 
-import keyStyles from './Keypad.module.css';
+import keyStyles from './Keypad.module.scss';
 
 const Keypad = ({
 	keyId,

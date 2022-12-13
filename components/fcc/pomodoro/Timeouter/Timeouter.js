@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 
-import compLook from '../PomodoroComp.module.css';
-import timeLook from './Timeouter.module.css';
+import compLook from '../PomodoroComp.module.scss';
+import timeLook from './Timeouter.module.scss';
 
 const Timeouter = ({ work, rest, activate, activator, skipper, workActive, workToggle }) => {
 

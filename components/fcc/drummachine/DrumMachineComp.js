@@ -2,7 +2,7 @@ import { useState, useCallback, useMemo } from 'react';
 import Pad from './Pad/Pad';
 import ControlPanel from './ControlPanel/ControlPanel';
 
-import machineStyles from './DrumMachine.module.css';
+import machineStyles from './DrumMachine.module.scss';
 
 
 

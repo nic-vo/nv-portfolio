@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 
+import duckiesLook from './Duckies.module.scss';
+
 import Duck from "./Duck/Duck";
 
 const Duckies = () => {

@@ -2,6 +2,8 @@ import { useState } from "react";
 
 import Game from "./Game/Game";
 
+import ATLook from './AimTrainerComp.module.scss';
+
 const AimTrainerComp = () => {
 
 	const [phase, setPhase] = useState('MENU');

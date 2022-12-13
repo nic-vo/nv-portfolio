@@ -1,8 +1,8 @@
 import { useRef, useState, useEffect, useCallback } from 'react';
 import { FaVolumeMute, FaVolumeOff, FaStop, FaUndoAlt } from 'react-icons/fa';
 
-import machineStyles from '../DrumMachine.module.css';
-import padStyles from './Pad.module.css';
+import machineStyles from '../DrumMachine.module.scss';
+import padStyles from './Pad.module.scss';
 
 
 
