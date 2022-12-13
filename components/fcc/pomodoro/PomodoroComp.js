@@ -53,7 +53,6 @@ const PomodoroComp = () => {
 	useEffect(() => {
 		if (fullscreen === true) {
 			const coord = document.getElementById("pomcon").getBoundingClientRect();
-			console.dir(coord);
 			setTimeout(() => { window.scrollTo({ left: 0, top: coord.y, behavior: "smooth" }) }, 90);
 		};
 	}, [fullscreen]);

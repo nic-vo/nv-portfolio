@@ -14,39 +14,13 @@ const Timeouter = ({ work, rest, activate, activator, skipper, workActive, workT
 	const assetPath = '../assets/fcc/Pomodoro/';
 
 	useEffect(() => {
-		clearTimeout(loop);
-		setLoop(null);
-		setExpected(null);
-		let newTime;
-		if (workActive === true) {
-			newTime = work * 60;
-		} else {
-			newTime = rest * 60;
-		};
-		setCurrentTime(newTime);
 		if (activate === true) {
-			setExpected(Date.now() + 1000);
+			const now = Date.now();
+			setExpected(now + 1000)
 			setLoop(() => {
-				const now = Date.now();
-				const diff = now - now;
-				return setTimeout(() => {
-					setCurrentTime(newTime - 1);
-					setExpected(now + 1000);
-				}, 1000 - diff);
-			});
-		};
-	}, [workActive])
-
-	useEffect(() => {
-		if (activate === true) {
-			setExpected(Date.now() + 1000);
-			setLoop(() => {
-				const now = Date.now();
-				const diff = now - now;
 				return setTimeout(() => {
 					setCurrentTime(currentTime - 1);
-					setExpected(now + 1000);
-				}, 1000 - diff);
+				}, 1000);
 			});
 		} else {
 			clearTimeout(loop);
@@ -57,35 +31,56 @@ const Timeouter = ({ work, rest, activate, activator, skipper, workActive, workT
 
 	useEffect(() => {
 		if (activate === false) { return };
-		if (currentTime < 0) {
-			clearTimeout(loop);
-			setLoop(null);
-			setExpected(null);
+		if (currentTime === 0) {
+			let newTime, newPhase;
 			if (workActive === true) {
-				workToggle(false);
+				newTime = rest * 60;
+				newPhase = false;
 			} else {
-				workToggle(true);
+				newTime = work * 60;
+				newPhase = true;
 			};
-		};
-		setLoop(() => {
 			const now = Date.now();
-			const diff = now - expected;
-			return setTimeout(() => {
-				setCurrentTime(currentTime - 1);
-				setExpected(now + 1000);
-			}, 1000 - diff);
-		});
+			setLoop(() => {
+				const now = Date.now();
+				const diff = now - expected;
+				console.log(`${newTime} in ${1000 - diff} ms`)
+				return setTimeout(() => {
+					workToggle(newPhase);
+					setCurrentTime(newTime);
+					setExpected(now + 1000);
+				}, 1000 - diff);
+			});
+		} else {
+			setLoop(() => {
+				const now = Date.now();
+				const diff = now - expected;
+				return setTimeout(() => {
+					setCurrentTime(currentTime - 1);
+					setExpected(now + 1000);
+				}, 1000 - diff);
+			});
+		}
 	}, [currentTime]);
 
 	useEffect(() => {
-		if (workActive === false) { return }
+		if (workActive === false) { return };
 		setCurrentTime(work * 60);
 	}, [work]);
 
 	useEffect(() => {
-		if (workActive === true) { return }
+		if (workActive === true) { return };
 		setCurrentTime(rest * 60);
 	}, [rest]);
+
+	useEffect(() => {
+		if (activate === true) { return };
+		if (workActive === true) {
+			setCurrentTime(work * 60);
+		} else {
+			setCurrentTime(rest * 60);
+		};
+	}, [workActive]);
 
 	useEffect(() => {
 		if (activate === false) { return };
@@ -113,7 +108,7 @@ const Timeouter = ({ work, rest, activate, activator, skipper, workActive, workT
 			<div className={timeLook.controls}>
 				<button onClick={resetHandler} className={compLook.menter} disabled={activate}>Reset</button>
 				<button onClick={activator} className={compLook.menter} >{activate === true ? "Stop" : "Start"}</button>
-				<button onClick={skipper} className={compLook.menter} >Skip</button>
+				<button onClick={skipper} className={compLook.menter} disabled={activate} >Skip</button>
 			</div>
 			<audio autoPlay={false} src={assetPath + "work.mp3"} id='workaudio' ref={workRef} />
 			<audio autoPlay={false} src={assetPath + "rest.mp3"} id='restaudio' ref={restRef} />
