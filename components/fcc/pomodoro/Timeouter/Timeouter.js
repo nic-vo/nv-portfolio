@@ -73,10 +73,8 @@ const Timeouter = ({ work, rest, activate, activator, workPhase, workToggle }) =
 			// Triggers a non-drifted, perfctly timed phase change when the timer reaches 0
 			const newTime = workPhase === true ? work * MULTIPLIER : rest * MULTIPLIER;
 			const now = Date.now();
+			const diff = now - expected;
 			setLoop(() => {
-				const now = Date.now();
-				const diff = now - expected;
-				console.log(`${newTime} in ${1000 - diff} ms`)
 				return setTimeout(() => {
 					workToggle(newPhase);
 					setCurrentTime(newTime);
@@ -94,8 +92,6 @@ const Timeouter = ({ work, rest, activate, activator, workPhase, workToggle }) =
 			const diff = now - expected > 0 ? now - expected : 0;
 			// console.log(`${currentTime - 1} in ${1000 - diff} ms`)
 			setLoop(() => {
-				const now = Date.now();
-				const diff = now - expected;
 				return setTimeout(() => {
 					setCurrentTime(currentTime - 1);
 					setExpected(now + 1000);
@@ -141,7 +137,7 @@ const Timeouter = ({ work, rest, activate, activator, workPhase, workToggle }) =
 			<div className={timeLook.controls}>
 				<button onClick={resetHandler} className={compLook.menter} disabled={activate}>Reset</button>
 				<button onClick={activator} className={compLook.menter} >{activate === true ? "Stop" : "Start"}</button>
-				<button onClick={skipper} className={compLook.menter} disabled={activate} >Skip</button>
+				<button onClick={skipper} className={compLook.menter}>Skip</button>
 			</div>
 			<audio autoPlay={false} src={assetPath + "work.mp3"} id='workaudio' ref={workRef} />
 			<audio autoPlay={false} src={assetPath + "rest.mp3"} id='restaudio' ref={restRef} />
