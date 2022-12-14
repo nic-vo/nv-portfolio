@@ -45,6 +45,28 @@ const Timeouter = ({ work, rest, activate, activator, workPhase, workToggle }) =
 		};
 	}, [activate]);
 
+	/*
+		The following useEffect can fire either when:
+			- timer runs down and new phase begins
+			- skip button manually triggers new phase
+	*/
+	useEffect(() => {
+		if (activate === true) {
+			// In case skip occurs while clock is active,
+			// this is an attempt not to have concurrent timeouts
+			clearTimeout(loop);
+		}
+		/*
+			New time based on phase
+			IMPORTANT: TRIGGERS A NEW LOOP
+		*/
+		const newTime = workPhase === true ? work * MULTIPLIER : rest * MULTIPLIER;
+		setCurrentTime(newTime);
+		// New expected for the above loop trigger
+		setExpected(Date.now() + 1000);
+	}, [workPhase]);
+
+	// Main loop useEffect
 	useEffect(() => {
 		if (activate === false) { return };
 		if (currentTime === 0) {
@@ -62,6 +84,15 @@ const Timeouter = ({ work, rest, activate, activator, workPhase, workToggle }) =
 				}, 1000 - diff);
 			});
 		} else {
+			// All other times
+			const now = Date.now();
+			/*
+				Following line accounts for skip button click while timer active
+				Must account for the expected drift value not resetting on click
+				Might cause issues when calculating new offset timeout value
+			*/
+			const diff = now - expected > 0 ? now - expected : 0;
+			// console.log(`${currentTime - 1} in ${1000 - diff} ms`)
 			setLoop(() => {
 				const now = Date.now();
 				const diff = now - expected;
@@ -84,15 +115,7 @@ const Timeouter = ({ work, rest, activate, activator, workPhase, workToggle }) =
 		setCurrentTime(rest * MULTIPLIER);
 	}, [rest]);
 
-	useEffect(() => {
-		if (activate === true) { return };
-		if (workActive === true) {
-			setCurrentTime(work * 60);
-		} else {
-			setCurrentTime(rest * 60);
-		};
-	}, [workActive]);
-
+	// Hook to trigger sound on timer active or phase change
 	useEffect(() => {
 		if (activate === false) { return };
 		if (workActive === true) {
