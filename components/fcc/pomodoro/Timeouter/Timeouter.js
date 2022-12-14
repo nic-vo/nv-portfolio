@@ -3,11 +3,12 @@ import { useState, useEffect, useRef } from 'react';
 import compLook from '../PomodoroComp.module.scss';
 import timeLook from './Timeouter.module.scss';
 
-const Timeouter = ({ work, rest, activate, activator, skipper, workActive, workToggle }) => {
+// For dev purposes can be set to something other than 60 (seconds)
+const MULTIPLIER = 10;
 
 	const [loop, setLoop] = useState(null);
 	const [expected, setExpected] = useState(null);
-	const [currentTime, setCurrentTime] = useState(work * 60);
+	const [currentTime, setCurrentTime] = useState(work * MULTIPLIER);
 
 	const workRef = useRef();
 	const restRef = useRef();
@@ -32,14 +33,8 @@ const Timeouter = ({ work, rest, activate, activator, skipper, workActive, workT
 	useEffect(() => {
 		if (activate === false) { return };
 		if (currentTime === 0) {
-			let newTime, newPhase;
-			if (workActive === true) {
-				newTime = rest * 60;
-				newPhase = false;
-			} else {
-				newTime = work * 60;
-				newPhase = true;
-			};
+			// Triggers a non-drifted, perfctly timed phase change when the timer reaches 0
+			const newTime = workPhase === true ? work * MULTIPLIER : rest * MULTIPLIER;
 			const now = Date.now();
 			setLoop(() => {
 				const now = Date.now();
@@ -60,17 +55,17 @@ const Timeouter = ({ work, rest, activate, activator, skipper, workActive, workT
 					setExpected(now + 1000);
 				}, 1000 - diff);
 			});
-		}
+		};
 	}, [currentTime]);
 
 	useEffect(() => {
-		if (workActive === false) { return };
-		setCurrentTime(work * 60);
+		if (workPhase === false) { return };
+		setCurrentTime(work * MULTIPLIER);
 	}, [work]);
 
 	useEffect(() => {
-		if (workActive === true) { return };
-		setCurrentTime(rest * 60);
+		if (workPhase === true) { return };
+		setCurrentTime(rest * MULTIPLIER);
 	}, [rest]);
 
 	useEffect(() => {
@@ -96,8 +91,7 @@ const Timeouter = ({ work, rest, activate, activator, skipper, workActive, workT
 	}, [activate, workActive])
 
 	const resetHandler = () => {
-		if (activate === true) { return }
-		setCurrentTime(work * 60);
+		setCurrentTime(work * MULTIPLIER);
 		workToggle(true);
 	};
 
