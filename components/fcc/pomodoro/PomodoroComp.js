@@ -10,27 +10,27 @@ const PomodoroComp = () => {
 	const [work, setWork] = useState(1);
 	const [rest, setRest] = useState(1);
 	const [activate, setActivate] = useState(false);
-	const [workActive, setWorkActive] = useState(true);
+	const [workPhase, setWorkPhase] = useState(true);
 	const [fullscreen, setFullscreen] = useState(false);
 
 
 	const workIncHandler = (val = 1) => {
-		if (work + val > 60) { return };
+		if (work + val > 60) { return setWork(60) };
 		setWork(prev => { return prev + val });
 	};
 
 	const workDecHandler = (val = 1) => {
-		if (work - val < 1) { return };
+		if (work - val < 1) { return setWork(1) };
 		setWork(prev => { return prev - val });
 	};
 
 	const restIncHandler = (val = 1) => {
-		if (rest + val > 60) { return };
+		if (rest + val > 60) { return setWork(60) };
 		setRest(prev => { return prev + val });
 	};
 
 	const restDecHandler = (val = 1) => {
-		if (rest - val < 1) { return };
+		if (rest - val < 1) { return setWork(1) };
 		setRest(prev => { return prev - val });
 	};
 
@@ -38,12 +38,8 @@ const PomodoroComp = () => {
 		setActivate(prev => { return !prev });
 	};
 
-	const skipper = () => {
-		setWorkActive(!workActive);
-	};
-
 	const workToggle = (boo) => {
-		setWorkActive(boo);
+		setWorkPhase(boo);
 	};
 
 	const fullscrenHandler = () => {
@@ -57,11 +53,11 @@ const PomodoroComp = () => {
 		};
 	}, [fullscreen]);
 
-	const containerClass = `${compLook.container} ${fullscreen === true ? compLook.fullscreen : compLook.windowed} ${activate === false ? compLook.inactive : workActive === true ? compLook.workin : compLook.restin}`
+	const containerClass = `${compLook.container} ${fullscreen === true ? compLook.fullscreen : compLook.windowed} ${activate === false ? compLook.inactive : workPhase === true ? compLook.workin : compLook.restin}`
 
 	return (
 		<section id="pomcon" className={containerClass}>
-			<Timeouter work={work} rest={rest} activate={activate} activator={activator} workActive={workActive} workToggle={workToggle} skipper={skipper} />
+			<Timeouter work={work} rest={rest} activate={activate} activator={activator} workPhase={workPhase} workToggle={workToggle} />
 			<div className={compLook.timeControls}>
 				<div className={compLook.controllerCategory}>
 					<h3>Work Time</h3>
