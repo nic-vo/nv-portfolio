@@ -6,26 +6,41 @@ import timeLook from './Timeouter.module.scss';
 // For dev purposes can be set to something other than 60 (seconds)
 const MULTIPLIER = 10;
 
+const Timeouter = ({ work, rest, activate, activator, workPhase, workToggle }) => {
+
+	/*
+		Holds a timeout ID in state so timer can be cancelled
+		Each timeout decrements current timer
+		Each decrement call sets a new timeout in loop
+		Expected holds a value to compensate for drift due to JS single-threaded blocking
+	*/
+
+	// Init loop holder, drift compensation, timer
 	const [loop, setLoop] = useState(null);
 	const [expected, setExpected] = useState(null);
 	const [currentTime, setCurrentTime] = useState(work * MULTIPLIER);
 
+	// Refs for audio play
 	const workRef = useRef();
 	const restRef = useRef();
 	const assetPath = '../assets/fcc/Pomodoro/';
 
+	// Activate prop initiates or cancels a timeout loop
 	useEffect(() => {
 		if (activate === true) {
-			const now = Date.now();
-			setExpected(now + 1000)
+			// Set an expected time for the future timeout to compensate drift from
+			setExpected(Date.now() + 1000);
+			// Loop entry only decrements timer, doesn't compensate for drift yet
 			setLoop(() => {
 				return setTimeout(() => {
 					setCurrentTime(currentTime - 1);
 				}, 1000);
 			});
 		} else {
+			// Clear any active timeouts
 			clearTimeout(loop);
 			setLoop(null);
+			// Clear drift compensation just in case
 			setExpected(null);
 		};
 	}, [activate]);
@@ -58,6 +73,7 @@ const MULTIPLIER = 10;
 		};
 	}, [currentTime]);
 
+	// The following two hooks are for accepting timer value changes from parent
 	useEffect(() => {
 		if (workPhase === false) { return };
 		setCurrentTime(work * MULTIPLIER);
