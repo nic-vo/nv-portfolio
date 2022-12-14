@@ -76,7 +76,7 @@ const Timeouter = ({ work, rest, activate, activator, workPhase, workToggle }) =
 			const diff = now - expected;
 			setLoop(() => {
 				return setTimeout(() => {
-					workToggle(newPhase);
+					workToggle(!workPhase);
 					setCurrentTime(newTime);
 					setExpected(now + 1000);
 				}, 1000 - diff);
@@ -114,7 +114,7 @@ const Timeouter = ({ work, rest, activate, activator, workPhase, workToggle }) =
 	// Hook to trigger sound on timer active or phase change
 	useEffect(() => {
 		if (activate === false) { return };
-		if (workActive === true) {
+		if (workPhase === true) {
 			workRef.current.pause();
 			workRef.current.currentTime = 0;
 			workRef.current.play();
@@ -123,16 +123,20 @@ const Timeouter = ({ work, rest, activate, activator, workPhase, workToggle }) =
 			restRef.current.currentTime = 0;
 			restRef.current.play();
 		};
-	}, [activate, workActive])
+	}, [activate, workPhase])
 
 	const resetHandler = () => {
 		setCurrentTime(work * MULTIPLIER);
 		workToggle(true);
 	};
 
+	const skipper = () => {
+		workToggle(!workPhase);
+	};
+
 	return (
 		<div className={timeLook.timer}>
-			<h2 className={timeLook.bigLabel}>{workActive ? "WORKIN'" : "RESTIN'"}</h2>
+			<h2 className={timeLook.bigLabel}>{workPhase ? "WORKIN'" : "RESTIN'"}</h2>
 			<p className={timeLook.timeOutput}>{`${currentTime >= 600 ? Math.floor(currentTime / 60) : `0${Math.floor(currentTime / 60)}`}`}:{`${currentTime % 60 >= 10 ? currentTime % 60 : `0${currentTime % 60}`}`}</p>
 			<div className={timeLook.controls}>
 				<button onClick={resetHandler} className={compLook.menter} disabled={activate}>Reset</button>
