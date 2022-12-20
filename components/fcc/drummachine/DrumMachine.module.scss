@@ -1,3 +1,5 @@
+@use 'DrumMachineColors.module.scss' as *;
+
 .machine {
 	display: flex;
 	width: 90%;
@@ -49,55 +51,54 @@
 }
 
 .mute {
-	background-color: var(--global-background);
-	border-color: var(--mute-glow);
-	color: var(--mute-glow);
+	background-color: $gBackground;
+	border-color: $mute-glow;
+	color: $mute-glow;
 }
 
 .mute:hover {
-	background-color: var(--mute-overexpose);
-	border-color: var(--mute-overexpose);
-	color: var(--global-background);
-	box-shadow: 0px 0px 20px 5px var(--mute-glow);
+	background-color: $mute-overexpose;
+	border-color: $mute-overexpose;
+	box-shadow: 0px 0px 20px 5px $mute-glow;
 }
 
 .muteon {
-	background-color: var(--mute-overexpose);
-	border-color: var(--mute-overexpose);
-	color: var(--global-background);
-	box-shadow: 0px 0px 20px 5px var(--mute-glow);
+	background-color: $mute-overexpose;
+	border-color: $mute-overexpose;
+	color: $gBackground;
+	box-shadow: 0px 0px 20px 5px $mute-glow;
 }
 
 .stop {
-	background-color: var(--global-background);
-	border-color: var(--pad-glow);
-	color: var(--pad-glow);
+	background-color: $gBackground;
+	border-color: $pad-glow;
+	color: $pad-glow;
 }
 
 .stop:hover {
-	background-color: var(--pad-overexpose);
-	border-color: var(--pad-overexpose);
-	color: var(--global-background);
-	box-shadow: 0px 0px 20px 5px var(--pad-glow);
+	background-color: $pad-overexpose;
+	border-color: $pad-overexpose;
+	color: $gBackground;
+	box-shadow: 0px 0px 20px 5px $pad-glow;
 }
 
 .loop {
-	background-color: var(--global-background);
-	color: var(--loop-glow);
-	border-color: var(--loop-glow);
+	background-color: $gBackground;
+	color: $loop-glow;
+	border-color: $loop-glow;
 }
 
 .loop:hover {
-	background-color: var(--loop-overexpose);
-	border-color: var(--loop-overexpose);
-	color: var(--global-background);
-	box-shadow: 0px 0px 20px 5px var(--loop-glow);
+	background-color: $loop-overexpose;
+	border-color: $loop-overexpose;
+	color: $gBackground;
+	box-shadow: 0px 0px 20px 5px $loop-glow;
 
 }
 
 .loopon {
-	background-color: var(--loop-overexpose);
-	border-color: var(--loop-overexpose);
-	color: var(--global-background);
-	box-shadow: 0px 0px 20px 5px var(--loop-glow);
+	background-color: $loop-overexpose;
+	border-color: $loop-overexpose;
+	color: $gBackground;
+	box-shadow: 0px 0px 20px 5px $loop-glow;
 }

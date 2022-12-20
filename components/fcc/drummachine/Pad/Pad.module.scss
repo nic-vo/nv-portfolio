@@ -1,3 +1,5 @@
+@use '../DrumMachineColors.module.scss' as *;
+
 .container {
 	position: relative;
 	display: flex;
@@ -19,59 +21,59 @@
 }
 
 .container input:hover {
-	border: 2px solid var(--pad-overexpose)
+	border: 2px solid $pad-overexpose
 }
 
 .container input:focus {
-	border: 2px solid var(--pad-overexpose)
+	border: 2px solid $pad-overexpose
 }
 
 .container input:active {
-	border: 2px solid var(--pad-overexpose)
+	border: 2px solid $pad-overexpose
 }
 
 .container input::-moz-range-thumb {
 	appearance: none;
-	background: var(--pad-glow);
+	background: $pad-glow;
 	border: none;
 	transition: box-shadow var(--fast-transition);
 }
 
 .container input:hover::-moz-range-thumb {
-	background: var(--pad-overexpose);
-	box-shadow: 0px 0px 20px 5px var(--pad-glow);
+	background: $pad-overexpose;
+	box-shadow: 0px 0px 20px 5px $pad-glow;
 }
 
 .container input:focus::-moz-range-thumb {
-	background: var(--pad-overexpose);
-	box-shadow: 0px 0px 20px 5px var(--pad-glow);
+	background: $pad-overexpose;
+	box-shadow: 0px 0px 20px 5px $pad-glow;
 }
 
 .container input:active::-moz-range-thumb {
-	background: var(--pad-overexpose);
-	box-shadow: 0px 0px 20px 5px var(--pad-glow);
+	background: $pad-overexpose;
+	box-shadow: 0px 0px 20px 5px $pad-glow;
 }
 
 .container input::-webkit-range-thumb {
 	appearance: none;
-	background: var(--pad-glow);
+	background: $pad-glow;
 	border: none;
-	box-shadow: 0px 0px 20px 5px var(--pad-glow);
+	box-shadow: 0px 0px 20px 5px $pad-glow;
 }
 
 .container input:hover::-webkit-range-thumb {
-	background: var(--pad-overexpose);
-	box-shadow: 0px 0px 20px 5px var(--pad-glow);
+	background: $pad-overexpose;
+	box-shadow: 0px 0px 20px 5px $pad-glow;
 }
 
 .container input:focus::-webkit-range-thumb {
-	background: var(--pad-overexpose);
-	box-shadow: 0px 0px 20px 5px var(--pad-glow);
+	background: $pad-overexpose;
+	box-shadow: 0px 0px 20px 5px $pad-glow;
 }
 
 .container input:active::-webkit-range-thumb {
-	background: var(--pad-overexpose);
-	box-shadow: 0px 0px 20px 5px var(--pad-glow);
+	background: $pad-overexpose;
+	box-shadow: 0px 0px 20px 5px $pad-glow;
 }
 
 .pad {
@@ -108,21 +110,21 @@
 .padInactive {
 	border: 10px solid rgba(20, 20, 20, 1);
 	background-color: rgba(10, 10, 10, 1);
-	color: var(--pad-overexpose);
+	color: $pad-overexpose;
 }
 
 .padInactive p {
 	width: 20%;
-	background-color: var(--pad-glow);
-	box-shadow: 0px 0px 30px 20px var(--pad-glow);
-	text-shadow: 0px 0px 5px var(--pad-glow);
-	filter: drop-shadow(0px 0px 10px var(--pad-glow));
+	background-color: $pad-glow;
+	box-shadow: 0px 0px 30px 20px $pad-glow;
+	text-shadow: 0px 0px 5px $pad-glow;
+	filter: drop-shadow(0px 0px 10px $pad-glow);
 }
 
 .padActive {
-	border: 10px solid var(--pad-overexpose);
-	box-shadow: 0px 0px 40px 10px var(--pad-glow);
-	background-color: var(--pad-overexpose);
+	border: 10px solid $pad-overexpose;
+	box-shadow: 0px 0px 40px 10px $pad-glow;
+	background-color: $pad-overexpose;
 	color: var(--global-background);
 }
 
