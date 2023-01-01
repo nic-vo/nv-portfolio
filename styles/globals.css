@@ -26,6 +26,10 @@ a {
 	z-index: 10;
 }
 
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+}
+
 @font-face {
 	font-family: "Silkscreen";
 	src: url('../public/fonts/Silkscreen/Silkscreen-Regular.ttf') format('truetype');
