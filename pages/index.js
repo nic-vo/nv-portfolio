@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { getProjectLists } from '../lib/root/projects';
 import { getVersionNumber } from '../lib/root/homepage';
 
-import { Duckies } from '../components/homepage';
+import { Duckies, Hero } from '../components/homepage';
 
 import homeLook from '../styles/Home.module.scss';
 
@@ -18,11 +18,8 @@ export default function Home({ pageList, version }) {
 			</Head>
 
 			<main className={homeLook.main}>
-				<section className={homeLook.hero}>
-					<h1 className={homeLook.biggest}>Hi, I'm Nicolas!</h1>
-				</section>
+				<Hero />
 				<nav style={{position: 'relative', width: '100%'}}>
-					<Duckies />
 					{pageList.map((category) => {
 						return (
 							<div key={`${category.category}-links`}>
