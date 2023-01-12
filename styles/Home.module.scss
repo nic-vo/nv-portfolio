@@ -13,13 +13,7 @@
 .nav {
 	position: relative;
 	width: 100%;
-}
-
-.biggest {
-	color: black;
-	font-family: Outfit, sans-serif;
-	font-size: 1em;
-	margin: 1em;
+	z-index: 0;
 }
 
 .footer {
