@@ -6,7 +6,7 @@ const Hero = () => {
 
 	return (
 		<section className={heroLook.container}>
-			<h1>
+			<h1 className={heroLook.biggest}>
 				<p>Nicolas Vo</p>
 				<p>Front-end Developer</p>
 			</h1>
