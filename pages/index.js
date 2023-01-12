@@ -17,7 +17,7 @@ export default function Home({ pageList, version }) {
 
 			<main className={homeLook.main}>
 				<Hero />
-				<nav style={{position: 'relative', width: '100%'}}>
+				<nav style={{ position: 'relative', width: '100%' }}>
 					{pageList.map((category) => {
 						return (
 							<div key={`${category.category}-links`}>
