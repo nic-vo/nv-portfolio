@@ -1,25 +1,22 @@
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 
 import Cross from './Cross/Cross';
 
 import crossesLook from './Crosses.module.scss';
 
-const Crosses = () => {
-	const [recalculate, setRecalculate] = useState(0);
-
+const Crosses = ({ limit, focus }) => {
 	const initer = useMemo(() => {
 		let arr = [];
-		for (let i = 0; i < 150; i++) {
+		for (let i = 0; i < limit; i++) {
 			arr.push(i);
 		};
 		return arr;
-	}, [recalculate]);
+	}, [limit]);
 
 	return (
 		<div className={crossesLook.container}>
-			<button onClick={() => { setRecalculate(prev => { return prev + 1 }) }}>recalculate</button>
 			{initer.map((slot, index) => {
-				return <Cross key={`cross-${index}`} recalculate={recalculate} />
+				return <Cross key={`cross-${index}`} plane={index % 8} focus={focus} />
 			})}
 		</div>
 	);

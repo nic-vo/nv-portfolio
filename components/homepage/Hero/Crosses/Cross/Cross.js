@@ -14,20 +14,19 @@ const calculator = () => {
 	return { x, y };
 };
 
-const Cross = ({ recalculate }) => {
+const Cross = ({ plane, focus }) => {
 	const [coords, setCoords] = useState(calculator());
 
-	const [zFactor, setZFactor] = useState(Math.random());
-
-	useEffect(() => {
-		setCoords(calculator());
-	}, [recalculate]);
+	const [zFactor, setZFactor] = useState(plane);
 
 	return (
 		<div className={crossLook.container} style={{
+			// visibility: `${zFactor > focus - 1 ? 'visible' : 'hidden'}`,
 			left: `${coords.x * 100}%`,
 			top: `${coords.y * 100}%`,
-			filter: `blur(${zFactor * 20}px)`
+			// filter: `blur(${Math.abs(focus - zFactor) < 2 ? 0 : (Math.abs(focus - zFactor) / 8 * 10)}px)`,
+			transform: `translateZ(${(0 - ((zFactor / 8) * 200)) + ((focus / 4) * 100)}px)`,
+			opacity: `${Math.abs(focus - zFactor) < 2 ? 1 : 1 - (Math.abs(focus - zFactor) / 8)}`
 		}}>
 			<FaPlus />
 		</div>
