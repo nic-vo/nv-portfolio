@@ -1,8 +1,6 @@
 import Head from 'next/head';
-import Image from 'next/image';
-import Link from 'next/link';
-import { getProjectLists } from '../lib/root/projects';
-import { getVersionNumber } from '../lib/root/homepage';
+import { getProjectLists } from '../lib/props/homepage/projects';
+import { getVersionNumber } from '../lib/props/homepage/homepage';
 
 import { Duckies, Hero } from '../components/homepage';
 
@@ -67,8 +65,8 @@ export default function Home({ pageList, version }) {
 				v. {version} by nicolas vo
 			</footer>
 		</div>
-	)
-}
+	);
+};
 
 export async function getStaticProps() {
 	const pageList = getProjectLists();
@@ -79,5 +77,5 @@ export async function getStaticProps() {
 			version
 		},
 		revalidate: 3600
-	}
-}
+	};
+};
