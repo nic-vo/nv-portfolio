@@ -13,4 +13,12 @@
 .container svg {
 	display: block;
 	opacity: 1;
+	color: $gColor;
+	font-size: 4vw;
+}
+
+@media (min-aspect-ratio: 3/4) {
+	.container svg {
+		font-size: 32px;
+	}
 }
