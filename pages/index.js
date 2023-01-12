@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { getProjectLists } from '../lib/props/homepage/projects';
 import { getVersionNumber } from '../lib/props/homepage/homepage';
 
-import { Duckies, Hero } from '../components/homepage';
+import { Hero, ProjectCard, ContactForm } from '../components/homepage';
 
 import homeLook from '../styles/Home.module.scss';
 
@@ -41,24 +41,7 @@ export default function Home({ pageList, version }) {
 						)
 					})}
 				</nav>
-				<section style={{ paddingTop: "25vh" }}>
-					<h1>
-						Contact Me
-					</h1>
-					<form>
-						<fieldset>
-							<label htmlFor='name'>
-								<p>Name</p>
-								<input id='name' type='text' />
-							</label>
-							<label htmlFor='email'>
-								<p>Email</p>
-								<input id='email' type='email' />
-							</label>
-							<button type="submit">Submit</button>
-						</fieldset>
-					</form>
-				</section>
+				<ContactForm />
 			</main>
 
 			<footer className={homeLook.footer}>
