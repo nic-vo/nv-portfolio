@@ -7,32 +7,34 @@ import { Hero, ProjectCard, ContactForm } from '../components/homepage';
 import homeLook from '../styles/Home.module.scss';
 
 export default function Home({ pageList, version }) {
+
 	return (
 		<div className={homeLook.container}>
 			<Head>
 				<title>Dive in - Nicolas Vo</title>
-				<meta name="description" content="Nicolas Vo's Portfolio" />
-				<link rel="icon" href="/favicon.ico" />
+				<meta name='description' content="Nicolas Vo's Portfolio" />
+				<link rel='icon' href='/favicon.ico' />
 			</Head>
 
 			<main className={homeLook.main}>
 				<Hero />
 				<nav style={{ position: 'relative', width: '100%' }}>
 					{pageList.map((category) => {
+						const { categoryName, pages } = category;
 						return (
-							<div key={`${category.category}-links`}>
-								<h2>{category.category === "fcc" ? "freeCodeCamp" : category.category}</h2>
-								{category.pages.length !== 0 ?
-									<ul>
+							<div key={`${category.categoryName}-links`} className={homeLook.navCat}>
+								<h2>{categoryName === 'fcc' ? 'freeCodeCamp' : categoryName}</h2>
+								{pages.length !== 0 ?
+									<ul className={homeLook.navCatList}>
 										{
-											category.pages.map((page) => {
+											pages.map((page) => {
+												const { title, techs, description } = page;
 												return (
-													<li key={`${page}-link`} style={{ listStyle: "none" }}>
-														<a href={`/${category.category}/${page}`}><p style={{ fontSize: "4rem" }}>{page.replaceAll(/([A-Z])/g, " $1")}</p>
-															{/*<Image src={`/thumbs/${page}.jpg`} height="1440" width="2560" layout="intrinsic" alt=""/>*/}
-															{page.rep}
-														</a>
-													</li>)
+													<li key={`${categoryName}-${page.title}`} className={homeLook.navCatPage}>
+														<ProjectCard categoryName={categoryName} title={title} techs={techs} description={description} />
+
+													</li>
+												)
 											})
 										}
 									</ul> : <em>There&apos;s nothing here...yet</em>
@@ -52,8 +54,8 @@ export default function Home({ pageList, version }) {
 };
 
 export async function getStaticProps() {
-	const pageList = getProjectLists();
-	const version = getVersionNumber().version;
+	const pageList = await getProjectLists();
+	const version = await getVersionNumber();
 	return {
 		props: {
 			pageList,
