@@ -31,3 +31,14 @@
 	align-items: center;
 	flex-grow: 1;
 }
+
+.navCatList {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+.navCatPage {
+	list-style: none;
+}
