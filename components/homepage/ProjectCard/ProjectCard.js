@@ -1,17 +1,16 @@
 import cardLook from './ProjectCard.module.scss';
 
-const ProjectCard = ({ title, techs, description }) => {
+const ProjectCard = ({ categoryName, title, techs }) => {
 	return (
-		<div>ProjectCard
-			<h3>{title}</h3>
-			<ul>
-				{techs.map(tech => {
-					return (
-						<li>{tech}</li>
-					)
+		<div className={cardLook.cardContainer}>
+			<h3 className={cardLook.header}>{title.replace(/([a-z])([A-Z])/g, '$1 $2')}</h3>
+			<ul className={cardLook.techList}>
+				{techs.map((tech, index) => {
+					return <li className={cardLook.tech} style={{ transitionDelay: `calc(${index}*50ms)` }} key={`${categoryName}-${title}-${tech}`}>{tech}</li>
 				})}
 			</ul>
-			<p>{description}</p>
+			<a href={`/${categoryName}/${title}`} className={cardLook.link} >Link / Live</a>
+			<img src={`thumbs/${categoryName}/${title}.png`} className={cardLook.imgBack} />
 		</div>
 	)
 };
