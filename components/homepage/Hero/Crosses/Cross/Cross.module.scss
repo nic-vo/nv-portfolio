@@ -6,19 +6,54 @@
 	height: auto;
 	background-color: rgba(0, 0, 0, 0);
 	transform-style: preserve-3d;
-	transition: filter 0.5s, opacity 0.5s, transform 0.5s;
-	transition-timing-function: cubic-bezier(0.25, 0.9, 0.75, 0.99);
+	animation-name: focusing;
+	animation-fill-mode: backwards;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-out;
+}
+
+@keyframes focusing {
+	0% {
+		transform: translateZ(10vw);
+		opacity: 0;
+		filter: blur(30px);
+	}
+
+	15% {
+		opacity: 0.5;
+	}
+
+	22% {
+		filter: blur(0px);
+	}
+
+	28% {
+		filter: blur(0px);
+	}
+
+	50% {
+		opacity: 0.5;
+	}
+
+	75% {
+		filter: blur(20px);
+	}
+
+	100% {
+		transform: translateZ(-20vw);
+		opacity: 0;
+	}
 }
 
 .container svg {
 	display: block;
 	opacity: 1;
 	color: $gColor;
-	font-size: 4vw;
+	font-size: 5vw;
 }
 
 @media (min-aspect-ratio: 3/4) {
 	.container svg {
-		font-size: 32px;
+		font-size: 28px;
 	}
 }

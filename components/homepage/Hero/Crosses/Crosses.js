@@ -4,7 +4,7 @@ import Cross from './Cross/Cross';
 
 import crossesLook from './Crosses.module.scss';
 
-const Crosses = ({ limit, focus }) => {
+const Crosses = ({ limit }) => {
 	const initer = useMemo(() => {
 		let arr = [];
 		for (let i = 0; i < limit; i++) {
@@ -16,7 +16,7 @@ const Crosses = ({ limit, focus }) => {
 	return (
 		<div className={crossesLook.container}>
 			{initer.map((slot, index) => {
-				return <Cross key={`cross-${index}`} plane={index % 8} focus={focus} />
+				return <Cross key={`cross-${index}`} />
 			})}
 		</div>
 	);
