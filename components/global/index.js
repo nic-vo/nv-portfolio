@@ -1,5 +1,7 @@
-import ProjectLayout from './Layouts/ProjectLayout';
+import ProjectLayout from './layouts/ProjectLayout';
+import Spinner from './misc/Spinner/Spinner';
 
 export {
-	ProjectLayout
-};
+	ProjectLayout,
+	Spinner
+}
