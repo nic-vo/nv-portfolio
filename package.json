@@ -6,13 +6,15 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "thumbs": "node ./lib/dev/thumbs.mjs"
   },
   "dependencies": {
     "@svgr/webpack": "^6.5.1",
     "dompurify": "^2.4.0",
     "marked": "^4.2.1",
     "next": "^13.0.3",
+    "nodemailer": "^6.9.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
@@ -20,6 +22,7 @@
   },
   "devDependencies": {
     "eslint": "8.21.0",
-    "eslint-config-next": "^13.0.3"
+    "eslint-config-next": "^13.0.3",
+    "puppeteer": "^19.6.3"
   }
 }
