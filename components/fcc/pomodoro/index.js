@@ -1,4 +1,4 @@
-import PomodoroComp from "./PomodoroComp";
+import PomodoroComp from './PomodoroComp';
 
 export {
 	PomodoroComp

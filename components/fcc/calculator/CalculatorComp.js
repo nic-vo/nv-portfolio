@@ -15,11 +15,11 @@ const CalculatorComp = () => {
 	/*
 		Because javascript, the only acceptable blank state is empty string
 	*/
-	// "entire" is the actual string to be evaluated
-	const [entire, setEntire] = useState("");
-	// "chunk" is like a running string
-	const [chunk, setChunk] = useState("");
-	const [evaluated, setEvaluated] = useState("");
+	// 'entire' is the actual string to be evaluated
+	const [entire, setEntire] = useState('');
+	// 'chunk' is like a running string
+	const [chunk, setChunk] = useState('');
+	const [evaluated, setEvaluated] = useState('');
 	const [history, setHistory] = useState([]);
 
 	const [oldAllowed, setOldAllowed] = useState(true);
@@ -47,29 +47,28 @@ const CalculatorComp = () => {
 	const allowOld = () => { setOldAllowed(true) };
 	const denyOld = () => { setOldAllowed(false) };
 
-	const clearEvaluated = () => { setEvaluated("") };
+	const clearEvaluated = () => { setEvaluated('') };
 
-	const clearChunk = () => { setChunk("") };
+	const clearChunk = () => { setChunk('') };
 
-	const clearEntire = () => { setEntire("") };
+	const clearEntire = () => { setEntire('') };
 
 	/* Event Handlers */
 	const keyDownHandler = (e) => {
-		console.log(e.key);
 		switch (e.key) {
-			case "0":
+			case '0':
 				return zeroHandler();
-			case ".":
+			case '.':
 				return decimalHandler();
-			case "-":
+			case '-':
 				return subtractHandler();
-			case "+":
-			case "*":
-			case "/":
+			case '+':
+			case '*':
+			case '/':
 				return operatorHandler({ target: { value: e.key } });
-			case "Delete":
+			case 'Delete':
 				return clearHandler();
-			case "Enter":
+			case 'Enter':
 				return equalsHandler();
 			default:
 				if (e.key >= 1 && e.key < 10) { return numberHandler({ target: { value: e.key } }) };
@@ -81,7 +80,7 @@ const CalculatorComp = () => {
 	const numberHandler = (e) => {
 		const newNum = e.target.value;
 		// If there's an evaluated answer, clear everything to start anew
-		if (evaluated !== "") { clearHandler(); };
+		if (evaluated !== '') { clearHandler(); };
 		// Short circuit preventing number from being added if chunk starts with 0 (leading 0s)
 		if (zeroCheck() !== null) { return };
 		// If an operator has been placed, start a new chunk
@@ -94,17 +93,17 @@ const CalculatorComp = () => {
 
 	const zeroHandler = () => {
 		// If there's an evaluated answer, clear everything to start anew
-		if (evaluated !== "") { clearHandler(); };
+		if (evaluated !== '') { clearHandler(); };
 		// If this is a fresh reset or an operator has been placed, start a new chunk
-		if (chunk === "" || opCheck() !== null) {
+		if (chunk === '' || opCheck() !== null) {
 			denyOld();
-			replaceChunk("0");
-			addToEntire("0");
+			replaceChunk('0');
+			addToEntire('0');
 			// Only add new 0 if the chunk begins with either non-zero or a decimal
 		} else if (zeroCheck() === null) {
 			denyOld();
-			addToEntire("0");
-			addToChunk("0");
+			addToEntire('0');
+			addToChunk('0');
 		};
 	}
 
@@ -119,17 +118,17 @@ const CalculatorComp = () => {
 		const op = e.target.value
 		// If the eval string is blank, either already evaluated fresh page load / full clear
 		// Because javascript, the only acceptable blank state is empty string
-		if (entire === "") {
+		if (entire === '') {
 			// If evaluated is a number (may not be)
 			// Replace eval string and add new operator
-			if (evaluated !== "") {
+			if (evaluated !== '') {
 				const curEvaluated = evaluated
 				addToEntire(curEvaluated + op);
 				replaceChunk(op);
 				clearEvaluated();
 			}
 			// If fresh page load / full clear
-			else { addToEntire("0" + op); };
+			else { addToEntire('0' + op); };
 			allowOld();
 		}
 		// Special functionality: if last in eval string is an operator, replace
@@ -143,34 +142,34 @@ const CalculatorComp = () => {
 	};
 
 	const decimalHandler = () => {
-		if (evaluated !== "") { clearHandler(); };
-		if (chunk === "" || opCheck() !== null) {
+		if (evaluated !== '') { clearHandler(); };
+		if (chunk === '' || opCheck() !== null) {
 			denyOld();
-			addToEntire("0.");
-			replaceChunk("0.");
+			addToEntire('0.');
+			replaceChunk('0.');
 		} else if (chunk.match(/\./) === null) {
 			denyOld();
-			addToEntire(".");
-			addToChunk(".");
+			addToEntire('.');
+			addToChunk('.');
 		};
 	};
 
 	const subtractHandler = () => {
-		const subtract = "-";
-		const negative = "-";
+		const subtract = '-';
+		const negative = '-';
 		// If the eval string is blank, either already evaluated fresh page load / full clear
 		// Because javascript, the only acceptable blank state is empty string
-		if (entire === "") {
+		if (entire === '') {
 			// If evaluated is a number (may not be)
 			// Replace eval string and add new operator
-			if (evaluated !== "") {
+			if (evaluated !== '') {
 				const curEvaluated = evaluated
 				addToEntire(curEvaluated + subtract);
 				replaceChunk(subtract);
 				clearEvaluated();
 			}
 			// If fresh page load / full clear
-			else { addToEntire("0" + subtract); };
+			else { addToEntire('0' + subtract); };
 			allowOld();
 		}
 		// Special functionality 01: if last in eval string is an operator, add a negative
@@ -197,7 +196,7 @@ const CalculatorComp = () => {
 	};
 
 	// Parses double negatives as addition
-	const dblNeg = (entire) => { return entire.replace(/--/, "+"); };
+	const dblNeg = (entire) => { return entire.replace(/--/, '+'); };
 
 	const historyUpdater = (entry) => {
 		if (history.length === 5) {
@@ -208,11 +207,11 @@ const CalculatorComp = () => {
 	};
 
 	const equalsHandler = () => {
-		if (entire === "") { return }
+		if (entire === '') { return }
 		// If someone accidentally solves after adding op
-		const replacedEntire = entire.replace(/[-]$/, "").replace(/[+\-*/]$/, "")
+		const replacedEntire = entire.replace(/[-]$/, '').replace(/[+\-*/]$/, '')
 		// If already solved, add
-		if (evaluated !== "") { historyUpdater([evaluated, evaluated]); }
+		if (evaluated !== '') { historyUpdater([evaluated, evaluated]); }
 		else {
 			const abridged = abridger(eval(dblNeg(replacedEntire)));
 			setEvaluated(abridged);
@@ -247,45 +246,44 @@ const CalculatorComp = () => {
 		clearEvaluated();
 	}
 
-	return (<>
-		<h1>A{splode ? "n Exploding " : " "}Calculator</h1>
+	return (
 		<section className={calcStyles.container} tabIndex={0} onKeyDown={keyDownHandler}>
 
-			<div className={calcStyles.calculator} style={{ backgroundColor: `${splode ? "#707070" : "#CCCCCC"}` }}>
+			<div className={calcStyles.calculator} style={{ backgroundColor: `${splode ? '#707070' : '#CCCCCC'}` }}>
 				<div className={calcStyles.screen}>
-					<p>{entire !== "" ? entire : "Ready"}</p>
-					<p>{evaluated !== "" ? evaluated : chunk !== "" ? chunk : "--"}</p>
+					<p>{entire !== '' ? entire : 'Ready'}</p>
+					<p>{evaluated !== '' ? evaluated : chunk !== '' ? chunk : '--'}</p>
 				</div>
 				<div className={calcStyles.grid}>
 					{
 						keyList.map((char) => {
 							switch (char) {
-								case "zero":
+								case 'zero':
 									return <Keypad keyId={char} keyVal={keyChars[char]} content={keyChars[char]} handler={zeroHandler} key={`${char}-pad`} splode={splode} />;
-								case "decimal":
+								case 'decimal':
 									return <Keypad keyId={char} keyVal={keyChars[char]} content={keyChars[char]} handler={decimalHandler} key={`${char}-pad`} splode={splode} />;
-								case "subtract":
+								case 'subtract':
 									return <Keypad keyId={char} keyVal={keyChars[char]} content={keyChars[char]} handler={subtractHandler} key={`${char}-pad`} splode={splode} />;
-								case "add":
-								case "multiply":
-								case "divide":
+								case 'add':
+								case 'multiply':
+								case 'divide':
 									return <Keypad keyId={char} keyVal={keyChars[char]} content={keyChars[char]} handler={operatorHandler} key={`${char}-pad`} splode={splode} />;
-								case "clear":
+								case 'clear':
 									return <Keypad keyId={char} keyVal={null} content={keyChars[char]} handler={clearHandler} key={`${char}-pad`} splode={splode} />;
-								case "equals":
+								case 'equals':
 									return <Keypad keyId={char} keyVal={null} content={keyChars[char]} handler={equalsHandler} key={`${char}-pad`} splode={splode} />;
 								default:
 									return <Keypad keyId={char} keyVal={keyChars[char]} content={keyChars[char]} handler={numberHandler} key={`${char}-pad`} splode={splode} />;
 							}
 						})
 					}
-					<button onClick={splodeHandler} className={`${keyStyles.keypad} ${keyStyles.numpad}`} style={{ height: "auto", zIndex: 10 }}>?</button>
+					<button onClick={splodeHandler} className={`${keyStyles.keypad} ${keyStyles.numpad}`} style={{ height: 'auto', zIndex: 10 }}>?</button>
 
 				</div>
 			</div>
 			<History history={history} pickHistory={pickHistory} clearHistory={clearHistory} oldAllowed={oldAllowed} />
 		</section>
-	</>);
+	);
 };
 
 export default CalculatorComp;

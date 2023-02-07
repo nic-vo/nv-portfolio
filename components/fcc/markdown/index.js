@@ -1,4 +1,4 @@
-import MarkdownComp from "./MarkdownComp";
+import MarkdownComp from './MarkdownComp';
 
 export {
 	MarkdownComp

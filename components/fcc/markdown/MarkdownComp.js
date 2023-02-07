@@ -8,7 +8,7 @@ import markLook from './MarkdownComp.module.scss';
 
 const MarkdownComp = () => {
 	const [allowLiveUpdates, setAllowLiveUpdates] = useState(false);
-	const [input, setInput] = useState("");
+	const [input, setInput] = useState('');
 	const [output, setOutput] = useState(null);
 	const [toggleEditor, setToggleEditor] = useState(false);
 	const [togglePreview, setTogglePreview] = useState(false);
@@ -33,7 +33,7 @@ const MarkdownComp = () => {
 	}, [input]);
 
 	const googleLinkProcessor = (string) => {
-		return string.replaceAll(/file\/d\//g, "uc?id=").replaceAll(/\/view\?usp\=share_link/g, "").replaceAll(/\/view\?usp\=sharing/g, "");
+		return string.replaceAll(/file\/d\//g, 'uc?id=').replaceAll(/\/view\?usp\=share_link/g, '').replaceAll(/\/view\?usp\=sharing/g, '');
 	};
 
 	const markedHandler = () => {
@@ -57,7 +57,7 @@ const MarkdownComp = () => {
 			<code className={markLook.why}>Why are you doing this on mobile?</code>
 			<div className={`${markLook.editor} ${markLook.pane} ${toggleEditor === true ? markLook.toggled : togglePreview === true ? markLook.hidden : markLook.both}`}>
 				<header className={markLook.header}>
-					<button onClick={allowUpdatesOnClick}>{allowLiveUpdates ? "Block" : "Allow"} live updates</button>
+					<button onClick={allowUpdatesOnClick}>{allowLiveUpdates ? 'Block' : 'Allow'} live updates</button>
 					<button onClick={updatePreview}>Update</button>
 					<h2>
 						editor

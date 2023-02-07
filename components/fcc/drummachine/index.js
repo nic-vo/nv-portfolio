@@ -1,4 +1,4 @@
-import DrumMachineComp from "./DrumMachineComp";
+import DrumMachineComp from './DrumMachineComp';
 
 export {
 	DrumMachineComp

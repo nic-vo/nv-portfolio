@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
-import Timeouter from "./Timeouter/Timeouter";
+import Timeouter from './Timeouter/Timeouter';
 
-import { FaPlus, FaMinus, FaCompressArrowsAlt, FaExpandArrowsAlt } from "react-icons/fa";
+import { FaPlus, FaMinus, FaCompressArrowsAlt, FaExpandArrowsAlt } from 'react-icons/fa';
 
 import compLook from './PomodoroComp.module.scss';
 
@@ -48,15 +48,15 @@ const PomodoroComp = () => {
 
 	useEffect(() => {
 		if (fullscreen === true) {
-			const coord = document.getElementById("pomcon").getBoundingClientRect();
-			setTimeout(() => { window.scrollTo({ left: 0, top: coord.y, behavior: "smooth" }) }, 90);
+			const coord = document.getElementById('pomcon').getBoundingClientRect();
+			setTimeout(() => { window.scrollTo({ left: 0, top: coord.y, behavior: 'smooth' }) }, 90);
 		};
 	}, [fullscreen]);
 
 	const containerClass = `${compLook.container} ${fullscreen === true ? compLook.fullscreen : compLook.windowed} ${activate === false ? compLook.inactive : workPhase === true ? compLook.workin : compLook.restin}`
 
 	return (
-		<section id="pomcon" className={containerClass}>
+		<section id='pomcon' className={containerClass}>
 			<Timeouter work={work} rest={rest} activate={activate} activator={activator} workPhase={workPhase} workToggle={workToggle} />
 			<div className={compLook.timeControls}>
 				<div className={compLook.controllerCategory}>

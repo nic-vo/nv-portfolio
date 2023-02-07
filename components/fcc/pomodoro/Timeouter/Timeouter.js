@@ -4,7 +4,7 @@ import compLook from '../PomodoroComp.module.scss';
 import timeLook from './Timeouter.module.scss';
 
 // For dev purposes can be set to something other than 60 (seconds)
-const MULTIPLIER = 10;
+const MULTIPLIER = 60;
 
 const Timeouter = ({ work, rest, activate, activator, workPhase, workToggle }) => {
 

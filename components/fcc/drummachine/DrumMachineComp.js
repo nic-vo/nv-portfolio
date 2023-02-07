@@ -5,11 +5,12 @@ import ControlPanel from './ControlPanel/ControlPanel';
 import machineStyles from './DrumMachine.module.scss';
 
 
-
 const DrumMachineComp = ({ banks, numberOfBanks, soundList }) => {
 
+	const chars = useMemo(() => { return ['q', 'w', 'e', 'a', 's', 'd', 'z', 'x', 'c'] }, [])
+
 	// Keeps track of sound last played, active sound bank, master volume
-	const [displaySound, setDisplaySound] = useState("");
+	const [displaySound, setDisplaySound] = useState('');
 	const [bankIndex, setBankIndex] = useState(0);
 	const [mVolume, setMVolume] = useState(0.5);
 	const [muteAll, setMuteAll] = useState(false);
@@ -20,7 +21,7 @@ const DrumMachineComp = ({ banks, numberOfBanks, soundList }) => {
 
 	const clearDisplaySoundHandler = useCallback((sound) => {
 		if (sound === displaySound) {
-			setDisplaySound("");
+			setDisplaySound('');
 		};
 	}, [displaySound]);
 
@@ -30,21 +31,24 @@ const DrumMachineComp = ({ banks, numberOfBanks, soundList }) => {
 
 	const bankIndexHandler = useCallback((e) => {
 		setBankIndex(parseInt(e.target.value));
-		setDisplaySound("");
+		setDisplaySound('');
 	}, [bankIndex]);
 
 	// Triggers sounds
-	const keyPressHandler = (e) => {
+	const keyDownHandler = (e) => {
+		e.preventDefault();
 		if (chars.includes(e.key)) {
 			const player = document.getElementById(e.key);
 			player.currentTime = 0;
 			player.play();
-		};
+		} else if (e.key === ' ') {
+			stopAllHandler();
+		}
 	};
 
 	// Iterate through all audio elements and stop them
 	const stopAllHandler = useCallback(() => {
-		const audios = document.getElementsByTagName("audio");
+		const audios = document.getElementsByTagName('audio');
 		for (let i = 0; i < audios.length; i++) {
 			const active = audios.item(i);
 			active.pause();
@@ -61,7 +65,7 @@ const DrumMachineComp = ({ banks, numberOfBanks, soundList }) => {
 	}, [bankIndex])
 
 	return (
-		<section className={machineStyles.machine}>
+		<section className={machineStyles.machine} tabIndex='0' onKeyDown={keyDownHandler}>
 			<ControlPanel
 				banks={banks}
 				displaySound={displaySound}
@@ -73,17 +77,17 @@ const DrumMachineComp = ({ banks, numberOfBanks, soundList }) => {
 				bankIndexHandler={bankIndexHandler}
 				stopAllHandler={stopAllHandler}
 				muteAllHandler={muteAllHandler} />
-			<div className={machineStyles.grid} tabIndex="0" onKeyPress={keyPressHandler}>
+			<div className={machineStyles.grid} >
 				{Object.keys(activeBank).map(char => {
 					return <Pad
 						char={char}
-						name={activeBank[char]["name"]}
+						name={activeBank[char]['name']}
 						path={activeBank[char].path}
 						mVolume={mVolume}
 						muteAll={muteAll}
 						setDisplaySound={setDisplaySoundHandler}
 						clearDisplaySound={clearDisplaySoundHandler}
-						key={`pad-${activeBank[char]["name"]}`}
+						key={`pad-${activeBank[char]['name']}`}
 					/>
 				})}
 			</div>

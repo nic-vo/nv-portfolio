@@ -15,9 +15,9 @@ const MasterSlider = ({ mVolume, mVolumeHandler }) => {
 	}, [mVolume, master]);
 
 	return (
-		<label htmlFor="mVolume">
+		<label htmlFor='mVolume'>
 			<FaVolumeUp />
-			<input id="mVolume" type="range" min="0" max="1" step="0.05" value={master} onChange={masterOnChangeHandler} onPointerUp={mVolumeHandler} />
+			<input id='mVolume' type='range' min='0' max='1' step='0.05' value={master} onChange={masterOnChangeHandler} onPointerUp={mVolumeHandler} />
 		</label>
 	);
 };
@@ -41,11 +41,11 @@ const ControlPanel = ({
 		<div className={controlStyles.panel}>
 			<div className={controlStyles.display}>
 				<p>{banks[bankIndex]}:</p>
-				<p>{displaySound ? displaySound : "--"}</p>
+				<p>{displaySound ? displaySound : '--'}</p>
 			</div>
 			<div className={controlStyles.controls}>
 				<div className={controlStyles.sliders}>
-					<label htmlFor="bank"><FaMusic /><input id="bank" type="range" min="0" max={numberOfBanks} step="1" value={bankIndex} onChange={bankIndexHandler} /></label>
+					<label htmlFor='bank'><FaMusic /><input id='bank' type='range' min='0' max={numberOfBanks} step='1' value={bankIndex} onChange={bankIndexHandler} /></label>
 					<MasterSlider mVolume={mVolume} mVolumeHandler={mVolumeHandler} />
 				</div>
 				<div className={controlStyles.buttons}>
