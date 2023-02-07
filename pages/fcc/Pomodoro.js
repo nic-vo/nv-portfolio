@@ -1,8 +1,10 @@
 import Head from 'next/head';
+import { getCategoryPages, getPageData } from "../../lib/props/homepage/projects";
+import { getVersionNumber } from '../../lib/props/homepage/homepage';
 import { ProjectLayout } from '../../components/global';
 import { PomodoroComp } from '../../components/fcc/pomodoro';
 
-const Pomodoro = () => {
+const Pomodoro = ({ layoutData, pageData }) => {
 	return (<>
 		<Head>
 			<title>A Pomodoro Timer</title>
@@ -10,16 +12,35 @@ const Pomodoro = () => {
 			<link rel="icon" href="/favicon.ico" />
 		</Head>
 
-		<ProjectLayout>
-			<h1>A Pomodoro Timer</h1>
+		<ProjectLayout layoutData={layoutData} pageData={pageData}>
 			<PomodoroComp />
-			<section>
-				<p>
-					Description blurb + link to codepen
-				</p>
-			</section>
+
 		</ProjectLayout>
 	</>);
 };
 
 export default Pomodoro;
+
+export async function getStaticProps() {
+	const layoutFetch = await Promise.all([await getCategoryPages({ category: 'fcc' }), await getVersionNumber(), await getPageData({
+		category: 'fcc',
+		page: 'Pomodoro',
+		types: ['title',
+			'description',
+			'techs',
+			'original']
+	})]);
+	const layoutData = {
+		otherPages: layoutFetch[0],
+		version: layoutFetch[1],
+		linkExclude: 'Pomodoro'
+	};
+	const pageData = layoutFetch[2];
+	return {
+		props: {
+			layoutData,
+			pageData
+		},
+		revalidate: 172800
+	};
+};

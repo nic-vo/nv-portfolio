@@ -1,28 +1,28 @@
 import Head from 'next/head';
 import { getCategoryPages, getPageData } from '../../lib/props/homepage/projects';
 import { getVersionNumber } from '../../lib/props/homepage/homepage';
-import { CollatzComp } from '../../components/personal';
 import { ProjectLayout } from '../../components/global';
+import { AimTrainerComp } from '../../components/personal';
 
-const Collatz = ({ layoutData, pageData }) => {
+const AimTrainer = ({ layoutData, pageData }) => {
 	return (<>
 		<Head>
-			<title>A Collatz generator</title>
-			<meta name='description' content="Input an int into this baby and it'll spit out how many steps it takes to reach 1 via Collatz" />
+			<title>An Aim Trainer</title>
+			<meta name='description' content="An aim trainer that's really only suited for 2d games like osu!" />
 			<link rel='icon' href='/favicon.ico' />
 		</Head>
 		<ProjectLayout layoutData={layoutData} pageData={pageData}>
-			<CollatzComp />
+			<AimTrainerComp />
 		</ProjectLayout>
-	</>)
-}
+	</>);
+};
 
-export default Collatz;
+export default AimTrainer;
 
 export async function getStaticProps() {
-	const layoutFetch = await Promise.all([await getCategoryPages({ category: 'fcc' }), await getVersionNumber(), await getPageData({
-		category: 'fcc',
-		page: 'Calculator',
+	const layoutFetch = await Promise.all([await getCategoryPages({ category: 'personal' }), await getVersionNumber(), await getPageData({
+		category: 'personal',
+		page: 'AimTrainer',
 		types: ['title',
 			'description',
 			'techs',
@@ -31,7 +31,7 @@ export async function getStaticProps() {
 	const layoutData = {
 		otherPages: layoutFetch[0],
 		version: layoutFetch[1],
-		linkExclude: 'Calculator'
+		linkExclude: 'AimTrainer'
 	};
 	const pageData = layoutFetch[2];
 	return {
