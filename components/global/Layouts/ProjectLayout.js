@@ -1,4 +1,4 @@
-import projectStyles from './ProjectLayout.module.scss';
+import Footer from '../misc/Footer/Footer';
 
 import projectLayoutLook from './ProjectLayout.module.scss';
 
@@ -37,7 +37,7 @@ const ProjectLayout = ({ children, layoutData, pageData }) => {
 					<p>Original: <a href={original.link}>{original.type === 'github' ? 'Github' : 'Codepen'}</a></p>
 				</section>
 			</main>
-			<footer><h1>Footer</h1></footer>
+			<Footer version={version} />
 		</>
 	);
 };

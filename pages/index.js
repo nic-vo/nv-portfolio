@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Footer from '../components/global/misc/Footer/Footer';
 import { getProjectLists } from '../lib/props/homepage/projects';
 import { getVersionNumber } from '../lib/props/homepage/homepage';
 
@@ -45,11 +46,8 @@ export default function Home({ pageList, version }) {
 				</nav>
 				<ContactForm />
 			</main>
-
-			<footer className={homeLook.footer}>
-				v. {version} by nicolas vo
-			</footer>
-		</div>
+			<Footer version={version} />
+		</div >
 	);
 };
 
