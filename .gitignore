@@ -15,6 +15,9 @@
 # production
 /build
 
+# these get regenerated often anyway
+public/thumbs
+
 # misc
 .DS_Store
 *.pem
@@ -34,3 +37,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# dev stuff
+/lib/dev
