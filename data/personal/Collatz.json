@@ -1,0 +1,15 @@
+{
+	"title": "A Collatz Simulator",
+	"techs": [
+		"HTML5",
+		"CSS3",
+		"React",
+		"ES6",
+		"MongoDB (WIP)"
+	],
+	"description": "A Javascript / React sketch more than a full project (for now). I was inspired by a video from a YouTube science channel called Veritasium about a math theorem called the Collatz conjecture. I plan on expanding this to include a database that memoizes all user inputs into this Collatz tool.",
+	"original": {
+		"type": "github",
+		"link": ""
+	}
+}

@@ -1,0 +1,17 @@
+{
+	"title": "Block Builders General Contracting, Inc. Website",
+	"techs": [
+		"HTML5",
+		"CSS3",
+		"React",
+		"AWS",
+		"Python 3.9",
+		"ES6"
+	],
+	"description": "A React SPA that I created for a client who runs a small contracting business. I started out creating a logo for the client's brand, but then I began helping the client develop its online presence. The site contains a static portfolio and some basic contact info. The highlight of the site, however, is the contact form, which actually POSTs its form data to a Lambda backend I developed on my own (for better or for worse). Working on the security of the contact form was my top priority because it engages a number of other services including the client's host's SMTP servers for automated emails when the contact form is engaged. This site is currently in the maintenance and upkeep phase at the moment.",
+	"live": "",
+	"original": {
+		"type": "github",
+		"link": ""
+	}
+}
