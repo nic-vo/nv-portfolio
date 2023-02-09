@@ -2,7 +2,7 @@ import Footer from '../misc/Footer/Footer';
 import Header from '../misc/Header/Header';
 import ProjectInfoCard from '../misc/ProjectInfo/ProjectInfoCard';
 
-import projectLayoutLook from './ProjectLayout.module.scss';
+import pLayoutLook from './ProjectLayout.module.scss';
 
 const ProjectLayout = ({ children, layoutData, projectData }) => {
 	const { version, linkExclude } = layoutData;
