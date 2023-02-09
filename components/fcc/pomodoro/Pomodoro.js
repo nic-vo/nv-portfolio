@@ -4,9 +4,9 @@ import Timeouter from './Timeouter/Timeouter';
 
 import { FaPlus, FaMinus, FaCompressArrowsAlt, FaExpandArrowsAlt } from 'react-icons/fa';
 
-import compLook from './PomodoroComp.module.scss';
+import pomoLook from './Pomodoro.module.scss';
 
-const PomodoroComp = () => {
+const Pomodoro = () => {
 	const [work, setWork] = useState(1);
 	const [rest, setRest] = useState(1);
 	const [activate, setActivate] = useState(false);
@@ -53,36 +53,36 @@ const PomodoroComp = () => {
 		};
 	}, [fullscreen]);
 
-	const containerClass = `${compLook.container} ${fullscreen === true ? compLook.fullscreen : compLook.windowed} ${activate === false ? compLook.inactive : workPhase === true ? compLook.workin : compLook.restin}`
+	const containerClass = `${pomoLook.container} ${fullscreen === true ? pomoLook.fullscreen : pomoLook.windowed} ${activate === false ? pomoLook.inactive : workPhase === true ? pomoLook.workin : pomoLook.restin}`
 
 	return (
 		<section id='pomcon' className={containerClass}>
 			<Timeouter work={work} rest={rest} activate={activate} activator={activator} workPhase={workPhase} workToggle={workToggle} />
-			<div className={compLook.timeControls}>
-				<div className={compLook.controllerCategory}>
+			<div className={pomoLook.timeControls}>
+				<div className={pomoLook.controllerCategory}>
 					<h3>Work Time</h3>
-					<div className={compLook.counter}>
-						<button onClick={() => { workIncHandler(5) }} className={compLook.menter} disabled={activate}><FaPlus />5</button>
-						<button onClick={() => { workIncHandler() }} className={compLook.menter} disabled={activate}><FaPlus />1</button>
+					<div className={pomoLook.counter}>
+						<button onClick={() => { workIncHandler(5) }} className={pomoLook.menter} disabled={activate}><FaPlus />5</button>
+						<button onClick={() => { workIncHandler() }} className={pomoLook.menter} disabled={activate}><FaPlus />1</button>
 						<span>{work}</span>
-						<button onClick={() => { workDecHandler() }} className={compLook.menter} disabled={activate}><FaMinus />1</button>
-						<button onClick={() => { workDecHandler(5) }} className={compLook.menter} disabled={activate}><FaMinus />5</button>
+						<button onClick={() => { workDecHandler() }} className={pomoLook.menter} disabled={activate}><FaMinus />1</button>
+						<button onClick={() => { workDecHandler(5) }} className={pomoLook.menter} disabled={activate}><FaMinus />5</button>
 					</div>
 				</div>
-				<div className={compLook.controllerCategory}>
+				<div className={pomoLook.controllerCategory}>
 					<h3>Rest Time</h3>
-					<div className={compLook.counter}>
-						<button onClick={() => { restIncHandler(5) }} className={compLook.menter} disabled={activate}><FaPlus />5</button>
-						<button onClick={() => { restIncHandler() }} className={compLook.menter} disabled={activate}><FaPlus />1</button>
+					<div className={pomoLook.counter}>
+						<button onClick={() => { restIncHandler(5) }} className={pomoLook.menter} disabled={activate}><FaPlus />5</button>
+						<button onClick={() => { restIncHandler() }} className={pomoLook.menter} disabled={activate}><FaPlus />1</button>
 						<span>{rest}</span>
-						<button onClick={() => { restDecHandler() }} className={compLook.menter} disabled={activate}><FaMinus />1</button>
-						<button onClick={() => { restDecHandler(5) }} className={compLook.menter} disabled={activate}><FaMinus />5</button>
+						<button onClick={() => { restDecHandler() }} className={pomoLook.menter} disabled={activate}><FaMinus />1</button>
+						<button onClick={() => { restDecHandler(5) }} className={pomoLook.menter} disabled={activate}><FaMinus />5</button>
 					</div>
 				</div>
 			</div>
-			<button onClick={fullscrenHandler} className={compLook.fullscreener}>{fullscreen === true ? <FaCompressArrowsAlt /> : <FaExpandArrowsAlt />}</button>
+			<button onClick={fullscrenHandler} className={pomoLook.fullscreener}>{fullscreen === true ? <FaCompressArrowsAlt /> : <FaExpandArrowsAlt />}</button>
 		</section>
 	);
 };
 
-export default PomodoroComp;
+export default Pomodoro;

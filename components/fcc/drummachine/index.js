@@ -1,5 +1,5 @@
-import DrumMachineComp from './DrumMachineComp';
+import DrumMachine from './DrumMachine';
 
 export {
-	DrumMachineComp
+	DrumMachine
 };

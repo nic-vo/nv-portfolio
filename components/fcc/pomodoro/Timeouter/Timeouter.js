@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 
-import compLook from '../PomodoroComp.module.scss';
+import pomoLook from '../Pomodoro.module.scss';
 import timeLook from './Timeouter.module.scss';
 
 // For dev purposes can be set to something other than 60 (seconds)
@@ -139,9 +139,9 @@ const Timeouter = ({ work, rest, activate, activator, workPhase, workToggle }) =
 			<h2 className={timeLook.bigLabel}>{workPhase ? "WORKIN'" : "RESTIN'"}</h2>
 			<p className={timeLook.timeOutput}>{`${currentTime >= 600 ? Math.floor(currentTime / 60) : `0${Math.floor(currentTime / 60)}`}`}:{`${currentTime % 60 >= 10 ? currentTime % 60 : `0${currentTime % 60}`}`}</p>
 			<div className={timeLook.controls}>
-				<button onClick={resetHandler} className={compLook.menter} disabled={activate}>Reset</button>
-				<button onClick={activator} className={compLook.menter} >{activate === true ? "Stop" : "Start"}</button>
-				<button onClick={skipper} className={compLook.menter}>Skip</button>
+				<button onClick={resetHandler} className={pomoLook.menter} disabled={activate}>Reset</button>
+				<button onClick={activator} className={pomoLook.menter} >{activate === true ? "Stop" : "Start"}</button>
+				<button onClick={skipper} className={pomoLook.menter}>Skip</button>
 			</div>
 			<audio autoPlay={false} src={assetPath + "work.mp3"} id='workaudio' ref={workRef} />
 			<audio autoPlay={false} src={assetPath + "rest.mp3"} id='restaudio' ref={restRef} />

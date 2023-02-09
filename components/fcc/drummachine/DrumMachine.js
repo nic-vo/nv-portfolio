@@ -5,7 +5,7 @@ import ControlPanel from './ControlPanel/ControlPanel';
 import machineStyles from './DrumMachine.module.scss';
 
 
-const DrumMachineComp = ({ banks, numberOfBanks, soundList }) => {
+const DrumMachine = ({ banks, numberOfBanks, soundList }) => {
 
 	const chars = useMemo(() => { return ['q', 'w', 'e', 'a', 's', 'd', 'z', 'x', 'c'] }, [])
 
@@ -95,4 +95,4 @@ const DrumMachineComp = ({ banks, numberOfBanks, soundList }) => {
 	);
 };
 
-export default DrumMachineComp;
+export default DrumMachine;

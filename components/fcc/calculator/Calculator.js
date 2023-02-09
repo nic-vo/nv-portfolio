@@ -3,7 +3,7 @@ import Keypad from './Keypad/Keypad';
 import keyChars from './Keypad/KeypadChars';
 import History from './History/History';
 
-import calcStyles from './CalculatorComp.module.scss';
+import calcStyles from './Calculator.module.scss';
 import keyStyles from './Keypad/Keypad.module.scss';
 
 
@@ -11,7 +11,7 @@ import keyStyles from './Keypad/Keypad.module.scss';
 const keyList = Object.keys(keyChars);
 const opRegex = /[+\-*/]-*$/
 
-const CalculatorComp = () => {
+const Calculator = () => {
 	/*
 		Because javascript, the only acceptable blank state is empty string
 	*/
@@ -286,4 +286,4 @@ const CalculatorComp = () => {
 	);
 };
 
-export default CalculatorComp;
+export default Calculator;

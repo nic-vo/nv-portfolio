@@ -1,4 +1,4 @@
-import CalculatorComp from "./CalculatorComp";
+import CalculatorComp from "./Calculator";
 
 export {
 	CalculatorComp

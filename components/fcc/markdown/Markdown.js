@@ -4,9 +4,9 @@ import { parse as mParse } from 'marked';
 import { sanitize } from 'dompurify';
 
 import { FaArrowsAltH } from 'react-icons/fa';
-import markLook from './MarkdownComp.module.scss';
+import markLook from './Markdown.module.scss';
 
-const MarkdownComp = () => {
+const Markdown = () => {
 	const [allowLiveUpdates, setAllowLiveUpdates] = useState(false);
 	const [input, setInput] = useState('');
 	const [output, setOutput] = useState(null);
@@ -80,4 +80,4 @@ const MarkdownComp = () => {
 	);
 };
 
-export default MarkdownComp;
+export default Markdown;
