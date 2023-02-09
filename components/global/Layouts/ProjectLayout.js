@@ -2,10 +2,10 @@ import Footer from '../misc/Footer/Footer';
 
 import projectLayoutLook from './ProjectLayout.module.scss';
 
-const ProjectLayout = ({ children, layoutData, pageData }) => {
+const ProjectLayout = ({ children, layoutData, projectData }) => {
 	const { version, linkExclude } = layoutData;
-	const { category, pages } = layoutData.otherPages;
-	const { title, description, techs, original } = pageData;
+	const { otherProjects } = layoutData;
+	const { title, description, techs, original } = projectData;
 	return (
 		<>
 			<header>
