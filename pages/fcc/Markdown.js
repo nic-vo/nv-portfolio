@@ -1,10 +1,10 @@
 import Head from 'next/head';
-import { getCategoryPages, getPageData } from '../../lib/props/homepage/projects';
+import { getCategoryProjects, getProjectData } from '../../lib/props/homepage/projects';
 import { getVersionNumber } from '../../lib/props/homepage/homepage';
-import { MarkdownComp } from '../../components/fcc/markdown';
+import { Markdown } from '../../components/fcc/markdown';
 import { ProjectLayout } from '../../components/global';
 
-const Markdown = ({ layoutData, pageData }) => {
+const MarkdownPage = ({ layoutData, projectData }) => {
 	return (
 		<>
 			<Head>
@@ -13,34 +13,34 @@ const Markdown = ({ layoutData, pageData }) => {
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 
-			<ProjectLayout layoutData={layoutData} pageData={pageData}>
-				<MarkdownComp />
+			<ProjectLayout layoutData={layoutData} projectData={projectData}>
+				<Markdown />
 			</ProjectLayout>
 		</>
 	);
 };
 
-export default Markdown;
+export default MarkdownPage;
 
 export async function getStaticProps() {
-	const layoutFetch = await Promise.all([await getCategoryPages({ category: 'fcc' }), await getVersionNumber(), await getPageData({
+	const layoutFetch = await Promise.all([await getCategoryProjects({ category: 'fcc' }), await getVersionNumber(), await getProjectData({
 		category: 'fcc',
-		page: 'Markdown',
+		project: 'Markdown',
 		types: ['title',
 			'description',
 			'techs',
 			'original']
 	})]);
 	const layoutData = {
-		otherPages: layoutFetch[0],
+		otherProjects: layoutFetch[0],
 		version: layoutFetch[1],
 		linkExclude: 'Markdown'
 	};
-	const pageData = layoutFetch[2];
+	const projectData = layoutFetch[2];
 	return {
 		props: {
 			layoutData,
-			pageData
+			projectData
 		},
 		revalidate: 172800
 	};

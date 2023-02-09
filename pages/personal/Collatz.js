@@ -1,43 +1,43 @@
 import Head from 'next/head';
-import { getCategoryPages, getPageData } from '../../lib/props/homepage/projects';
+import { getCategoryProjects, getProjectData } from '../../lib/props/homepage/projects';
 import { getVersionNumber } from '../../lib/props/homepage/homepage';
-import { CollatzComp } from '../../components/personal';
+import { Collatz } from '../../components/personal';
 import { ProjectLayout } from '../../components/global';
 
-const Collatz = ({ layoutData, pageData }) => {
+const CollatzPage = ({ layoutData, projectData }) => {
 	return (<>
 		<Head>
 			<title>A Collatz generator</title>
 			<meta name='description' content="Input an int into this baby and it'll spit out how many steps it takes to reach 1 via Collatz" />
 			<link rel='icon' href='/favicon.ico' />
 		</Head>
-		<ProjectLayout layoutData={layoutData} pageData={pageData}>
-			<CollatzComp />
+		<ProjectLayout layoutData={layoutData} projectData={projectData}>
+			<Collatz />
 		</ProjectLayout>
 	</>)
 }
 
-export default Collatz;
+export default CollatzPage;
 
 export async function getStaticProps() {
-	const layoutFetch = await Promise.all([await getCategoryPages({ category: 'fcc' }), await getVersionNumber(), await getPageData({
-		category: 'fcc',
-		page: 'Calculator',
+	const layoutFetch = await Promise.all([await getCategoryProjects({ category: 'personal' }), await getVersionNumber(), await getProjectData({
+		category: 'personal',
+		project: 'Collatz',
 		types: ['title',
 			'description',
 			'techs',
 			'original']
 	})]);
 	const layoutData = {
-		otherPages: layoutFetch[0],
+		otherProjects: layoutFetch[0],
 		version: layoutFetch[1],
-		linkExclude: 'Calculator'
+		linkExclude: 'Collatz'
 	};
-	const pageData = layoutFetch[2];
+	const projectData = layoutFetch[2];
 	return {
 		props: {
 			layoutData,
-			pageData
+			projectData
 		},
 		revalidate: 172800
 	};

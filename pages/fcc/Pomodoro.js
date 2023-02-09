@@ -1,45 +1,44 @@
 import Head from 'next/head';
-import { getCategoryPages, getPageData } from "../../lib/props/homepage/projects";
+import { getCategoryProjects, getProjectData } from '../../lib/props/homepage/projects';
 import { getVersionNumber } from '../../lib/props/homepage/homepage';
 import { ProjectLayout } from '../../components/global';
-import { PomodoroComp } from '../../components/fcc/pomodoro';
+import { Pomodoro } from '../../components/fcc/Pomodoro';
 
-const Pomodoro = ({ layoutData, pageData }) => {
+const PomodoroPage = ({ layoutData, projectData }) => {
 	return (<>
 		<Head>
 			<title>A Pomodoro Timer</title>
-			<meta name="description" content="A React Pomodoro Timer completed for freeCodeCamp's frontend certificate" />
-			<link rel="icon" href="/favicon.ico" />
+			<meta name='description' content="A React Pomodoro Timer completed for freeCodeCamp's frontend certificate" />
+			<link rel='icon' href='/favicon.ico' />
 		</Head>
 
-		<ProjectLayout layoutData={layoutData} pageData={pageData}>
-			<PomodoroComp />
-
+		<ProjectLayout layoutData={layoutData} projectData={projectData}>
+			<Pomodoro />
 		</ProjectLayout>
 	</>);
 };
 
-export default Pomodoro;
+export default PomodoroPage;
 
 export async function getStaticProps() {
-	const layoutFetch = await Promise.all([await getCategoryPages({ category: 'fcc' }), await getVersionNumber(), await getPageData({
+	const layoutFetch = await Promise.all([await getCategoryProjects({ category: 'fcc' }), await getVersionNumber(), await getProjectData({
 		category: 'fcc',
-		page: 'Pomodoro',
+		project: 'Pomodoro',
 		types: ['title',
 			'description',
 			'techs',
 			'original']
 	})]);
 	const layoutData = {
-		otherPages: layoutFetch[0],
+		otherProjects: layoutFetch[0],
 		version: layoutFetch[1],
 		linkExclude: 'Pomodoro'
 	};
-	const pageData = layoutFetch[2];
+	const projectData = layoutFetch[2];
 	return {
 		props: {
 			layoutData,
-			pageData
+			projectData
 		},
 		revalidate: 172800
 	};

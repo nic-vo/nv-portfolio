@@ -1,22 +1,18 @@
 import Head from 'next/head';
-import { getCategoryPages } from '../../lib/props/homepage/projects';
+import { BlockBuildersGC } from '../../components/professional';
+import { getCategoryProjects, getProjectData } from '../../lib/props/homepage/projects';
 import { getVersionNumber } from '../../lib/props/homepage/homepage';
 import { ProjectLayout } from '../../components/global';
 
-const BBGC = ({ layoutStuff }) => {
+const BBGC = ({ layoutData, projectData }) => {
 	return (<>
 		<Head>
 			<title>Block Builders General Construction</title>
 			<meta name='description' content='A page summarizing my progress in developing an online presence for Block Builders General Contracting, Inc.' />
 			<link rel='icon' href='/favicon.ico' />
 		</Head>
-		<ProjectLayout layoutStuff={layoutStuff} linkExclude={'BlockBuildersGC'}>
-			<h1>Block Builders General Contracting, Inc. Website</h1>
-			<section>
-				<p>
-					Description blurb
-				</p>
-			</section>
+		<ProjectLayout layoutData={layoutData} projectData={projectData}>
+			<BlockBuildersGC />
 		</ProjectLayout>
 	</>)
 }
@@ -24,12 +20,24 @@ const BBGC = ({ layoutStuff }) => {
 export default BBGC;
 
 export async function getStaticProps() {
-	const otherPages = await getCategoryPages({ category: 'professional' });
-	const version = await getVersionNumber();
-	const layoutStuff = await Promise.all([otherPages, version]);
+	const layoutFetch = await Promise.all([await getCategoryProjects({ category: 'professional' }), await getVersionNumber(), await getProjectData({
+		category: 'professional',
+		project: 'BlockBuildersGC',
+		types: ['title',
+			'description',
+			'techs',
+			'original']
+	})]);
+	const layoutData = {
+		otherProjects: layoutFetch[0],
+		version: layoutFetch[1],
+		linkExclude: 'BlockBuildersGC'
+	};
+	const projectData = layoutFetch[2];
 	return {
 		props: {
-			layoutStuff
+			layoutData,
+			projectData
 		},
 		revalidate: 172800
 	};

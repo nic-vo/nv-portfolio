@@ -1,12 +1,12 @@
 import Head from 'next/head';
-import { getCategoryPages, getPageData } from '../../lib/props/homepage/projects';
+import { getCategoryProjects, getProjectData } from '../../lib/props/homepage/projects';
 import { getVersionNumber } from '../../lib/props/homepage/homepage';
-import { DrumMachineComp } from '../../components/fcc/drummachine';
+import { DrumMachine } from '../../components/fcc/DrumMachine/';
 import { ProjectLayout } from '../../components/global';
 
-import { getBankNames, getSoundList } from '../../lib/props/fcc/drummachine/drummachine';
+import getDrumMachineProps from '../../lib/props/fcc/DrumMachine/DrumMachine';
 
-const DrumMachine = ({ banks, numberOfBanks, soundList, layoutData, pageData }) => {
+const DrumMachinePage = ({ banks, numberOfBanks, soundList, layoutData, projectData }) => {
 	return (<>
 		<Head>
 			<title>A Drum Machine</title>
@@ -14,39 +14,38 @@ const DrumMachine = ({ banks, numberOfBanks, soundList, layoutData, pageData }) 
 			<link rel='icon' href='/favicon.ico' />
 		</Head>
 
-		<ProjectLayout layoutData={layoutData} pageData={pageData}>
-			<DrumMachineComp banks={banks} numberOfBanks={numberOfBanks} soundList={soundList} />
+		<ProjectLayout layoutData={layoutData} projectData={projectData}>
+			<DrumMachine banks={banks} numberOfBanks={numberOfBanks} soundList={soundList} />
 		</ProjectLayout>
 	</>);
 };
 
-export default DrumMachine;
+export default DrumMachinePage;
 
 export async function getStaticProps() {
-	const allBanks = await getBankNames();
-	const soundList = await getSoundList(allBanks.banks);
-
-	const layoutFetch = await Promise.all([await getCategoryPages({ category: 'fcc' }), await getVersionNumber(), await getPageData({
+	const drumMachineProps = await getDrumMachineProps();
+	const { banks, numberOfBanks, soundList } = drumMachineProps
+	const layoutFetch = await Promise.all([await getCategoryProjects({ category: 'fcc' }), await getVersionNumber(), await getProjectData({
 		category: 'fcc',
-		page: 'DrumMachine',
+		project: 'DrumMachine',
 		types: ['title',
 			'description',
 			'techs',
 			'original']
 	})]);
 	const layoutData = {
-		otherPages: layoutFetch[0],
+		otherProjects: layoutFetch[0],
 		version: layoutFetch[1],
-		linkExclude: 'Calculator'
+		linkExclude: 'DrumMachine'
 	};
-	const pageData = layoutFetch[2];
+	const projectData = layoutFetch[2];
 	return {
 		props: {
-			banks: allBanks.banks,
-			numberOfBanks: allBanks.numberOfBanks,
+			banks,
+			numberOfBanks,
 			soundList,
 			layoutData,
-			pageData
+			projectData
 		},
 		revalidate: 172800
 	};

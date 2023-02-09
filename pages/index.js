@@ -7,7 +7,7 @@ import { Hero, ProjectCard, ContactForm } from '../components/homepage';
 
 import homeLook from '../styles/Home.module.scss';
 
-export default function Home({ pageList, version }) {
+export default function Home({ projectList, version }) {
 
 	return (
 		<div className={homeLook.container}>
@@ -20,19 +20,19 @@ export default function Home({ pageList, version }) {
 			<main className={homeLook.main}>
 				<Hero />
 				<nav style={{ position: 'relative', width: '100%' }}>
-					{pageList.map((category) => {
-						const { categoryName, pages } = category;
+					{projectList.map((category) => {
+						const { categoryName, projects } = category;
 						return (
 							<div key={`${category.categoryName}-links`} className={homeLook.navCat}>
 								<h2>{categoryName === 'fcc' ? 'freeCodeCamp' : categoryName}</h2>
-								{pages.length !== 0 ?
+								{projects.length !== 0 ?
 									<ul className={homeLook.navCatList}>
 										{
-											pages.map((page) => {
-												const { title, techs, description } = page;
+											projects.map((projectObj) => {
+												const { title, techs, project } = projectObj;
 												return (
-													<li key={`${categoryName}-${page.title}`} className={homeLook.navCatPage}>
-														<ProjectCard categoryName={categoryName} title={title} techs={techs} description={description} />
+													<li key={`${categoryName}-${title}`} className={homeLook.navCatPage}>
+														<ProjectCard categoryName={categoryName} title={title} project={project} techs={techs} />
 
 													</li>
 												)
@@ -52,11 +52,11 @@ export default function Home({ pageList, version }) {
 };
 
 export async function getStaticProps() {
-	const pageList = await getProjectLists();
+	const projectList = await getProjectLists();
 	const version = await getVersionNumber();
 	return {
 		props: {
-			pageList,
+			projectList,
 			version
 		},
 		revalidate: 3600

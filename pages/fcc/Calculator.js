@@ -1,10 +1,10 @@
 import Head from 'next/head';
 import { ProjectLayout } from '../../components/global';
-import { CalculatorComp } from '../../components/fcc/calculator';
+import { Calculator } from '../../components/fcc/Calculator';
 import { getVersionNumber } from '../../lib/props/homepage/homepage';
-import { getCategoryPages, getPageData } from '../../lib/props/homepage/projects';
+import { getCategoryProjects, getProjectData } from '../../lib/props/homepage/projects';
 
-const Calculator = ({ layoutData, pageData }) => {
+const CalculatorPage = ({ layoutData, projectData }) => {
 	return (<>
 		<Head>
 			<title>A Calculator</title>
@@ -12,33 +12,33 @@ const Calculator = ({ layoutData, pageData }) => {
 			<link rel='icon' href='/favicon.ico' />
 		</Head>
 
-		<ProjectLayout layoutData={layoutData} pageData={pageData}>
-			<CalculatorComp />
+		<ProjectLayout layoutData={layoutData} projectData={projectData}>
+			<Calculator />
 		</ProjectLayout>
 	</>);
 };
 
-export default Calculator;
+export default CalculatorPage;
 
 export async function getStaticProps() {
-	const layoutFetch = await Promise.all([await getCategoryPages({ category: 'fcc' }), await getVersionNumber(), await getPageData({
+	const layoutFetch = await Promise.all([await getCategoryProjects({ category: 'fcc' }), await getVersionNumber(), await getProjectData({
 		category: 'fcc',
-		page: 'Calculator',
+		project: 'Calculator',
 		types: ['title',
 			'description',
 			'techs',
 			'original']
 	})]);
 	const layoutData = {
-		otherPages: layoutFetch[0],
+		otherProjects: layoutFetch[0],
 		version: layoutFetch[1],
 		linkExclude: 'Calculator'
 	};
-	const pageData = layoutFetch[2];
+	const projectData = layoutFetch[2];
 	return {
 		props: {
 			layoutData,
-			pageData
+			projectData
 		},
 		revalidate: 172800
 	};
