@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 
-import collLook from './CollatzComp.module.scss'
+import collLook from './Collatz.module.scss'
 
-const CollatzComp = () => {
+const Collatz = () => {
 	const [steps, setSteps] = useState([]);
 	const [solved, setSolved] = useState(false);
 	const [highest, setHighest] = useState(null);
@@ -67,4 +67,4 @@ const CollatzComp = () => {
 	);
 };
 
-export default CollatzComp;
+export default Collatz;

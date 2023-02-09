@@ -2,9 +2,9 @@ import { useState } from "react";
 
 import Game from "./Game/Game";
 
-import ATLook from './AimTrainerComp.module.scss';
+import ATLook from './AimTrainer.module.scss';
 
-const AimTrainerComp = () => {
+const AimTrainer = () => {
 
 	const [phase, setPhase] = useState('MENU');
 	const [lastScore, setLastScore] = useState(null);
@@ -52,4 +52,4 @@ const AimTrainerComp = () => {
 	);
 };
 
-export default AimTrainerComp;
+export default AimTrainer;
