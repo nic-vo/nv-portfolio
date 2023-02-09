@@ -1,0 +1,77 @@
+.header {
+	position: fixed;
+	display: flex;
+	justify-content: baseline;
+	right: 0;
+	padding: 0;
+	margin: 0;
+	z-index: 100;
+	translate: 12rem;
+	transition: translate var(--slow-transition);
+}
+
+.toggler {
+	position: absolute;
+	left: -100px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 2em;
+	margin: 1em;
+	z-index: 101;
+}
+
+.returner {
+	display: none;
+	height: 100vh;
+	width: 100vw;
+	position: absolute;
+	background-color: rgba(0, 0, 0, 0.8);
+	left: -100vw;
+	z-index: 99;
+}
+
+.svg {
+	display: block;
+	rotate: 0;
+	transition: rotate var(--medium-transition);
+	transition-timing-function: ease-in-out;
+}
+
+.nav {
+	position: relative;
+	height: 100vh;
+	background-color: red;
+	width: 12rem;
+}
+
+.nav ul {
+	padding: 0;
+	margin: 1em;
+}
+
+.svg.toggled {
+	rotate: -45deg;
+}
+
+.header.toggled {
+	translate: 0;
+}
+
+.returner.toggled {
+	display: block;
+	animation-name: returnerfadein;
+	animation-duration: var(--medium-transition);
+	animation-fill-mode: both;
+	animation-timing-function: ease-in-out;
+}
+
+@keyframes returnerfadein {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
