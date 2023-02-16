@@ -11,7 +11,7 @@
 	"description": "A Javascript / React drum machine refactored from React class components to functional components with hooks. I programmed all the sounds myself in a DAW and brought them into the React App. Hopefully I can add seamlessly sounds to this Drum Machine in the future by taking advantage of serverside prop checking via Next.js.",
 	"original": {
 		"type": "codepen",
-		"link": ""
+		"link": "https://codepen.io/jungle_cone/pen/VwzVQYZ"
 	},
 	"props": true
 }
