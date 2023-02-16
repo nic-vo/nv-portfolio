@@ -8,13 +8,13 @@
 	align-items: center;
 	background-color: rgb(33, 33, 33);
 	border-radius: 10px;
+	padding: 20px;
 }
 
 @media (min-aspect-ratio: 3/2) {
 	.machine {
 		width: 80%;
 		max-width: 1200px;
-		height: 100vh;
 		flex-direction: row;
 		align-items: center;
 		justify-content: space-evenly;

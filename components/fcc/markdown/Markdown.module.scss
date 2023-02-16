@@ -93,19 +93,25 @@
 }
 
 .both {
-	height: 50vh;
 	width: 90%;
+	height: 40vh;
 	opacity: 1;
 }
 
 
 .toggled {
 	width: 90%;
+	height: 40vh;
 	opacity: 1;
 }
 
 .hidden {
 	width: 0%;
+	height: 40vh;
+	opacity: 0;
+}
+
+.hidden .output {
 	opacity: 0;
 }
 
@@ -113,7 +119,15 @@
 @media (min-aspect-ratio: 1) {
 	.both {
 		width: 50%;
-		height: 50vh;
+		height: 70vh;
+	}
+
+	.toggled {
+		height: 70vh;
+	}
+
+	.hidden {
+		height: 70vh;
 	}
 }
 
@@ -137,7 +151,7 @@
 	display: block;
 }
 
-@media (min-aspect-ratio: 8/9) {
+@media (min-aspect-ratio: 1) {
 	.why {
 		display: none;
 	}
