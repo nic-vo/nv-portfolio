@@ -1,3 +1,25 @@
-.info {
+.infoContainer {
 	display: block;
+	margin: 50px auto auto auto;
+	width: 50%;
+	max-width: 1000px;
+	z-index: 50;
+}
+
+.techList {
+	list-style: none;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	padding: 0;
+	z-index: 2;
+}
+
+.tech {
+	display: flex;
+	align-items: center;
+	background-color: blue;
+	padding: 0.3em;
+	margin: 0.2em;
+	border-radius: 5px;
 }

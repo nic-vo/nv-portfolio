@@ -3,19 +3,18 @@ import { useState } from "react";
 import pInfoCardLook from './ProjectInfoCard.module.scss';
 
 const ProjectInfoCard = ({ techs, description, original }) => {
-	const [toggled, setToggled] = useState(false);
 
 	return (
-		<section className={pInfoCardLook.info}>
-			<ul>
+		<section className={pInfoCardLook.infoContainer}>
+			<p>Original: <a href={original.link} target='_blank'>{original.type === 'github' ? 'Github' : 'Codepen'}</a></p>
+			<ul className={pInfoCardLook.techList}>
 				{techs.map((tech) => {
 					return (
-						<li key={`${tech}`}>{tech}</li>
+						<li className={pInfoCardLook.tech} key={`${tech}`}>{tech}</li>
 					)
 				})}
 			</ul>
 			<p>{description}</p>
-			<p>Original: <a href={original.link}>{original.type === 'github' ? 'Github' : 'Codepen'}</a></p>
 		</section>
 	);
 };
