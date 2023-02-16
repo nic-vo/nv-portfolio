@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { ProjectLayout } from '../../components/global';
 import { Calculator } from '../../components/fcc/Calculator';
 import { getVersionNumber } from '../../lib/props/homepage/homepage';
-import { getCategoryProjects, getProjectData } from '../../lib/props/homepage/projects';
+import { getProjectLists, getProjectData } from '../../lib/props/homepage/projects';
 
 const CalculatorPage = ({ layoutData, projectData }) => {
 	return (<>
@@ -21,8 +21,8 @@ const CalculatorPage = ({ layoutData, projectData }) => {
 export default CalculatorPage;
 
 export async function getStaticProps() {
-	const layoutFetch = await Promise.all([await getCategoryProjects({ category: 'fcc' }), await getVersionNumber(), await getProjectData({
-		category: 'fcc',
+	const layoutFetch = await Promise.all([await getProjectLists({ dataTypes: ['title'] }), await getVersionNumber(), await getProjectData({
+		category: 'things',
 		project: 'Calculator',
 		types: ['title',
 			'description',

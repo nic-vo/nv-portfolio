@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { getCategoryProjects, getProjectData } from '../../lib/props/homepage/projects';
+import { getProjectLists, getProjectData } from '../../lib/props/homepage/projects';
 import { getVersionNumber } from '../../lib/props/homepage/homepage';
 import { Markdown } from '../../components/fcc/markdown';
 import { ProjectLayout } from '../../components/global';
@@ -23,8 +23,8 @@ const MarkdownPage = ({ layoutData, projectData }) => {
 export default MarkdownPage;
 
 export async function getStaticProps() {
-	const layoutFetch = await Promise.all([await getCategoryProjects({ category: 'fcc' }), await getVersionNumber(), await getProjectData({
-		category: 'fcc',
+	const layoutFetch = await Promise.all([await getProjectLists({ dataTypes: ['title'] }), await getVersionNumber(), await getProjectData({
+		category: 'things',
 		project: 'Markdown',
 		types: ['title',
 			'description',

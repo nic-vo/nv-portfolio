@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { getCategoryProjects, getProjectData } from '../../lib/props/homepage/projects';
+import { getProjectLists, getProjectData } from '../../lib/props/homepage/projects';
 import { getVersionNumber } from '../../lib/props/homepage/homepage';
 import { ProjectLayout } from '../../components/global';
 import { AimTrainer } from '../../components/personal';
@@ -20,8 +20,8 @@ const AimTrainerPage = ({ layoutData, projectData }) => {
 export default AimTrainerPage;
 
 export async function getStaticProps() {
-	const layoutFetch = await Promise.all([await getCategoryProjects({ category: 'personal' }), await getVersionNumber(), await getProjectData({
-		category: 'personal',
+	const layoutFetch = await Promise.all([await getProjectLists({ dataTypes: ['title'] }), await getVersionNumber(), await getProjectData({
+		category: 'things',
 		project: 'AimTrainer',
 		types: ['title',
 			'description',
