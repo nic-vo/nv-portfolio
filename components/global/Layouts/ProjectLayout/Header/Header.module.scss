@@ -1,3 +1,7 @@
+@use '../../../../../styles/globalStyles.module.scss';
+
+$navWidth: 15rem;
+
 .header {
 	position: fixed;
 	display: flex;
@@ -6,7 +10,7 @@
 	padding: 0;
 	margin: 0;
 	z-index: 100;
-	translate: 12rem;
+	translate: $navWidth;
 	transition: translate var(--slow-transition);
 }
 
@@ -16,9 +20,24 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	font-size: 2em;
 	margin: 1em;
+	background-color: globalStyles.$gBackground;
+	color: globalStyles.$gColor;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
 	z-index: 101;
+	transition: background-color var(--fast-transition), color var(--fast-transition);
+	transition-timing-function: ease-in-out;
+}
+
+.toggler:hover {
+	background-color: globalStyles.$gColor;
+	color: globalStyles.$gBackground;
+}
+
+.toggler * {
+	margin: 10px;
 }
 
 .returner {
@@ -36,13 +55,14 @@
 	rotate: 0;
 	transition: rotate var(--medium-transition);
 	transition-timing-function: ease-in-out;
+	font-size: 2em;
 }
 
 .nav {
 	position: relative;
 	height: 100vh;
 	background-color: red;
-	width: 12rem;
+	width: $navWidth;
 }
 
 .nav ul {
@@ -64,6 +84,11 @@
 	animation-duration: var(--medium-transition);
 	animation-fill-mode: both;
 	animation-timing-function: ease-in-out;
+}
+
+.toggler.toggled, .toggler.toggled:hover {
+	background-color: globalStyles.$gColor;
+	color: globalStyles.$gBackground;
 }
 
 @keyframes returnerfadein {
