@@ -53,7 +53,7 @@ const Markdown = () => {
 	}, [allowLiveUpdates, input])
 
 	return (
-		<section className={markLook.section}>
+		<section className={markLook.container}>
 			<code className={markLook.why}>Why are you doing this on mobile?</code>
 			<div className={`${markLook.editor} ${markLook.pane} ${toggleEditor === true ? markLook.toggled : togglePreview === true ? markLook.hidden : markLook.both}`}>
 				<header className={markLook.header}>
