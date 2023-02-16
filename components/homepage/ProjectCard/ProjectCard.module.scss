@@ -27,17 +27,17 @@
 	transition-timing-function: ease-out;
 }
 
-
 .techList {
 	display: flex;
 	flex-direction: row;
+	justify-content: center;
 	flex-wrap: wrap;
 	padding: 0;
+	list-style: none;
 	z-index: 2;
 }
 
 .tech {
-	list-style: none;
 	display: flex;
 	align-items: center;
 	background-color: blue;
@@ -70,6 +70,7 @@
 	translate: 0 1em;
 	transition: opacity var(--medium-transition), translate var(--medium-transition);
 	transition-timing-function: ease-out;
+	z-index: 2;
 }
 
 .cardContainer:hover {

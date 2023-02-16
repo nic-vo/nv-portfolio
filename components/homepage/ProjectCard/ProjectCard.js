@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import cardLook from './ProjectCard.module.scss';
 
 const ProjectCard = ({ categoryName, project, title, techs }) => {
@@ -9,7 +11,7 @@ const ProjectCard = ({ categoryName, project, title, techs }) => {
 					return <li className={cardLook.tech} style={{ transitionDelay: `calc(${index}*50ms)` }} key={`${categoryName}-${title}-${tech}`}>{tech}</li>
 				})}
 			</ul>
-			<a href={`${categoryName}/${project}`} className={cardLook.link} >Link / Live</a>
+			<Link href={`${categoryName}/${project}`} className={cardLook.link}>Link / Live</Link>
 			<img src={`thumbs/${categoryName}/${project}.png`} className={cardLook.imgBack} />
 		</div>
 	)
