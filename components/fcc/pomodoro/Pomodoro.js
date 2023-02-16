@@ -48,8 +48,10 @@ const Pomodoro = () => {
 
 	useEffect(() => {
 		if (fullscreen === true) {
-			const coord = document.getElementById('pomcon').getBoundingClientRect();
-			setTimeout(() => { window.scrollTo({ left: 0, top: coord.y, behavior: 'smooth' }) }, 90);
+			setTimeout(() => {
+				const coord = document.getElementById('pomcon').getBoundingClientRect();
+				window.scrollTo({ left: 0, top: coord.y, behavior: 'smooth' })
+			}, 90);
 		};
 	}, [fullscreen]);
 
