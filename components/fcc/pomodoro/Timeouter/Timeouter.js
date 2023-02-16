@@ -25,76 +25,58 @@ const Timeouter = ({ work, rest, activate, activator, workPhase, workToggle }) =
 	const restRef = useRef();
 	const assetPath = '../assets/fcc/Pomodoro/';
 
-	// Activate prop initiates or cancels a timeout loop
-	useEffect(() => {
-		if (activate === true) {
-			// Set an expected time for the future timeout to compensate drift from
+	const resetHandler = () => {
+		setCurrentTime(work * MULTIPLIER);
+		workToggle(true);
+	};
+
+	const skipper = () => {
+		let phaseChange = workPhase === true ? work : rest;
+		if (activate === false) {
+			setCurrentTime(phaseChange * MULTIPLIER);
+		} else {
+			clearTimeout(loop);
+			setLoop(null);
 			setExpected(Date.now() + 1000);
-			// Loop entry only decrements timer, doesn't compensate for drift yet
+			setCurrentTime(phaseChange * MULTIPLIER);
+		};
+		workToggle(!workPhase);
+	};
+
+	const activateHandler = () => {
+		if (activate === false) {
+			activator();
+			setExpected(Date.now() + 1000);
 			setLoop(() => {
 				return setTimeout(() => {
-					setCurrentTime(currentTime - 1);
+					setCurrentTime((current) => { return current - 1 })
 				}, 1000);
 			});
 		} else {
-			// Clear any active timeouts
+			activator();
 			clearTimeout(loop);
 			setLoop(null);
-			// Clear drift compensation just in case
 			setExpected(null);
 		};
-	}, [activate]);
+	};
 
-	/*
-		The following useEffect can fire either when:
-			- timer runs down and new phase begins
-			- skip button manually triggers new phase
-	*/
-	useEffect(() => {
-		if (activate === true) {
-			// In case skip occurs while clock is active,
-			// this is an attempt not to have concurrent timeouts
-			clearTimeout(loop);
-		}
-		/*
-			New time based on phase
-			IMPORTANT: TRIGGERS A NEW LOOP
-		*/
-		const newTime = workPhase === true ? work * MULTIPLIER : rest * MULTIPLIER;
-		setCurrentTime(newTime);
-		// New expected for the above loop trigger
-		setExpected(Date.now() + 1000);
-	}, [workPhase]);
-
-	// Main loop useEffect
 	useEffect(() => {
 		if (activate === false) { return };
-		if (currentTime === 0) {
-			// Triggers a non-drifted, perfctly timed phase change when the timer reaches 0
-			const newTime = workPhase === true ? work * MULTIPLIER : rest * MULTIPLIER;
-			const now = Date.now();
-			const diff = now - expected;
+		const now = Date.now();
+		const diff = now - expected;
+		setExpected(now + 1000);
+		if (currentTime <= 1) {
+			let phaseChange = workPhase === true ? work : rest;
 			setLoop(() => {
 				return setTimeout(() => {
+					setCurrentTime(phaseChange * MULTIPLIER);
 					workToggle(!workPhase);
-					setCurrentTime(newTime);
-					setExpected(now + 1000);
 				}, 1000 - diff);
 			});
 		} else {
-			// All other times
-			const now = Date.now();
-			/*
-				Following line accounts for skip button click while timer active
-				Must account for the expected drift value not resetting on click
-				Might cause issues when calculating new offset timeout value
-			*/
-			const diff = now - expected > 0 ? now - expected : 0;
-			// console.log(`${currentTime - 1} in ${1000 - diff} ms`)
 			setLoop(() => {
 				return setTimeout(() => {
-					setCurrentTime(currentTime - 1);
-					setExpected(now + 1000);
+					setCurrentTime((current) => { return current - 1 });
 				}, 1000 - diff);
 			});
 		};
@@ -102,12 +84,12 @@ const Timeouter = ({ work, rest, activate, activator, workPhase, workToggle }) =
 
 	// The following two hooks are for accepting timer value changes from parent
 	useEffect(() => {
-		if (workPhase === false) { return };
+		if (workPhase === false || activate === false) { return };
 		setCurrentTime(work * MULTIPLIER);
 	}, [work]);
 
 	useEffect(() => {
-		if (workPhase === true) { return };
+		if (workPhase === true || activate === false) { return };
 		setCurrentTime(rest * MULTIPLIER);
 	}, [rest]);
 
@@ -123,16 +105,7 @@ const Timeouter = ({ work, rest, activate, activator, workPhase, workToggle }) =
 			restRef.current.currentTime = 0;
 			restRef.current.play();
 		};
-	}, [activate, workPhase])
-
-	const resetHandler = () => {
-		setCurrentTime(work * MULTIPLIER);
-		workToggle(true);
-	};
-
-	const skipper = () => {
-		workToggle(!workPhase);
-	};
+	}, [activate, workPhase]);
 
 	return (
 		<div className={timeLook.timer}>
@@ -140,7 +113,7 @@ const Timeouter = ({ work, rest, activate, activator, workPhase, workToggle }) =
 			<p className={timeLook.timeOutput}>{`${currentTime >= 600 ? Math.floor(currentTime / 60) : `0${Math.floor(currentTime / 60)}`}`}:{`${currentTime % 60 >= 10 ? currentTime % 60 : `0${currentTime % 60}`}`}</p>
 			<div className={timeLook.controls}>
 				<button onClick={resetHandler} className={pomoLook.menter} disabled={activate}>Reset</button>
-				<button onClick={activator} className={pomoLook.menter} >{activate === true ? "Stop" : "Start"}</button>
+				<button onClick={activateHandler} className={pomoLook.menter} >{activate === true ? "Stop" : "Start"}</button>
 				<button onClick={skipper} className={pomoLook.menter}>Skip</button>
 			</div>
 			<audio autoPlay={false} src={assetPath + "work.mp3"} id='workaudio' ref={workRef} />

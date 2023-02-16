@@ -51,7 +51,7 @@ const Pomodoro = () => {
 			setTimeout(() => {
 				const coord = document.getElementById('pomcon').getBoundingClientRect();
 				window.scrollTo({ left: 0, top: coord.y, behavior: 'smooth' })
-			}, 90);
+			}, 167);
 		};
 	}, [fullscreen]);
 
