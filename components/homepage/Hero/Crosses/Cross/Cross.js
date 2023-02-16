@@ -17,9 +17,9 @@ const Cross = () => {
 		<div className={crossLook.container} style={{
 			left: `${coords.x * 100}%`,
 			top: `${coords.y * 100}%`,
-			animationDelay: `${Math.random().toFixed(2) * 30}s`,
+			animationDelay: `${(Math.random().toFixed(2) * 30) - 15}s`,
 			animationDuration: `${Math.random().toFixed(2) * 30 + 30}s`,
-			rotate: `${Math.random() > 0.5 ? '' : '-'}${Math.random().toFixed(2) * 10}deg`
+			rotate: `${Math.random() > 0.5 ? '' : '-'}${Math.random().toFixed(2) * 8}deg`
 		}}>
 			<FaPlus />
 		</div>
