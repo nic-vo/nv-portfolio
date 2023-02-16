@@ -56,24 +56,24 @@ const Markdown = () => {
 		<section className={markLook.container}>
 			<code className={markLook.why}>Why are you doing this on mobile?</code>
 			<div className={`${markLook.editor} ${markLook.pane} ${toggleEditor === true ? markLook.toggled : togglePreview === true ? markLook.hidden : markLook.both}`}>
-				<header className={markLook.header}>
+				<div className={markLook.header}>
 					<button onClick={allowUpdatesOnClick}>{allowLiveUpdates ? 'Block' : 'Allow'} live updates</button>
 					<button onClick={updatePreview}>Update</button>
 					<h2>
 						editor
 					</h2>
 					<button className={markLook.paneToggler} onClick={editorToggle}><FaArrowsAltH /></button>
-				</header>
+				</div>
 				<textarea className={markLook.textarea} disabled={togglePreview} onChange={textareaOnChange} />
 			</div>
 			<div className={`${markLook.preview} ${markLook.pane} ${togglePreview === true ? markLook.toggled : toggleEditor === true ? markLook.hidden : markLook.both}`}>
-				<header className={markLook.header}>
+				<div className={markLook.header}>
 					<button className={markLook.paneToggler} onClick={previewToggle}><FaArrowsAltH /></button>
 					<h2>
 						preview
 					</h2>
 					<button onClick={updatePreview}>Update</button>
-				</header>
+				</div>
 				<div className={markLook.output} dangerouslySetInnerHTML={{ __html: output }} />
 			</div>
 		</section>

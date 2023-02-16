@@ -48,7 +48,7 @@
 	border-bottom-left-radius: 10px;
 	scrollbar-width: thin;
 	background-color: #b4bbc5;
-	color: var(--global-background);
+	color: globalStyles.$gBackground;
 }
 
 .editor {
@@ -81,7 +81,31 @@
 
 .output * {
 	margin: 1rem;
-	color: var(--global-background);
+	color: globalStyles.$gBackground;
+}
+
+.output h1 {
+	font-size: 2.2rem;
+}
+
+.output h2 {
+	font-size: 2rem;
+}
+
+.output h3 {
+	font-size: 1.8rem;
+}
+
+.output h4 {
+	font-size: 1.6rem;
+}
+
+.output h5 {
+	font-size: 1.4rem;
+}
+
+.output h6 {
+	font-size: 1.2rem;
 }
 
 .output a {
