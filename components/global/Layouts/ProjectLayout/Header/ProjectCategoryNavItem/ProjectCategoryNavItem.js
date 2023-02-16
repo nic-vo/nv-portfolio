@@ -2,7 +2,6 @@ import Link from "next/link";
 
 const ProjectCategoryNavItem = ({ category }) => {
 	const { categoryName, projects } = category;
-	console.log(categoryName)
 	return (
 		<li>
 			<span>{categoryName}</span>

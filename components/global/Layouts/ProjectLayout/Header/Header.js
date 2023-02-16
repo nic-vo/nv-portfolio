@@ -6,7 +6,7 @@ import { FaPlus } from 'react-icons/fa';
 import headerLook from './Header.module.scss';
 import pLoadingLook from '../ProjectLoad.module.scss';
 
-const Header = ({ otherProjects, linkExclude }) => {
+const Header = ({ otherProjects }) => {
 
 	const [toggled, setToggled] = useState(false);
 	const toggleHandler = (e) => {
