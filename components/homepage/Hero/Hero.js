@@ -6,9 +6,9 @@ const Hero = () => {
 
 	return (
 		<section className={heroLook.container}>
-			<h1 className={heroLook.biggest}>
-				<p>Nicolas Vo</p>
-				<p>Front-end Developer</p>
+			<h1 className={heroLook.hOne}>
+				<p className={heroLook.name}>Hi, I'm Nicolas Vo</p>
+				<p className={heroLook.title}>A Frontend Developer</p>
 			</h1>
 			<Crosses limit={50} />
 		</section>

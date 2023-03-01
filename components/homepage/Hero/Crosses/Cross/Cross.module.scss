@@ -1,4 +1,4 @@
-@use '../../../../../styles/globalStyles.module.scss' as *;
+@use '../../../../../styles/globalStyles.module.scss' as global;
 
 .container {
 	position: absolute;
@@ -6,10 +6,38 @@
 	height: auto;
 	background-color: rgba(0, 0, 0, 0);
 	transform-style: preserve-3d;
-	animation-name: focusing;
-	animation-fill-mode: backwards;
+	animation-name: twinkling;
+	animation-fill-mode: both;
 	animation-iteration-count: infinite;
 	animation-timing-function: ease-out;
+}
+
+@keyframes twinkling {
+	0% {
+		opacity: 0;
+	}
+
+	25% {
+		opacity: 0.4;
+	}
+
+	50% {
+		opacity: 0.0;
+	}
+
+	75% {
+		opacity: 0.4;
+	}
+
+	100% {
+		opacity: 0;
+	}
+}
+
+@media (min-aspect-ratio: 1) {
+	.container {
+		animation-name: focusing;
+	}
 }
 
 @keyframes focusing {
@@ -20,7 +48,7 @@
 	}
 
 	15% {
-		opacity: 0.5;
+		opacity: 0.7;
 	}
 
 	22% {
@@ -32,7 +60,7 @@
 	}
 
 	50% {
-		opacity: 0.5;
+		opacity: 0.7;
 	}
 
 	75% {
@@ -48,7 +76,7 @@
 .container svg {
 	display: block;
 	opacity: 1;
-	color: $gColor;
+	color: global.$White;
 	font-size: 5vw;
 }
 
