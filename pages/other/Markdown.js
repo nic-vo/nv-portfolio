@@ -1,29 +1,31 @@
 import Head from 'next/head';
 import { getProjectLists, getProjectData } from '../../lib/props/homepage/projects';
 import { getVersionNumber } from '../../lib/props/homepage/homepage';
+import { Markdown } from '../../components/fcc/markdown';
 import { ProjectLayout } from '../../components/global';
-import { Pomodoro } from '../../components/fcc/Pomodoro';
 
-const PomodoroPage = ({ layoutData, projectData }) => {
-	return (<>
-		<Head>
-			<title>A Pomodoro Timer</title>
-			<meta name='description' content="A React Pomodoro Timer completed for freeCodeCamp's frontend certificate" />
-			<link rel='icon' href='/favicon.ico' />
-		</Head>
+const MarkdownPage = ({ layoutData, projectData }) => {
+	return (
+		<>
+			<Head>
+				<title>A Markdown Parser</title>
+				<meta name='description' content="A React markdown previewer completed for freeCodeCamp's frontend certificate" />
+				<link rel='icon' href='/favicon.ico' />
+			</Head>
 
-		<ProjectLayout layoutData={layoutData} projectData={projectData}>
-			<Pomodoro />
-		</ProjectLayout>
-	</>);
+			<ProjectLayout layoutData={layoutData} projectData={projectData}>
+				<Markdown />
+			</ProjectLayout>
+		</>
+	);
 };
 
-export default PomodoroPage;
+export default MarkdownPage;
 
 export async function getStaticProps() {
 	const layoutFetch = await Promise.all([await getProjectLists({ dataTypes: ['title'] }), await getVersionNumber(), await getProjectData({
-		category: 'things',
-		project: 'Pomodoro',
+		category: 'other',
+		project: 'Markdown',
 		types: ['title',
 			'description',
 			'techs',
@@ -32,7 +34,7 @@ export async function getStaticProps() {
 	const layoutData = {
 		otherProjects: layoutFetch[0],
 		version: layoutFetch[1],
-		linkExclude: 'Pomodoro'
+		linkExclude: 'Markdown'
 	};
 	const projectData = layoutFetch[2];
 	return {

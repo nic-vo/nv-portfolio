@@ -1,30 +1,29 @@
 import Head from 'next/head';
-import { getProjectLists, getProjectData } from '../../lib/props/homepage/projects';
-import { getVersionNumber } from '../../lib/props/homepage/homepage';
 import { ProjectLayout } from '../../components/global';
-import { AimTrainer } from '../../components/personal';
-import { Wip } from '../../components/global';
+import { Calculator } from '../../components/fcc/Calculator';
+import { getVersionNumber } from '../../lib/props/homepage/homepage';
+import { getProjectLists, getProjectData } from '../../lib/props/homepage/projects';
 
-const AimTrainerPage = ({ layoutData, projectData }) => {
+const CalculatorPage = ({ layoutData, projectData }) => {
 	return (<>
 		<Head>
-			<title>An Aim Trainer</title>
-			<meta name='description' content="An aim trainer that's really only suited for 2d games like osu!" />
+			<title>A Calculator</title>
+			<meta name='description' content="A React calculator completed for freeCodeCamp's frontend certificate" />
 			<link rel='icon' href='/favicon.ico' />
 		</Head>
+
 		<ProjectLayout layoutData={layoutData} projectData={projectData}>
-			{/* <AimTrainer /> */}
-			<Wip />
+			<Calculator />
 		</ProjectLayout>
 	</>);
 };
 
-export default AimTrainerPage;
+export default CalculatorPage;
 
 export async function getStaticProps() {
 	const layoutFetch = await Promise.all([await getProjectLists({ dataTypes: ['title'] }), await getVersionNumber(), await getProjectData({
-		category: 'things',
-		project: 'AimTrainer',
+		category: 'other',
+		project: 'Calculator',
 		types: ['title',
 			'description',
 			'techs',
@@ -33,7 +32,7 @@ export async function getStaticProps() {
 	const layoutData = {
 		otherProjects: layoutFetch[0],
 		version: layoutFetch[1],
-		linkExclude: 'AimTrainer'
+		linkExclude: 'Calculator'
 	};
 	const projectData = layoutFetch[2];
 	return {
