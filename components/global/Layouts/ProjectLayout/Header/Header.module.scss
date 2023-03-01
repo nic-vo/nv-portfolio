@@ -1,6 +1,6 @@
 @use '../../../../../styles/globalStyles.module.scss' as global;
 
-$navWidth: 15rem;
+$navWidth: 20rem;
 
 .header {
 	position: fixed;
@@ -33,7 +33,6 @@ $navWidth: 15rem;
 	border: none;
 	border-radius: 5px;
 	cursor: pointer;
-	z-index: 101;
 	transition: background-color var(--fast-transition), color var(--fast-transition);
 	transition-timing-function: ease-in-out;
 }

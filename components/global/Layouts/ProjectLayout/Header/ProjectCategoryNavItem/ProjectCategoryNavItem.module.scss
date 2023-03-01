@@ -24,6 +24,9 @@
 	justify-content: space-between;
 	align-items: center;
 	width: 100%;
+	font-family: Lato, sans-serif;
+	font-size: 1.2em;
+	font-weight: bolder;
 	background-color: inherit;
 	color: inherit;
 	border: none;
@@ -33,23 +36,26 @@
 .li {
 	position: relative;
 	animation: none;
+	overflow-x: hidden;
 }
 
 
 .li a {
 	display: block;
 	padding: 0.5em;
-	margin-left: 1.6em;
 	margin-top: 0.5em;
 	margin-bottom: 0.5em;
+	translate: 1em 0;
 	color: global.$Black;
 	background-color: global.$White;
-	transition: margin-left var(--fast-transition), color var(--fast-transition), background-color var(--fast-transition);
+	font-family: Overpass, sans-serif;
+	font-weight: lighter;
+	transition: translate var(--fast-transition), color var(--fast-transition), background-color var(--fast-transition);
 	border-radius: 5px;
 }
 
 .li a:hover {
-	margin-left: 0;
+	translate: 0 0;
 	color: global.$White;
 	background-color: global.$Black;
 }
