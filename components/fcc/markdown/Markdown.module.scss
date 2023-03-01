@@ -18,6 +18,7 @@
 	margin: 2%;
 	border-radius: 10px;
 	transition: width var(--medium-transition), opacity var(--medium-transition), height var(--medium-transition);
+	transition-timing-function: ease-in-out;
 }
 
 .header {

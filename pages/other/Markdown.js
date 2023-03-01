@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { getProjectLists, getProjectData } from '../../lib/props/homepage/projects';
 import { getVersionNumber } from '../../lib/props/homepage/homepage';
-import { Markdown } from '../../components/fcc/markdown';
+import { Markdown } from '../../components/fcc/Markdown';
 import { ProjectLayout } from '../../components/global';
 
 const MarkdownPage = ({ layoutData, projectData }) => {

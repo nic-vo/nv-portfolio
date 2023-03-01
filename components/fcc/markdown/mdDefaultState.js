@@ -33,6 +33,8 @@ And finally, some words of wisdom:
 
 *A wise man.*
 
+You can't see it in the output, but below this line are the various links used in the "variables" above for the hyperlinks and the image.
+
 [Markdown syntax]: https://daringfireball.net/projects/markdown/
 [Marked]: https://marked.js.org/
 [duckgoose]: /assets/fcc/Markdown/goose_calm.svg`;
