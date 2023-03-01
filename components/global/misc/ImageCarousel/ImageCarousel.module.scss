@@ -1,0 +1,52 @@
+.container {
+	width: 70%;
+	max-width: 1200px;
+}
+
+.previewImg {
+	width: 100%;
+	height: auto;
+	border-radius: 5px;
+}
+
+@keyframes pImgFadeIn {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+.ring {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	overflow: hidden;
+	margin: 10px;
+	gap: 1em;
+}
+
+.scroller svg {
+	display: block;
+	margin: auto;
+	font-size: 2em;
+}
+
+.ringExposed {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	overflow-x: scroll;
+	scrollbar-width: thin;
+	height: 20vh;
+}
+
+.smallThumb {
+	cursor: pointer;
+	height: 90%;
+	width: auto;
+	border-radius: 5px;
+	margin: 0 1em 0 1em;
+}
