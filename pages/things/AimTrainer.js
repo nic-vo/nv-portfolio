@@ -3,6 +3,7 @@ import { getProjectLists, getProjectData } from '../../lib/props/homepage/projec
 import { getVersionNumber } from '../../lib/props/homepage/homepage';
 import { ProjectLayout } from '../../components/global';
 import { AimTrainer } from '../../components/personal';
+import { Wip } from '../../components/global';
 
 const AimTrainerPage = ({ layoutData, projectData }) => {
 	return (<>
@@ -12,7 +13,8 @@ const AimTrainerPage = ({ layoutData, projectData }) => {
 			<link rel='icon' href='/favicon.ico' />
 		</Head>
 		<ProjectLayout layoutData={layoutData} projectData={projectData}>
-			<AimTrainer />
+			{/* <AimTrainer /> */}
+			<Wip />
 		</ProjectLayout>
 	</>);
 };
