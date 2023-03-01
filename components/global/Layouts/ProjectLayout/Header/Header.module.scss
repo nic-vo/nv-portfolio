@@ -14,6 +14,13 @@ $navWidth: 15rem;
 	transition: translate var(--slow-transition);
 }
 
+.title {
+	margin: 0.5em;
+	font-family: Poppins, sans-serif;
+	font-weight: bold;
+	font-size: 2em;
+}
+
 .toggler {
 	position: absolute;
 	left: -100px;
@@ -64,10 +71,6 @@ $navWidth: 15rem;
 	font-weight: 600;
 	width: $navWidth;
 	padding: 1em;
-}
-
-.nav h2 {
-	margin: 0.5em;
 }
 
 .topList {

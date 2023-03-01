@@ -28,7 +28,7 @@ const Header = ({ otherProjects }) => {
 			<button onPointerDown={toggleHandler} className={headerLook.toggler + classer}><FaPlus className={headerLook.svg + classer} /></button>
 			<div onPointerDown={toggleHandler} className={headerLook.returner + classer}></div>
 			<nav className={headerLook.nav + classer}>
-				<h2>Other Projects</h2>
+				<h2 className={headerLook.title}>Other Projects</h2>
 				<ul className={headerLook.topList}>
 					{categorySections}
 				</ul>
