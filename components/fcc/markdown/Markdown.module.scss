@@ -211,3 +211,27 @@
 		display: none;
 	}
 }
+
+.button {
+	border: 2px solid global.$White;
+	color: global.$White;
+	background-color: global.$Black;
+	border-radius: 12px;
+	padding: 0.5em;
+	transition: color var(--fast-transition), background-color var(--fast-transition);
+}
+
+.button:hover {
+	background-color: global.$White;
+	color: global.$Black;
+}
+
+.dlLink {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	font-size: inherit;
+	svg {
+		margin: 0.5em;
+	}
+}
