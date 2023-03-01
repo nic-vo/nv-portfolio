@@ -3,15 +3,17 @@ import { useState, useEffect, useCallback } from 'react';
 import { parse as mParse } from 'marked';
 import { sanitize } from 'dompurify';
 
-import { FaArrowsAltH } from 'react-icons/fa';
+import defaultStateString from './mdDefaultState';
+import { FaArrowsAltH, FaFileDownload } from 'react-icons/fa';
 import markLook from './Markdown.module.scss';
 
 const Markdown = () => {
-	const [allowLiveUpdates, setAllowLiveUpdates] = useState(false);
-	const [input, setInput] = useState('');
+	const [allowLiveUpdates, setAllowLiveUpdates] = useState(true);
+	const [input, setInput] = useState(defaultStateString);
 	const [output, setOutput] = useState(null);
 	const [toggleEditor, setToggleEditor] = useState(false);
 	const [togglePreview, setTogglePreview] = useState(false);
+	const [dlurl, setDlurl] = useState(null);
 
 	const editorToggle = useCallback((e) => {
 		e.preventDefault();
@@ -41,10 +43,18 @@ const Markdown = () => {
 		setOutput(sanitize(dirty, { USE_PROFILES: { html: true } }));
 	};
 
-	const updatePreview = useCallback((e) => {
-		e.preventDefault();
-		markedHandler();
-	}, [input]);
+	const updatePreviewHandler = useCallback(() => { markedToOutput(); }, [allowLiveUpdates]);
+
+	const generateBlobAndURL = (e) => {
+		if (input === '') { return };
+		const blob = new Blob([input], { type: 'text/markdown' });
+		const url = URL.createObjectURL(blob);
+		setDlurl(url);
+	};
+
+	const resetToDemoHandler = () => {
+		setInput(defaultStateString);
+	};
 
 	useEffect(() => {
 		if (allowLiveUpdates === true) {
@@ -57,14 +67,15 @@ const Markdown = () => {
 			<code className={markLook.why}>Why are you doing this on mobile?</code>
 			<div className={`${markLook.editor} ${markLook.pane} ${toggleEditor === true ? markLook.toggled : togglePreview === true ? markLook.hidden : markLook.both}`}>
 				<div className={markLook.header}>
-					<button onClick={allowUpdatesOnClick}>{allowLiveUpdates ? 'Block' : 'Allow'} live updates</button>
-					<button onClick={updatePreview}>Update</button>
+					<button onClick={resetToDemoHandler} className={markLook.button}>Reset to demo</button>
+					<button onClick={allowUpdatesOnClick} className={markLook.button + activeUpdateButtonClasser}>Live updates:{allowLiveUpdates ? ' ALLOWED' : ' BLOCKED'} </button>
+					<button onClick={updatePreviewHandler} className={markLook.button}>Update</button>
 					<h2>
 						editor
 					</h2>
 					<button className={markLook.paneToggler} onClick={editorToggle}><FaArrowsAltH /></button>
 				</div>
-				<textarea className={markLook.textarea} disabled={togglePreview} onChange={textareaOnChange} />
+				<textarea className={markLook.textarea} disabled={togglePreview} value={input} onChange={textareaOnChange} />
 			</div>
 			<div className={`${markLook.preview} ${markLook.pane} ${togglePreview === true ? markLook.toggled : toggleEditor === true ? markLook.hidden : markLook.both}`}>
 				<div className={markLook.header}>
@@ -72,9 +83,14 @@ const Markdown = () => {
 					<h2>
 						preview
 					</h2>
-					<button onClick={updatePreview}>Update</button>
+					<button onClick={updatePreviewHandler} className={markLook.button}>Update</button>
+					<button onClick={generateBlobAndURL} className={markLook.button}>Generate new link for file</button>
+					{
+						dlurl && <a href={dlurl} download={`md_parser_${Date.now()}.md`} className={markLook.dlLink}><FaFileDownload />Download</a>
+					}
 				</div>
 				<div className={markLook.output} dangerouslySetInnerHTML={{ __html: output }} />
+
 			</div>
 		</section>
 	);
