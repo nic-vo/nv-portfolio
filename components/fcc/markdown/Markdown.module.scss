@@ -1,4 +1,4 @@
-@use '../../../styles/globalStyles.module.scss';
+@use '../../../styles/globalStyles.module.scss' as global;
 
 .container {
 	width: 90%;
@@ -48,7 +48,7 @@
 	border-bottom-left-radius: 10px;
 	scrollbar-width: thin;
 	background-color: #b4bbc5;
-	color: globalStyles.$gBackground;
+	color: global.$Black;
 }
 
 .editor {
@@ -64,7 +64,13 @@
 }
 
 .preview .header {
-	justify-content: flex-start;
+	justify-content: flex-end;
+}
+
+@media (min-aspect-ratio: 1) {
+	.preview .header {
+		justify-content: flex-start;
+	}
 }
 
 .output {
