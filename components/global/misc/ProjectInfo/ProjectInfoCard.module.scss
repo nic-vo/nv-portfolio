@@ -1,9 +1,50 @@
-.infoContainer {
+@use '../../../../styles/globalStyles.module.scss' as g;
+
+.container {
 	display: block;
-	margin: 50px auto auto auto;
-	width: 50%;
+	margin: 1rem;
+	width: 70%;
 	max-width: 1000px;
 	z-index: 50;
+}
+
+.info {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin-bottom: 2em;
+	padding: 1em;
+	background-color: g.$Blue;
+}
+
+.linkIntro {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	font-family: Overpass, serif;
+	font-weight: 800;
+	gap: 1em;
+}
+
+.link {
+	display: block;
+	padding: 1em 2em 1em 2em;
+	border-radius: 50px;
+}
+
+.github {
+	background-color: #24292F;
+	color: g.$White;
+}
+
+.codepen {
+	background-color: #FFDD40;
+	color: g.$Black;
+}
+
+.liveLink {
+	background-color: g.$Green;
+	color: g.$Black;
 }
 
 .techList {
@@ -11,15 +52,12 @@
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
+	max-width: 50%;
 	padding: 0;
 	z-index: 2;
 }
 
-.tech {
-	display: flex;
-	align-items: center;
-	background-color: blue;
-	padding: 0.3em;
-	margin: 0.2em;
-	border-radius: 5px;
+.description {
+	font-family: Overpass, serif;
+	font-weight: 200;
 }
