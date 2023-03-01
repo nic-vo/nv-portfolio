@@ -24,19 +24,19 @@
 .splash {
 	display: block;
 	text-align: center;
-	font-size: 2rem;
 	animation-name: splashfadein;
 	animation-delay: var(--slow-transition);
 	animation-fill-mode: both;
 	animation-timing-function: cubic-bezier(0.4 0.1 0.6 0.9);
-	animation-duration: 2.4s;
+	animation-duration: 3s;
+	transform-origin: center;
 }
 
 @keyframes splashfadein {
 	0% {
 		opacity: 0;
 		translate: 0 -50vh;
-		transform: translateY(-50%);
+		text-shadow: 10px 10px 10px rgba(0,0,0,0.8);
 	}
 
 	33% {
@@ -44,13 +44,15 @@
 	}
 
 	66% {
-		opacity: 1;
+		margin-top: 0;
 		translate: 0 -50vh;
-		transform: translateY(-50%);
+		text-shadow: 10px 10px 10px rgba(0,0,0,0.8);
 	}
 
 	100% {
+		margin-top: 2em;
 		translate: 0 0;
+		text-shadow: 10px 10px 10px rgba(0,0,0,0);
 		transform: none;
 	}
 }
