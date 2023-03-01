@@ -1,16 +1,17 @@
-import Head from 'next/head';
 import Script from 'next/script';
 import { useState, useRef, useEffect } from 'react';
 
 import { Spinner } from '../../global';
-import { FaMinus, FaCheckCircle, FaExclamationCircle } from 'react-icons/fa';
+import { FaMinus, FaCheckCircle, FaExclamationCircle, FaArrowRight } from 'react-icons/fa';
 
 import { whiteSpaceRemover } from '../../../lib/client/homepage/ContactForm/ContactForm';
+
+import cLook from './ContactForm.module.scss';
 
 const ContactForm = () => {
 	const [status, setStatus] = useState(null);
 	const [message, setMessage] = useState(null);
-	const [formState, setFormState] = useState('Idle');
+	const [formState, setFormState] = useState('IDLE');
 
 	const nameRef = useRef();
 	const emailRef = useRef();
@@ -19,6 +20,7 @@ const ContactForm = () => {
 	const submitHandler = async (e) => {
 		e.preventDefault();
 		setFormState('PENDING');
+		setMessage(null);
 		const cleanName = whiteSpaceRemover(nameRef.current.value);
 		const cleanEmail = whiteSpaceRemover(emailRef.current.value);
 		nameRef.current.value = cleanName;
@@ -34,16 +36,13 @@ const ContactForm = () => {
 				threeToken: grcRep
 			})
 		});
-		setStatus(response.status);
 		const { message } = await response.json();
+		setStatus(response.status);
 		setMessage(message);
 		setFormState('DONE');
 	};
 
-	useEffect(() => {
-		nameRef.current.value = 'Nicolas Vo';
-		emailRef.current.value = 'nicvogue@gmail.com';
-	}, []);
+	const disableToggle = formState === 'PENDING' || (formState === 'DONE' && status === 200);
 
 	return (
 		<>
@@ -51,42 +50,35 @@ const ContactForm = () => {
 				src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_CONTACT_FORM_RECAPTCHA_KEY}`}
 				strategy='beforeInteractive' />
 
-			<section style={{ paddingTop: '25vh' }}>
-				<h1>
-					Contact Me
-				</h1>
-				<form onSubmit={submitHandler}>
-					<fieldset>
-						<label htmlFor='name'>
-							<p>Name</p>
-							<input id='name' ref={nameRef} type='text' minLength={4} maxLength={100} pattern="^([A-Za-z]|\d| |'|\.|,|-|\(|\)){4,100}$" autoComplete='name' required />
+			<section className={cLook.container}>
+				<h2 className={cLook.title}>Need something done?</h2>
+				<form onSubmit={submitHandler} className={cLook.form}>
+					<fieldset disabled={disableToggle} className={cLook.fieldset}>
+						<label htmlFor='name' className={cLook.label}>
+							<p className={cLook.labelText}>Name:</p>
+							<input id='name' ref={nameRef} placeholder='Type here...' type='text' minLength={4} maxLength={100} pattern="^([A-Za-z]|\d| |'|\.|,|-|\(|\)){4,100}$" autoComplete='name' required className={cLook.input} />
 						</label>
-						<label htmlFor='email'>
-							<p>Email</p>
-							<input id='email' ref={emailRef} type='email' autoComplete='email' required style={{border: 'none'}}/>
+						<label htmlFor='email' className={cLook.label}>
+							<p className={cLook.labelText}>Email:</p>
+							<input id='email' ref={emailRef} placeholder='Type here...' type='email' autoComplete='email' required className={cLook.input} />
 						</label>
-						<label htmlFor='birthday' style={{ display: 'none' }}>
-							<p>Birthday</p>
+						<label htmlFor='birthday' className={cLook.label} style={{ display: 'none' }}>
+							<p className={cLook.labelText}>Birthday:</p>
 							<input id='birthday' ref={birthdayRef} type='date' defaultValue='1984-06-21' autoComplete='off' />
 						</label>
-						<p>
+					</fieldset>
+					<div className={cLook.buttons}>
+						<p className={cLook.disclaimer}>
 							This site is protected by reCAPTCHA and the Google <a href='https://policies.google.com/privacy'>Privacy Policy</a> and <a href='https://policies.google.com/terms'>Terms of Service</a> apply.
 						</p>
-						<button type='submit'>Submit</button>
-						<button type='button' onClick={() => {
-							setMessage(null);
-							setStatus(null);
-							setFormState('IDLE');
-						}}>Reset</button>
-					</fieldset>
-				</form>
-				<div>
-					<div style={{ fontSize: '4rem' }}>{formState === 'PENDING' && <Spinner><FaMinus /></Spinner>}
-						{formState === 'DONE' ? status === 200 ? <FaCheckCircle /> : <FaExclamationCircle /> : null}
+						<button type='submit' disabled={disableToggle} className={cLook.button}><p>Submit</p><FaArrowRight /></button>
 					</div>
-					<p>{status !== null && status}</p>
-					<p>{message !== null && message}</p>
-				</div>
+				</form>
+				<section className={cLook.responseArea}>
+					{formState === 'PENDING' && <Spinner><FaMinus style={{ color: 'darkgoldenrod' }} /></Spinner>}
+					{formState === 'DONE' ? status === 200 ? <FaCheckCircle style={{ color: 'mediumseagreen' }} /> : <FaExclamationCircle style={{ color: 'firebrick' }} /> : null}
+					{message !== null && <p className={cLook.responseMsg}>{message}</p>}
+				</section>
 			</section>
 		</>
 	);
