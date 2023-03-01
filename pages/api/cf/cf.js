@@ -3,21 +3,22 @@ import { pString, headerOneString } from '../../../lib/api/homepage/ContactForm/
 const formHandler = async (req, res) => {
 	const { name, email, threeToken, birthday } = req.body;
 
-	if (/^([A-Za-z]|\d| |'|\.|,|-|\(|\)){4,100}$/.test(name) !== true || /\@/.test(email) !== true || threeToken === undefined || birthday !== '1984-06-21') {
-		return res.status(404).json({ message: "Not found" });
+
+	if ((/^([A-Za-z]|\d| |'|\.|,|-|\(|\)){4,100}$/.test(name) !== true || name === undefined) || (/\@/.test(email) !== true || email === undefined) || threeToken === undefined || (birthday !== '1984-06-21' || birthday === undefined)) {
+		return res.status(404).json({ message: 'Not found' });
 	};
 
 	const rResponse = await fetch(`https://www.google.com/recaptcha/api/siteverify?secret=${process.env.PRIVATE_CONTACT_FORM_RECAPTCHA_KEY}&response=${threeToken}`);
 	const captchaData = await rResponse.json();
 	if (captchaData.score < 0.3) {
-		return res.status(404).json({ message: "Not found" });
+		return res.status(404).json({ message: 'Not found' });
 	};
 
 	if (captchaData.success === false) {
 		if (captchaData['error-codes'].includes('timeout-or-duplicate') === true) {
 			return res.status(502).json({ message: 'The ReCAPTCHA token expired. Please submit your information again.' })
 		};
-		return res.status(404).json({ message: "Not found" });
+		return res.status(404).json({ message: 'Not found' });
 	};
 
 	const mailer = require('nodemailer');
