@@ -1,0 +1,87 @@
+@use '../../../../../../styles/globalStyles.module.scss' as global;
+
+
+
+.liContainer {
+	width: 100%;
+}
+
+.inCatList {
+	display: none;
+	position: relative;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	animation: none;
+	overflow-y: hidden;
+}
+
+
+.toggler {
+	cursor: pointer;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	background-color: inherit;
+	color: inherit;
+	border: none;
+	border-bottom: 1px solid global.$Black;
+}
+
+.li {
+	position: relative;
+	animation: none;
+}
+
+
+.li a {
+	display: block;
+	padding: 0.5em;
+	margin-left: 1.6em;
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+	color: global.$Black;
+	background-color: global.$White;
+	transition: margin-left var(--fast-transition), color var(--fast-transition), background-color var(--fast-transition);
+	border-radius: 5px;
+}
+
+.li a:hover {
+	margin-left: 0;
+	color: global.$White;
+	background-color: global.$Black;
+}
+
+.svg {
+	display: block;
+	font-size: 1.6em;
+	transition: rotate var(--fast-transition);
+	rotate: 0;
+}
+
+.svglobal.toggled {
+	rotate: 180deg;
+}
+
+.inCatList.toggled {
+	display: block;
+	border-bottom: 1px solid global.$Black;
+}
+
+.inCatList.toggled li {
+	animation-name: listDropView;
+	animation-duration: var(--medium-transition);
+	animation-timing-function: cubic-bezier(0.6 0.9 0.9 0.99);
+}
+
+@keyframes listDropView {
+	0% {
+		bottom: 10rem;
+	}
+
+	100% {
+		bottom: 0;
+	}
+}

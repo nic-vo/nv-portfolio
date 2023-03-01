@@ -4,7 +4,6 @@ import { useState, useMemo } from 'react';
 import { FaPlus } from 'react-icons/fa';
 
 import headerLook from './Header.module.scss';
-import pLoadingLook from '../ProjectLoad.module.scss';
 
 const Header = ({ otherProjects }) => {
 
