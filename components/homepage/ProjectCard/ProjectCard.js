@@ -1,19 +1,22 @@
 import Link from 'next/link';
+import { FaArrowRight } from 'react-icons/fa';
+
+import { TechBubble } from '../../global';
 
 import cardLook from './ProjectCard.module.scss';
 
-const ProjectCard = ({ categoryName, project, title, techs }) => {
+const ProjectCard = ({ categoryName, project, title, techs, wip }) => {
 	return (
-		<div className={cardLook.cardContainer}>
-			<h3 className={cardLook.header}>{title.replace(/([a-z])([A-Z])/g, '$1 $2')}</h3>
+		<li className={cardLook.cardContainer}>
+			<h3 className={cardLook.projectTitle}>{title.replace(/([a-z])([A-Z])/g, '$1 $2')}</h3>
 			<ul className={cardLook.techList}>
 				{techs.map((tech, index) => {
-					return <li className={cardLook.tech} style={{ transitionDelay: `calc(${index}*50ms)` }} key={`${categoryName}-${title}-${tech}`}>{tech}</li>
+					return <TechBubble key={`${categoryName}-${project}-${tech}`} tech={tech} styler={{ transitionDelay: `${index * 50}ms` }} />
 				})}
 			</ul>
-			<Link href={`${categoryName}/${project}`} className={cardLook.link}>Link / Live</Link>
+			{wip === false && <Link href={`${categoryName}/${project}`} className={cardLook.link}>Check it out<FaArrowRight /></Link>}
 			<img src={`thumbs/${categoryName}/${project}.png`} className={cardLook.imgBack} />
-		</div>
+		</li>
 	)
 };
 
