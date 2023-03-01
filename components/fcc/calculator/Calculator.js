@@ -276,8 +276,7 @@ const Calculator = () => {
 							}
 						})
 					}
-					<button onClick={splodeHandler} className={`${keyStyles.keypad} ${keyStyles.numpad}`} style={{ height: 'auto', zIndex: 10 }}>?</button>
-
+					{/* <button onClick={splodeHandler} className={`${keyStyles.keypad} ${keyStyles.numpad}`} style={{ height: 'auto', zIndex: 10 }}>?</button> */}
 				</div>
 			</div>
 			<History history={history} pickHistory={pickHistory} clearHistory={clearHistory} oldAllowed={oldAllowed} />
