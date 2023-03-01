@@ -128,7 +128,15 @@
 
 	code {
 		margin: 0;
+		padding: 0.5em;
+		font-size: 0.8em;
 		background-color: #c89696;
+	}
+
+	pre {
+		code {
+			display: block;
+		}
 	}
 
 	img,
@@ -143,6 +151,8 @@
 	}
 
 	blockquote {
+		padding: 0.5em;
+		font-size: 1.4em;
 		background-color: #c89696;
 	}
 }
@@ -231,6 +241,7 @@
 	flex-direction: row;
 	align-items: center;
 	font-size: inherit;
+
 	svg {
 		margin: 0.5em;
 	}
