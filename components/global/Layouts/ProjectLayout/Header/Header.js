@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import ProjectCategoryNavItem from './ProjectCategoryNavItem/ProjectCategoryNavItem';
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { FaPlus } from 'react-icons/fa';
 
 import headerLook from './Header.module.scss';
@@ -14,21 +14,26 @@ const Header = ({ otherProjects }) => {
 		setToggled(!toggled);
 	};
 
+	const categorySections = useMemo(() => {
+		return otherProjects.map((category) => {
+			return (
+				<ProjectCategoryNavItem category={category} key={`${category.categoryName}`} />
+			);
+		});
+	}, []);
+
+	const classer = toggled === true ? ` ${headerLook.toggled}` : '';
+
 	return (
-		<header className={`${headerLook.header}${toggled === true ? ` ${headerLook.toggled}` : ''} ${pLoadingLook.header}`}>
-			<button onPointerDown={toggleHandler} className={`${headerLook.toggler}${toggled === true ? ` ${headerLook.toggled}` : ''}`}><FaPlus className={`${headerLook.svg}${toggled === true ? ` ${headerLook.toggled}` : ''}`} /></button>
-			<div onPointerDown={toggleHandler} className={`${headerLook.returner}${toggled === true ? ` ${headerLook.toggled}` : ''}`}></div>
-			<nav className={`${headerLook.nav}${toggled === true ? ` ${headerLook.toggled}` : ''}`}>
-				<ul style={{ listStyle: 'none', margin: '0' }}>
-					{
-						otherProjects.map((category) => {
-							return (
-								<ProjectCategoryNavItem category={category} key={`${category.categoryName}`} />
-							)
-						})
-					}
+		<header className={headerLook.header + classer}>
+			<button onPointerDown={toggleHandler} className={headerLook.toggler + classer}><FaPlus className={headerLook.svg + classer} /></button>
+			<div onPointerDown={toggleHandler} className={headerLook.returner + classer}></div>
+			<nav className={headerLook.nav + classer}>
+				<h2>Other Projects</h2>
+				<ul className={headerLook.topList}>
+					{categorySections}
 				</ul>
-				<Link href='/' style={{ listStyle: 'none' }}>Back to home</Link>
+				<Link href='/' className={headerLook.homer}>Back to home</Link>
 			</nav >
 		</header >
 	);
