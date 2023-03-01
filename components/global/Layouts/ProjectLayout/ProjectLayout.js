@@ -9,7 +9,7 @@ import pLoadingLook from './ProjectLoad.module.scss';
 const ProjectLayout = ({ children, layoutData, projectData }) => {
 	const { version, linkExclude } = layoutData;
 	const { otherProjects } = layoutData;
-	const { title, description, techs, original } = projectData;
+	const { title, description, techs, original, wip } = projectData;
 
 	return (
 		<>
