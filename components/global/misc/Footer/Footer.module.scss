@@ -1,6 +1,17 @@
 .footer {
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	min-height: 20vh;
+	min-height: 30vh;
+	font-family: Overpass, sans-serif;
+	font-weight: bold;
+	background-color: rgba(0,0,0,0.2);
+}
+
+.links {
+	font-size: 2rem;
+	display: flex;
+	gap: 1rem;
+	margin: 1em;
 }
