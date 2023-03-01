@@ -52,7 +52,7 @@ export default function Home({ projectList, version }) {
 };
 
 export async function getStaticProps() {
-	const projectList = await getProjectLists({dataTypes: ['title', 'techs']});
+	const projectList = await getProjectLists({ dataTypes: ['title', 'techs', 'wip'] });
 	const version = await getVersionNumber();
 	return {
 		props: {
