@@ -1,11 +1,11 @@
 import Duckies from './duckies/Duckies';
 import Hero from './Hero/Hero';
-import ProjectCard from './ProjectCard/ProjectCard';
 import ContactForm from './ContactForm/ContactForm';
+import Nav from './Nav/Nav';
 
 export {
 	Duckies,
 	Hero,
-	ProjectCard,
+	Nav,
 	ContactForm
 };
