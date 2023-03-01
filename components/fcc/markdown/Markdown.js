@@ -30,16 +30,18 @@ const Markdown = () => {
 		setAllowLiveUpdates(prev => { return !prev });
 	}, [allowLiveUpdates]);
 
-	const textareaOnChange = useCallback((e) => {
+	const textareaOnChange = (e) => {
 		setInput(e.target.value);
-	}, [input]);
-
-	const googleLinkProcessor = (string) => {
-		return string.replaceAll(/file\/d\//g, 'uc?id=').replaceAll(/\/view\?usp\=share_link/g, '').replaceAll(/\/view\?usp\=sharing/g, '');
 	};
 
-	const markedHandler = () => {
-		const dirty = mParse(googleLinkProcessor(input));
+	const preprocessing = (string) => {
+		let newString;
+		newString = string.replaceAll(/file\/d\//g, 'uc?id=').replaceAll(/\/view\?usp\=share_link/g, '').replaceAll(/\/view\?usp\=sharing/g, '');
+		return newString;
+	};
+
+	const markedToOutput = () => {
+		const dirty = mParse(preprocessing(input));
 		setOutput(sanitize(dirty, { USE_PROFILES: { html: true } }));
 	};
 
@@ -58,13 +60,14 @@ const Markdown = () => {
 
 	useEffect(() => {
 		if (allowLiveUpdates === true) {
-			markedHandler();
+			markedToOutput();
 		};
 	}, [allowLiveUpdates, input])
 
+	const activeUpdateButtonClasser = allowLiveUpdates === true ? ` ${markLook.upActive}` : '';
+
 	return (
 		<section className={markLook.container}>
-			<code className={markLook.why}>Why are you doing this on mobile?</code>
 			<div className={`${markLook.editor} ${markLook.pane} ${toggleEditor === true ? markLook.toggled : togglePreview === true ? markLook.hidden : markLook.both}`}>
 				<div className={markLook.header}>
 					<button onClick={resetToDemoHandler} className={markLook.button}>Reset to demo</button>
