@@ -1,3 +1,5 @@
+@use '../../../styles/globalStyles.module.scss' as global;
+
 .container {
 	padding: 2rem;
 	display: flex;
@@ -26,14 +28,14 @@
 	padding: 1em;
 	border-radius: 50%;
 	background-color: var(--transparent);
-	border: 2px solid var(--global-color);
-	color: var(--global-color);
+	border: 2px solid global.$White;
+	color: global.$White;
 	transition: background-color var(--fast-transition), color var(--fast-transition);
 }
 
 .fullscreener:hover {
-	background-color: var(--global-background);
-	color: var(--global-color);
+	background-color: global.$Black;
+	color: global.$White;
 }
 
 .fullscreener svg {
@@ -73,7 +75,7 @@
 
 .counter {
 	display: inherit;
-	flex-direction: row;
+	flex-direction: row-reverse;
 	align-items: center;
 	font-size: 1.6rem;
 }
@@ -83,26 +85,29 @@
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	padding: 0.6rem;
-	margin: 0.6em;
+	justify-content: center;
+	height: 50px;
+	width: 50px;
+	margin: 0.5em;
+	padding: 0.5em;
 	font-size: 1rem;
 	background-color: var(--transparent);
 	color: inherit;
-	border: 2px solid var(--global-color);
-	border-radius: 10%;
+	border: 2px solid global.$White;
+	border-radius: 50%;
 	transition: color var(--fast-transition), background-color var(--fast-transition);
 }
 
 .menter:hover {
-	background-color: var(--global-color);
-	color: var(--global-background)
+	background-color: global.$White;
+	color: global.$Black
 }
 
 .menter:disabled {
 	cursor: auto;
-	color: var(--global-background);
+	color: global.$Black;
 	opacity: 0.2;
-	border-color: var(--global-background);
+	border-color: global.$Black;
 }
 
 .menter:disabled:hover {
@@ -111,5 +116,5 @@
 
 .menter svg {
 	display: block;
-	margin-right: 0.6rem;
+	margin-right: 0.4rem;
 }
