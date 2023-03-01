@@ -1,4 +1,4 @@
-@use '../../../../styles/globalStyles.module.scss' as g;
+@use '../../../../styles/globalStyles.module.scss' as global;
 
 .container {
 	display: block;
@@ -6,6 +6,7 @@
 	width: 70%;
 	max-width: 1000px;
 	z-index: 50;
+	padding-bottom: 10vh;
 }
 
 .info {
@@ -14,13 +15,33 @@
 	justify-content: space-between;
 	margin-bottom: 2em;
 	padding: 1em;
-	background-color: g.$Blue;
+}
+
+
+.techList {
+	list-style: none;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	max-width: 50%;
+	padding: 0;
+	z-index: 2;
+	font-size: 1.2em;
+}
+
+.description {
+	font-family: Overpass, serif;
+	font-size: 1.2em;
+	font-weight: 200;
+	border-top: 5px solid global.$White;
+	padding-top: 1em;
 }
 
 .linkIntro {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
+	margin: 2em auto 2em auto;
 	font-family: Overpass, serif;
 	font-weight: 800;
 	gap: 1em;
@@ -32,32 +53,17 @@
 	border-radius: 50px;
 }
 
+.liveLink {
+	background-color: global.$Green;
+	color: global.$Black;
+}
+
 .github {
 	background-color: #24292F;
-	color: g.$White;
+	color: global.$White;
 }
 
 .codepen {
 	background-color: #FFDD40;
-	color: g.$Black;
-}
-
-.liveLink {
-	background-color: g.$Green;
-	color: g.$Black;
-}
-
-.techList {
-	list-style: none;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	max-width: 50%;
-	padding: 0;
-	z-index: 2;
-}
-
-.description {
-	font-family: Overpass, serif;
-	font-weight: 200;
+	color: global.$Black;
 }
