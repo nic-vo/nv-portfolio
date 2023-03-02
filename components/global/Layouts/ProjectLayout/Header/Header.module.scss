@@ -9,7 +9,7 @@ $navWidth: 20rem;
 	right: 0;
 	padding: 0;
 	margin: 0;
-	z-index: 100;
+	z-index: 2;
 	translate: $navWidth;
 	transition: translate var(--slow-transition);
 }
@@ -35,6 +35,7 @@ $navWidth: 20rem;
 	cursor: pointer;
 	transition: background-color var(--fast-transition), color var(--fast-transition);
 	transition-timing-function: ease-in-out;
+	z-index: 1;
 }
 
 .toggler * {
@@ -48,7 +49,7 @@ $navWidth: 20rem;
 	position: absolute;
 	background-color: rgba(0, 0, 0, 0.8);
 	left: -100vw;
-	z-index: 99;
+	z-index: 0;
 }
 
 .svg {
@@ -114,7 +115,7 @@ $navWidth: 20rem;
 .homer {
 	margin: 2em;
 	padding: 1em;
-	background-color: global.$White;
+	background-color: global.$slightlyDarker;
 	color: global.$Black;
 	border-radius: 5px;
 	transition: color var(--fast-transition), background-color var(--fast-transition);
