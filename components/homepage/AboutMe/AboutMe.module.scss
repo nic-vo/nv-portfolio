@@ -1,0 +1,13 @@
+@use '../../../styles/globalStyles.module.scss' as global;
+
+.container {
+	@include global.sectionContainer;
+	background-color: global.$slightlyDarker;
+}
+
+.description {
+	width: 80%;
+	font-family: Overpass, serif;
+	font-weight: 200;
+	font-size: 1.2em;
+}
