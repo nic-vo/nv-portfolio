@@ -33,7 +33,7 @@ const ProjectInfoCard = ({ techs, description, original }) => {
 				}
 			</ul>
 			<hr className={pInfoCardLook.break} />
-			<p className={pInfoCardLook.description}>{description}</p>
+			<section className={pInfoCardLook.description} dangerouslySetInnerHTML={{ __html: sanitized }} />
 			<div className={pInfoCardLook.linkIntro}><p>Link to original:</p><a href={link} target='_blank' className={pInfoCardLook.link + ' ' + linkClasser}> {typeDisplay}</a></div>
 		</section>
 	);

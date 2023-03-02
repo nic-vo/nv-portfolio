@@ -29,10 +29,64 @@
 }
 
 .description {
-	font-family: Overpass, serif;
-	font-size: 1.2em;
-	font-weight: 200;
+	display: flex;
+	flex-direction: column;
 	padding-top: 1em;
+
+	h2,
+	h3,
+	h4 {
+		font-family: Overpass, sans-serif;
+		font-weight: bold;
+		margin-top: 1em;
+		margin-bottom: 1em;
+	}
+
+	h2 {
+		font-size: 2em;
+	}
+
+	h3 {
+		font-size: 1.6em;
+	}
+
+	h4 {
+		font-size: 1.4em;
+	}
+
+	p {
+		font-family: Overpass, sans-serif;
+	}
+
+	a {
+		border-bottom: 2px solid global.$White;
+	}
+
+	ul,
+	ol {
+		padding: 1em;
+	}
+
+	code {
+		font-family: JetBrain Mono, monospace;
+		background-color: global.$slightlyDarker;
+	}
+
+	hr {
+		width: 50%;
+	}
+
+	img,
+	svg {
+		display: block;
+		margin: 1em auto 1em auto;
+		max-width: 100%;
+	}
+
+	blockquote {
+		padding: 1em;
+		background-color: global.$slightlyDarker;
+	}
 }
 
 .linkIntro {
