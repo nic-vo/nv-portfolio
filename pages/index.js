@@ -5,7 +5,7 @@ import { getVersionNumber } from '../lib/props/homepage/homepage';
 
 import { Hero, Nav,  AboutMe } from '../components/homepage';
 
-import homeLook from '../styles/Home.module.scss';
+import homeLook from '../components/homepage/Homepage.module.scss';
 
 export default function Home({ projectList, version }) {
 
