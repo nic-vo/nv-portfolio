@@ -1,0 +1,49 @@
+@use './globalStyles.module.scss' as global;
+
+.container {
+	@include global.sectionContainer;
+	height: 100vh;
+	color: global.$White
+}
+
+.blurb {
+	font-family: Overpass, sans-serif;
+	font-size: 1.2em;
+	margin: 2em;
+}
+
+.container a {
+	display: flex;
+	align-items: center;
+	font-family: Overpass, sans-serif;
+	font-size: 1.2em;
+	padding: 1em 2em 1em 2em;
+	border-radius: 10px;
+	border: 4px solid global.$White;
+	background-color: global.$slightlyDarker;
+	transition: background-color var(--fast-transition), color var(--fast-transition);
+	transition-timing-function: ease-in-out;
+
+	p {
+		display: block;
+		margin: 0;
+		height: 1em;
+	}
+
+	svg {
+		display: block;
+		margin-right: 1em;
+		translate: 0 0;
+		transition: translate var(--medium-transition);
+		transition-timing-function: ease-in-out;
+	}
+}
+
+.container a:hover {
+	color: global.$Black;
+	background-color: global.$White;
+
+	svg {
+		translate: -1em 0;
+	}
+}
