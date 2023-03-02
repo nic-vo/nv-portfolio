@@ -28,12 +28,13 @@ const ProjectInfoCard = ({ techs, description, original }) => {
 					techs.map((tech) => {
 						return (
 							<TechBubble key={`${tech}`} tech={tech} />
-						)
+						);
 					})
 				}
 			</ul>
+			<hr className={pInfoCardLook.break} />
 			<p className={pInfoCardLook.description}>{description}</p>
-			<div className={pInfoCardLook.linkIntro}><p>Link to original:</p><a href={original.link} target='_blank' className={pInfoCardLook.link + ' ' + linkClasser}> {typeDisplay}</a></div>
+			<div className={pInfoCardLook.linkIntro}><p>Link to original:</p><a href={link} target='_blank' className={pInfoCardLook.link + ' ' + linkClasser}> {typeDisplay}</a></div>
 		</section>
 	);
 };
