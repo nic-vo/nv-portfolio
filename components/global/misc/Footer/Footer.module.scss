@@ -2,7 +2,7 @@
 
 .footer {
 	@include global.sectionContainer;
-	min-height: 30vh;
+	min-height: 100vh;
 	font-family: Overpass, sans-serif;
 	font-weight: bold;
 	background-color: global.$slightlyDarker;
