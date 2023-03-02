@@ -7,6 +7,7 @@ import { FaMinus, FaCheckCircle, FaExclamationCircle, FaArrowRight } from 'react
 import { whiteSpaceRemover } from '../../../lib/client/homepage/ContactForm/ContactForm';
 
 import cLook from './ContactForm.module.scss';
+import homeLook from '../Homepage.module.scss';
 
 const ContactForm = () => {
 	const [status, setStatus] = useState(null);
@@ -51,7 +52,7 @@ const ContactForm = () => {
 				strategy='beforeInteractive' />
 
 			<section className={cLook.container}>
-				<h2 className={cLook.title}>Need something done?</h2>
+				<h2 className={homeLook.hTwo}>Need something done?</h2>
 				<form onSubmit={submitHandler} className={cLook.form}>
 					<fieldset disabled={disableToggle} className={cLook.fieldset}>
 						<label htmlFor='name' className={cLook.label}>

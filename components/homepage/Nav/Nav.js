@@ -1,10 +1,12 @@
 import ProjectCard from '../ProjectCard/ProjectCard';
 
+import homeLook from '../Homepage.module.scss';
 import navLook from './Nav.module.scss';
 
 const Nav = ({ projectList }) => {
 	return (
-		<section>
+		<section className={navLook.container}>
+			<h2 className={homeLook.hTwo}>Projects</h2>
 			<nav className={navLook.nav}>
 				{projectList.map((category) => {
 					const { categoryName, projects } = category;
