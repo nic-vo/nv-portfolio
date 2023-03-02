@@ -13,7 +13,7 @@ const Markdown = () => {
 	const [output, setOutput] = useState(null);
 	const [toggleEditor, setToggleEditor] = useState(false);
 	const [togglePreview, setTogglePreview] = useState(false);
-	const [dlurl, setDlurl] = useState(null);
+	const [dlurl, setDlUrl] = useState(null);
 
 	const editorToggle = useCallback((e) => {
 		e.preventDefault();
@@ -51,7 +51,7 @@ const Markdown = () => {
 		if (input === '') { return };
 		const blob = new Blob([input], { type: 'text/markdown' });
 		const url = URL.createObjectURL(blob);
-		setDlurl(url);
+		setDlUrl(url);
 	};
 
 	const resetToDemoHandler = () => {
