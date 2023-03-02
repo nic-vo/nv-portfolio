@@ -1,3 +1,5 @@
+@use '../../../../styles/globalStyles.module.scss' as global;
+
 .projectMain {
 	display: flex;
 	position: relative;
@@ -6,7 +8,6 @@
 }
 
 .title {
-	z-index: 2;
 	font-family: Poppins, sans-serif;
 	font-size: 4em;
 	text-align: center;
@@ -19,4 +20,5 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	background-color: global.$slightlyDarker;
 }
