@@ -4,9 +4,20 @@
 	align-items: center;
 	justify-content: center;
 	color: firebrick;
-	font-size: 4rem;
 }
 
 .container * {
 	margin: 0;
+}
+
+.big {
+	font-family: Poppins, sans-serif;
+	font-weight: bold;
+	font-size: 8rem;
+}
+
+.small {
+	font-family: Overpass, sans-serif;
+	font-weight: 200;
+	font-size: 4rem;
 }
