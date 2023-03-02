@@ -50,7 +50,8 @@ const Duckies = () => {
 			onPointerOver={pointerOverHandler}
 			onPointerMove={pointerMoveHandler}
 			onPointerLeave={pointerLeaveHandler}
-			style={{ position: 'relative', margin: '0', width: '50%', height: '50%', backgroundColor: "rgba(150, 225, 255, 1)", transformOrigin: 'top left' }} id='pond'>
+			className={duckiesLook.pond}
+			id='pond'>
 			<Duck key="0-duck" pX={pX} pY={pY} hoverToggle={hoverToggle} />
 			<Duck key="1-duck" pX={pX} pY={pY} hoverToggle={hoverToggle} />
 			<Duck key="2-duck" pX={pX} pY={pY} hoverToggle={hoverToggle} />
