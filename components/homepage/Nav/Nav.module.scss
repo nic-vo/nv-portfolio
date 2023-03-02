@@ -1,12 +1,12 @@
+@use '../../../styles/globalStyles.module.scss' as global;
+
 .container {
-	width: 100%;
-	background-color: rgba(0, 0, 0, 0.2);
+	@include global.sectionContainer;
 }
 
 .nav {
 	position: relative;
 	width: 90%;
-	margin: 5vh auto 5vh auto;
 }
 
 .catSection {
