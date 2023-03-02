@@ -1,12 +1,11 @@
+@use '../../../../styles/globalStyles.module.scss' as global;
+
 .footer {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+	@include global.sectionContainer;
 	min-height: 30vh;
 	font-family: Overpass, sans-serif;
 	font-weight: bold;
-	background-color: rgba(0,0,0,0.2);
+	background-color: global.$slightlyDarker;
 }
 
 .links {
@@ -14,4 +13,8 @@
 	display: flex;
 	gap: 1rem;
 	margin: 1em;
+}
+
+.divider {
+	width: 10%;
 }

@@ -21,7 +21,6 @@ export default function Home({ projectList, version }) {
 				<Hero />
 				<AboutMe />
 				<Nav projectList={projectList} />
-				<ContactForm />
 			</main>
 			<Footer version={version} />
 		</div >
