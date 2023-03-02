@@ -12,7 +12,7 @@ const Nav = ({ projectList }) => {
 					const { categoryName, projects } = category;
 					return (
 						<section key={`${category.categoryName}-links`} className={navLook.catSection}>
-							<h2 className={navLook.header}>{categoryName === 'fcc' ? 'freeCodeCamp' : categoryName[0].toUpperCase() + categoryName.slice(1)}</h2>
+							<h3 className={navLook.catHeading}>{categoryName === 'fcc' ? 'freeCodeCamp' : categoryName[0].toUpperCase() + categoryName.slice(1)}</h3>
 							{projects.length !== 0 ?
 								<ul className={navLook.list}>
 									{

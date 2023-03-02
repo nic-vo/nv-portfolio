@@ -8,7 +8,7 @@ import cardLook from './ProjectCard.module.scss';
 const ProjectCard = ({ categoryName, project, title, techs, wip }) => {
 	return (
 		<li className={cardLook.cardContainer}>
-			<h3 className={cardLook.projectTitle}>{title.replace(/([a-z])([A-Z])/g, '$1 $2')}</h3>
+			<h4 className={cardLook.projectTitle}>{title.replace(/([a-z])([A-Z])/g, '$1 $2')}</h4>
 			<ul className={cardLook.techList}>
 				{techs.map((tech, index) => {
 					return <TechBubble key={`${categoryName}-${project}-${tech}`} tech={tech} styler={{ transitionDelay: `${index * 50}ms` }} />
