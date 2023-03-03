@@ -116,7 +116,7 @@ const Markdown = () => {
 						preview
 					</p>
 					{allowLiveUpdates && <button onClick={updatePreviewHandler} className={markLook.button}>Update</button>}
-					<button onClick={() => { setToggleDlList(true) }} className={markLook.button}>Generate new link for file</button>
+					<button onClick={() => { setToggleDlList(true) }} className={markLook.button}>LINK GENERATOR</button>
 					{
 						toggleDlList &&
 
