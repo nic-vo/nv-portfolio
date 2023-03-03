@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import ProjectCategoryNavItem from './ProjectCategoryNavItem/ProjectCategoryNavItem';
 import { useState, useMemo } from 'react';
-import { FaPlus } from 'react-icons/fa';
+import { FaPlus, FaBars } from 'react-icons/fa';
 
 import headerLook from './Header.module.scss';
 
@@ -25,7 +25,7 @@ const Header = ({ otherProjects }) => {
 
 	return (
 		<header className={headerLook.header + classer}>
-			<button onPointerDown={toggleHandler} className={headerLook.toggler + classer}><FaPlus className={headerLook.svg + classer} /></button>
+			<button onPointerDown={toggleHandler} className={headerLook.toggler + classer}>{toggled === false ? <FaBars className={headerLook.svg + classer} /> : <FaPlus className={headerLook.svg + classer} />}</button>
 			<div onPointerDown={toggleHandler} className={headerLook.returner + classer}></div>
 			<nav className={headerLook.nav + classer}>
 				<h2 className={headerLook.title}>Other Projects</h2>
