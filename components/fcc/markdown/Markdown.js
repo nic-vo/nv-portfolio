@@ -4,7 +4,7 @@ import { parse as mParse } from 'marked';
 import { sanitize } from 'dompurify';
 
 import defaultStateString from './mdDefaultState';
-import { FaArrowsAltH, FaFileDownload } from 'react-icons/fa';
+import { FaArrowsAltH, FaFileDownload, FaPlus } from 'react-icons/fa';
 import markLook from './Markdown.module.scss';
 
 const Markdown = () => {
@@ -13,7 +13,9 @@ const Markdown = () => {
 	const [output, setOutput] = useState(null);
 	const [toggleEditor, setToggleEditor] = useState(false);
 	const [togglePreview, setTogglePreview] = useState(false);
-	const [dlurl, setDlUrl] = useState(null);
+
+	const [toggleDlList, setToggleDlList] = useState(false);
+	const [dlUrls, setDlUrls] = useState([]);
 
 	const editorToggle = useCallback((e) => {
 		e.preventDefault();
@@ -49,10 +51,32 @@ const Markdown = () => {
 
 
 	const generateBlobAndURL = (e) => {
-		if (input === '') { return };
-		const blob = new Blob([input], { type: 'text/markdown' });
+		e.preventDefault();
+		const filename = document.getElementById('filename').value;
+		const jsonCheck = document.getElementById('json');
+		if (filename === '' || filename === undefined) { return; };
+
+		let mimetype, extension;
+		if (jsonCheck.checked === true) {
+			mimetype = 'application/json';
+			extension = 'json';
+		} else {
+			mimetype = 'text/markdown';
+			extension = 'md';
+		};
+		const blob = new Blob([input], { type: mimetype });
 		const url = URL.createObjectURL(blob);
-		setDlUrl(url);
+		const newFile = { filename, extension, url };
+		setDlUrls((prev) => {
+			return [...prev, newFile];
+		});
+	};
+
+	const clearDlUrlList = () => {
+		dlUrls.forEach((file) => {
+			URL.revokeObjectURL(file.url)
+		});
+		setDlUrls([]);
 	};
 
 	const resetToDemoHandler = () => {
@@ -94,7 +118,38 @@ const Markdown = () => {
 					{allowLiveUpdates && <button onClick={updatePreviewHandler} className={markLook.button}>Update</button>}
 					<button onClick={() => { setToggleDlList(true) }} className={markLook.button}>Generate new link for file</button>
 					{
-						dlurl && <a href={dlurl} download={`md_parser_${Date.now()}.md`} className={markLook.dlLink}><FaFileDownload />Download</a>
+						toggleDlList &&
+
+						<div className={markLook.dlContainer}>
+							<button onClick={() => { setToggleDlList(false) }} className={markLook.closer}><FaPlus /></button>
+							<form id='urlgen' className={markLook.dlControls} onSubmit={generateBlobAndURL}>
+								<label htmlFor='filename'>
+									<span>Filename:</span>
+									<input type='text' id='filename' name='filename' required={true} />
+								</label>
+								<label htmlFor='json'>
+									<span>JSON?</span>
+									<input type='checkbox' id='json' name='dltype' value='JSON' />
+								</label>
+								<button type='submit' className={markLook.button}>Generate new URL</button>
+							</form>
+							<div className={markLook.dlListContainer}>
+								<ul className={markLook.list}>
+									{dlUrls.length > 0 &&
+
+										dlUrls.map((obj) => {
+											const { filename, extension, url } = obj;
+											return (
+												<li key={`md_dl_${url}`}>
+													<p>{`${filename}.${extension === true ? 'json' : 'md'}`}</p>
+													<a href={url} download={`md_parser_${filename}.${extension === true ? 'json' : 'md'}`} className={markLook.dlLink}><FaFileDownload />Download</a>
+												</li>)
+										})
+									}
+								</ul>
+								<button onClick={clearDlUrlList} className={markLook.button}>Clear list</button>
+							</div>
+						</div>
 					}
 				</div>
 				<div className={outputClasser} dangerouslySetInnerHTML={{ __html: output }} />

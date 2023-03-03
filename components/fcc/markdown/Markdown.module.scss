@@ -244,13 +244,136 @@
 	color: global.$Black;
 }
 
+.updater {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	margin: 0;
+	width: 10rem;
+	height: 3rem;
+	font-size: 1.2em;
+
+	p {
+		margin: 0;
+		padding: 0;
+	}
+
+	svg {
+		display: block;
+		margin: 0 0.5em 0 0.5em;
+		rotate: 90deg;
+	}
+}
+
+@media (min-aspect-ratio: 1) {
+	.updater {
+		svg {
+			rotate: 0deg;
+		}
+	}
+}
+
+.dlContainer {
+	backdrop-filter: brightness(0.15) blur(20px);
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	border-radius: 10px;
+	animation-name: dlContainerFadeIn;
+	animation-duration: 0.2s;
+	animation-timing-function: ease-in-out;
+	animation-fill-mode: both;
+}
+
+@keyframes dlContainerFadeIn {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+.closer {
+	cursor: pointer;
+	border: none;
+	font-size: 1.4em;
+	width: 2em;
+	height: 2em;
+	margin: 1em;
+	border-radius: 10px;
+	color: global.$White;
+	background-color: global.$Black;
+	border: 2px solid global.$White;
+
+	svg {
+		display: block;
+		rotate: 45deg;
+		transform-origin: center;
+		margin: auto;
+	}
+}
+
+.dlControls {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	padding: 1em;
+
+	label {
+		display: flex;
+		margin: 2em;
+		gap: 0.5em;
+	}
+}
+
+.dlListContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 50%;
+}
+
+.list {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 80%;
+	width: 80%;
+	max-width: 500px;
+	padding: 0;
+	border-radius: 10px;
+	background-color: global.$Black;
+	overflow-y: auto;
+	gap: 10px;
+	scrollbar-width: thin;
+}
+
+.list li {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	width: 80%;
+	padding: 0.5em 1em 0.5em 1em;
+	gap: 2em;
+	border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
 .dlLink {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
+	padding: 0.8em;
 	font-size: inherit;
+	background-color: global.$slightlyLighter;
+	border-radius: 10px;
+	gap: 10px;
 
 	svg {
-		margin: 0.5em;
+		display: block;
 	}
 }
