@@ -112,7 +112,7 @@ const Timeouter = ({ work, rest, activate, activator, workPhase, workToggle }) =
 
 	return (
 		<div className={timeLook.timer}>
-			<h2 className={timeLook.bigLabel}>{workPhase ? "WORKIN'" : "RESTIN'"}</h2>
+			<p className={timeLook.bigLabel}>{workPhase ? "WORKIN'" : "RESTIN'"}</p>
 			<p className={timeLook.timeOutput}>{`${currentTime >= 600 ? Math.floor(currentTime / 60) : `0${Math.floor(currentTime / 60)}`}`}:{`${currentTime % 60 >= 10 ? currentTime % 60 : `0${currentTime % 60}`}`}</p>
 			<div className={timeLook.controls}>
 				<button onClick={resetHandler} disabled={activate} className={pomoLook.menter} >Reset</button>

@@ -62,7 +62,7 @@ const Pomodoro = () => {
 			<Timeouter work={work} rest={rest} activate={activate} activator={activator} workPhase={workPhase} workToggle={workToggle} />
 			<div className={pomoLook.timeControls}>
 				<div className={pomoLook.controllerCategory}>
-					<span>Work Time: {work}</span>
+					<p>Work Time: {work}</p>
 					<div className={pomoLook.counter}>
 						<button onClick={() => { workIncHandler(5) }} className={pomoLook.menter} disabled={activate}><FaPlus />5</button>
 						<button onClick={() => { workIncHandler() }} className={pomoLook.menter} disabled={activate}><FaPlus />1</button>
@@ -71,7 +71,7 @@ const Pomodoro = () => {
 					</div>
 				</div>
 				<div className={pomoLook.controllerCategory}>
-					<span>Rest Time: {rest}</span>
+					<p>Rest Time: {rest}</p>
 					<div className={pomoLook.counter}>
 						<button onClick={() => { restIncHandler(5) }} className={pomoLook.menter} disabled={activate}><FaPlus />5</button>
 						<button onClick={() => { restIncHandler() }} className={pomoLook.menter} disabled={activate}><FaPlus />1</button>
