@@ -13,7 +13,7 @@
 
 .timeOutput {
 	font-family: Silkscreen, sans-serif;
-	font-size: 4em;
+	font-size: 3em;
 	margin: 0;
 }
 
@@ -24,4 +24,14 @@
 
 .controls button {
 	margin: 1rem;
+}
+
+@media (min-aspect-ratio: 1) {
+	.bigLabel {
+		font-size: 8em;
+	}
+
+	.timeOutput {
+		font-size: 6em;
+	}
 }
