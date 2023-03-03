@@ -47,6 +47,7 @@ const Markdown = () => {
 
 	const updatePreviewHandler = useCallback(() => { markedToOutput(); }, [allowLiveUpdates]);
 
+
 	const generateBlobAndURL = (e) => {
 		if (input === '') { return };
 		const blob = new Blob([input], { type: 'text/markdown' });
@@ -65,35 +66,38 @@ const Markdown = () => {
 	}, [allowLiveUpdates, input])
 
 	const activeUpdateButtonClasser = allowLiveUpdates === true ? ` ${markLook.upActive}` : '';
+	const editorClasser = `${markLook.editor} ${markLook.pane} ${toggleEditor === true ? markLook.toggled : togglePreview === true ? markLook.hidden : markLook.bothPanes}`;
+	const previewClasser = `${markLook.preview} ${markLook.pane} ${togglePreview === true ? markLook.toggled : toggleEditor === true ? markLook.hidden : markLook.bothPanes}`;
+	const textAreaClasser = markLook.paneChild + ' ' + markLook.textarea;
+	const outputClasser = markLook.paneChild + ' ' + markLook.output;
 
 	return (
 		<section className={markLook.container}>
-			<div className={`${markLook.editor} ${markLook.pane} ${toggleEditor === true ? markLook.toggled : togglePreview === true ? markLook.hidden : markLook.both}`}>
+			<div className={editorClasser}>
 				<div className={markLook.header}>
 					<button onClick={resetToDemoHandler} className={markLook.button}>Reset to demo</button>
 					<button onClick={allowUpdatesOnClick} className={markLook.button + activeUpdateButtonClasser}>Live updates:{allowLiveUpdates ? ' ALLOWED' : ' BLOCKED'} </button>
-					<button onClick={updatePreviewHandler} className={markLook.button}>Update</button>
-					<h2>
+					{allowLiveUpdates && <button onClick={updatePreviewHandler} className={markLook.button}>Update</button>}
+					<p className={markLook.heading}>
 						editor
-					</h2>
-					<button className={markLook.paneToggler} onClick={editorToggle}><FaArrowsAltH /></button>
+					</p>
+					<button className={markLook.button + ' ' + markLook.paneToggler} onClick={editorToggle}><FaArrowsAltH /></button>
 				</div>
-				<textarea className={markLook.textarea} disabled={togglePreview} value={input} onChange={textareaOnChange} />
+				<textarea className={textAreaClasser} disabled={togglePreview} value={input} onChange={textareaOnChange} />
 			</div>
-			<div className={`${markLook.preview} ${markLook.pane} ${togglePreview === true ? markLook.toggled : toggleEditor === true ? markLook.hidden : markLook.both}`}>
+			<div className={previewClasser}>
 				<div className={markLook.header}>
-					<button className={markLook.paneToggler} onClick={previewToggle}><FaArrowsAltH /></button>
-					<h2>
+					<button className={markLook.button + ' ' + markLook.paneToggler} onClick={previewToggle}><FaArrowsAltH /></button>
+					<p className={markLook.heading}>
 						preview
-					</h2>
-					<button onClick={updatePreviewHandler} className={markLook.button}>Update</button>
-					<button onClick={generateBlobAndURL} className={markLook.button}>Generate new link for file</button>
+					</p>
+					{allowLiveUpdates && <button onClick={updatePreviewHandler} className={markLook.button}>Update</button>}
+					<button onClick={() => { setToggleDlList(true) }} className={markLook.button}>Generate new link for file</button>
 					{
 						dlurl && <a href={dlurl} download={`md_parser_${Date.now()}.md`} className={markLook.dlLink}><FaFileDownload />Download</a>
 					}
 				</div>
-				<div className={markLook.output} dangerouslySetInnerHTML={{ __html: output }} />
-
+				<div className={outputClasser} dangerouslySetInnerHTML={{ __html: output }} />
 			</div>
 		</section>
 	);
