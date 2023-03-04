@@ -1,0 +1,18 @@
+{
+	"title": "My Portfolio Site, v 1.0",
+	"slugline": "A summary of my progress in developing my own portfolio site.",
+	"techs": [
+		"HTML5",
+		"CSS3",
+		"React",
+		"ES6",
+		"Next.js",
+		"Node.js",
+		"SASS"
+	],
+	"original": {
+		"type": "github",
+		"link": "https://github.com/nic-vo/nv-portfolio"
+	},
+	"wip": false
+}
