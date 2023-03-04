@@ -1,16 +1,30 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useMemo } from 'react';
 
-import { FaCaretLeft, FaCaretRight } from "react-icons/fa";
+import { FaCaretLeft, FaCaretRight, FaPlus } from 'react-icons/fa';
 
 import carouselLook from './ImageCarousel.module.scss';
 
 const ImageCarousel = ({ photos }) => {
-	const [activeImage, setActiveImage] = useState(0);
+	const [activeImage, setActiveImage] = useState(null);
 
 	const scrollRef = useRef();
 
 	const thumbClickHandler = (index) => {
 		setActiveImage(index)
+	};
+
+	const returner = () => {
+		setActiveImage(null);
+	};
+
+	const decrementActiveImage = () => {
+		if (activeImage === 0) { return; };
+		setActiveImage((prev) => { return prev - 1 });
+	};
+
+	const incrementActiveImage = () => {
+		if (activeImage === photos.length - 1) { return; };
+		setActiveImage((prev) => { return prev + 1 });
 	};
 
 	const scrollerHandler = (right) => {
@@ -27,25 +41,41 @@ const ImageCarousel = ({ photos }) => {
 		});
 	};
 
-	const photoElements = photos.map((photo, index) => {
-		return (
-			<img src={photo} alt='' className={carouselLook.smallThumb} key={`${photo}`} onPointerDown={() => {
-				thumbClickHandler(index)
-			}} />
-		);
-	});
+	const photoElements = useMemo(() => {
+		return photos.map((photo, index) => {
+			const { src, desc } = photo;
+			return (
+				<img
+					src={src}
+					alt={desc}
+					id={index === 0 ? 'devex' : ''}
+					onClick={() => {
+						thumbClickHandler(index)
+					}}
+					key={`${src}`}
+					className={carouselLook.smallThumb}
+				/>
+			);
+		});
+	}, [activeImage])
 
 	const classer = carouselLook.previewImg;
 
 	return (
 		<div className={carouselLook.container}>
-			<div className={carouselLook.preview}>
-				<img src={photos[activeImage]} alt='' className={classer} />
-			</div>
+			{activeImage !== null &&
+				(<div className={carouselLook.preview}>
+					<button className={carouselLook.buttonReturner} onPointerDown={returner}><FaPlus /></button>
+					<button className={carouselLook.button} onPointerDown={decrementActiveImage}><FaCaretLeft /></button>
+					<img src={photos[activeImage].src} alt={photos[activeImage].desc} className={classer} />
+					<button className={carouselLook.button} onPointerDown={incrementActiveImage}><FaCaretRight /></button>
+				</div>)
+			}
+			<span className={carouselLook.instructions}>Click/tap to expand</span>
 			<div className={carouselLook.ring}>
-				<button className={carouselLook.scroller} onPointerDown={() => { scrollerHandler(false) }}><FaCaretLeft /></button>
+				<button className={carouselLook.button} onPointerDown={() => { scrollerHandler(false) }}><FaCaretLeft /></button>
 				<div className={carouselLook.ringExposed} ref={scrollRef}>{photoElements}</div>
-				<button className={carouselLook.scroller} onPointerDown={() => { scrollerHandler(true) }}><FaCaretRight /></button>
+				<button className={carouselLook.button} onPointerDown={() => { scrollerHandler(true) }}><FaCaretRight /></button>
 			</div>
 		</div>
 	);
