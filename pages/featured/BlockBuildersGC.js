@@ -5,10 +5,11 @@ import { getVersionNumber } from '../../lib/props/homepage/homepage';
 import { ProjectLayout } from '../../components/global';
 
 const BBGC = ({ layoutData, projectData }) => {
+	const {title, slugline} = projectData;
 	return (<>
 		<Head>
-			<title>Block Builders General Construction</title>
-			<meta name='description' content='A page summarizing my progress in developing an online presence for Block Builders General Contracting, Inc.' />
+			<title>{title}</title>
+			<meta name='description' content={slugline} />
 			<link rel='icon' href='/favicon.ico' />
 		</Head>
 		<ProjectLayout layoutData={layoutData} projectData={projectData}>
@@ -24,6 +25,7 @@ export async function getStaticProps() {
 		category: 'featured',
 		project: 'BlockBuildersGC',
 		types: ['title',
+			'slugline',
 			'description',
 			'techs',
 			'original']

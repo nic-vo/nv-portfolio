@@ -5,11 +5,12 @@ import { Markdown } from '../../components/fcc/Markdown';
 import { ProjectLayout } from '../../components/global';
 
 const MarkdownPage = ({ layoutData, projectData }) => {
+	const { title, slugline } = projectData;
 	return (
 		<>
 			<Head>
-				<title>A Markdown Parser</title>
-				<meta name='description' content="A React markdown previewer completed for freeCodeCamp's frontend certificate" />
+				<title>{title}</title>
+				<meta name='description' content={slugline} />
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 
@@ -27,6 +28,7 @@ export async function getStaticProps() {
 		category: 'other',
 		project: 'Markdown',
 		types: ['title',
+			'slugline',
 			'description',
 			'techs',
 			'original']

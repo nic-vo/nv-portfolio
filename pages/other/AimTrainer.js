@@ -6,10 +6,11 @@ import { AimTrainer } from '../../components/personal';
 import { Wip } from '../../components/global';
 
 const AimTrainerPage = ({ layoutData, projectData }) => {
+	const { title, slugline } = projectData;
 	return (<>
 		<Head>
-			<title>An Aim Trainer</title>
-			<meta name='description' content="An aim trainer that's really only suited for 2d games like osu!" />
+			<title>{title}</title>
+			<meta name='description' content={slugline} />
 			<link rel='icon' href='/favicon.ico' />
 		</Head>
 		<ProjectLayout layoutData={layoutData} projectData={projectData}>
@@ -26,6 +27,7 @@ export async function getStaticProps() {
 		category: 'other',
 		project: 'AimTrainer',
 		types: ['title',
+			'slugline',
 			'description',
 			'techs',
 			'original']

@@ -7,10 +7,11 @@ import { ProjectLayout } from '../../components/global';
 import getDrumMachineProps from '../../lib/props/fcc/DrumMachine/DrumMachine';
 
 const DrumMachinePage = ({ banks, numberOfBanks, soundList, layoutData, projectData }) => {
+	const { slugline, title } = projectData;
 	return (<>
 		<Head>
-			<title>A Drum Machine</title>
-			<meta name='description' content="A React drum machine completed for freeCodeCamp's frontend certificate" />
+			<title>{title}</title>
+			<meta name='description' content={slugline} />
 			<link rel='icon' href='/favicon.ico' />
 		</Head>
 
@@ -29,6 +30,7 @@ export async function getStaticProps() {
 		category: 'featured',
 		project: 'DrumMachine',
 		types: ['title',
+			'slugline',
 			'description',
 			'techs',
 			'original']

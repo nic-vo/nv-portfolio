@@ -5,10 +5,11 @@ import { getVersionNumber } from '../../lib/props/homepage/homepage';
 import { getProjectLists, getProjectData } from '../../lib/props/homepage/projects';
 
 const CalculatorPage = ({ layoutData, projectData }) => {
+	const { title, slugline } = projectData;
 	return (<>
 		<Head>
-			<title>A Calculator</title>
-			<meta name='description' content="A React calculator completed for freeCodeCamp's frontend certificate" />
+			<title>{title}</title>
+			<meta name='description' content={slugline} />
 			<link rel='icon' href='/favicon.ico' />
 		</Head>
 
@@ -25,6 +26,7 @@ export async function getStaticProps() {
 		category: 'other',
 		project: 'Calculator',
 		types: ['title',
+			'slugline',
 			'description',
 			'techs',
 			'original']
