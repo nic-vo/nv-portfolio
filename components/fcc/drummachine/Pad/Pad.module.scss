@@ -111,6 +111,22 @@
 	border: 10px solid rgba(20, 20, 20, 1);
 	background-color: rgba(10, 10, 10, 1);
 	color: $pad-overexpose;
+	animation-name: padflicker;
+	animation-fill-mode: both;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-in-out;
+}
+
+@keyframes padflicker {
+	0% {
+		filter: brightness(1);
+	}
+	50% {
+		filter: brightness(0.95);
+	}
+	100% {
+		filter: brightness(1);
+	}
 }
 
 .padInactive p {

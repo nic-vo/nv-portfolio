@@ -40,7 +40,7 @@ const ControlPanel = ({
 	return (
 		<div className={controlStyles.panel}>
 			<div className={controlStyles.display}>
-				<p>{banks[bankIndex]}:</p>
+				<p className={controlStyles.bankName}>{banks[bankIndex]}:</p>
 				<p>{displaySound ? displaySound : '--'}</p>
 			</div>
 			<div className={controlStyles.controls}>

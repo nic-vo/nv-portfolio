@@ -28,6 +28,7 @@
 }
 
 .display {
+	position: relative;
 	height: 120px;
 	width: 90%;
 	display: flex;
@@ -37,6 +38,29 @@
 	border: 10px inset rgba(20, 20, 20, 1);
 	border-radius: 10px;
 	font-family: Silkscreen, sans-serif;
+	overflow: hidden;
+}
+
+.display::before {
+	position: absolute;
+	content: ' ';
+	backdrop-filter: brightness(0.5);
+	filter: blur(5px);
+	width: 100%;
+	border-radius: 50%;
+	height: 10px;
+	animation-name: displayflicker;
+	animation-duration: 334ms;
+	animation-iteration-count: infinite;
+}
+
+@keyframes displayflicker {
+	0% {
+		top: 0;
+	}
+	100% {
+		top: 100%;
+	}
 }
 
 .display p {

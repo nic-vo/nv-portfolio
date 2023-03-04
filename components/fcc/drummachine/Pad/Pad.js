@@ -88,7 +88,7 @@ const Pad = ({
 
 	return (
 		<div className={padStyles.container}>
-			<button className={`${padStyles.pad} ${isPlaying === true ? padStyles.padActive : padStyles.padInactive}`} onClick={playSound} >
+			<button className={`${padStyles.pad} ${isPlaying === true ? padStyles.padActive : padStyles.padInactive}`} style={{ animationDuration: `${Math.random() * 1000 + 300}ms` }} onClick={playSound} >
 				<p>{char.toUpperCase()}</p>
 			</button>
 			<input type="range" min="0" max="1" step="0.05" value={pVolume} onInput={volumeOnInputHandler} />
