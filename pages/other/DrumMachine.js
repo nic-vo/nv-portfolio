@@ -27,7 +27,7 @@ export async function getStaticProps() {
 	const drumMachineProps = await getDrumMachineProps();
 	const { banks, numberOfBanks, soundList } = drumMachineProps;
 	const layoutFetch = await Promise.all([await getProjectLists({ dataTypes: ['title'] }), await getVersionNumber(), await getProjectData({
-		category: 'featured',
+		category: 'other',
 		project: 'DrumMachine',
 		types: ['title',
 			'slugline',

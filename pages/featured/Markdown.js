@@ -25,7 +25,7 @@ export default MarkdownPage;
 
 export async function getStaticProps() {
 	const layoutFetch = await Promise.all([await getProjectLists({ dataTypes: ['title'] }), await getVersionNumber(), await getProjectData({
-		category: 'other',
+		category: 'featured',
 		project: 'Markdown',
 		types: ['title',
 			'slugline',
