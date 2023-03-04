@@ -141,7 +141,12 @@
 
 	p {
 		margin: 0;
+		margin-bottom: 1em;
 		margin-left: 1rem;
+	}
+
+	strong {
+		margin: 0;
 	}
 
 	code {
@@ -167,6 +172,11 @@
 
 	li {
 		margin: 0;
+		margin-bottom: 0.5em;
+	}
+
+	li::marker {
+		font-weight: 600;
 	}
 
 	blockquote {
@@ -333,7 +343,7 @@
 
 .dlListContainer {
 	display: flex;
-	justify-content: center;
+	justify-content: space-evenly;
 	align-items: center;
 	height: 50%;
 }
@@ -341,13 +351,14 @@
 .list {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
+	align-items: flex-end;
 	height: 80%;
-	width: 80%;
+	width: 100%;
 	max-width: 500px;
-	padding: 0;
+	padding: 0.2em;
 	border-radius: 10px;
 	background-color: global.$Black;
+	border: 2px solid global.$White;
 	overflow-y: auto;
 	gap: 10px;
 	scrollbar-width: thin;
@@ -355,11 +366,10 @@
 
 .list li {
 	display: flex;
-	justify-content: flex-end;
+	justify-content: space-between;
 	align-items: center;
-	width: 80%;
 	padding: 0.5em 1em 0.5em 1em;
-	gap: 2em;
+	width: 100%;
 	border-bottom: 2px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -375,5 +385,15 @@
 
 	svg {
 		display: block;
+	}
+}
+
+.dlRemover {
+	background-color: firebrick;
+
+	svg {
+		display: block;
+		rotate: 45deg;
+		font-size: 1.4em;
 	}
 }

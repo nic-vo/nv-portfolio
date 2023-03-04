@@ -56,38 +56,50 @@ const Markdown = () => {
 		const jsonCheck = document.getElementById('json');
 		if (filename === '' || filename === undefined) { return; };
 
-		let mimetype, extension;
+		let mimetype, extension, dataOutput;
 		if (jsonCheck.checked === true) {
-			mimetype = 'application/json';
+			mimetype = 'text/plain';
 			extension = 'json';
+			dataOutput = JSON.stringify({ text: input });
 		} else {
 			mimetype = 'text/markdown';
 			extension = 'md';
+			dataOutput = input;
 		};
-		const blob = new Blob([input], { type: mimetype });
+		const blob = new Blob([dataOutput], { type: mimetype });
 		const url = URL.createObjectURL(blob);
-		const newFile = { filename, extension, url };
+		const newFile = { filename, extension, url, rawInput: input };
 		setDlUrls((prev) => {
 			return [...prev, newFile];
 		});
 	};
 
-	const clearDlUrlList = () => {
+	const clearDlUrlList = useCallback(() => {
 		dlUrls.forEach((file) => {
 			URL.revokeObjectURL(file.url)
 		});
 		setDlUrls([]);
-	};
+	}, [dlUrls]);
 
-	const resetToDemoHandler = () => {
+	const removeDlUrlFromList = useCallback((qIndex) => {
+		URL.revokeObjectURL(dlUrls[qIndex].url);
+		const filtered = dlUrls.filter((blob) => { return dlUrls.indexOf(blob) !== qIndex });
+		setDlUrls(filtered);
+	}, [dlUrls])
+
+	const setEditorToPreviousInput = useCallback((rawInput) => {
+		setInput(rawInput);
+	}, [input]);
+
+	const resetToDemoHandler = useCallback(() => {
 		setInput(defaultStateString);
-	};
+	}, [input]);
 
 	useEffect(() => {
 		if (allowLiveUpdates === true) {
 			markedToOutput();
 		};
-	}, [allowLiveUpdates, input])
+	}, [allowLiveUpdates, input]);
 
 	const activeUpdateButtonClasser = allowLiveUpdates === true ? ` ${markLook.upActive}` : '';
 	const editorClasser = `${markLook.editor} ${markLook.pane} ${toggleEditor === true ? markLook.toggled : togglePreview === true ? markLook.hidden : markLook.bothPanes}`;
@@ -137,12 +149,14 @@ const Markdown = () => {
 								<ul className={markLook.list}>
 									{dlUrls.length > 0 &&
 
-										dlUrls.map((obj) => {
-											const { filename, extension, url } = obj;
+										dlUrls.map((obj, index) => {
+											const { filename, extension, url, rawInput } = obj;
 											return (
 												<li key={`md_dl_${url}`}>
-													<p>{`${filename}.${extension === true ? 'json' : 'md'}`}</p>
-													<a href={url} download={`md_parser_${filename}.${extension === true ? 'json' : 'md'}`} className={markLook.dlLink}><FaFileDownload />Download</a>
+													<button onClick={() => { removeDlUrlFromList(index) }} className={markLook.button + ' ' + markLook.dlRemover}><FaPlus /></button>
+													<button onClick={() => { setEditorToPreviousInput(rawInput) }} className={markLook.button}>Edit raw</button>
+													<p>{`${filename}.${extension}`}</p>
+													<a href={url} download={`md_parser_${filename}.${extension}`} className={markLook.dlLink}><FaFileDownload />Download</a>
 												</li>)
 										})
 									}
