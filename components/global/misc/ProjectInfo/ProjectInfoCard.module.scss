@@ -39,7 +39,6 @@
 		font-family: Overpass, sans-serif;
 		font-weight: bold;
 		margin-top: 1em;
-		margin-bottom: 1em;
 	}
 
 	h2 {
@@ -57,15 +56,18 @@
 	p {
 		font-family: Overpass, sans-serif;
 		font-weight: 200;
+		font-size: 1.1em;
 	}
 
 	a {
-		border-bottom: 2px solid global.$White;
+		font-weight: bolder;
+		text-decoration: underline;
 	}
 
 	ul,
 	ol {
 		padding: 1em;
+		margin: 0;
 	}
 
 	code {
