@@ -7,8 +7,9 @@
 		"build": "next build",
 		"start": "next start",
 		"lint": "next lint",
-		"localthumbs": "node ./lib/dev/localthumbs.mjs",
-		"bbgcthumbs": "node ./lib/dev/bbgcthumbs.mjs"
+		"homepagethumbs": "node ./lib/dev/homepagethumbs.mjs",
+		"bbgcthumbs": "node ./lib/dev/bbgcthumbs.mjs",
+		"portfoliothumbs": "node ./lib/dev/portfoliothumbs.mjs"
 	},
 	"dependencies": {
 		"@svgr/webpack": "^6",
