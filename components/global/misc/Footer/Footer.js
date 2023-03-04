@@ -4,7 +4,7 @@ import { ContactForm } from '../../../homepage';
 
 const Footer = ({ version }) => {
 	return (
-		<footer className={footLook.footer}>
+		<footer className={footLook.footer} id='footer'>
 			<ContactForm />
 			<hr className={footLook.divider} />
 			<p>site v. {version} by nicolas vo</p>

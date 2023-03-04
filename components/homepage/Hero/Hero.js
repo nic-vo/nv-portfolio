@@ -5,7 +5,7 @@ import heroLook from './Hero.module.scss';
 const Hero = () => {
 
 	return (
-		<section className={heroLook.container}>
+		<section className={heroLook.container} id='hero'>
 			<h1 className={heroLook.hOne}>
 				<p className={heroLook.name}>Nicolas Vo</p>
 				<p className={heroLook.title}>Frontend Developer</p>

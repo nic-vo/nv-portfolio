@@ -4,7 +4,7 @@ import { FaCaretDown } from "react-icons/fa";
 
 import pCatNavLook from './ProjectCategoryNavItem.module.scss';
 
-const ProjectCategoryNavItem = ({ category }) => {
+const ProjectCategoryNavItem = ({ category, dev }) => {
 	const { categoryName, projects } = category;
 	const [catToggled, setCatToggled] = useState(false);
 
@@ -18,11 +18,11 @@ const ProjectCategoryNavItem = ({ category }) => {
 
 	return (
 		<li className={pCatNavLook.liContainer}>
-			<button onClick={toggleListHandler} className={pCatNavLook.toggler}><p>{categoryDisplay}</p><FaCaretDown className={pCatNavLook.svg + classer} /></button>
+			<button id={dev === true ? 'hndev' : ''} onClick={toggleListHandler} className={pCatNavLook.toggler}><p>{categoryDisplay}</p><FaCaretDown className={pCatNavLook.svg + classer} /></button>
 			<ul className={pCatNavLook.inCatList + classer}>
-				{projects.map((project) => {
+				{projects.map((project, index) => {
 					return (
-						<li className={pCatNavLook.li + classer} key={`${categoryName}-list-${project.project}`}>
+						<li id={dev === true && index === 0 ? 'hnlidev' : ''} className={pCatNavLook.li + classer} key={`${categoryName}-list-${project.project}`}>
 							<Link href={`/${categoryName}/${project.project}`}>{project.title}</Link>
 						</li>
 					);

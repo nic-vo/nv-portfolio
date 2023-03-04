@@ -14,9 +14,9 @@ const Header = ({ otherProjects }) => {
 	};
 
 	const categorySections = useMemo(() => {
-		return otherProjects.map((category) => {
+		return otherProjects.map((category, index) => {
 			return (
-				<ProjectCategoryNavItem category={category} key={`${category.categoryName}`} />
+				<ProjectCategoryNavItem dev={index === 0 ? true : false} category={category} key={`${category.categoryName}`} />
 			);
 		});
 	}, []);
@@ -25,7 +25,7 @@ const Header = ({ otherProjects }) => {
 
 	return (
 		<header className={headerLook.header + classer}>
-			<button onPointerDown={toggleHandler} className={headerLook.toggler + classer}>{toggled === false ? <FaBars className={headerLook.svg + classer} /> : <FaPlus className={headerLook.svg + classer} />}</button>
+			<button id='toggler' onPointerDown={toggleHandler} className={headerLook.toggler + classer}>{toggled === false ? <FaBars className={headerLook.svg + classer} /> : <FaPlus className={headerLook.svg + classer} />}</button>
 			<div onPointerDown={toggleHandler} className={headerLook.returner + classer}></div>
 			<nav className={headerLook.nav + classer}>
 				<h2 className={headerLook.title}>Other Projects</h2>

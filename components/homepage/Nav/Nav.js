@@ -5,7 +5,7 @@ import navLook from './Nav.module.scss';
 
 const Nav = ({ projectList }) => {
 	return (
-		<section className={navLook.container}>
+		<section className={navLook.container} id='projectNav'>
 			<h2 className={homeLook.hTwo}>Projects</h2>
 			<nav className={navLook.nav}>
 				{projectList.map((category) => {

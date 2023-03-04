@@ -54,7 +54,8 @@
 	border-radius: 5px;
 }
 
-.li a:hover {
+.li a:hover,
+.li a:focus {
 	translate: 0 0;
 	color: global.$White;
 	background-color: global.$Black;
