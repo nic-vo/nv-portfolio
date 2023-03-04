@@ -2,11 +2,13 @@ import * as photos from "./assets";
 import { ImageCarousel } from "../../global";
 
 const BlockBuildersGC = () => {
-	const photosArr = Object.keys(photos).map((photoKey) => { return photos[photoKey].src });
+	const photosArr = Object.keys(photos).map((photoKey) => {
+		const { src } = photos[photoKey].photo;
+		const { desc } = photos[photoKey];
+		return { src, desc }
+	});
 	return (
-		<section style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-			<ImageCarousel photos={photosArr} />
-		</section>
+		<ImageCarousel photos={photosArr} />
 	);
 };
 
