@@ -1,0 +1,5 @@
+This is my first professional project: a `React` SPA that I created for a client who runs a small contracting business. Initially, they asked me to create a logo and simple branding for their company, but then I began expanding my contributions to the client's online presence.
+
+My progress on this site was concurrent with my progress through freeCodeCamp's web development certificates regarding both front- and back-end development. I learned so much trying to fill the gaps between what freeCodeCamp taught and what the client needed for a properly-functioning site.
+
+The site contains a static portfolio and some basic contact info. The highlight of the site, however, is the contact form. It POSTs to an AWS Lambda backend I developed on my own as I was learning the basics of back-end development. Working on the security of the contact form was my top priority because the back-end engages with a number of third-party services including Google ReCAPTCHA and the client's host's SMTP servers for automated emails. This site is currently in the maintenance and upkeep phase of the development cycle.

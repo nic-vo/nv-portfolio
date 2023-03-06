@@ -1,0 +1,87 @@
+.header {
+	animation-delay: 3s;
+	animation-fill-mode: both;
+	animation-name: headerfadein;
+	animation-timing-function: ease-out;
+	animation-duration: var(--slow-transition);
+}
+
+@keyframes headerfadein {
+	0% {
+		display: none;
+		opacity: 0;
+	}
+
+	50% {
+		display: block;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+.splash {
+	display: block;
+	text-align: center;
+	animation-name: splashfadein;
+	animation-delay: var(--slow-transition);
+	animation-fill-mode: both;
+	animation-timing-function: cubic-bezier(0.4 0.1 0.6 0.9);
+	animation-duration: 3s;
+	transform-origin: center;
+}
+
+@keyframes splashfadein {
+	0% {
+		opacity: 0;
+		translate: 0 calc(-55vh - 2em);
+		transform: translateY(-50%);
+		text-shadow: 10px 10px 10px rgba(0, 0, 0, 0.8);
+	}
+
+	33% {
+		opacity: 1;
+	}
+
+	66% {
+		translate: 0 calc(-50vh - 2em);
+		transform: translateY(-50%);
+		text-shadow: 10px 10px 10px rgba(0, 0, 0, 0.8);
+	}
+
+	100% {
+		translate: 0 0;
+		transform: translateY(0);
+		text-shadow: 10px 10px 10px rgba(0, 0, 0, 0);
+		transform: none;
+	}
+}
+
+.project {
+	animation-fill-mode: both;
+	animation-name: projectfadein;
+	animation-duration: 3.4s;
+}
+
+@keyframes projectfadein {
+	0% {
+		filter: brightness(0.2);
+		pointer-events: none;
+	}
+
+	66% {
+		opacity: 1;
+		filter: brightness(0.2);
+	}
+
+	99% {
+		pointer-events: none;
+	}
+
+	100% {
+		opacity: 1;
+		filter: brightness(1);
+		pointer-events: auto;
+	}
+}

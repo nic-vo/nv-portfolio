@@ -1,5 +1,5 @@
-import PomodoroComp from "./PomodoroComp";
+import Pomodoro from './Pomodoro';
 
 export {
-	PomodoroComp
+	Pomodoro
 };

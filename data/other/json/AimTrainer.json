@@ -1,0 +1,16 @@
+{
+	"title": "An Aim Trainer",
+	"slugline": "An aim trainer that's really only suited for 2d games like osu! (WIP).",
+	"techs": [
+		"HTML5",
+		"CSS3",
+		"ES6",
+		"Javascript",
+		"MongoDB"
+	],
+	"original": {
+		"type": "github",
+		"link": ""
+	},
+	"wip": true
+}

@@ -1,0 +1,38 @@
+@use '../../../styles/globalStyles.module.scss' as global;
+
+.container {
+	width: 90%;
+	max-width: 1000px;
+	margin: 1em;
+	padding: 2em;
+	font-family: Overpass, serif;
+	border-radius: 25px;
+	backdrop-filter: blur(10px) brightness(0.85);
+	z-index: 2;
+}
+
+.heading {
+	font-size: 1.8em;
+	font-weight: 700;
+}
+
+.description {
+	font-size: 1.2em;
+	font-weight: 200;
+}
+
+@media (min-aspect-ratio: 1) {
+	.container {
+		font-size: 1.2em;
+	}
+
+	.heading {
+		font-size: 1.4em;
+		font-weight: 700;
+	}
+
+	.description {
+		font-size: 1em;
+		font-weight: 200;
+	}
+}

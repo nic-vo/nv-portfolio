@@ -1,5 +1,5 @@
-import MarkdownComp from "./MarkdownComp";
+import Markdown from './Markdown';
 
 export {
-	MarkdownComp
+	Markdown
 }

@@ -1,6 +1,6 @@
 import { useRef, useEffect } from 'react';
 
-import keyStyles from './Keypad.module.css';
+import keyStyles from './Keypad.module.scss';
 
 const Keypad = ({
 	keyId,
@@ -48,25 +48,24 @@ const Keypad = ({
 		return `${parseFloat(ran) * 150}px`;
 	};
 
-	const splodeRef = useRef({ rx: 0.33, ry: 0.33, rz: 0.33, rm: 0.5, tx: 0.5, ty: 0.5, tz: 0.5 })
+	const splodeRef = useRef({ rx: parseFloat(newRan()), ry: parseFloat(newRan()), rz: parseFloat(newRan()), rm: 0.5, tx: 0.5, ty: 0.5, tz: 0.5 })
 
 	useEffect(() => {
-		if (splode === true) {
-			const vecObj = normalizedVecs();
-			Object.keys(splodeRef.current).forEach(
-				(key, index) => {
-					switch (key) {
-						case "rx":
-						case "ry":
-						case "rz":
-							splodeRef.current[key] = vecObj[key];
-							break;
-						default:
-							splodeRef.current[key] = parseFloat(newRan());
-					}
+		if (splode === false) { return };
+		const vecObj = normalizedVecs();
+		Object.keys(splodeRef.current).forEach(
+			(key, index) => {
+				switch (key) {
+					case "rx":
+					case "ry":
+					case "rz":
+						splodeRef.current[key] = vecObj[key];
+						break;
+					default:
+						splodeRef.current[key] = parseFloat(newRan());
 				}
-			)
-		}
+			}
+		)
 	}, [splode]);
 
 	const transStr = () => {

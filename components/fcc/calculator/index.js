@@ -1,5 +1,5 @@
-import CalculatorComp from "./CalculatorComp";
+import Calculator from "./Calculator";
 
 export {
-	CalculatorComp
+	Calculator
 };

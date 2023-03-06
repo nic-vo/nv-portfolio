@@ -1,0 +1,15 @@
+{
+	"title": "A Pomodoro Timer",
+	"slugline": "A React Pomodoro Timer completed for freeCodeCamp's front-end certificate",
+	"techs": [
+		"HTML5",
+		"CSS3",
+		"React",
+		"ES6"
+	],
+	"original": {
+		"type": "codepen",
+		"link": "https://codepen.io/jungle_cone/pen/zYEMqYr"
+	},
+	"wip": false
+}

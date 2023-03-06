@@ -1,25 +1,31 @@
 {
-  "name": "nv-portfolio",
-  "version": "0.11.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "@svgr/webpack": "^6.5.1",
-    "dompurify": "^2.4.0",
-    "marked": "^4.2.1",
-    "next": "^13.0.3",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-icons": "^4.4.0",
-    "sass": "^1.56.2"
-  },
-  "devDependencies": {
-    "eslint": "8.21.0",
-    "eslint-config-next": "^13.0.3"
-  }
+	"name": "nv-portfolio",
+	"version": "1.0.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint",
+		"homepagethumbs": "node ./lib/dev/homepagethumbs.mjs",
+		"bbgcthumbs": "node ./lib/dev/bbgcthumbs.mjs",
+		"portfoliothumbs": "node ./lib/dev/portfoliothumbs.mjs"
+	},
+	"dependencies": {
+		"@svgr/webpack": "^6",
+		"dompurify": "^3.0.1",
+		"isomorphic-dompurify": "^1.0.0",
+		"marked": "^4",
+		"next": "^13",
+		"nodemailer": "^6",
+		"react": "^18",
+		"react-dom": "^18",
+		"react-icons": "^4",
+		"sass": "^1"
+	},
+	"devDependencies": {
+		"eslint": "^8",
+		"eslint-config-next": "^13",
+		"puppeteer": "^19"
+	}
 }

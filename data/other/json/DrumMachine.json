@@ -1,0 +1,18 @@
+{
+	"title": "A Drum Machine",
+	"slugline": "A React drum machine completed for freeCodeCamp's front-end certificate.",
+	"techs": [
+		"HTML5",
+		"CSS3",
+		"React",
+		"ES6",
+		"Next.js",
+		"Node.js"
+	],
+	"original": {
+		"type": "codepen",
+		"link": "https://codepen.io/jungle_cone/pen/VwzVQYZ"
+	},
+	"props": true,
+	"wip": false
+}

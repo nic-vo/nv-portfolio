@@ -1,6 +1,6 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from 'react';
 
-import duckLook from './Duck.module.css';
+import duckLook from './Duck.module.scss';
 
 import Calm from './goose_calm.svg';
 import Angr from './goose_angr.svg';

@@ -4,6 +4,8 @@ import Field from "./Field/Field";
 import Target from "./Target/Target";
 import Timer from "./Timer/Timer";
 
+import gameLook from './Game.module.scss';
+
 const Game = ({ raiseData, }) => {
 	const [activate, setActivate] = useState(false);
 	const [finished, setFinished] = useState(false);

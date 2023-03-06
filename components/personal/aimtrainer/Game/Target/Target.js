@@ -1,4 +1,4 @@
-
+import targetLook from './Target.module.scss';
 
 const Target = ({ difficulty, precisionHitHandler, hitHandler}) => {
 	return (

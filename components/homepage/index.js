@@ -1,3 +1,13 @@
-import Duckies from "./duckies/Duckies";
+import Duckies from './duckies/Duckies';
+import Hero from './Hero/Hero';
+import ContactForm from './ContactForm/ContactForm';
+import Nav from './Nav/Nav';
+import AboutMe from './AboutMe/AboutMe';
 
-export { Duckies };
+export {
+	Duckies,
+	Hero,
+	Nav,
+	ContactForm,
+	AboutMe
+};

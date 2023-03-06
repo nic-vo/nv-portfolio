@@ -2,7 +2,15 @@ This is the repo for my personal portfolio
 
 # CHANGELOG
 
-# 0.11.0
+# 1.0.0
+  - Contact Form works
+  - General styling overhaul
+  - All projects updated
+  - Project information propagated getting props through markdown / json files
+  - Project layout finalized
+
+
+## 0.11.0
   - Update to Next 13
   - Calculator
     - Minor style / layout changes

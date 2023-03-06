@@ -1,28 +1,75 @@
+@font-face {
+	font-family: 'Silkscreen';
+	src: local('Silkscreen'), url('/fonts/Silkscreen/Silkscreen-Regular.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Poppins';
+	src: local('Poppins'), url('/fonts/Poppins/Poppins-Regular.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Poppins';
+	src: url('/fonts/Poppins/Poppins-Bold.ttf') format('truetype');
+	font-weight: bold;
+}
+
+@font-face {
+	font-family: 'Poppins';
+	src: url('/fonts/Poppins/Poppins-ExtraLight.ttf') format('truetype');
+	font-weight: lighter;
+}
+
+@font-face {
+	font-family: 'Lato';
+	src: local('Lato'), url('/fonts/Lato/Lato-Regular.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Lato';
+	src: url('/fonts/Lato/Lato-Bold.ttf') format('truetype');
+	font-weight: bold;
+}
+
+@font-face {
+	font-family: 'Lato';
+	src: url('/fonts/Lato/Lato-Black.ttf') format('truetype');
+	font-weight: bolder;
+}
+
+@font-face {
+	font-family: 'Lato';
+	src: url('/fonts/Lato/Lato-Light.ttf') format('truetype');
+	font-weight: lighter;
+}
+
+@font-face {
+	font-family: 'Overpass';
+	src: local('Overpass'), url('/fonts/Overpass/Overpass-VariableFont_wght.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'JetBrains Mono';
+	src: local('JetBrains Mono'), url('/fonts/JetBrains_Mono/JetBrainsMono-VariableFont_wght.ttf') format('truetype');
+}
+
 html,
 body {
 	padding: 0;
 	margin: 0;
 	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
 		Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+	color: #D6E5E3;
+	background-color: #0C1821;
+	overflow-x: hidden;
 }
 
 :root {
-	--global-background: #0C1821;
-	--global-color: #D6E5E3;
 	--fast-transition: 83ms;
 	--medium-transition: 250ms;
 	--slow-transition: 400ms;
 
-	--transparent: rgba(0,0,0,0);
-
-	--mute-overexpose: #FBD589;
-	--mute-glow: #F7B32B;
-	--loop-overexpose: #47D1FF;
-	--loop-glow: #0094C6;
-	--pad-overexpose: #ECACB9;
-	--pad-glow: #AF3E4D;
-	--cpanel-overexpose: #B0FE76;
-	--cpanel-glow: #81E979;
+	--transparent: rgba(0, 0, 0, 0);
 }
 
 a {
@@ -32,12 +79,15 @@ a {
 
 * {
 	box-sizing: border-box;
-	z-index: 10;
 }
 
-@font-face {
-	font-family: "Silkscreen";
-	src: url('../public/fonts/Silkscreen/Silkscreen-Regular.ttf') format('truetype');
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -49,4 +99,8 @@ a {
 		color: var(--global-color);
 		background: var(--global-background);
 	}
+}
+
+.grecaptcha-badge {
+	visibility: hidden;
 }

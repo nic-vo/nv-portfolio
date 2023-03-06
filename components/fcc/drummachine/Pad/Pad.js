@@ -1,8 +1,8 @@
 import { useRef, useState, useEffect, useCallback } from 'react';
 import { FaVolumeMute, FaVolumeOff, FaStop, FaUndoAlt } from 'react-icons/fa';
 
-import machineStyles from '../DrumMachine.module.css';
-import padStyles from './Pad.module.css';
+import machineStyles from '../DrumMachine.module.scss';
+import padStyles from './Pad.module.scss';
 
 
 
@@ -88,9 +88,9 @@ const Pad = ({
 
 	return (
 		<div className={padStyles.container}>
-			<div className={`${padStyles.pad} ${isPlaying === true ? padStyles.padActive : padStyles.padInactive}`} onClick={playSound} >
+			<button className={`${padStyles.pad} ${isPlaying === true ? padStyles.padActive : padStyles.padInactive}`} style={{ animationDuration: `${Math.random() * 1000 + 300}ms` }} onClick={playSound} >
 				<p>{char.toUpperCase()}</p>
-			</div>
+			</button>
 			<input type="range" min="0" max="1" step="0.05" value={pVolume} onInput={volumeOnInputHandler} />
 			<div className={padStyles.buttons}>
 				<button onClick={muteOnClick} className={`${machineStyles.button} ${muted ? machineStyles.muteon : machineStyles.mute}`}>{muted ? <FaVolumeMute /> : <FaVolumeOff />}</button>
