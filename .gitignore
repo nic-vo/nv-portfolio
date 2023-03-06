@@ -16,9 +16,6 @@
 # production
 /build
 
-# these get regenerated often anyway
-public/thumbs
-
 # misc
 .DS_Store
 *.pem
