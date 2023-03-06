@@ -7,12 +7,12 @@ import homeLook from '../components/homepage/Homepage.module.scss';
 
 const custom404 = () => {
 	return (
-		<section className={fourLook.container}>
+		<main className={fourLook.container}>
 			<h1 className={homeLook.hTwo}>404: Not Found.</h1>
 			<Link href='/'><FaArrowLeft /><p>Back to home</p></Link>
 			<p className={fourLook.blurb}>You didn't find what you were looking for, but you found the ducks. Say hi.</p>
 			<Duckies />
-		</section>
+		</main>
 	);
 };
 
