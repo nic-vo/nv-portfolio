@@ -47,7 +47,7 @@ const Markdown = () => {
 		setOutput(sanitize(dirty, { USE_PROFILES: { html: true } }));
 	};
 
-	const updatePreviewHandler = useCallback(() => { markedToOutput(); }, [allowLiveUpdates]);
+	const updatePreviewHandler = () => { markedToOutput(); };
 
 
 	const generateBlobAndURL = (e) => {
@@ -113,7 +113,7 @@ const Markdown = () => {
 				<div className={markLook.header}>
 					<button onClick={resetToDemoHandler} className={markLook.button}>Reset to demo</button>
 					<button onClick={allowUpdatesOnClick} className={markLook.button + activeUpdateButtonClasser}>Live updates:{allowLiveUpdates ? ' ALLOWED' : ' BLOCKED'} </button>
-					{allowLiveUpdates && <button onClick={updatePreviewHandler} className={markLook.button}>Update</button>}
+					{allowLiveUpdates === false && <button onClick={updatePreviewHandler} className={markLook.button}>Update</button>}
 					<p className={markLook.heading}>
 						editor
 					</p>
