@@ -18,3 +18,10 @@
 .divider {
 	width: 10%;
 }
+
+.textbanner {
+	display: flex;
+	align-items: center;
+	max-width: 1000px;
+	gap: 2em;
+}
