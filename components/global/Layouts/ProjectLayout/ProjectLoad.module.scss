@@ -35,9 +35,9 @@
 @keyframes splashfadein {
 	0% {
 		opacity: 0;
-		translate: 0 -50vh;
+		translate: 0 calc(-55vh - 2em);
 		transform: translateY(-50%);
-		text-shadow: 10px 10px 10px rgba(0,0,0,0.8);
+		text-shadow: 10px 10px 10px rgba(0, 0, 0, 0.8);
 	}
 
 	33% {
@@ -45,17 +45,15 @@
 	}
 
 	66% {
-		margin-top: 0;
-		translate: 0 -50vh;
+		translate: 0 calc(-50vh - 2em);
 		transform: translateY(-50%);
-		text-shadow: 10px 10px 10px rgba(0,0,0,0.8);
+		text-shadow: 10px 10px 10px rgba(0, 0, 0, 0.8);
 	}
 
 	100% {
-		margin-top: 2em;
 		translate: 0 0;
 		transform: translateY(0);
-		text-shadow: 10px 10px 10px rgba(0,0,0,0);
+		text-shadow: 10px 10px 10px rgba(0, 0, 0, 0);
 		transform: none;
 	}
 }

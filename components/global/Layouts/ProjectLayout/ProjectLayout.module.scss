@@ -9,8 +9,15 @@
 
 .title {
 	font-family: Poppins, sans-serif;
-	font-size: 4em;
+	font-size: 2.6em;
 	text-align: center;
+	margin: 1em;
+}
+
+@media (min-aspect-ratio: 1) {
+	.title {
+		font-size: 4em;
+	}
 }
 
 .projectContainer {
