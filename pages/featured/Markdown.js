@@ -5,7 +5,9 @@ import { Markdown } from '../../components/fcc/Markdown';
 import { ProjectLayout } from '../../components/global';
 
 const MarkdownPage = ({ layoutData, projectData }) => {
+
 	const { title, slugline } = projectData;
+
 	return (
 		<>
 			<Head>
