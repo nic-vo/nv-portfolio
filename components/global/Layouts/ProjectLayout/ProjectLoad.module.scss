@@ -66,13 +66,13 @@
 
 @keyframes projectfadein {
 	0% {
-		filter: blur(10px) brightness(0.5);
+		filter: brightness(0.2);
 		pointer-events: none;
 	}
 
 	66% {
 		opacity: 1;
-		filter: blur(10px) brightness(0.5);
+		filter: brightness(0.2);
 	}
 
 	99% {
@@ -81,7 +81,7 @@
 
 	100% {
 		opacity: 1;
-		filter: blur(0px) brightness(1);
+		filter: brightness(1);
 		pointer-events: auto;
 	}
 }
