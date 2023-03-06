@@ -1,14 +1,19 @@
 import aboutLook from './AboutMe.module.scss';
-import homeLook from '../Homepage.module.scss';
 
 const AboutMe = () => {
 	return (
 		<section className={aboutLook.container}>
-			<h2 className={homeLook.hTwo}>About Me</h2>
+			<h3 className={aboutLook.heading}>
+				Hello there! 👋
+			</h3>
 			<p className={aboutLook.description}>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				My name is Nicolas, and I'm a freelance front-end developer based in San Diego, California.
+			</p>
+			<p className={aboutLook.description}>
+				I design solutions with minimialist aesthetic and maximum function for a seamless, comprehensive user experience. Check out my work below!
 			</p>
 		</section>
+
 	);
 };
 
