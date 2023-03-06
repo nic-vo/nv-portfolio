@@ -2,6 +2,7 @@
 
 .container {
 	@include global.sectionContainer;
+	background-color: global.$slightlyLighter;
 }
 
 .nav {
