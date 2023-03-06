@@ -12,14 +12,21 @@
 	max-width: 80%;
 	background-color: global.$Black;
 	border: 10px solid;
-	border-color: rgba(20,20,20,0.6);
+	border-color: rgba(20, 20, 20, 0.6);
 	border-radius: 25px;
 	padding: 2em 1em 2em 1em;
-	overflow: hidden;
+	overflow-y: auto;
+	overflow-x: hidden;
 	list-style: none;
 	scrollbar-width: thin;
 	box-shadow: 0 0 0 rgba(0, 0, 0, 0);
 	transition: box-shadow var(--medium-transition), border-color var(--medium-transition);
+}
+
+@media (min-aspect-ratio: 1) {
+	.cardContainer {
+		padding: 1em 0.5em 1em 0.5em;
+	}
 }
 
 .projectTitle {
@@ -124,6 +131,6 @@
 	}
 
 	.imgBack {
-		filter: blur(10px) saturate(0) contrast(0.7) brightness(0.4) ;
+		filter: blur(10px) saturate(0) contrast(0.7) brightness(0.4);
 	}
 }
