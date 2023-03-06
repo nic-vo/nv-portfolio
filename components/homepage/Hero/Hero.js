@@ -1,3 +1,4 @@
+import AboutMe from '../AboutMe/AboutMe';
 import Crosses from './Crosses/Crosses';
 
 import heroLook from './Hero.module.scss';
@@ -10,6 +11,8 @@ const Hero = () => {
 				<p className={heroLook.name}>Nicolas Vo</p>
 				<p className={heroLook.title}>Frontend Developer</p>
 			</h1>
+			<hr className={heroLook.line} />
+			<AboutMe />
 			<Crosses limit={50} />
 		</section>
 	);

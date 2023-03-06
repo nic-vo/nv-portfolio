@@ -5,13 +5,13 @@
 	width: 100%;
 	overflow: hidden;
 	align-items: center;
-	justify-content: space-around;
+	justify-content: center;
+	gap: 2rem;
 }
 
 .hOne {
 	display: block;
-	padding: 1em;
-	text-align: right;
+	text-align: center;
 	margin: 1em;
 	z-index: 2;
 }
@@ -22,12 +22,30 @@
 
 .name {
 	font-family: Poppins, sans-serif;
-	font-size: 4em;
+	font-size: 3em;
 	font-weight: bold;
 }
 
 .title {
 	font-family: Lato, sans-serif;
-	font-size: 2em;
+	font-size: 1.8em;
 	font-weight: lighter;
+}
+
+@media (min-aspect-ratio: 1) {
+	.name {
+		font-size: 4em;
+		font-weight: bold;
+	}
+
+	.title {
+		font-size: 2em;
+		font-weight: lighter;
+	}
+}
+
+.line {
+	width: 25%;
+	opacity: 0.5;
+
 }
