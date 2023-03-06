@@ -72,7 +72,7 @@ const ImageCarousel = ({ photos }) => {
 				</div>)
 			}
 			<span className={carouselLook.instructions}>Click/tap to expand</span>
-			<div className={carouselLook.ring}>
+			<div className={carouselLook.ringContainer}>
 				<button className={carouselLook.button} onPointerDown={() => { scrollerHandler(false) }}><FaCaretLeft /></button>
 				<div className={carouselLook.ringExposed} ref={scrollRef}>{photoElements}</div>
 				<button className={carouselLook.button} onPointerDown={() => { scrollerHandler(true) }}><FaCaretRight /></button>

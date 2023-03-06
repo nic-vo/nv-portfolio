@@ -21,6 +21,7 @@
 	font-weight: lighter;
 	font-size: 1.4em;
 	text-align: center;
+	margin: 1em;
 }
 
 .preview {
@@ -32,19 +33,30 @@
 	height: 100vh;
 	top: 0;
 	left: 0;
-	backdrop-filter: brightness(0.4) blur(10px);
+	backdrop-filter: brightness(0.01) blur(10px);
 }
 
 .previewImg {
-	position: relative;
-	height: 80%;
-	width: auto;
+	position: absolute;
+	width: 90%;
+	left: 5%;
+	height: auto;
 	border-radius: 5px;
 	z-index: 2;
 	animation-name: pImgFadeIn;
 	animation-duration: 0.5s;
 	animation-timing-function: ease-in-out;
 	animation-fill-mode: both;
+}
+
+@media (min-aspect-ratio: 1) {
+	.previewImg {
+		position: relative;
+		z-index: 2;
+		left: 0;
+		height: 80%;
+		width: auto;
+	}
 }
 
 @keyframes pImgFadeIn {
@@ -57,23 +69,53 @@
 	}
 }
 
-.ring {
+.ringContainer {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	overflow: hidden;
 	width: 100%;
-	height: 50%;
-	gap: 1em;
+}
+
+@media (min-aspect-ratio: 1) {
+	.ringContainer {
+		width: 100%;
+		height: 50%;
+	}
 }
 
 .ringExposed {
-	display: flex;
-	flex-direction: row;
+	display: block;
 	align-items: center;
-	overflow-x: scroll;
 	scrollbar-width: thin;
 	height: 100%;
+	overflow-y: scroll;
+}
+
+@media (min-aspect-ratio: 1) {
+	.ringExposed {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		overflow-x: scroll;
+		height: 100%;
+		gap: 16px;
+	}
+}
+
+.smallThumb {
+	cursor: pointer;
+	width: 100%;
+	height: auto;
+	border-radius: 5px;
+	border: 10px solid global.$slightlyDarker;
+}
+
+@media (min-aspect-ratio: 1) {
+	.smallThumb {
+		height: 90%;
+		width: auto;
+	}
 }
 
 .button,
@@ -88,6 +130,16 @@
 	transition-timing-function: ease-in-out;
 }
 
+.button {
+	display: none;
+}
+
+@media (min-aspect-ratio: 1) {
+	.button {
+		display: block;
+	}
+}
+
 .button:hover,
 .buttonReturner:hover {
 	color: global.$Black;
@@ -100,31 +152,38 @@
 	font-size: 2em;
 }
 
-.smallThumb {
-	cursor: pointer;
-	height: 90%;
-	width: auto;
-	border-radius: 5px;
-	border: 10px solid global.$slightlyDarker;
-	margin: 0 1em 0 1em;
+.preview .button {
+	display: block;
+	position: relative;
+	z-index: 3;
+	margin: 8%;
+	padding: 0.5em;
 }
 
-.preview .button {
-	position: relative;
-	z-index: 2;
-	margin: 4em;
+@media (min-aspect-ratio: 1) {
+	.preview .button {
+		position: relative;
+		margin: 4em;
+	}
 }
 
 .buttonReturner {
 	position: absolute;
-	top: 4em;
-	left: 4em;
-	z-index: 2;
+	top: 2em;
+	left: 2em;
+	z-index: 3;
 
 	svg {
 		display: block;
 		margin: auto;
 		font-size: 2em;
 		rotate: 45deg;
+	}
+}
+
+@media (min-aspect-ratio: 1) {
+	.buttonReturner {
+		top: 4em;
+		left: 4em;
 	}
 }
