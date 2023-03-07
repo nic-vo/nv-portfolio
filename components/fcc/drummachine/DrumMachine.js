@@ -15,24 +15,24 @@ const DrumMachine = ({ banks, numberOfBanks, soundList }) => {
 	const [mVolume, setMVolume] = useState(0.5);
 	const [muteAll, setMuteAll] = useState(false);
 
-	const setDisplaySoundHandler = useCallback((sound) => {
+	const setDisplaySoundHandler = (sound) => {
 		setDisplaySound(sound);
-	}, [displaySound]);
+	};
 
-	const clearDisplaySoundHandler = useCallback((sound) => {
+	const clearDisplaySoundHandler = (sound) => {
 		if (sound === displaySound) {
 			setDisplaySound('');
 		};
-	}, [displaySound]);
+	};
 
-	const mVolumeHandler = useCallback((e) => {
+	const mVolumeHandler = (e) => {
 		setMVolume(parseFloat(e.target.value));
-	}, [mVolume])
+	};
 
-	const bankIndexHandler = useCallback((e) => {
+	const bankIndexHandler = (e) => {
 		setBankIndex(parseInt(e.target.value));
 		setDisplaySound('');
-	}, [bankIndex]);
+	};
 
 	// Triggers sounds
 	const keyDownHandler = (e) => {
@@ -60,9 +60,7 @@ const DrumMachine = ({ banks, numberOfBanks, soundList }) => {
 		setMuteAll(!muteAll);
 	}, [muteAll]);
 
-	const activeBank = useMemo(() => {
-		return soundList[bankIndex]
-	}, [bankIndex])
+	const activeBank = soundList[bankIndex];
 
 	return (
 		<section className={machineStyles.machine} tabIndex='0' onKeyDown={keyDownHandler}>

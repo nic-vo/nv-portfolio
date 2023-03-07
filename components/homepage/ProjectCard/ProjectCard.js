@@ -15,7 +15,7 @@ const ProjectCard = ({ categoryName, project, title, techs, wip }) => {
 				})}
 			</ul>
 			{wip === false && <Link href={`${categoryName}/${project}`} className={cardLook.link}>Check it out<FaArrowRight /></Link>}
-			<img src={`thumbs/${categoryName}/${project}.png`} className={cardLook.imgBack} />
+			<img src={`thumbs/${categoryName}/${project}.png`} className={cardLook.imgBack} alt=''/>
 		</li>
 	)
 };

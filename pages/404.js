@@ -10,7 +10,7 @@ const custom404 = () => {
 		<main className={fourLook.container}>
 			<h1 className={homeLook.hTwo}>404: Not Found.</h1>
 			<Link href='/'><FaArrowLeft /><p>Back to home</p></Link>
-			<p className={fourLook.blurb}>You didn't find what you were looking for, but you found the ducks. Say hi.</p>
+			<p className={fourLook.blurb}>You didn&apos;t find what you were looking for, but you found the ducks. Say hi.</p>
 			<Duckies />
 		</main>
 	);

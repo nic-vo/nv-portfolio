@@ -1,5 +1,5 @@
 import Script from 'next/script';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 
 import { Spinner } from '../../global';
 import { FaMinus, FaCheckCircle, FaExclamationCircle, FaArrowRight } from 'react-icons/fa';

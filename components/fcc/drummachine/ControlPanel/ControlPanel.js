@@ -1,4 +1,3 @@
-import { useState, useCallback } from 'react'
 import { FaVolumeMute, FaStop, FaMusic, FaVolumeUp, FaVolumeOff } from 'react-icons/fa';
 
 import machineStyles from '../DrumMachine.module.scss';
@@ -8,16 +7,10 @@ import controlStyles from './ControlPanel.module.scss';
 
 const MasterSlider = ({ mVolume, mVolumeHandler }) => {
 
-	const [master, setMaster] = useState(mVolume);
-
-	const masterOnChangeHandler = useCallback((e) => {
-		setMaster(parseFloat(e.target.value))
-	}, [mVolume, master]);
-
 	return (
 		<label htmlFor='mVolume'>
 			<FaVolumeUp />
-			<input id='mVolume' type='range' min='0' max='1' step='0.05' value={master} onChange={masterOnChangeHandler} onPointerUp={mVolumeHandler} />
+			<input id='mVolume' type='range' min='0' max='1' step='0.05' value={mVolume} onChange={mVolumeHandler} onPointerUp={mVolumeHandler} />
 		</label>
 	);
 };
