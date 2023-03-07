@@ -26,12 +26,12 @@ const Timer = ({ activate, finished, timeElapsed, failer }) => {
 				setExpected(now + 100);
 			}, 100 - diff);
 		})
-	}, [activate]);
+	}, [activate, loop]);
 
 	useEffect(() => {
 		if (activate === false) { return };
 		if (currentTime === 6000) {
-			failer();
+			// failer();
 			return;
 		}
 		setLoop(() => {
@@ -42,7 +42,7 @@ const Timer = ({ activate, finished, timeElapsed, failer }) => {
 				setExpected(now + 100);
 			}, 100 - diff);
 		});
-	}, [currentTime]);
+	}, [currentTime, activate]);
 
 	const seconds = Math.floor(currentTime / 10);
 	const minutes = Math.floor(currentTime / 600);

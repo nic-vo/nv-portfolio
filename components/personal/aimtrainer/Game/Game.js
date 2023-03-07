@@ -32,7 +32,7 @@ const Game = ({ raiseData, }) => {
 					{
 						tries.map((attempt) => {
 							return (
-								<li>
+								<li key={attempt.index}>
 									Time: {attempt.time-lastHitTime} / posX: {attempt.x} / posY: {attempt.y}
 								</li>
 							)
