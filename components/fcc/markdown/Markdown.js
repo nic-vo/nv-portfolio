@@ -17,20 +17,20 @@ const Markdown = () => {
 	const [toggleDlList, setToggleDlList] = useState(false);
 	const [dlUrls, setDlUrls] = useState([]);
 
-	const editorToggle = useCallback((e) => {
+	const editorToggle = (e) => {
 		e.preventDefault();
 		setToggleEditor(prev => { return !prev });
-	}, [toggleEditor]);
+	};
 
-	const previewToggle = useCallback((e) => {
+	const previewToggle = (e) => {
 		e.preventDefault();
 		setTogglePreview(prev => { return !prev });
-	}, [togglePreview]);
+	};
 
-	const allowUpdatesOnClick = useCallback((e) => {
+	const allowUpdatesOnClick = (e) => {
 		e.preventDefault();
 		setAllowLiveUpdates(prev => { return !prev });
-	}, [allowLiveUpdates]);
+	};
 
 	const textareaOnChange = (e) => {
 		setInput(e.target.value);
@@ -87,19 +87,19 @@ const Markdown = () => {
 		setDlUrls(filtered);
 	}, [dlUrls])
 
-	const setEditorToPreviousInput = useCallback((rawInput) => {
+	const setEditorToPreviousInput = (rawInput) => {
 		setInput(rawInput);
-	}, [input]);
+	};
 
-	const resetToDemoHandler = useCallback(() => {
+	const resetToDemoHandler = () => {
 		setInput(defaultStateString);
-	}, [input]);
+	};
 
 	useEffect(() => {
 		if (allowLiveUpdates === true) {
 			markedToOutput();
 		};
-	}, [allowLiveUpdates, input]);
+	}, [allowLiveUpdates, input, markedToOutput]);
 
 	const activeUpdateButtonClasser = allowLiveUpdates === true ? ` ${markLook.upActive}` : '';
 	const editorClasser = `${markLook.editor} ${markLook.pane} ${toggleEditor === true ? markLook.toggled : togglePreview === true ? markLook.hidden : markLook.bothPanes}`;
