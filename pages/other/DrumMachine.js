@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { getProjectLists, getProjectData } from '../../lib/props/homepage/projects';
 import { getVersionNumber } from '../../lib/props/homepage/homepage';
-import { DrumMachine } from '../../components/fcc/DrumMachine';
+import { DrumMachine } from '../../components/fcc';
 import { ProjectLayout } from '../../components/global';
 
 import getDrumMachineProps from '../../lib/props/fcc/DrumMachine/DrumMachine';

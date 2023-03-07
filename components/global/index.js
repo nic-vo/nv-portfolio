@@ -1,4 +1,4 @@
-import ProjectLayout from './layouts/ProjectLayout/ProjectLayout';
+import ProjectLayout from './Layouts/ProjectLayout/ProjectLayout';
 import Spinner from './misc/Spinner/Spinner';
 import Footer from './misc/Footer/Footer';
 import Wip from './misc/Wip/Wip';
@@ -12,4 +12,4 @@ export {
 	Wip,
 	ImageCarousel,
 	TechBubble
-}
+};
