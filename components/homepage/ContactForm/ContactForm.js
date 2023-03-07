@@ -48,8 +48,7 @@ const ContactForm = () => {
 	return (
 		<>
 			<Script
-				src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_CONTACT_FORM_RECAPTCHA_KEY}`}
-				strategy='beforeInteractive' />
+				src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_CONTACT_FORM_RECAPTCHA_KEY}`} />
 
 			<section className={cLook.container}>
 				<h2 className={homeLook.hTwo}>Need something done?</h2>
