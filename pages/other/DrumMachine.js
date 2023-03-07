@@ -4,7 +4,7 @@ import { getVersionNumber } from '../../lib/props/homepage/homepage';
 import { DrumMachine } from '../../components/fcc';
 import { ProjectLayout } from '../../components/global';
 
-import getDrumMachineProps from '../../lib/props/fcc/DrumMachine/DrumMachine';
+import getDrumMachineProps from '../../lib/props/fcc/drummachine/drummachine';
 
 const DrumMachinePage = ({ banks, numberOfBanks, soundList, layoutData, projectData }) => {
 	const { slugline, title } = projectData;

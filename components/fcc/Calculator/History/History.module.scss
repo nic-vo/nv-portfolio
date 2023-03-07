@@ -1,0 +1,67 @@
+.history {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 90%;
+	max-width: 500px;
+	min-height: 30vh;
+	padding: 2vh;
+	border-radius: 10px;
+	background-color: #28292A;
+}
+
+@media (min-aspect-ratio:99/100) {
+	.history {
+		width: 15rem;
+	}
+}
+
+.historyitem {
+	display: flex;
+	padding-right: 1rem;
+	margin: 1rem;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-end;
+	width: 100%;
+	border-right: 2px solid #E8EEF2;
+}
+
+.historyitem p {
+	display: block;
+	width: 80%;
+	padding: 0.5rem 0 0.5rem 0;
+	margin: 0;
+	text-align: right;
+	white-space: nowrap;
+	overflow-x: auto;
+	scrollbar-width: thin;
+}
+
+.historyitem button {
+	cursor: pointer;
+	display: flex;
+	flex-direction: row;
+	font-size: 1rem;
+	margin-left: 1rem;
+	padding: 0.5rem;
+	align-items: center;
+}
+
+.clearhistory {
+	cursor: pointer;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	background-color: #A35255;
+	height: 2rem;
+	width: 10rem;
+	padding: 1rem;
+	border-radius: 5px;
+	border: 5px solid #A35255;
+}
+
+.clearhistory:hover {
+	border: 5px outset #A35255
+}
