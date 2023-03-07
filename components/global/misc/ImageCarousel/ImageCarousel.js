@@ -10,7 +10,7 @@ const ImageCarousel = ({ photos }) => {
 	const scrollRef = useRef();
 
 	const thumbClickHandler = (index) => {
-		setActiveImage(index)
+		setActiveImage(index);
 	};
 
 	const returner = () => {
@@ -45,19 +45,10 @@ const ImageCarousel = ({ photos }) => {
 		return photos.map((photo, index) => {
 			const { src, desc } = photo;
 			return (
-				<img
-					src={src}
-					alt={desc}
-					id={index === 0 ? 'devex' : ''}
-					onClick={() => {
-						thumbClickHandler(index)
-					}}
-					key={`${src}`}
-					className={carouselLook.smallThumb}
-				/>
+				<img src={src} alt={desc} id={index === 0 ? 'devex' : ''} onClick={() => { thumbClickHandler(index) }} key={`${src}`} className={carouselLook.smallThumb} />
 			);
 		});
-	}, [activeImage])
+	}, [thumbClickHandler])
 
 	const classer = carouselLook.previewImg;
 
