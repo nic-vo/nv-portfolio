@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { ProjectLayout } from '../../components/global';
-import { Calculator } from '../../components/fcc/Calculator';
+import { Calculator } from '../../components/fcc';
 import { getVersionNumber } from '../../lib/props/homepage/homepage';
 import { getProjectLists, getProjectData } from '../../lib/props/homepage/projects';
 

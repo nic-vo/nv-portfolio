@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { getProjectLists, getProjectData } from '../../lib/props/homepage/projects';
 import { getVersionNumber } from '../../lib/props/homepage/homepage';
 import { ProjectLayout } from '../../components/global';
-import { Pomodoro } from '../../components/fcc/Pomodoro';
+import { Pomodoro } from '../../components/fcc';
 
 const PomodoroPage = ({ layoutData, projectData }) => {
 	return (<>

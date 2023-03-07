@@ -1,4 +1,4 @@
-import Duckies from './duckies/Duckies';
+import Duckies from './Duckies/Duckies';
 import Hero from './Hero/Hero';
 import ContactForm from './ContactForm/ContactForm';
 import Nav from './Nav/Nav';
