@@ -51,9 +51,9 @@ const Pad = ({
 		setIsPlaying(false);
 	};
 
-	const volumeOnInputHandler = useCallback((e) => {
+	const volumeOnInputHandler = (e) => {
 		setPVolume(parseFloat(e.target.value));
-	}, [pVolume]);
+	};
 
 	const muteOnClick = useCallback(() => {
 		// Mute button changes state and set soundRef to state
@@ -62,7 +62,7 @@ const Pad = ({
 			setMuted(!muted);
 			soundRef.current.muted = !muted;
 		}
-	}, [muted]);
+	}, [muteAll, muted]);
 
 	const stopOnClick = useCallback(() => {
 		// Stops sound
