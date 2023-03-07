@@ -99,7 +99,7 @@ const Markdown = () => {
 		if (allowLiveUpdates === true) {
 			markedToOutput();
 		};
-	}, [allowLiveUpdates, input, markedToOutput]);
+	}, [allowLiveUpdates]);
 
 	const activeUpdateButtonClasser = allowLiveUpdates === true ? ` ${markLook.upActive}` : '';
 	const editorClasser = `${markLook.editor} ${markLook.pane} ${toggleEditor === true ? markLook.toggled : togglePreview === true ? markLook.hidden : markLook.bothPanes}`;

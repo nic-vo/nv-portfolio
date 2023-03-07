@@ -39,7 +39,7 @@ const ScrollToTop = () => {
 		const current = handlePortScroll;
 		window.addEventListener('scroll', current);
 		return () => { window.removeEventListener('scroll', current) };
-	}, [scrollThrottle, handlePortScroll])
+	}, [scrollThrottle])
 
 	const classer = distanceDisable === false ? ` ${scrollLook.visible}` : '';
 
