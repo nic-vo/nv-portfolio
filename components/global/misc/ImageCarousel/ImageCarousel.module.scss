@@ -89,7 +89,9 @@
 	align-items: center;
 	scrollbar-width: thin;
 	height: 100%;
-	overflow-y: scroll;
+	padding: 16px;
+	margin: 0;
+	overflow-y: auto;
 }
 
 @media (min-aspect-ratio: 1) {
@@ -98,7 +100,9 @@
 		flex-direction: row;
 		align-items: center;
 		overflow-x: scroll;
+		overflow-y: hidden;
 		height: 100%;
+		margin: 0 16px 0 16px;
 		gap: 16px;
 	}
 }
