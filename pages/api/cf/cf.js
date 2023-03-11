@@ -1,4 +1,4 @@
-import { pString, headerOneString } from '../../../lib/api/homepage/ContactForm/ContactForm';
+import { stringer } from '../../../lib/api/homepage/ContactForm/ContactForm';
 
 const formHandler = async (req, res) => {
 	const { name, email, threeToken, birthday } = req.body;
@@ -39,35 +39,7 @@ const formHandler = async (req, res) => {
 		}
 	});
 
-	const pStyle = {
-		'font-size': '1em',
-		color: 'inherit',
-		margin: '1rem',
-		width: '50%'
-	};
-
-	const hOneStyle = {
-		display: 'block',
-		'font-size': '2em',
-		color: 'inherit',
-		'text-align': 'center',
-		margin: '1rem',
-	};
-
-	let htmlStr = `<div style='width: 100%; min-height: 50vh; align-items: center; justify-content: start; background-color: #0C1821; color: #D6E5E3; font-size: 1.1rem;'>` + headerOneString({
-		str: `Hi, ${name}!`,
-		style: hOneStyle
-	}) + pString({
-		str: `You've reached me through the contact form on my portfolio page.`,
-		style: pStyle
-	}) + pString({
-		str: `You can reply to this email with more details about your request if you so choose, or you can wait for me to respond (typically with 2 business days).`,
-		style: pStyle
-	}) + pString({
-		str: `(If you believe you've received this message in error, you can ignore it.)`,
-		style: pStyle
-	}) + '</div>';
-
+	// Send both plaintext and HTML; HTML from stringer function
 	const emailMessage = {
 		from: process.env.PRIVATE_EMAIL_USER,
 		to: email,
@@ -77,7 +49,7 @@ const formHandler = async (req, res) => {
 		You've reached me through the contact form on my portfolio page. You can reply to this email with more details about your request if you so choose, or you can wait for me to respond (typically with 2 business days).
 
 		If you believe you've received this message in error, you can ignore it.`,
-		html: htmlStr
+		html: stringer(name)
 	};
 
 	const sendResult = await transport.sendMail(emailMessage);
