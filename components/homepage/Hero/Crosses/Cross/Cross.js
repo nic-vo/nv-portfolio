@@ -12,9 +12,7 @@ const calculator = () => {
 };
 
 const Cross = () => {
-
 	const coords = useMemo(() => { return calculator() }, []);
-
 	return (
 		<div className={crossLook.container} style={{
 			left: `${coords.x * 100}%`,
