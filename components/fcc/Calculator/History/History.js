@@ -6,8 +6,7 @@ const History = ({
 	history,
 	pickHistory,
 	clearHistory,
-	oldAllowed
-}) => {
+	oldAllowed }) => {
 	return (
 		<div className={histStyles.history}>
 			<button className={histStyles.clearhistory} onClick={clearHistory}>Clear History</button>
@@ -15,8 +14,17 @@ const History = ({
 				history.map((item, index) => {
 					return (
 						<div className={histStyles.historyitem} key={`his-${index}`}>
-							<p>{item[0].replaceAll(/([+*/]|(?<!([+*/\-]|^))-)/g, " $1 ")} = {item[1]}</p>
-							<button value={item[1]} onClick={pickHistory} disabled={!oldAllowed}><FaShare /></button>
+							<p>
+								{item[0].replaceAll(/([+*/]|(?<!([+*/\-]|^))-)/g, " $1 ")}
+								=
+								{item[1]}
+							</p>
+							<button
+								value={item[1]}
+								onClick={pickHistory}
+								disabled={!oldAllowed}>
+								<FaShare />
+							</button>
 						</div>
 					)
 				})
