@@ -1,0 +1,178 @@
+@use '../DrumMachineColors.module.scss' as *;
+
+.panel {
+	width: 100%;
+	max-width: 400px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 3vh;
+}
+
+.panel label {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.panel button {
+	width: 60px;
+}
+
+.sounds {
+	width: 80%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+.display {
+	position: relative;
+	height: 120px;
+	width: 90%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	background-color: rgba(10, 10, 10, 1);
+	border: 10px inset rgba(20, 20, 20, 1);
+	border-radius: 10px;
+	font-family: Silkscreen, sans-serif;
+	overflow: hidden;
+}
+
+.display::before {
+	position: absolute;
+	content: ' ';
+	backdrop-filter: brightness(0.5);
+	filter: blur(5px);
+	width: 100%;
+	border-radius: 50%;
+	height: 10px;
+	animation-name: displayflicker;
+	animation-duration: 334ms;
+	animation-iteration-count: infinite;
+	animation-delay: 5s;
+}
+
+@keyframes displayflicker {
+	0% {
+		top: 0;
+	}
+	100% {
+		top: 100%;
+	}
+}
+
+.display p {
+	text-align: center;
+	font-size: 1.2rem;
+	color: $cpanel-overexpose;
+	text-shadow: 0px 0px 20px $cpanel-glow;
+	filter: drop-shadow(0px 0px 5px $cpanel-glow);
+	margin: 0.5rem;
+}
+
+.controls {
+	width: 80%;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	gap: 1em;
+}
+
+.sliders {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+
+@media (min-aspect-ratio: 1) {
+	.display {
+		width: 100%;
+	}
+
+	.controls {
+		width: 100%;
+	}
+}
+
+.sliders svg {
+	margin: 0.5rem;
+	font-size: 1.5rem;
+	color: $cpanel-overexpose;
+	filter: drop-shadow(0px 0px 5px $cpanel-glow);
+}
+
+.sliders input {
+	cursor: pointer;
+	appearance: none;
+	-webkit-appearance: none;
+	margin: 0.5rem;
+	border-radius: 5px;
+	border: 2px solid rgba(20, 20, 20, 1);
+	background-color: rgba(20, 20, 20, 1);
+	transition: box-shadow var(--fast-transition), background-color var(--fast-transition), border var(--fast-transition);
+}
+
+.sliders input:hover {
+	border: 2px solid $cpanel-overexpose
+}
+
+.sliders input:focus {
+	border: 2px solid $cpanel-overexpose
+}
+
+.sliders input:active {
+	border: 2px solid $cpanel-overexpose
+}
+
+.sliders input::-moz-range-thumb {
+	appearance: none;
+	background-color: $cpanel-glow;
+	border: none;
+}
+
+.sliders input:focus::-moz-range-thumb {
+	background-color: $cpanel-overexpose;
+	box-shadow: 0px 0px 20px 5px $cpanel-glow;
+}
+
+.sliders input:active::-moz-range-thumb {
+	background-color: $cpanel-overexpose;
+	box-shadow: 0px 0px 20px 5px $cpanel-glow;
+}
+
+.sliders input::-webkit-range-thumb {
+	appearance: none;
+	background-color: $cpanel-glow;
+	border: none;
+}
+
+.sliders input:focus::-webkit-range-thumb {
+	background-color: $cpanel-overexpose;
+	box-shadow: 0px 0px 20px 5px $cpanel-glow;
+}
+
+.sliders input:active::-webkit-range-thumb {
+	background-color: $cpanel-overexpose;
+	box-shadow: 0px 0px 20px 5px $cpanel-glow;
+}
+
+.buttons {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+
+.buttons button {
+	height: 2rem;
+	cursor: pointer;
+	width: 5rem;
+}
+
+@media (min-aspect-ratio: 1) {
+	.buttons button {
+		width: 4rem;
+	}
+}

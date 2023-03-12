@@ -1,0 +1,104 @@
+@use 'DrumMachineColors.module.scss' as *;
+
+.machine {
+	display: flex;
+	width: 90%;
+	max-width: 800px;
+	flex-direction: column;
+	align-items: center;
+	background-color: rgb(33, 33, 33);
+	border-radius: 10px;
+	padding: 20px;
+}
+
+@media (min-aspect-ratio: 3/2) {
+	.machine {
+		width: 80%;
+		max-width: 1200px;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-evenly;
+	}
+}
+
+.grid {
+	position: relative;
+	display: grid;
+	width: 90%;
+	grid-template-columns: 1fr 1fr 1fr;
+	column-gap: 2vw;
+	row-gap: 2vw;
+}
+
+@media (min-aspect-ratio: 1) {
+	.grid {
+		column-gap: 1vw;
+		row-gap: 1vw;
+	}
+}
+
+.button {
+	box-shadow: none;
+	box-sizing: border-box;
+	border: 2px solid;
+	border-radius: 5px;
+	transition: background-color var(--fast-transition), color var(--fast-transition), filter var(--fast-transition), border-color var(--fast-transition), box-shadow var(--fast-transition);
+}
+
+.button svg {
+	display: block;
+	margin: auto;
+}
+
+.mute {
+	background-color: $gBackground;
+	border-color: $mute-glow;
+	color: $mute-glow;
+}
+
+.mute:hover {
+	background-color: $mute-overexpose;
+	border-color: $mute-overexpose;
+	box-shadow: 0px 0px 20px 5px $mute-glow;
+}
+
+.muteon {
+	background-color: $mute-overexpose;
+	border-color: $mute-overexpose;
+	color: $gBackground;
+	box-shadow: 0px 0px 20px 5px $mute-glow;
+}
+
+.stop {
+	background-color: $gBackground;
+	border-color: $pad-glow;
+	color: $pad-glow;
+}
+
+.stop:hover {
+	background-color: $pad-overexpose;
+	border-color: $pad-overexpose;
+	color: $gBackground;
+	box-shadow: 0px 0px 20px 5px $pad-glow;
+}
+
+.loop {
+	background-color: $gBackground;
+	color: $loop-glow;
+	border-color: $loop-glow;
+}
+
+.loop:hover {
+	background-color: $loop-overexpose;
+	border-color: $loop-overexpose;
+	color: $gBackground;
+	box-shadow: 0px 0px 20px 5px $loop-glow;
+
+}
+
+.loopon {
+	background-color: $loop-overexpose;
+	border-color: $loop-overexpose;
+	color: $gBackground;
+	box-shadow: 0px 0px 20px 5px $loop-glow;
+}
