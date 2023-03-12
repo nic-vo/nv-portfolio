@@ -1,10 +1,10 @@
-import { stringer } from '../../../lib/api/homepage/ContactForm/ContactForm';
+import { htmlStringer, plaintextStringer, validator } from '../../../lib/api/homepage/ContactForm';
 
 const formHandler = async (req, res) => {
 	const { name, email, threeToken, birthday } = req.body;
 
-
-	if ((/^([A-Za-z]|\d| |'|\.|,|-|\(|\)){4,100}$/.test(name) !== true || name === undefined) || (/\@/.test(email) !== true || email === undefined) || threeToken === undefined || (birthday !== '1984-06-21' || birthday === undefined)) {
+	// Data validation
+	if (validator(body) === false) {
 		return res.status(404).json({ message: 'Not found' });
 	};
 
@@ -44,12 +44,8 @@ const formHandler = async (req, res) => {
 		from: process.env.PRIVATE_EMAIL_USER,
 		to: email,
 		subject: 'Hello from Nicolas Vo!',
-		text: `Hi, ${name}!
-
-		You've reached me through the contact form on my portfolio page. You can reply to this email with more details about your request if you so choose, or you can wait for me to respond (typically with 2 business days).
-
-		If you believe you've received this message in error, you can ignore it.`,
-		html: stringer(name)
+		text: plaintextStringer(name),
+		html: htmlStringer(name)
 	};
 
 	const sendResult = await transport.sendMail(emailMessage);
