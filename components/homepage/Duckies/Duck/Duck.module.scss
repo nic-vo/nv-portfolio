@@ -11,34 +11,35 @@
 }
 
 .empty svg {
+	pointer-events: none;
 	width: 100%;
 	height: auto;
 }
 
 .eager {
-	transition: top 3.5s, left 3.5s;
+	transition: translate 3.5s;
 	transition-timing-function: ease-out;
 }
 
 .sad {
-	transition: top 6s, left 6s;
+	transition: translate 6s;
 	transition-timing-function: ease-in-out;
 }
 
 @keyframes bobbing {
 	0% {
-		translate: -50% -50%;
+		transform: translateX(-50%) translateY(-50%);
 	}
 
 	25% {
-		translate: -50% -46%;
+		transform: translateX(-50%) translateY(-46%);
 	}
 
 	75% {
-		translate: -50% -54%;
+		transform: translateX(-50%) translateY(-54%);
 	}
 
 	100% {
-		translate: -50% -50%;
+		transform: translateX(-50%) translateY(-50%);
 	}
 }
