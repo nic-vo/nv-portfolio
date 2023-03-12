@@ -10,8 +10,8 @@ $navWidth: 20rem;
 	padding: 0;
 	margin: 0;
 	z-index: 2;
-	translate: $navWidth;
-	transition: translate var(--slow-transition);
+	transform: translateX(0 + $navWidth);
+	transition: transform var(--slow-transition);
 }
 
 .title {
@@ -87,7 +87,7 @@ $navWidth: 20rem;
 }
 
 .header.toggled {
-	translate: 0;
+	transform: translateX(0);
 }
 
 .returner.toggled {
