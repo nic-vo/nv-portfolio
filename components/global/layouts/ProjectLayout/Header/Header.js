@@ -1,6 +1,7 @@
+import { useState, useMemo } from 'react';
+
 import Link from 'next/link';
 import ProjectCategoryNavItem from './ProjectCategoryNavItem/ProjectCategoryNavItem';
-import { useState, useMemo } from 'react';
 import { FaPlus, FaBars } from 'react-icons/fa';
 
 import headerLook from './Header.module.scss';

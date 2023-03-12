@@ -3,8 +3,6 @@ import { FaVolumeMute, FaStop, FaMusic, FaVolumeUp, FaVolumeOff } from 'react-ic
 import machineStyles from '../DrumMachine.module.scss';
 import controlStyles from './ControlPanel.module.scss';
 
-
-
 const MasterSlider = ({ mVolume, mVolumeHandler }) => {
 	return (
 		<label htmlFor='mVolume'>
@@ -34,9 +32,7 @@ const ControlPanel = ({
 	stopAllHandler,
 	muteAllHandler
 }) => {
-
 	// This component sets master volume and active sound bank; also displays them in a stylized screen
-
 	return (
 		<div className={controlStyles.panel}>
 			<div className={controlStyles.display}>

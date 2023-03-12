@@ -78,19 +78,27 @@ const Pomodoro = () => {
 						<button
 							onClick={() => { workIncHandler(5) }}
 							className={pomoLook.menter}
-							disabled={activate}><FaPlus />5</button>
+							disabled={activate}>
+							<FaPlus />5
+						</button>
 						<button
 							onClick={() => { workIncHandler() }}
 							className={pomoLook.menter}
-							disabled={activate}><FaPlus />1</button>
+							disabled={activate}>
+							<FaPlus />1
+						</button>
 						<button
 							onClick={() => { workDecHandler() }}
 							className={pomoLook.menter}
-							disabled={activate}><FaMinus />1</button>
+							disabled={activate}>
+							<FaMinus />1
+						</button>
 						<button
 							onClick={() => { workDecHandler(5) }}
 							className={pomoLook.menter}
-							disabled={activate}><FaMinus />5</button>
+							disabled={activate}>
+							<FaMinus />5
+						</button>
 					</div>
 				</div>
 				<div className={pomoLook.controllerCategory}>
@@ -99,19 +107,27 @@ const Pomodoro = () => {
 						<button
 							onClick={() => { restIncHandler(5) }}
 							className={pomoLook.menter}
-							disabled={activate}><FaPlus />5</button>
+							disabled={activate}>
+							<FaPlus />5
+						</button>
 						<button
 							onClick={() => { restIncHandler() }}
 							className={pomoLook.menter}
-							disabled={activate}><FaPlus />1</button>
+							disabled={activate}>
+							<FaPlus />1
+						</button>
 						<button
 							onClick={() => { restDecHandler() }}
 							className={pomoLook.menter}
-							disabled={activate}><FaMinus />1</button>
+							disabled={activate}>
+							<FaMinus />1
+						</button>
 						<button
 							onClick={() => { restDecHandler(5) }}
 							className={pomoLook.menter}
-							disabled={activate}><FaMinus />5</button>
+							disabled={activate}>
+							<FaMinus />5
+						</button>
 					</div>
 				</div>
 			</div>

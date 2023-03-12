@@ -226,7 +226,7 @@ const Markdown = () => {
 														<FaFileDownload />
 														Download
 													</a>
-												</li>)
+												</li>);
 										})
 									}
 								</ul>

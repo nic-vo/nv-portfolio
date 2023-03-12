@@ -6,7 +6,7 @@ import machineStyles from './DrumMachine.module.scss';
 
 
 const DrumMachine = ({ banks, numberOfBanks, soundList }) => {
-	const chars = useMemo(() => { return ['q', 'w', 'e', 'a', 's', 'd', 'z', 'x', 'c'] }, [])
+	const chars = useMemo(() => { return ['q', 'w', 'e', 'a', 's', 'd', 'z', 'x', 'c'] }, []);
 
 	// Keeps track of sound last played, active sound bank, master volume
 	const [displaySound, setDisplaySound] = useState('');
@@ -42,7 +42,7 @@ const DrumMachine = ({ banks, numberOfBanks, soundList }) => {
 			player.play();
 		} else if (e.key === ' ') {
 			stopAllHandler();
-		}
+		};
 	};
 
 	// Iterate through all audio elements and stop them
