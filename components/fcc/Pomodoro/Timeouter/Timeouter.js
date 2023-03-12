@@ -7,14 +7,12 @@ import timeLook from './Timeouter.module.scss';
 const MULTIPLIER = 60;
 
 const Timeouter = ({ work, rest, activate, activator, workPhase, workToggle }) => {
-
 	/*
 		Holds a timeout ID in state so timer can be cancelled
 		Each timeout decrements current timer
 		Each decrement call sets a new timeout in loop
 		Expected holds a value to compensate for drift due to JS single-threaded blocking
 	*/
-
 	// Init loop holder, drift compensation, timer
 	const [loop, setLoop] = useState(null);
 	const [expected, setExpected] = useState(null);
@@ -31,6 +29,7 @@ const Timeouter = ({ work, rest, activate, activator, workPhase, workToggle }) =
 	};
 
 	const skipper = () => {
+		// When timer inactive, set current time to value of next phase
 		if (activate === true) { return };
 		let phaseChange = workPhase === true ? work : rest;
 		clearTimeout(loop);
@@ -40,13 +39,16 @@ const Timeouter = ({ work, rest, activate, activator, workPhase, workToggle }) =
 
 	const activateHandler = () => {
 		if (activate === false) {
+			// Set the expected future time
 			setExpected(Date.now() + 1000);
+			// Activate by storing timeout in state
 			setLoop(() => {
 				return setTimeout(() => {
 					setCurrentTime((current) => { return current - 1 })
 				}, 1000);
 			});
 		} else {
+			// Deactivate by clearing timeout stored in state
 			clearTimeout(loop);
 			setLoop(null);
 			setExpected(null);
@@ -55,9 +57,14 @@ const Timeouter = ({ work, rest, activate, activator, workPhase, workToggle }) =
 	};
 
 	useEffect(() => {
+		// Whenever timer is active and time changes, set the loop to the next timeout to change time
 		if (activate === false) { return };
 		const now = Date.now();
+		// Account for drift;
+		// if diff is positive, timer ran slow and should shorten time to next timeout
+		// if diff is negative, timer ran fast and should lengthen time to next timeout
 		const diff = now - expected;
+		// If timer about to hit 0, let the next time change be to the value of the next phase
 		if (currentTime <= 1) {
 			let phaseChange = workPhase === true ? work : rest;
 			setLoop(() => {
@@ -68,6 +75,7 @@ const Timeouter = ({ work, rest, activate, activator, workPhase, workToggle }) =
 				}, 1000 - diff);
 			});
 		} else {
+			// Else set loop for the next current time decrement
 			setLoop(() => {
 				return setTimeout(() => {
 					setExpected(now + 1000);
@@ -76,14 +84,6 @@ const Timeouter = ({ work, rest, activate, activator, workPhase, workToggle }) =
 			});
 		};
 	}, [currentTime]);
-
-	// useEffect(() => {
-	// 	clearTimeout(loop);
-	// 	setLoop(null);
-	// 	let phaseChange = workPhase === true ? work : rest;
-	// 	setCurrentTime(phaseChange * MULTIPLIER);
-	// 	return () => { clearTimeout(loop) };
-	// }, [workPhase]);
 
 	// The following two hooks are for accepting timer value changes from parent
 	useEffect(() => {
@@ -113,14 +113,40 @@ const Timeouter = ({ work, rest, activate, activator, workPhase, workToggle }) =
 	return (
 		<div className={timeLook.timer}>
 			<p className={timeLook.bigLabel}>{workPhase ? "WORKIN'" : "RESTIN'"}</p>
-			<p className={timeLook.timeOutput}>{`${currentTime >= 600 ? Math.floor(currentTime / 60) : `0${Math.floor(currentTime / 60)}`}`}:{`${currentTime % 60 >= 10 ? currentTime % 60 : `0${currentTime % 60}`}`}</p>
+			<p className={timeLook.timeOutput}>
+				{
+					`${currentTime >= 600 ?
+						Math.floor(currentTime / 60) : `0${Math.floor(currentTime / 60)}`}`
+				}:{
+					`${currentTime % 60 >= 10 ? currentTime % 60 : `0${currentTime % 60}`}`
+				}</p>
 			<div className={timeLook.controls}>
-				<button onClick={resetHandler} disabled={activate} className={pomoLook.menter} >Reset</button>
-				<button onClick={activateHandler} className={pomoLook.menter} >{activate === true ? "Stop" : "Start"}</button>
-				<button onClick={skipper} disabled={activate} className={pomoLook.menter}>Skip</button>
+				<button
+					onClick={resetHandler}
+					disabled={activate}
+					className={pomoLook.menter} >Reset
+				</button>
+				<button
+					onClick={activateHandler}
+					className={pomoLook.menter} >
+					{activate === true ? "Stop" : "Start"}
+				</button>
+				<button
+					onClick={skipper}
+					disabled={activate}
+					className={pomoLook.menter}>Skip
+				</button>
 			</div>
-			<audio autoPlay={false} src={assetPath + "work.mp3"} id='workaudio' ref={workRef} />
-			<audio autoPlay={false} src={assetPath + "rest.mp3"} id='restaudio' ref={restRef} />
+			<audio
+				autoPlay={false}
+				src={assetPath + "work.mp3"}
+				id='workaudio'
+				ref={workRef} />
+			<audio
+				autoPlay={false}
+				src={assetPath + "rest.mp3"}
+				id='restaudio'
+				ref={restRef} />
 		</div>
 	);
 };

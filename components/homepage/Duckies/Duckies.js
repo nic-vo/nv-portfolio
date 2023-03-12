@@ -1,13 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 
 import duckiesLook from './Duckies.module.scss';
 
 import Duck from "./Duck/Duck";
 
 const Duckies = () => {
+	// pX and pY to handle on hover mouse pos; passed to children ducks so they can calculate new individual pos
 	const [pX, setPX] = useState(null);
 	const [pY, setPY] = useState(null);
+	// Boolean whether mouse is in pond
 	const [hoverToggle, setHoverToggle] = useState(false);
+	// Boolean toggle for rate limiting updates to parent pos
 	const [hoverLimit, setHoverLimit] = useState(false);
 	const [hoverLimitTimeout, setHoverLimitTimeout] = useState(null);
 
@@ -19,15 +22,22 @@ const Duckies = () => {
 	};
 
 	const pointerMoveHandler = (e) => {
+		// hoverToggle dictates whether mouse is in pond; hoverLimit is rate limit for move events
 		if (hoverToggle === false || hoverLimit === true) { return };
+
+		// Pythagorean theorem to determine if mouse is far enough away from last calculation to trigger child duck movement
 		const sqrDist = Math.sqrt((Math.abs(pX - e.clientX)) ^ 2 + (Math.abs(pY - e.clientY)) ^ 2);
 		if (sqrDist < 5) { return };
+
+		// If mouse is far enough away,
 		setPX(parseFloat(e.clientX));
 		setPY(parseFloat(e.clientY));
 		setHoverLimit(true);
 	};
 
 	const pointerLeaveHandler = () => {
+		// Mouse leaves pond
+		// Cancel rate limit, boolean in pond, remove parent pos prop
 		clearTimeout(hoverLimitTimeout);
 		setHoverToggle(false);
 		setHoverLimitTimeout(null);
@@ -45,6 +55,10 @@ const Duckies = () => {
 		});
 	}, [hoverLimit]);
 
+	const duckArr = useMemo(() => {
+		return [1, 2, 3, 4, 5, 6, 7, 8]
+	}, []);
+
 	return (
 		<div
 			onPointerOver={pointerOverHandler}
@@ -52,14 +66,15 @@ const Duckies = () => {
 			onPointerLeave={pointerLeaveHandler}
 			className={duckiesLook.pond}
 			id='pond'>
-			<Duck key="0-duck" pX={pX} pY={pY} hoverToggle={hoverToggle} />
-			<Duck key="1-duck" pX={pX} pY={pY} hoverToggle={hoverToggle} />
-			<Duck key="2-duck" pX={pX} pY={pY} hoverToggle={hoverToggle} />
-			<Duck key="3-duck" pX={pX} pY={pY} hoverToggle={hoverToggle} />
-			<Duck key="4-duck" pX={pX} pY={pY} hoverToggle={hoverToggle} />
-			<Duck key="5-duck" pX={pX} pY={pY} hoverToggle={hoverToggle} />
-			<Duck key="6-duck" pX={pX} pY={pY} hoverToggle={hoverToggle} />
-			<Duck key="7-duck" pX={pX} pY={pY} hoverToggle={hoverToggle} />
+			{
+				duckArr.map((slot, index) => {
+					return <Duck
+						key={`${index}-duck`}
+						pX={pX}
+						pY={pY}
+						hoverToggle={hoverToggle} />;
+				})
+			}
 		</div>
 	);
 };

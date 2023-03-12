@@ -6,7 +6,6 @@ import machineStyles from './DrumMachine.module.scss';
 
 
 const DrumMachine = ({ banks, numberOfBanks, soundList }) => {
-
 	const chars = useMemo(() => { return ['q', 'w', 'e', 'a', 's', 'd', 'z', 'x', 'c'] }, [])
 
 	// Keeps track of sound last played, active sound bank, master volume
@@ -63,7 +62,10 @@ const DrumMachine = ({ banks, numberOfBanks, soundList }) => {
 	const activeBank = soundList[bankIndex];
 
 	return (
-		<section className={machineStyles.machine} tabIndex='0' onKeyDown={keyDownHandler}>
+		<section
+			className={machineStyles.machine}
+			tabIndex='0'
+			onKeyDown={keyDownHandler}>
 			<ControlPanel
 				banks={banks}
 				displaySound={displaySound}
@@ -76,18 +78,20 @@ const DrumMachine = ({ banks, numberOfBanks, soundList }) => {
 				stopAllHandler={stopAllHandler}
 				muteAllHandler={muteAllHandler} />
 			<div className={machineStyles.grid} >
-				{Object.keys(activeBank).map(char => {
-					return <Pad
-						char={char}
-						name={activeBank[char]['name']}
-						path={activeBank[char].path}
-						mVolume={mVolume}
-						muteAll={muteAll}
-						setDisplaySound={setDisplaySoundHandler}
-						clearDisplaySound={clearDisplaySoundHandler}
-						key={`pad-${activeBank[char]['name']}`}
-					/>
-				})}
+				{
+					Object.keys(activeBank).map(char => {
+						return <Pad
+							char={char}
+							name={activeBank[char]['name']}
+							path={activeBank[char].path}
+							mVolume={mVolume}
+							muteAll={muteAll}
+							setDisplaySound={setDisplaySoundHandler}
+							clearDisplaySound={clearDisplaySoundHandler}
+							key={`pad-${activeBank[char]['name']}`}
+						/>
+					})
+				}
 			</div>
 		</section>
 	);

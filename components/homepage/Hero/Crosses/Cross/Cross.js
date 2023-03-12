@@ -5,12 +5,14 @@ import { FaPlus } from 'react-icons/fa';
 import crossLook from './Cross.module.scss';
 
 const calculator = () => {
+	// Distance from top and left
 	const y = Math.random() * 0.7;
 	const x = Math.random() * 0.8 + 0.1;
 	return { x, y };
 };
 
 const Cross = () => {
+
 	const coords = useMemo(() => { return calculator() }, []);
 
 	return (

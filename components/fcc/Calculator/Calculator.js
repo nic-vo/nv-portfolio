@@ -238,11 +238,14 @@ const Calculator = () => {
 		replaceChunk(histItem);
 		denyOld();
 		clearEvaluated();
-	}
+	};
 
 	return (
-		<section className={calcStyles.container} tabIndex={0} onKeyDown={keyDownHandler}>
-			<div className={calcStyles.calculator} style={{ backgroundColor: '#CCCCCC' }}>
+		<section
+			className={calcStyles.container}
+			tabIndex={0}
+			onKeyDown={keyDownHandler}>
+			<div className={calcStyles.calculator}>
 				<div className={calcStyles.screen}>
 					<p>{entire !== '' ? entire : 'Ready'}</p>
 					<p>{evaluated !== '' ? evaluated : chunk !== '' ? chunk : '--'}</p>
@@ -252,28 +255,67 @@ const Calculator = () => {
 						keyList.map((char) => {
 							switch (char) {
 								case 'zero':
-									return <Keypad keyId={char} keyVal={keyChars[char]} content={keyChars[char]} handler={zeroHandler} key={`${char}-pad`} />;
+									return <Keypad
+										keyId={char}
+										keyVal={keyChars[char]}
+										content={keyChars[char]}
+										handler={zeroHandler}
+										key={`${char}-pad`} />;
 								case 'decimal':
-									return <Keypad keyId={char} keyVal={keyChars[char]} content={keyChars[char]} handler={decimalHandler} key={`${char}-pad`} />;
+									return <Keypad
+										keyId={char}
+										keyVal={keyChars[char]}
+										content={keyChars[char]}
+										handler={decimalHandler}
+										key={`${char}-pad`} />;
 								case 'subtract':
-									return <Keypad keyId={char} keyVal={keyChars[char]} content={keyChars[char]} handler={subtractHandler} key={`${char}-pad`} />;
+									return <Keypad
+										keyId={char}
+										keyVal={keyChars[char]}
+										content={keyChars[char]}
+										handler={subtractHandler}
+										key={`${char}-pad`} />;
 								case 'add':
 								case 'multiply':
 								case 'divide':
-									return <Keypad keyId={char} keyVal={keyChars[char]} content={keyChars[char]} handler={operatorHandler} key={`${char}-pad`} />;
+									return <Keypad
+										keyId={char}
+										keyVal={keyChars[char]}
+										content={keyChars[char]}
+										handler={operatorHandler}
+										key={`${char}-pad`} />;
 								case 'clear':
-									return <Keypad keyId={char} keyVal={null} content={keyChars[char]} handler={clearHandler} key={`${char}-pad`} />;
+									return <Keypad
+										keyId={char}
+										keyVal={null}
+										content={keyChars[char]}
+										handler={clearHandler}
+										key={`${char}-pad`} />;
 								case 'equals':
-									return <Keypad keyId={char} keyVal={null} content={keyChars[char]} handler={equalsHandler} key={`${char}-pad`} />;
+									return <Keypad
+										keyId={char}
+										keyVal={null}
+										content={keyChars[char]}
+										handler={equalsHandler}
+										key={`${char}-pad`} />;
 								default:
-									return <Keypad keyId={char} keyVal={keyChars[char]} content={keyChars[char]} handler={numberHandler} key={`${char}-pad`} />;
+									return <Keypad
+										keyId={char}
+										keyVal={keyChars[char]}
+										content={keyChars[char]}
+										handler={numberHandler}
+										key={`${char}-pad`} />;
 							}
 						})
 					}
 				</div>
 			</div>
-			<History history={history} pickHistory={pickHistory} clearHistory={clearHistory} oldAllowed={oldAllowed} />
-		</section>
+			<History
+				history={history}
+				pickHistory={pickHistory}
+				clearHistory={clearHistory}
+				oldAllowed={oldAllowed} />
+		</section >
 	);
 };
 

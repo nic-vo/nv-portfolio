@@ -35,8 +35,7 @@
 @keyframes splashfadein {
 	0% {
 		opacity: 0;
-		translate: 0 calc(-55vh - 2em);
-		transform: translateY(-50%);
+		transform: translateY(calc(-50vh - 4em));
 		text-shadow: 10px 10px 10px rgba(0, 0, 0, 0.8);
 	}
 
@@ -45,8 +44,7 @@
 	}
 
 	66% {
-		translate: 0 calc(-50vh - 2em);
-		transform: translateY(-50%);
+		transform: translateY(calc(-50vh - 2em));
 		text-shadow: 10px 10px 10px rgba(0, 0, 0, 0.8);
 	}
 

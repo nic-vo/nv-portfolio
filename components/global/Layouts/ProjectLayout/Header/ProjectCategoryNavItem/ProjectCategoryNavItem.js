@@ -5,10 +5,10 @@ import { FaCaretDown } from "react-icons/fa";
 import pCatNavLook from './ProjectCategoryNavItem.module.scss';
 
 const ProjectCategoryNavItem = ({ category, dev }) => {
-	const { categoryName, projects } = category;
 	const [catToggled, setCatToggled] = useState(false);
 
-	const categoryDisplay = categoryName[0].toUpperCase() + categoryName.slice(1).toLowerCase();
+	const { categoryName, projects } = category;
+	const catCased = categoryName[0].toUpperCase() + categoryName.slice(1).toLowerCase();
 
 	const toggleListHandler = () => {
 		setCatToggled(!catToggled);
@@ -18,15 +18,27 @@ const ProjectCategoryNavItem = ({ category, dev }) => {
 
 	return (
 		<li className={pCatNavLook.liContainer}>
-			<button id={dev === true ? 'hndev' : ''} onClick={toggleListHandler} className={pCatNavLook.toggler}><p>{categoryDisplay}</p><FaCaretDown className={pCatNavLook.svg + classer} /></button>
+			<button
+				id={dev === true ? 'hndev' : ''}
+				onClick={toggleListHandler}
+				className={pCatNavLook.toggler}>
+				<p>{catCased}</p><FaCaretDown className={pCatNavLook.svg + classer} />
+			</button>
 			<ul className={pCatNavLook.inCatList + classer}>
-				{projects.map((project, index) => {
-					return (
-						<li id={dev === true && index === 0 ? 'hnlidev' : ''} className={pCatNavLook.li + classer} key={`${categoryName}-list-${project.project}`}>
-							<Link href={`/${categoryName}/${project.project}`}>{project.title}</Link>
-						</li>
-					);
-				})}
+				{
+					projects.map((project, index) => {
+						return (
+							<li
+								id={dev === true && index === 0 ? 'hnlidev' : ''}
+								className={pCatNavLook.li + classer}
+								key={`${categoryName}-list-${project.project}`}>
+								<Link href={`/${categoryName}/${project.project}`}>
+									{project.title}
+								</Link>
+							</li>
+						);
+					})
+				}
 			</ul>
 		</li>
 	);
