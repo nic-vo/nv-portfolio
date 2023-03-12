@@ -1,12 +1,14 @@
-import * as photos from "./assets";
-import { ImageCarousel } from "../../global";
+import { ImageCarousel } from '../../global';
+import * as photos from './assets';
 
 const PortfolioSite = () => {
-	const photosArr = Object.keys(photos).map((photoKey) => {
-		const { src } = photos[photoKey].photo;
-		const { desc } = photos[photoKey];
-		return { src, desc }
-	});
+	let photosArr = [];
+	for (const [name, obj] of Object.entries(photos)) {
+		const { src } = obj.photo;
+		const { desc } = obj;
+		photosArr.push({ src, desc });
+	};
+
 	return (
 		<ImageCarousel photos={photosArr} />
 	);
