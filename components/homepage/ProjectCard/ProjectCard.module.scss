@@ -4,7 +4,7 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: space-evenly;
+	justify-content: center;
 	position: relative;
 	--arvalue: 30rem;
 	width: var(--arvalue);
@@ -14,19 +14,30 @@
 	border: 10px solid;
 	border-color: rgba(20, 20, 20, 0.6);
 	border-radius: 25px;
-	padding: 2em 1em 2em 1em;
-	overflow-y: auto;
-	overflow-x: hidden;
+	overflow: hidden;
+	padding: 0.5em;
 	list-style: none;
-	scrollbar-width: thin;
 	box-shadow: 0 0 0 rgba(0, 0, 0, 0);
 	transition: box-shadow var(--medium-transition), border-color var(--medium-transition);
+	transition-timing-function: ease-in-out;
 }
 
-@media (min-aspect-ratio: 1) {
-	.cardContainer {
-		padding: 1em 0.5em 1em 0.5em;
-	}
+.infoContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+	gap: 2em;
+	width: 100%;
+	height:100%;
+	overflow-y: auto;
+	overflow-x: hidden;
+	opacity: 0;
+	transform: translateY(1em);
+	scrollbar-width: thin;
+	transition: opacity var(--medium-transition), transform var(--medium-transition), backdrop-filter var((--fast-transition));
+	transition-timing-function: ease-out;
+	z-index: 1;
 }
 
 .projectTitle {
@@ -34,15 +45,11 @@
 	position: relative;
 	width: 80%;
 	text-align: center;
-	opacity: 0;
-	translate: 0 1em;
 	z-index: 3;
 	font-family: Poppins, sans-serif;
 	font-weight: lighter;
 	font-size: 1.6em;
 	text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.8);
-	transition: opacity var(--medium-transition), translate var(--medium-transition);
-	transition-timing-function: ease-out;
 }
 
 .techList {
@@ -51,20 +58,16 @@
 	justify-content: center;
 	flex-wrap: wrap;
 	padding: 0;
-	margin: 1em;
 	list-style: none;
-	opacity: 0;
-	translate: 0 1em;
 	z-index: 2;
-	transition: opacity var(--medium-transition), translate var(--medium-transition);
-	transition-timing-function: ease-out;
+
 }
 
 .techList li {
 	opacity: 0;
-	translate: 0 1em;
+	transform: translateY(1em);
 	box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.8);
-	transition: opacity var(--medium-transition), translate var(--medium-transition);
+	transition: opacity var(--medium-transition), transform var(--medium-transition);
 	transition-timing-function: ease-out;
 }
 
@@ -76,13 +79,14 @@
 	position: absolute;
 	height: 100%;
 	width: auto;
-	transition: filter var(--medium-transition);
+	z-index: 0;
+	filter: blur(0px) brightness(1);
+	transition: filter var(--fast-transition);
 }
 
 .link {
 	display: flex;
 	flex-direction: row;
-	opacity: 0;
 	background-color: global.$Black;
 	color: global.$White;
 	padding: 0.6em 1em 0.6em 1em;
@@ -90,8 +94,7 @@
 	border: 4px solid global.$White;
 	font-family: Overpass, sans-serif;
 	font-weight: bold;
-	translate: 0 1em;
-	transition: opacity var(--medium-transition), translate var(--medium-transition), color var(--fast-transition), background-color var(--fast-transition);
+	transition: color var(--fast-transition), background-color var(--fast-transition);
 	transition-timing-function: ease-out;
 	z-index: 2;
 }
@@ -110,27 +113,17 @@
 	box-shadow: 0px 0px 20px 5px global.$White;
 	border-color: global.$White;
 
-	.projectTitle {
-		translate: 0 0;
-		opacity: 1;
-	}
-
-	.techList {
-		translate: 0 0;
-		opacity: 1;
-	}
-
-	.techList li {
-		translate: 0 0;
-		opacity: 1;
-	}
-
-	.link {
-		translate: 0 0;
-		opacity: 1;
-	}
-
 	.imgBack {
-		filter: blur(10px) saturate(0) contrast(0.7) brightness(0.4);
+		filter: blur(3px) brightness(0.35);
+	}
+
+	.infoContainer {
+		transform: translateY(0);
+		opacity: 1;
+
+		.techList li {
+			opacity: 1;
+			transform: translateY(0);
+		}
 	}
 }
