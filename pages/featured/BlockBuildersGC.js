@@ -1,24 +1,14 @@
-import Head from 'next/head';
+import { ProjectLayout } from '../../components/global';
 import { BlockBuildersGC } from '../../components/professional';
+
 import { getProjectLists, getProjectData } from '../../lib/props/homepage/projects';
 import { getVersionNumber } from '../../lib/props/homepage/homepage';
-import { ProjectLayout } from '../../components/global';
 
 const BBGC = ({ layoutData, projectData }) => {
-
-	const { title, slugline } = projectData;
-
 	return (
-		<>
-			<Head>
-				<title>{title}</title>
-				<meta name='description' content={slugline} />
-				<link rel='icon' href='/favicon.ico' />
-			</Head>
-			<ProjectLayout layoutData={layoutData} projectData={projectData}>
-				<BlockBuildersGC />
-			</ProjectLayout>
-		</>
+		<ProjectLayout layoutData={layoutData} projectData={projectData}>
+			<BlockBuildersGC />
+		</ProjectLayout>
 	);
 };
 
@@ -37,12 +27,14 @@ export async function getStaticProps() {
 				'techs',
 				'original']
 		})]);
+
 	const layoutData = {
 		otherProjects: layoutFetch[0],
 		version: layoutFetch[1],
 		linkExclude: 'BlockBuildersGC'
 	};
 	const projectData = layoutFetch[2];
+
 	return {
 		props: {
 			layoutData,
