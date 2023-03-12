@@ -1,8 +1,8 @@
 import { useState, useEffect, useMemo } from "react";
 
-import duckiesLook from './Duckies.module.scss';
-
 import Duck from "./Duck/Duck";
+
+import duckiesLook from './Duckies.module.scss';
 
 const Duckies = () => {
 	// pX and pY to handle on hover mouse pos; passed to children ducks so they can calculate new individual pos
