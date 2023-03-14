@@ -11,7 +11,7 @@ const AboutMe = () => {
 				based in San Diego, California.
 			</p>
 			<p className={aboutLook.description}>
-				I design solutions with minimialist aesthetic
+				I design solutions with a minimialist aesthetic
 				and maximum function for a seamless,
 				comprehensive user experience.
 				Check out my work below!
