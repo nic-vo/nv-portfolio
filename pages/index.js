@@ -46,7 +46,6 @@ export async function getStaticProps() {
 		props: {
 			projectList,
 			version
-		},
-		revalidate: 3600
+		}
 	};
 };

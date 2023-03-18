@@ -39,7 +39,6 @@ export async function getStaticProps() {
 		props: {
 			layoutData,
 			projectData
-		},
-		revalidate: 172800
+		}
 	};
 };
