@@ -1,27 +1,15 @@
-import { useState, useMemo } from 'react';
+import { useState } from 'react';
 
 import Link from 'next/link';
-import ProjectCategoryNavItem from './ProjectCategoryNavItem/ProjectCategoryNavItem';
 import { FaPlus, FaBars } from 'react-icons/fa';
 
 import headerLook from './Header.module.scss';
 
-const Header = ({ otherProjects }) => {
+const Header = ({ children }) => {
 	const [toggled, setToggled] = useState(false);
 	const toggleHandler = () => {
 		setToggled(!toggled);
 	};
-
-	const categorySections = useMemo(() => {
-		return otherProjects.map((category, index) => {
-			return (
-				<ProjectCategoryNavItem
-					dev={index === 0 ? true : false}
-					category={category}
-					key={`${category.categoryName}`} />
-			);
-		});
-	}, []);
 
 	const classer = toggled === true ? ` ${headerLook.toggled}` : '';
 
@@ -41,7 +29,7 @@ const Header = ({ otherProjects }) => {
 			<nav className={headerLook.nav + classer}>
 				<h2 className={headerLook.title}>Other Projects</h2>
 				<ul className={headerLook.topList}>
-					{categorySections}
+					{children}
 				</ul>
 				<Link href='/' className={headerLook.homer}>Back to home</Link>
 			</nav >
