@@ -55,7 +55,6 @@ export async function getStaticProps() {
 			soundList,
 			layoutData,
 			projectData
-		},
-		revalidate: 172800
+		}
 	};
 };

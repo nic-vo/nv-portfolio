@@ -38,6 +38,7 @@ const DrumMachine = ({ banks, numberOfBanks, soundList }) => {
 		e.preventDefault();
 		if (chars.includes(e.key)) {
 			const player = document.getElementById(e.key);
+			player.pause();
 			player.currentTime = 0;
 			player.play();
 		} else if (e.key === ' ') {
