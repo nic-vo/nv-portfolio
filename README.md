@@ -2,7 +2,14 @@ This is the repo for my personal portfolio
 
 # CHANGELOG
 
-# 1.0.1
+# 1.0.3
+  - Method restriction for cf
+
+## 1.0.2
+  - Modify pattern for project page navigation
+  - Fix All Stop button on drumMachine not triggering pause events
+
+## 1.0.1
   - Code refactor for library functions
   - CSS animations adjusted to non-repainting attributes
   - Small layout changes
