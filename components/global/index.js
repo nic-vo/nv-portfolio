@@ -1,15 +1,15 @@
-import ProjectLayout from './layouts/ProjectLayout/ProjectLayout';
 import Spinner from './misc/Spinner/Spinner';
 import Footer from './misc/Footer/Footer';
 import Wip from './misc/Wip/Wip';
 import ImageCarousel from './misc/ImageCarousel/ImageCarousel';
 import TechBubble from './misc/TechBubble/TechBubble';
+import ProjectCard from './misc/ProjectCard/ProjectCard';
 
 export {
-	ProjectLayout,
 	Spinner,
 	Footer,
 	Wip,
 	ImageCarousel,
-	TechBubble
+	TechBubble,
+	ProjectCard
 };
