@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { FaArrowRight } from 'react-icons/fa';
-import { TechBubble } from '../../global';
+import TechBubble from '../TechBubble/TechBubble';
 
 import cardLook from './ProjectCard.module.scss';
 

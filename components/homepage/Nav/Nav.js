@@ -1,4 +1,4 @@
-import ProjectCard from '../ProjectCard/ProjectCard';
+import { ProjectCard } from '../../global';
 
 import homeLook from '../Homepage.module.scss';
 import navLook from './Nav.module.scss';
