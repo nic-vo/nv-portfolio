@@ -11,7 +11,7 @@ const Home = ({ projectList, version }) => {
 	return (
 		<>
 			<Head>
-				<title>Dive In - Nicolas Vo</title>
+				<title>Nicolas Vo - Frontend Developer</title>
 				<meta
 					name='description'
 					content="Nicolas Vo's personal front-end development portfolio" />
@@ -21,6 +21,7 @@ const Home = ({ projectList, version }) => {
 				<meta
 					property='og:image'
 					content='ogicon.png' />
+					{/* IMPLEMENT TWITTER META */}
 			</Head>
 
 			<main className={homeLook.main}>
