@@ -25,7 +25,7 @@
 }
 
 .preview {
-	position: absolute;
+	position: fixed;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -34,6 +34,7 @@
 	top: 0;
 	left: 0;
 	backdrop-filter: brightness(0.01) blur(10px);
+	z-index: 3;
 }
 
 .previewImg {
