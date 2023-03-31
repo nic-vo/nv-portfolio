@@ -9,7 +9,8 @@
 		"lint": "next lint",
 		"homepagethumbs": "node ./lib/dev/homepagethumbs.mjs",
 		"bbgcthumbs": "node ./lib/dev/bbgcthumbs.mjs",
-		"portfoliothumbs": "node ./lib/dev/portfoliothumbs.mjs"
+		"portfoliothumbs": "node ./lib/dev/portfoliothumbs.mjs",
+		"mytesting": "node ./lib/dev/mytesting.mjs"
 	},
 	"dependencies": {
 		"@svgr/webpack": "^6",

@@ -2,27 +2,28 @@ This is the repo for my personal portfolio
 
 # CHANGELOG
 
-# 1.0.3
+## 1.1.0
   - Method restriction for cf
+  - Change to dynamic routes / imports for projects
 
-## 1.0.2
+### 1.0.2
   - Modify pattern for project page navigation
   - Fix All Stop button on drumMachine not triggering pause events
 
-## 1.0.1
+### 1.0.1
   - Code refactor for library functions
   - CSS animations adjusted to non-repainting attributes
   - Small layout changes
 
 
-## 1.0.0
+### 1.0.0
   - Contact Form works
   - General styling overhaul
   - All projects updated
   - Project information propagated getting props through markdown / json files
   - Project layout finalized
 
-## 0.11.0
+### 0.11.0
   - Update to Next 13
   - Calculator
     - Minor style / layout changes
@@ -30,19 +31,19 @@ This is the repo for my personal portfolio
     - Add skip phase functionality
     - Styling
 
-## 0.10.0
+### 0.10.0
   - Pomodoro
     - Initialize
   - Homepage
     - Remove bootstrapped footer
     - Replace with version # static prop
 
-## 0.9.0
+### 0.9.0
   - DrumMachine
     - Lowered some state to pad component and master volume slider component
     - Made more use of document api for keypress and global stops / mutes
 
-## 0.8.0
+### 0.8.0
   - Home
     - Link lists based on scanning pages dir
       - Contains thumbs via next/image
@@ -51,7 +52,7 @@ This is the repo for my personal portfolio
   - Calculator
     - History layout shift fixed
 
-## 0.7.0
+### 0.7.0
   - Calculator
     - History
       - Refine styling
@@ -63,7 +64,7 @@ This is the repo for my personal portfolio
       - History state updates correctly (length = 5)
       - Explode simple boolean
 
-## 0.6.0
+### 0.6.0
   - Calculator
     - History
       - Items now disable when a history chunk has been inserted
@@ -73,7 +74,7 @@ This is the repo for my personal portfolio
       - Round evaluated strings to the 100 thousandth place
       - Parse double "-" as addition
 
-## 0.5.0
+### 0.5.0
   - Calculator
     - History
       - Accepts array of arrays (1 level of nest)
@@ -85,7 +86,7 @@ This is the repo for my personal portfolio
         - Operator and subtract handlers need work
       - Simple state to control flow
 
-## 0.4.3
+### 0.4.3
   - Drum Machine
     - Parent
       - Reworked global variables for use
@@ -96,7 +97,7 @@ This is the repo for my personal portfolio
       - Fine pad controls now hidden on mobile (who's using them anyway)
       - Good glowy effect
 
-## 0.4.2
+### 0.4.2
   - Drum Machine
     - Parent
       - New Silkscreen font for global use
@@ -107,7 +108,7 @@ This is the repo for my personal portfolio
     - Pad
       - Add glowy class-based effect upon state change
 
-## 0.4.1
+### 0.4.1
   - Drum Machine
     - Parent
       - Begin mobile styling
@@ -115,7 +116,7 @@ This is the repo for my personal portfolio
     - Control Panel
       - Begin styling
 
-## 0.4.0
+### 0.4.0
   - Drum Machine
     - Parent
       - Remove unnecessary state for bank
@@ -128,7 +129,7 @@ This is the repo for my personal portfolio
       - Style buttons based on mVolume, muteAll props
       - Style buttons based on local muted and loop state
 
-## 0.3.0
+### 0.3.0
   - Drum Machine
     - Parent
       - Global mute added
@@ -140,12 +141,12 @@ This is the repo for my personal portfolio
       - Receives pulse events in form of stopAll prop and activate prop
       - Loop bugfix
 
-## 0.2.0
+### 0.2.0
   - Drum Machine
     - Keypress triggers for all audio
     - Add display updates on audio play
     - Add live volume adjustment
     - Add controls for muting / looping
 
-## 0.1.0
+### 0.1.0
   - Init. lots of init
