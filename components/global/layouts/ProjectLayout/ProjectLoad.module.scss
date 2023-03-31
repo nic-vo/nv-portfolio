@@ -69,8 +69,8 @@
 	}
 
 	66% {
-		opacity: 1;
 		filter: brightness(0.2);
+		pointer-events: none;
 	}
 
 	99% {
@@ -78,7 +78,6 @@
 	}
 
 	100% {
-		opacity: 1;
 		filter: brightness(1);
 		pointer-events: auto;
 	}

@@ -1,6 +1,10 @@
 import { htmlStringer, plaintextStringer, validator } from '../../../lib/api/homepage/ContactForm';
 
 const formHandler = async (req, res) => {
+	if (req.method !== 'POST') {
+		return res.status(405).json({ message: 'Method not allowed' });
+	};
+
 	const { body } = req;
 
 	// Data validation

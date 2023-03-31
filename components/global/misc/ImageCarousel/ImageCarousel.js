@@ -1,14 +1,15 @@
-import { useState, useRef, useMemo } from 'react';
+import { useState, useRef, useMemo, useEffect } from 'react';
 
 import { FaCaretLeft, FaCaretRight, FaPlus } from 'react-icons/fa';
 
-import carouselLook from './ImageCarousel.module.scss';
+import look from './ImageCarousel.module.scss';
 
 const ImageCarousel = ({ photos }) => {
 	// If this changes, load a fullscreen-esque viewer
 	const [activeImage, setActiveImage] = useState(null);
 
-	const scrollRef = useRef();
+	const scrollRef = useRef(null);
+	const viewerRef = useRef(null);
 
 	const thumbClickHandler = (index) => {
 		setActiveImage(index);
@@ -30,17 +31,35 @@ const ImageCarousel = ({ photos }) => {
 		setActiveImage((prev) => { return prev + 1 });
 	};
 
+	useEffect(() => {
+		if (activeImage === null) { return };
+		viewerRef.current.focus();
+	}, [activeImage]);
+
+	const viewKeyDownHandler = ({ key }) => {
+		switch (key) {
+			case 'ArrowLeft':
+				decrementActiveImage();
+				break;
+			case 'ArrowRight':
+				incrementActiveImage();
+				break;
+			case 'Escape':
+				returner();
+				break;
+			default:
+				return;
+		};
+	};
+
 	const scrollerHandler = (right) => {
-		let newScrollValue;
 		const increment = scrollRef.current.getBoundingClientRect().width * 0.6;
 		const { scrollLeft } = scrollRef.current;
-		if (right === false) {
-			newScrollValue = scrollLeft - increment;
-		} else {
-			newScrollValue = scrollLeft + increment;
-		};
+		const newScrollValue = right === false ?
+			scrollLeft - increment :
+			scrollLeft + increment;
 		scrollRef.current.scroll({
-			top: 0, left: newScrollValue, behavior: 'smooth'
+			top: 0, left: newScrollValue, behavior: "smooth"
 		});
 	};
 
@@ -54,25 +73,25 @@ const ImageCarousel = ({ photos }) => {
 					id={index === 0 ? 'devex' : ''}
 					onClick={() => { thumbClickHandler(index) }}
 					key={`${src}`}
-					className={carouselLook.smallThumb} />
+					className={look.smallThumb} />
 			);
 		});
 	}, [thumbClickHandler]);
 
-	const classer = carouselLook.previewImg;
+	const classer = look.previewImg;
 
 	return (
-		<div className={carouselLook.container}>
+		<div className={look.container}>
 			{
 				activeImage !== null &&
-				(<div className={carouselLook.preview}>
+				(<div className={look.preview} tabIndex='0' ref={viewerRef} onKeyDown={viewKeyDownHandler}>
 					<button
-						className={carouselLook.buttonReturner}
+						className={look.buttonReturner}
 						onPointerDown={returner}>
 						<FaPlus />
 					</button>
 					<button
-						className={carouselLook.button}
+						className={look.button}
 						onPointerDown={decrementActiveImage}>
 						<FaCaretLeft />
 					</button>
@@ -81,26 +100,26 @@ const ImageCarousel = ({ photos }) => {
 						alt={photos[activeImage].desc}
 						className={classer} />
 					<button
-						className={carouselLook.button}
+						className={look.button}
 						onPointerDown={incrementActiveImage}>
 						<FaCaretRight />
 					</button>
 				</div>)
 			}
-			<span className={carouselLook.instructions}>Click/tap to expand</span>
-			<div className={carouselLook.ringContainer}>
+			<span className={look.instructions}>Click/tap to expand</span>
+			<div className={look.ringContainer}>
 				<button
-					className={carouselLook.button}
+					className={look.button}
 					onPointerDown={() => { scrollerHandler(false) }}>
 					<FaCaretLeft />
 				</button>
 				<div
-					className={carouselLook.ringExposed}
+					className={look.ringExposed}
 					ref={scrollRef}>
 					{photoElements}
 				</div>
 				<button
-					className={carouselLook.button}
+					className={look.button}
 					onPointerDown={() => { scrollerHandler(true) }}>
 					<FaCaretRight />
 				</button>

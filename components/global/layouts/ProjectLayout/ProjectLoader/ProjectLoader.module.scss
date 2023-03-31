@@ -1,0 +1,26 @@
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 2rem;
+	animation-name: projectloaderfadein;
+	animation-duration: 1s;
+	animation-timing-function: ease-in-out;
+	animation-fill-mode: forwards;
+}
+
+@keyframes projectloaderfadein {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+.text {
+	margin: 0;
+	padding: 0;
+	margin-left: 0.5em;
+}

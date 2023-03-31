@@ -1,4 +1,4 @@
-@use '../../../styles/globalStyles.module.scss' as global;
+@use '../../../../styles/globalStyles.module.scss' as global;
 
 .cardContainer {
 	display: flex;
@@ -26,7 +26,7 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: space-around;
+	justify-content: center;
 	gap: 2em;
 	width: 100%;
 	height:100%;

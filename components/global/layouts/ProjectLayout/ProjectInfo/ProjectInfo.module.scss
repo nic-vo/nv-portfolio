@@ -1,4 +1,4 @@
-@use '../../../../styles/globalStyles.module.scss' as global;
+@use '../../../../../styles/globalStyles.module.scss' as global;
 
 .container {
 	display: block;
@@ -137,4 +137,11 @@
 .codepen {
 	background-color: #FFDD40;
 	color: global.$Black;
+}
+
+.title {
+	font-family: Poppins, sans-serif;
+	font-size: 2.6em;
+	text-align: center;
+	margin: 1em;
 }

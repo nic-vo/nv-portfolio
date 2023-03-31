@@ -5,7 +5,11 @@ import ControlPanel from './ControlPanel/ControlPanel';
 import machineStyles from './DrumMachine.module.scss';
 
 
-const DrumMachine = ({ banks, numberOfBanks, soundList }) => {
+const DrumMachine = ({ assetInfo }) => {
+	const banks = useMemo(() => { return assetInfo.banks }, []);
+	const numberOfBanks = useMemo(() => { return assetInfo.numberOfBanks }, []);
+	const soundList = useMemo(() => { return assetInfo.soundList }, []);
+
 	const chars = useMemo(() => { return ['q', 'w', 'e', 'a', 's', 'd', 'z', 'x', 'c'] }, []);
 
 	// Keeps track of sound last played, active sound bank, master volume
