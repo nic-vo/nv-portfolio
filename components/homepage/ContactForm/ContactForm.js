@@ -61,7 +61,7 @@ const ContactForm = () => {
 						<label
 							htmlFor='name'
 							className={cLook.label}>
-							<p className={cLook.labelText}>Name:</p>
+							Name:
 							<input
 								id='name'
 								ref={nameRef}
@@ -77,7 +77,7 @@ const ContactForm = () => {
 						<label
 							htmlFor='email'
 							className={cLook.label}>
-							<p className={cLook.labelText}>Email:</p>
+							Email:
 							<input
 								id='email'
 								ref={emailRef}
@@ -91,7 +91,7 @@ const ContactForm = () => {
 							htmlFor='birthday'
 							className={cLook.label}
 							style={{ display: 'none' }}>
-							<p className={cLook.labelText}>Birthday:</p>
+							Birthday:
 							<input
 								id='birthday'
 								ref={birthdayRef}
@@ -111,10 +111,10 @@ const ContactForm = () => {
 						<button
 							type='submit'
 							disabled={disableToggle}
-							className={cLook.button}><p>Submit</p><FaArrowRight /></button>
+							className={cLook.button}>Submit<FaArrowRight /></button>
 					</div>
 				</form>
-				<section className={cLook.responseArea}>
+				<div className={cLook.responseArea}>
 					{
 						formState === 'PENDING' &&
 						<Spinner><FaMinus style={{ color: 'darkgoldenrod' }} /></Spinner>
@@ -127,7 +127,7 @@ const ContactForm = () => {
 						message !== null &&
 						<p className={cLook.responseMsg}>{message}</p>
 					}
-				</section>
+				</div>
 			</section>
 		</>
 	);
