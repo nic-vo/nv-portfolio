@@ -47,7 +47,7 @@ const ScrollToTop = () => {
 	const classer = distanceDisable === false ? ` ${scrollLook.visible}` : '';
 
 	return (
-		<button onClick={returnToTopOnClick} className={scrollLook.scroller + classer} disabled={distanceDisable}><FaArrowUp /><p>Return to top</p></button>
+		<button onClick={returnToTopOnClick} className={scrollLook.scroller + classer} disabled={distanceDisable}><FaArrowUp />Return to top</button>
 	);
 };
 

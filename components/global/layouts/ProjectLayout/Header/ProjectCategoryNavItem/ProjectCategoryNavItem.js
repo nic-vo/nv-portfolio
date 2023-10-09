@@ -10,8 +10,16 @@ const ProjectCategoryNavItem = ({ category, dev }) => {
 	const { categoryName, projects } = category;
 	const catCased = categoryName[0].toUpperCase() + categoryName.slice(1).toLowerCase();
 
-	const toggleListHandler = () => {
+	const clickToggleListHandler = () => {
 		setCatToggled(!catToggled);
+	};
+
+	const focusToggleListHandler = (e) => {
+		setCatToggled(true);
+	};
+
+	const blurToggleListHandler = (e) => {
+		setCatToggled(false);
 	};
 
 	const classer = catToggled === true ? ` ${pCatNavLook.toggled}` : '';
@@ -20,14 +28,16 @@ const ProjectCategoryNavItem = ({ category, dev }) => {
 		<li className={pCatNavLook.liContainer}>
 			<button
 				id={dev === true ? 'hndev' : ''}
-				onClick={toggleListHandler}
+				onClick={clickToggleListHandler}
+				onFocus={focusToggleListHandler}
+				onBlur={blurToggleListHandler}
 				className={pCatNavLook.toggler}>
-				<p>{catCased}</p><FaCaretDown className={pCatNavLook.svg + classer} />
+				{catCased}<FaCaretDown className={pCatNavLook.svg + classer} />
 			</button>
 			<ul className={pCatNavLook.inCatList + classer}>
 				{
 					projects.map((project, index) => {
-						return (
+						if (index === 0 && dev === true) return (
 							<li
 								id={dev === true && index === 0 ? 'hnlidev' : ''}
 								className={pCatNavLook.li + classer}
@@ -37,6 +47,16 @@ const ProjectCategoryNavItem = ({ category, dev }) => {
 								</Link>
 							</li>
 						);
+						else
+							return (
+								<li
+									className={pCatNavLook.li + classer}
+									key={`${categoryName}-list-${project.project}`}>
+									<Link href={`/${categoryName}/${project.project}`}>
+										{project.title}
+									</Link>
+								</li>
+							);
 					})
 				}
 			</ul>
