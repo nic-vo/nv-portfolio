@@ -2,7 +2,11 @@ This is the repo for my personal portfolio
 
 # CHANGELOG
 
-## 1.1.0
+## 1.1.1
+	- Fix for some W3C validation errors
+	- Adjust font size for hero
+
+### 1.1.0
   - Method restriction for cf
   - Change to dynamic routes / imports for projects
 

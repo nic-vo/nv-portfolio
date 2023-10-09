@@ -18,8 +18,7 @@ const Cross = () => {
 			left: `${coords.x * 100}%`,
 			top: `${coords.y * 100}%`,
 			animationDelay: `${(Math.random().toFixed(2) * 30) - 15}s`,
-			animationDuration: `${Math.random().toFixed(2) * 30 + 30}s`,
-			rotate: `${Math.random() > 0.5 ? '' : '-'}${Math.random().toFixed(2) * 8}deg`
+			animationDuration: `${Math.random().toFixed(2) * 30 + 30}s`
 		}}>
 			<FaPlus />
 		</div>

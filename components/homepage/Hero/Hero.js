@@ -5,16 +5,18 @@ import heroLook from './Hero.module.scss';
 
 const Hero = () => {
 	return (
-		<section className={heroLook.container} id='hero'>
-			<h1 className={heroLook.hOne}>
-				<p className={heroLook.name}>Nicolas Vo</p>
-				<p className={heroLook.title}>Front End Developer</p>
-			</h1>
-			<hr className={heroLook.line} />
-			<AboutMe />
-			<Crosses limit={50} />
-		</section>
+		<>
+			<header className={heroLook.hOne}>
+				<h1 className={heroLook.name}>Nicolas Vo</h1>
+				<h2 className={heroLook.title}>Frontend Developer</h2>
+			</header>
+			<section className={heroLook.container} id='hero'>
+				<hr className={heroLook.line} />
+				<AboutMe />
+			</section>
+			<Crosses limit={30} />
+		</>
 	);
-};
+}
 
 export default Hero;

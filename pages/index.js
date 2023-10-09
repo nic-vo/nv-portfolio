@@ -21,7 +21,6 @@ const Home = ({ projectList, version }) => {
 				<meta
 					property='og:image'
 					content='ogicon.png' />
-					{/* IMPLEMENT TWITTER META */}
 			</Head>
 
 			<main className={homeLook.main}>
