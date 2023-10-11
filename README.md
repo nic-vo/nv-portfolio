@@ -2,7 +2,12 @@ This is the repo for my personal portfolio
 
 # CHANGELOG
 
-## 1.1.1
+## 1.1.2
+	- More W3C errors fixed
+	- Issue around mobile nav fixed
+	- Performance considerations for mobile
+
+### 1.1.1
 	- Fix for some W3C validation errors
 	- Adjust font size for hero
 
