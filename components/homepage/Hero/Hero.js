@@ -10,11 +10,8 @@ const Hero = () => {
 				<h1 className={heroLook.name}>Nicolas Vo</h1>
 				<h2 className={heroLook.title}>Frontend Developer</h2>
 			</header>
-			<section className={heroLook.container} id='hero'>
-				<hr className={heroLook.line} />
-				<AboutMe />
-			</section>
-			<Crosses limit={30} />
+			<AboutMe />
+			<Crosses limit={20} />
 		</>
 	);
 }
