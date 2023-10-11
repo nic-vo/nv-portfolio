@@ -62,6 +62,6 @@ const ProjectCategoryNavItem = ({ category, dev }) => {
 			</ul>
 		</li>
 	);
-};
+}
 
 export default ProjectCategoryNavItem;
