@@ -35,14 +35,13 @@
 	position: relative;
 	animation: none;
 	overflow-x: hidden;
+	margin: 1vmin;
 }
 
 
 .li a {
 	display: block;
 	padding: 0.5em;
-	margin-top: 0.5em;
-	margin-bottom: 0.5em;
 	translate: 1em 0;
 	color: global.$Black;
 	background-color: global.$White;
@@ -66,12 +65,13 @@
 	rotate: 0;
 }
 
-.svglobal.toggled {
+.svg.toggled {
 	rotate: 180deg;
 }
 
 .inCatList.toggled {
-	display: block;
+	display: flex;
+	flex-direction: column;
 	border-bottom: 1px solid global.$Black;
 }
 
