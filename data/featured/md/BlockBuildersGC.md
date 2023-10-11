@@ -1,3 +1,5 @@
+## About
+
 This is my first professional project: a `React` SPA that I created for a client who runs a small contracting business. Initially, they asked me to create a logo and simple branding for their company, but then I began expanding my contributions to the client's online presence.
 
 My progress on this site was concurrent with my progress through freeCodeCamp's web development certificates regarding both front- and back-end development. I learned so much trying to fill the gaps between what freeCodeCamp taught and what the client needed for a properly-functioning site.
