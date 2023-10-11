@@ -86,13 +86,15 @@
 }
 
 .ringExposed {
-	display: block;
+	display: flex;
+	flex-direction: column;
 	align-items: center;
 	scrollbar-width: thin;
 	height: 100%;
 	padding: 16px;
 	margin: 0;
 	overflow-y: auto;
+	gap: 16px;
 }
 
 @media (min-aspect-ratio: 1) {
@@ -104,7 +106,6 @@
 		overflow-y: hidden;
 		height: 100%;
 		margin: 0 16px 0 16px;
-		gap: 16px;
 	}
 }
 
@@ -113,7 +114,6 @@
 	width: 100%;
 	height: auto;
 	border-radius: 5px;
-	border: 10px solid global.$slightlyDarker;
 }
 
 @media (min-aspect-ratio: 1) {
