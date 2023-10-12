@@ -153,7 +153,7 @@ const DrumMachine = (optionalProps) => {
 	return <DynamicWrapped assetInfo={optionalProps} />;
 };
 
-const ActiveComponent = memo(({ project, onCompLoad, optionalProps }) => {
+const ActiveComponent = memo(({ project, optionalProps }) => {
 	switch (project) {
 		case 'BlockBuildersGC':
 			return BlockBuildersGC();
@@ -168,7 +168,7 @@ const ActiveComponent = memo(({ project, onCompLoad, optionalProps }) => {
 		case 'Calculator':
 			return Calculator();
 		case 'DrumMachine':
-			return DrumMachine(onCompLoad, optionalProps);
+			return DrumMachine(optionalProps);
 		default:
 			return <Wip />;
 	};
