@@ -12,7 +12,8 @@ const Nav = ({ projectList }) => {
 					projectList.map((category) => {
 						const { categoryName, projects } = category;
 						return (
-							<section key={`${category.categoryName}-links`} className={navLook.catSection}>
+							<section key={`${category.categoryName}-links`}
+								className={navLook.catSection}>
 								<h3 className={navLook.catHeading}>
 									{categoryName[0].toUpperCase() + categoryName.slice(1)}
 								</h3>
@@ -20,13 +21,12 @@ const Nav = ({ projectList }) => {
 									<ul className={navLook.list}>
 										{
 											projects.map((projectObj) => {
-												const { title, techs, project, wip } = projectObj;
+												const { title, project, wip } = projectObj;
 												return (
 													<ProjectCard
 														categoryName={categoryName}
 														title={title}
 														project={project}
-														techs={techs}
 														wip={wip}
 														key={`${categoryName}-${title}`} />
 												);

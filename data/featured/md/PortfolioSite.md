@@ -1,3 +1,5 @@
+## About
+
 This is my personal portfolio site, representing my first huge foray into a modern framework. I learned a lot about both server-side and front-end development by implementing a number of features.
 
 ### List of notable features:

@@ -1,10 +1,12 @@
 @use '../../../../../styles/globalStyles.module.scss' as global;
 
 .container {
-	display: block;
+	display: flex;
+	flex-direction: column;
+	gap: 2em;
 	width: 90%;
 	max-width: 1000px;
-	padding-bottom: 10vh;
+	padding-bottom: 10svh;
 }
 
 .info {
@@ -112,7 +114,6 @@
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	margin: 2em auto 2em auto;
 	font-family: Overpass, serif;
 	font-weight: 800;
 	gap: 1em;
@@ -141,7 +142,7 @@
 
 .title {
 	font-family: Poppins, sans-serif;
-	font-size: 2.6em;
+	font-size: 4em;
 	text-align: center;
 	margin: 1em;
 }

@@ -1,7 +1,6 @@
 import TechBubble from '../../../misc/TechBubble/TechBubble';
 
 import look from './ProjectInfo.module.scss';
-import loadLook from '../ProjectLoad.module.scss';
 
 const ProjectInfo = ({ title, techs, description, original }) => {
 	const { type, link } = original;
@@ -22,30 +21,32 @@ const ProjectInfo = ({ title, techs, description, original }) => {
 
 	return (
 		<>
-			<h1 className={`${look.title} ${loadLook.splash}`}>{title}</h1>
+			<h1 className={look.title}>{title}</h1>
 			<section className={look.container}>
-				<ul className={look.techList}>
-					{
-						techs.map((tech) => {
-							return (
-								<TechBubble key={`${tech}`} tech={tech} />
-							);
-						})
-					}
-				</ul>
-				<hr className={look.break} />
 				<section
 					className={look.description}
 					dangerouslySetInnerHTML={{ __html: description }} />
-				<div className={look.linkIntro}>
-					<p>Link to original:</p>
+				<section>
+					<h2>Tech used:</h2>
+					<ul className={look.techList}>
+						{
+							techs.map((tech) => {
+								return (
+									<TechBubble key={`${tech}`} tech={tech} />
+								);
+							})
+						}
+					</ul>
+				</section>
+				<section className={look.linkIntro}>
+					<h2>Link to original:</h2>
 					<a
 						href={link}
 						target='_blank'
 						className={look.link + ' ' + linkClasser}>
 						{typeDisplay}
 					</a>
-				</div>
+				</section>
 			</section>
 		</>
 	);

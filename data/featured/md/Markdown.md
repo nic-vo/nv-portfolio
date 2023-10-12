@@ -1,3 +1,5 @@
+## About
+
 **Fun fact: I created the descriptions for all of the projects on this site with this markdown previewer (technically I could've just written markdown files, but it was a learning experience nonetheless).**
 
 Originally, I created this project for [freeCodeCamp's front-end certificate]. But even though the other projects I wrote for that certificate may have been more complex regarding working with React, this one has proved to be most useful. I learned a lot from this project both when I initially created it and when I transferred it over to this portfolio site.

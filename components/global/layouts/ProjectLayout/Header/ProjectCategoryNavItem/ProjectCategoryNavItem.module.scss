@@ -1,7 +1,5 @@
 @use '../../../../../../styles/globalStyles.module.scss' as global;
 
-
-
 .liContainer {
 	width: 100%;
 }
@@ -14,8 +12,8 @@
 	list-style: none;
 	animation: none;
 	overflow-y: hidden;
+	gap: 1vmin;
 }
-
 
 .toggler {
 	cursor: pointer;
@@ -23,7 +21,9 @@
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
+	height: 4em;
 	width: 100%;
+	padding: 1em;
 	font-family: Lato, sans-serif;
 	font-size: 1.2em;
 	font-weight: bolder;
@@ -41,10 +41,10 @@
 
 
 .li a {
-	display: block;
+	display: flex;
+	align-items: center;
 	padding: 0.5em;
-	margin-top: 0.5em;
-	margin-bottom: 0.5em;
+	height: 3em;
 	translate: 1em 0;
 	color: global.$Black;
 	background-color: global.$White;
@@ -68,12 +68,13 @@
 	rotate: 0;
 }
 
-.svglobal.toggled {
+.svg.toggled {
 	rotate: 180deg;
 }
 
 .inCatList.toggled {
-	display: block;
+	display: flex;
+	flex-direction: column;
 	border-bottom: 1px solid global.$Black;
 }
 

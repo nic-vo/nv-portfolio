@@ -4,6 +4,9 @@
 	cursor: pointer;
 	display: none;
 	position: fixed;
+	flex-direction: row;
+	align-items: center;
+	gap: 1em;
 	left: 2vh;
 	bottom: 2vh;
 	padding: 10px;
@@ -29,8 +32,6 @@
 
 .visible {
 	display: flex;
-	flex-direction: row;
-	align-items: center;
 }
 
 .scroller p {

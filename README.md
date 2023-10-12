@@ -2,9 +2,14 @@ This is the repo for my personal portfolio
 
 # CHANGELOG
 
-## 1.1.1
-	- Fix for some W3C validation errors
-	- Adjust font size for hero
+## 1.1.2
+  - More W3C errors fixed
+  - Issue around mobile nav fixed
+  - Performance considerations for mobile
+
+### 1.1.1
+  - Fix for some W3C validation errors
+  - Adjust font size for hero
 
 ### 1.1.0
   - Method restriction for cf
@@ -18,7 +23,6 @@ This is the repo for my personal portfolio
   - Code refactor for library functions
   - CSS animations adjusted to non-repainting attributes
   - Small layout changes
-
 
 ### 1.0.0
   - Contact Form works

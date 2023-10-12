@@ -14,26 +14,25 @@ const ProjectCategoryNavItem = ({ category, dev }) => {
 		setCatToggled(!catToggled);
 	};
 
-	const focusToggleListHandler = (e) => {
-		setCatToggled(true);
-	};
-
-	const blurToggleListHandler = (e) => {
-		setCatToggled(false);
-	};
-
 	const classer = catToggled === true ? ` ${pCatNavLook.toggled}` : '';
 
 	return (
 		<li className={pCatNavLook.liContainer}>
-			<button
-				id={dev === true ? 'hndev' : ''}
-				onClick={clickToggleListHandler}
-				onFocus={focusToggleListHandler}
-				onBlur={blurToggleListHandler}
-				className={pCatNavLook.toggler}>
-				{catCased}<FaCaretDown className={pCatNavLook.svg + classer} />
-			</button>
+			{
+				dev === true ?
+					<button
+						id='hndev'
+						onClick={clickToggleListHandler}
+						className={pCatNavLook.toggler}>
+						{catCased}<FaCaretDown className={pCatNavLook.svg + classer} />
+					</button>
+					:
+					<button
+						onClick={clickToggleListHandler}
+						className={pCatNavLook.toggler}>
+						{catCased}<FaCaretDown className={pCatNavLook.svg + classer} />
+					</button>
+			}
 			<ul className={pCatNavLook.inCatList + classer}>
 				{
 					projects.map((project, index) => {
@@ -62,6 +61,6 @@ const ProjectCategoryNavItem = ({ category, dev }) => {
 			</ul>
 		</li>
 	);
-};
+}
 
 export default ProjectCategoryNavItem;

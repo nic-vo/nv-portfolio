@@ -92,10 +92,6 @@ $navWidth: 20rem;
 
 .returner.toggled {
 	display: block;
-	animation-name: returnerfadein;
-	animation-duration: var(--medium-transition);
-	animation-fill-mode: both;
-	animation-timing-function: ease-in-out;
 }
 
 .toggler.toggled,
@@ -104,16 +100,6 @@ $navWidth: 20rem;
 	background-color: global.$White;
 	color: global.$Black;
 	border-color: global.$White;
-}
-
-@keyframes returnerfadein {
-	0% {
-		opacity: 0;
-	}
-
-	100% {
-		opacity: 1;
-	}
 }
 
 .homer {

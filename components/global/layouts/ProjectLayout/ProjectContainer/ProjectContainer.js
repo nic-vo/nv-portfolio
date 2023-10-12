@@ -1,18 +1,16 @@
 import dynamic from 'next/dynamic';
-import { useState, memo } from 'react';
+import { memo } from 'react';
 
 import ProjectLoader from '../ProjectLoader/ProjectLoader';
 import Wip from '../../../misc/Wip/Wip';
 
 import look from './ProjectContainer.module.scss';
-import loadLook from '../ProjectLoad.module.scss';
 
-const BlockBuildersGC = (onCompLoad) => {
+const BlockBuildersGC = () => {
 	const DynamicWrapped = dynamic(async () => {
 		try {
 			const Returner = import('../../../../featured')
 				.then((module) => {
-					onCompLoad();
 					return module.BlockBuildersGC;
 				});
 			return Returner;
@@ -29,12 +27,11 @@ const BlockBuildersGC = (onCompLoad) => {
 	return <DynamicWrapped />;
 };
 
-const PortfolioSite = (onCompLoad) => {
+const PortfolioSite = () => {
 	const DynamicWrapped = dynamic(async () => {
 		try {
 			const Returner = import('../../../../featured')
 				.then((module) => {
-					onCompLoad();
 					return module.PortfolioSite;
 				});
 			return Returner;
@@ -51,12 +48,11 @@ const PortfolioSite = (onCompLoad) => {
 	return <DynamicWrapped />;
 };
 
-const Markdown = (onCompLoad) => {
+const Markdown = () => {
 	const DynamicWrapped = dynamic(async () => {
 		try {
 			const Returner = import('../../../../featured')
 				.then((module) => {
-					onCompLoad();
 					return module.Markdown;
 				});
 			return Returner;
@@ -73,12 +69,11 @@ const Markdown = (onCompLoad) => {
 	return <DynamicWrapped />;
 };
 
-const Pomodoro = (onCompLoad) => {
+const Pomodoro = () => {
 	const DynamicWrapped = dynamic(async () => {
 		try {
 			const Returner = import('../../../../other')
 				.then((module) => {
-					onCompLoad();
 					return module.Pomodoro
 				});
 			return Returner;
@@ -95,12 +90,11 @@ const Pomodoro = (onCompLoad) => {
 	return <DynamicWrapped />;
 };
 
-const AimTrainer = (onCompLoad) => {
+const AimTrainer = () => {
 	const DynamicWrapped = dynamic(async () => {
 		try {
 			const Returner = import('../../../../other')
 				.then((module) => {
-					onCompLoad();
 					return module.AimTrainer
 				});
 			return Returner;
@@ -117,12 +111,11 @@ const AimTrainer = (onCompLoad) => {
 	return <DynamicWrapped />;
 };
 
-const Calculator = (onCompLoad) => {
+const Calculator = () => {
 	const DynamicWrapped = dynamic(async () => {
 		try {
 			const Returner = import('../../../../other')
 				.then((module) => {
-					onCompLoad();
 					return module.Calculator
 				});
 			return Returner;
@@ -139,12 +132,11 @@ const Calculator = (onCompLoad) => {
 	return <DynamicWrapped />;
 };
 
-const DrumMachine = (onCompLoad, optionalProps) => {
+const DrumMachine = (optionalProps) => {
 	const DynamicWrapped = dynamic(async () => {
 		try {
 			const Returner = import('../../../../other')
 				.then((module) => {
-					onCompLoad();
 					return module.DrumMachine
 				});
 			return Returner;
@@ -161,22 +153,22 @@ const DrumMachine = (onCompLoad, optionalProps) => {
 	return <DynamicWrapped assetInfo={optionalProps} />;
 };
 
-const ActiveComponent = memo(({ project, onCompLoad, optionalProps }) => {
+const ActiveComponent = memo(({ project, optionalProps }) => {
 	switch (project) {
 		case 'BlockBuildersGC':
-			return BlockBuildersGC(onCompLoad);
+			return BlockBuildersGC();
 		case 'PortfolioSite':
-			return PortfolioSite(onCompLoad);
+			return PortfolioSite();
 		case 'Markdown':
-			return Markdown(onCompLoad);
+			return Markdown();
 		case 'Pomodoro':
-			return Pomodoro(onCompLoad);
+			return Pomodoro();
 		case 'AimTrainer':
-			return AimTrainer(onCompLoad);
+			return AimTrainer();
 		case 'Calculator':
-			return Calculator(onCompLoad);
+			return Calculator();
 		case 'DrumMachine':
-			return DrumMachine(onCompLoad, optionalProps);
+			return DrumMachine(optionalProps);
 		default:
 			return <Wip />;
 	};
@@ -185,24 +177,13 @@ const ActiveComponent = memo(({ project, onCompLoad, optionalProps }) => {
 });
 
 const ProjectContainer = ({ project, optionalProps }) => {
-	const [loading, setLoading] = useState(true);
-
-	const onCompLoad = () => {
-		setLoading(false);
-	};
-
-	const classer = `${look.innerContainer} ${loading === false && look.loaded}`;
-
 	return (
-		<section className={`${look.container} ${loadLook.project}`}>
-			<div className={classer}>
-				<ActiveComponent
-					project={project}
-					onCompLoad={onCompLoad}
-					optionalProps={optionalProps} />
-			</div>
-		</section>
+		<section className={look.container}>
+			<ActiveComponent
+				project={project}
+				optionalProps={optionalProps} />
+		</section >
 	);
-};
+}
 
 export default ProjectContainer;
