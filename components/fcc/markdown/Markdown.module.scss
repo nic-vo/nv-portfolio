@@ -32,8 +32,10 @@
 	flex-direction: row;
 	align-items: center;
 	flex-wrap: nowrap;
+	gap: 2vmin;
 	width: 100%;
 	height: 5em;
+	padding: 0 2vmin;
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
 	background-color: #142939;
@@ -43,7 +45,7 @@
 }
 
 .heading {
-	margin: 1rem;
+	margin: 0;
 	font-size: 1.6em;
 	font-weight: bold;
 }
@@ -244,7 +246,6 @@
 	background-color: global.$Black;
 	border-radius: 12px;
 	padding: 0.5em;
-	margin: 1em;
 	white-space: nowrap;
 	transition: color var(--fast-transition), background-color var(--fast-transition);
 }
