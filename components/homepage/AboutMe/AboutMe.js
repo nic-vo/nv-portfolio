@@ -7,17 +7,24 @@ const AboutMe = () => {
 			<h2 className={homeLook.hTwo}>
 				About Me
 			</h2>
-			<p className={aboutLook.description}>Hello there! 👋</p>
-			<p className={aboutLook.description}>
-				My name is Nicolas, and I&apos;m a freelance front-end developer
-				based in San Diego, California.
-			</p>
-			<p className={aboutLook.description}>
-				I design solutions with a minimialist aesthetic
-				and maximum function for a seamless,
-				comprehensive user experience.
-				Check out my work below!
-			</p>
+			<div style={{
+				display: 'flex',
+				flexDirection: 'column',
+				alignItems: 'center',
+				maxWidth: '800px'
+			}}>
+				<p className={aboutLook.description}>Hello there! 👋</p>
+				<p className={aboutLook.description}>
+					My name is Nicolas, and I&apos;m a freelance front-end developer
+					based in San Diego, California.
+				</p>
+				<p className={aboutLook.description}>
+					I design solutions with a minimialist aesthetic
+					and maximum function for a seamless,
+					comprehensive user experience.
+					Check out my work below!
+				</p>
+			</div>
 		</section>
 	);
 }
