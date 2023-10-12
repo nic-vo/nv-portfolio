@@ -12,8 +12,8 @@
 	list-style: none;
 	animation: none;
 	overflow-y: hidden;
+	gap: 1vmin;
 }
-
 
 .toggler {
 	cursor: pointer;
@@ -21,7 +21,9 @@
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
+	height: 4em;
 	width: 100%;
+	padding: 1em;
 	font-family: Lato, sans-serif;
 	font-size: 1.2em;
 	font-weight: bolder;
@@ -35,13 +37,14 @@
 	position: relative;
 	animation: none;
 	overflow-x: hidden;
-	margin: 1vmin;
 }
 
 
 .li a {
-	display: block;
+	display: flex;
+	align-items: center;
 	padding: 0.5em;
+	height: 3em;
 	translate: 1em 0;
 	color: global.$Black;
 	background-color: global.$White;
