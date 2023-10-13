@@ -2,7 +2,12 @@ This is the repo for my personal portfolio
 
 # CHANGELOG
 
-## 1.1.2
+## 1.1.3
+  - Replace depcrated scroll parameter
+  - Add easier return to home button
+  - Begin addressing some accessibility issues with project navigation
+
+### 1.1.2
   - More W3C errors fixed
   - Issue around mobile nav fixed
   - Performance considerations for mobile
