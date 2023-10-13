@@ -13,7 +13,7 @@ const ScrollToTop = () => {
 		if (scrollThrottle === true) { return };
 		setScrollThrottle(true);
 		// Set disable if viewport is close to top
-		setDistanceDisable(window.pageYOffset < 300);
+		setDistanceDisable(window.scrollY < 300);
 		setTimeouter(() => {
 			return setTimeout(() => {
 				setScrollThrottle(false);
@@ -22,13 +22,13 @@ const ScrollToTop = () => {
 	};
 
 	const returnToTopOnClick = () => {
-		if (window.pageYOffset >= 300) {
+		if (window.scrollY >= 300) {
 			// Clear any existing timeouts and prevent scroll
 			clearTimeout(timeouter);
 			setScrollThrottle(true);
 			// Scroll to top and disable
 			setDistanceDisable(true);
-			window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+			window.scroll({ top: 0, left: 0, behavior: 'smooth' });
 			setTimeouter(() => {
 				return setTimeout(() => {
 					setScrollThrottle(false);
