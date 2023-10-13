@@ -23,14 +23,26 @@ const ProjectCategoryNavItem = ({ category, dev }) => {
 					<button
 						id='hndev'
 						onClick={clickToggleListHandler}
-						className={pCatNavLook.toggler}>
-						{catCased}<FaCaretDown className={pCatNavLook.svg + classer} />
+						className={pCatNavLook.toggler}
+						aria-label={`Toggle navigation submenu for ${catCased}`}
+						aria-pressed={catToggled}>
+						{catCased}
+						<FaCaretDown
+							className={pCatNavLook.svg + classer}
+							aria-hidden='true'
+							role='presentation' />
 					</button>
 					:
 					<button
 						onClick={clickToggleListHandler}
-						className={pCatNavLook.toggler}>
-						{catCased}<FaCaretDown className={pCatNavLook.svg + classer} />
+						className={pCatNavLook.toggler}
+						aria-label={`Toggle navigation submenu for ${catCased}`}
+						aria-pressed={catToggled}>
+						{catCased}
+						<FaCaretDown
+							className={pCatNavLook.svg + classer}
+							aria-hidden='true'
+							role='presentation' />
 					</button>
 			}
 			<ul className={pCatNavLook.inCatList + classer}>
