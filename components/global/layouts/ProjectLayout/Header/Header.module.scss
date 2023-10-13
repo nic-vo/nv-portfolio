@@ -18,6 +18,8 @@ $navWidth: 20rem;
 	position: absolute;
 	display: flex;
 	flex-direction: column;
+	gap: 1svw;
+	padding: 1svw;
 	translate: -100% 0;
 }
 
@@ -29,24 +31,20 @@ $navWidth: 20rem;
 }
 
 .toggler {
-	margin: 1em;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	gap: 5px;
 	border: 2px solid;
 	border-color: global.$White;
 	color: global.$White;
 	background-color: global.$Black;
 	border-radius: 5px;
-	font-size: 0.8em;
 	cursor: pointer;
 	transition: background-color var(--fast-transition), color var(--fast-transition);
 	transition-timing-function: ease-in-out;
 	z-index: 1;
-}
-
-.toggler * {
-	margin: 10px;
+	padding: 10px;
 }
 
 .returner {

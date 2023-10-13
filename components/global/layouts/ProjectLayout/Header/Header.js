@@ -19,19 +19,36 @@ const Header = ({ children }) => {
 				<button
 					id='toggler'
 					onPointerDown={toggleHandler}
-					className={headerLook.toggler + classer}>
+					className={headerLook.toggler + classer}
+					aria-label='Toggle navigation menu'
+					aria-pressed={toggled}>
 					{
 						toggled === false ?
-							<FaBars className={headerLook.svg + classer} /> :
-							<FaPlus className={headerLook.svg + classer} />
+							<FaBars
+								className={headerLook.svg + classer}
+								aria-hidden='true'
+								role='presentation' /> :
+							<FaPlus
+								className={headerLook.svg + classer}
+								aria-hidden='true'
+								role='presentation' />
 					}
 				</button>
-				<Link href='/' className={headerLook.toggler}>
-					<FaHome className={headerLook.svg} />
+				<Link
+					href='/' className={headerLook.toggler}
+					aria-label='Return home'>
+					<FaHome
+						className={headerLook.svg}
+						aria-hidden='true'
+						role='presentation' />
 				</Link>
 			</div>
-			<div onPointerDown={toggleHandler} className={headerLook.returner + classer} />
-			<nav className={headerLook.nav + classer}>
+			<div
+				onPointerDown={toggleHandler}
+				className={headerLook.returner + classer} />
+			<nav className={headerLook.nav + classer}
+				aria-expanded={toggled}
+				role='navigation'>
 				<h2 className={headerLook.title}>Other Projects</h2>
 				<ul className={headerLook.topList}>
 					{children}
