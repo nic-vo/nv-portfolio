@@ -4,9 +4,13 @@ import ProjectCategoryNavItem from './Header/ProjectCategoryNavItem/ProjectCateg
 import ScrollToTop from './ScrollToTop/ScrollToTop';
 
 import layoutLook from './ProjectLayout.module.scss';
+import { LayoutData } from '@lib/props/types/projects';
 
-const ProjectLayout = ({ children, layoutData }) => {
-	const { version, otherProjects } = layoutData;
+const ProjectLayout = (props: {
+	children: React.ReactNode,
+	layoutData: LayoutData
+}) => {
+	const { version, otherProjects } = props.layoutData;
 
 	const projectCategoryList = otherProjects.map((category, index) => {
 		return (
@@ -23,7 +27,7 @@ const ProjectLayout = ({ children, layoutData }) => {
 				{projectCategoryList}
 			</Header>
 			<main className={layoutLook.projectMain}>
-				{children}
+				{props.children}
 				<ScrollToTop />
 			</main>
 			<Footer version={version} />
