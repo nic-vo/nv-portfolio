@@ -2,6 +2,11 @@ This is the repo for my personal portfolio
 
 # CHANGELOG
 
+## 1.2.0
+  - Transition to TypeScript
+    - Minimal functionality change across all projects, just type safety and null checks and the like
+  - Streamline project dynamic imports / encapsulation
+
 ## 1.1.3
   - Replace depcrated scroll parameter
   - Add easier return to home button
