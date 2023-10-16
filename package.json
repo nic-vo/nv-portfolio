@@ -13,16 +13,17 @@
 		"mytesting": "node ./lib/dev/mytesting.mjs"
 	},
 	"dependencies": {
-		"@svgr/webpack": "^6",
+		"@svgr/webpack": "^8",
 		"dompurify": "^3.0.1",
 		"isomorphic-dompurify": "^1.0.0",
-		"marked": "^4",
+		"marked": "^9",
 		"next": "^13",
 		"nodemailer": "^6",
 		"react": "^18",
 		"react-dom": "^18",
 		"react-icons": "^4",
 		"sass": "^1",
+		"svgo": "^3.0.2",
 		"typescript": "^5.2.2"
 	},
 	"devDependencies": {
@@ -31,6 +32,6 @@
 		"@types/react-dom": "^18",
 		"eslint": "^8",
 		"eslint-config-next": "^13",
-		"puppeteer": "^19"
+		"puppeteer": "^21"
 	}
 }
