@@ -3,11 +3,11 @@ import { FaPlus, FaExclamationTriangle } from 'react-icons/fa';
 
 import look from './ProjectLoader.module.scss'
 
-const ProjectLoader = ({ failed }) => {
+const ProjectLoaderComp = (props: { failed: boolean }) => {
 	return (
 		<div className={look.container}>
 			{
-				failed === true ?
+				props.failed === true ?
 					<FaExclamationTriangle /> :
 					(
 						<Spinner>
@@ -16,7 +16,7 @@ const ProjectLoader = ({ failed }) => {
 					)
 			}
 			{
-				failed === true ? (
+				props.failed === true ? (
 					<p className={look.text}>
 						{'Error loading project :('}
 						<br />
@@ -30,6 +30,19 @@ const ProjectLoader = ({ failed }) => {
 			}
 		</div>
 	);
-};
+}
+
+const ProjectLoader = (props: {
+	error?: Error | null,
+	pastDelay?: boolean,
+	timedOut?: boolean
+}) => {
+	const { error, pastDelay, timedOut } = props;
+	return <ProjectLoaderComp failed={
+		(error !== null && error !== undefined)
+		|| (pastDelay !== undefined && pastDelay)
+		|| (timedOut !== undefined && timedOut)
+	} />
+}
 
 export default ProjectLoader;
