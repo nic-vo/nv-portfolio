@@ -5,10 +5,14 @@ import Angr from './goose_angr.svg';
 
 import duckLook from './Duck.module.scss';
 
-const Duck = ({ pX, pY, hoverToggle }) => {
-
+const Duck = (props: {
+	pX: number | null,
+	pY: number | null,
+	hoverToggle: boolean
+}) => {
+	const { pX, pY, hoverToggle } = props;
 	// Ref for getting size of each duck
-	const flipRef = useRef();
+	const flipRef = useRef<HTMLDivElement>(null);
 
 	// Boolean to determine which direction duck faces (left/right)
 	const [flip, setFlip] = useState(false);
@@ -19,8 +23,8 @@ const Duck = ({ pX, pY, hoverToggle }) => {
 	// If mouse leaves pond, randomly generate new position
 	useEffect(() => {
 		if (hoverToggle === false) {
-			const parentRect = document.getElementById('pond').getBoundingClientRect();
-			const duckRect = flipRef.current.getBoundingClientRect();
+			const parentRect = document.getElementById('pond')!.getBoundingClientRect();
+			const duckRect = flipRef.current!.getBoundingClientRect();
 			const widthMultiplier = parentRect.width / duckRect.width;
 			const heightMultiplier = parentRect.height / duckRect.height;
 			const newX = Math.floor(Math.random() * 80) + 10;
@@ -38,20 +42,24 @@ const Duck = ({ pX, pY, hoverToggle }) => {
 
 	// useEffect to determine new position for a duck relative to parent position props
 	useEffect(() => {
-		if (hoverToggle === false) { return };
+		if (hoverToggle === false || pX === null || pY === null) return;
 
-		const distGen = (parent, axis) => {
+		const distGen = (parent: number, axis: 'x' | 'y') => {
 
 			// Get parent pond rect data to adjust duck pos since it's position: absolute (I think)
-			const parentRect = document.getElementById('pond').getBoundingClientRect();
-			const duckRect = flipRef.current.getBoundingClientRect();
+			const parentRect = document.getElementById('pond')!.getBoundingClientRect();
+			const duckRect = flipRef.current!.getBoundingClientRect();
 
 			// Get percentage distance into parent from mouse event
-			const parentPercent = axis === 'x' ? ((parent - parentRect.left) / parentRect.width) : ((parent - parentRect.top) / parentRect.height);
+			const parentPercent = axis === 'x' ?
+				((parent - parentRect.left) / parentRect.width)
+				: ((parent - parentRect.top) / parentRect.height);
 			// Get how many duck lengths / heights are necessary to cover entire length / height of pond
-			const multiplier = axis === 'x' ? (parentRect.width / duckRect.width) : (parentRect.height / duckRect.height);
+			const multiplier = axis === 'x' ?
+				(parentRect.width / duckRect.width)
+				: (parentRect.height / duckRect.height);
 			// New percentage of duck for transform
-			const randomizer = Math.random().toFixed(4) * 3;
+			const randomizer = parseFloat(Math.random().toFixed(4)) * 3;
 			// Since distance is always positive, randomly controls whether duck should be on left/right or top/bottom
 			const bool = Math.random();
 
@@ -70,8 +78,8 @@ const Duck = ({ pX, pY, hoverToggle }) => {
 	// useEffect to determine if duck should flip or not
 	useEffect(() => {
 		if (hoverToggle === false) { return };
-		const duckRect = flipRef.current.getBoundingClientRect();
-		if (((duckRect.width / 2) + duckRect.x) < pX) {
+		const duckRect = flipRef.current!.getBoundingClientRect();
+		if (pX !== null && ((duckRect.width / 2) + duckRect.x) < pX) {
 			setFlip(true);
 		} else {
 			setFlip(false);
