@@ -1,11 +1,11 @@
-import { AimTrainer } from '../personal';
 import { Calculator } from '../fcc';
 import { DrumMachine } from '../fcc';
 import { Pomodoro } from '../fcc';
+import { AimTrainer, Collatz } from '../personal';
 
 export {
-	AimTrainer,
 	Calculator,
 	DrumMachine,
-	Pomodoro
+	Pomodoro,
+	AimTrainer
 };
