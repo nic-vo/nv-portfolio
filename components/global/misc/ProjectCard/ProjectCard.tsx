@@ -2,12 +2,10 @@ import Link from 'next/link';
 import { FaArrowRight } from 'react-icons/fa';
 
 import cardLook from './ProjectCard.module.scss';
+import { ProjectCardProps } from '@lib/props/types/projects';
 
-const ProjectCard = ({
-	categoryName,
-	project,
-	title,
-	wip }) => {
+const ProjectCard = (props: ProjectCardProps) => {
+	const { categoryName, project, title, wip } = props;
 	const titleCased = title.replace(/([a-z])([A-Z])/g, '$1 $2');
 	return (
 		<li className={cardLook.cardContainer}>

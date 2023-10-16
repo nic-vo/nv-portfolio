@@ -1,9 +1,9 @@
 import spinLook from './Spinner.module.scss';
 
-const Spinner = ({ children }) => {
+const Spinner = (props: { children: React.ReactNode }) => {
 	return (
 		<div className={spinLook.spindiv}>
-			{children}
+			{props.children}
 		</div>
 	);
 };

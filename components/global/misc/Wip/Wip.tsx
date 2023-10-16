@@ -7,6 +7,6 @@ const Wip = () => {
 			<p className={wipLook.small}>(work in progress)</p>
 		</div>
 	);
-};
+}
 
 export default Wip;

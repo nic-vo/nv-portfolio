@@ -4,40 +4,42 @@ import { FaCaretLeft, FaCaretRight, FaPlus } from 'react-icons/fa';
 
 import look from './ImageCarousel.module.scss';
 
-const ImageCarousel = ({ photos }) => {
+const ImageCarousel = (props: {
+	photos: {
+		src: string,
+		desc: string
+	}[]
+}) => {
+	const { photos } = props;
 	// If this changes, load a fullscreen-esque viewer
-	const [activeImage, setActiveImage] = useState(null);
+	const [activeImage, setActiveImage] = useState<number | null>(null);
 
-	const scrollRef = useRef(null);
-	const viewerRef = useRef(null);
+	const scrollRef = useRef<HTMLDivElement>(null);
+	const viewerRef = useRef<HTMLImageElement>(null);
 
-	const thumbClickHandler = (index) => {
-		setActiveImage(index);
-	};
+	const thumbClickHandler = (index: number) => setActiveImage(index);
 
 	// Clears active image and deactivates fullscreen viewer
-	const returner = () => {
-		setActiveImage(null);
-	};
+	const returner = () => setActiveImage(null)
 
 	// These next two are for within fullscreen viewer
 	const decrementActiveImage = () => {
-		if (activeImage === 0) { return; };
-		setActiveImage((prev) => { return prev - 1 });
-	};
+		if (activeImage === 0 || activeImage === null) return null;
+		setActiveImage(activeImage - 1);
+	}
 
 	const incrementActiveImage = () => {
-		if (activeImage === photos.length - 1) { return; };
-		setActiveImage((prev) => { return prev + 1 });
-	};
+		if (activeImage === photos.length - 1 || activeImage === null) return null;
+		setActiveImage(activeImage + 1);
+	}
 
 	useEffect(() => {
-		if (activeImage === null) { return };
+		if (activeImage === null || viewerRef.current === null) return;
 		viewerRef.current.focus();
 	}, [activeImage]);
 
-	const viewKeyDownHandler = ({ key }) => {
-		switch (key) {
+	const viewKeyDownHandler = (params: React.KeyboardEvent) => {
+		switch (params.key) {
 			case 'ArrowLeft':
 				decrementActiveImage();
 				break;
@@ -52,7 +54,8 @@ const ImageCarousel = ({ photos }) => {
 		};
 	};
 
-	const scrollerHandler = (right) => {
+	const scrollerHandler = (right: boolean) => {
+		if (scrollRef.current === null) return null;
 		const increment = scrollRef.current.getBoundingClientRect().width * 0.6;
 		const { scrollLeft } = scrollRef.current;
 		const newScrollValue = right === false ?
@@ -72,7 +75,7 @@ const ImageCarousel = ({ photos }) => {
 					alt={desc}
 					id={index === 0 ? 'devex' : ''}
 					onClick={() => { thumbClickHandler(index) }}
-					key={`${src}`}
+					key={src}
 					className={look.smallThumb} />
 			);
 		});
@@ -84,7 +87,11 @@ const ImageCarousel = ({ photos }) => {
 		<div className={look.container}>
 			{
 				activeImage !== null &&
-				(<div className={look.preview} tabIndex='0' ref={viewerRef} onKeyDown={viewKeyDownHandler}>
+				(<div
+					className={look.preview}
+					tabIndex={0}
+					ref={viewerRef}
+					onKeyDown={viewKeyDownHandler}>
 					<button
 						className={look.buttonReturner}
 						onPointerDown={returner}>
