@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { KeyboardEventHandler, MouseEventHandler, useState } from 'react';
 
 import Keypad from './Keypad/Keypad';
 import keyChars from './Keypad/KeypadChars';
@@ -18,7 +18,7 @@ const Calculator = () => {
 	// 'chunk' is like a running string
 	const [chunk, setChunk] = useState('');
 	const [evaluated, setEvaluated] = useState('');
-	const [history, setHistory] = useState([]);
+	const [history, setHistory] = useState<{ formula: string, result: string }[]>([]);
 
 	const [oldAllowed, setOldAllowed] = useState(true);
 
@@ -30,65 +30,78 @@ const Calculator = () => {
 
 	/* Helpers */
 
-	const replaceChunk = (value) => { setChunk(value) };
+	const replaceChunk = (value: string) => setChunk(value);
 
-	const addToChunk = (value) => { setChunk(chunk + value) };
+	const addToChunk = (value: string) => setChunk(chunk.concat(value));
 
-	const addToEntire = (value) => { setEntire(entire + value) };
+	const addToEntire = (value: string) => setEntire(entire.concat(value));
 
-	const opCheck = () => { return chunk.match(/[+\-*/]-*$/) };
+	const opCheck = () => chunk.match(/[+\-*/]-*$/);
 
-	const zeroCheck = () => { return chunk.match(/^0(?!\.)/) };
+	const zeroCheck = () => chunk.match(/^0(?!\.)/);
 
 	// allow/denyOld will only be called when new chunks are prepared to prevent decimal fuckery
-	const allowOld = () => { setOldAllowed(true) };
-	const denyOld = () => { setOldAllowed(false) };
+	const allowOld = () => setOldAllowed(true);
+	const denyOld = () => setOldAllowed(false);
 
-	const clearEvaluated = () => { setEvaluated('') };
+	const clearEvaluated = () => setEvaluated('');
 
-	const clearChunk = () => { setChunk('') };
+	const clearChunk = () => setChunk('');
 
-	const clearEntire = () => { setEntire('') };
+	const clearEntire = () => setEntire('');
 
 	/* Event Handlers */
-	const keyDownHandler = (e) => {
-		switch (e.key) {
+
+	const inputHandler = (value: string) => {
+		switch (value) {
 			case '0':
-				return zeroHandler();
+				zeroHandler();
+				break;
 			case '.':
-				return decimalHandler();
+				decimalHandler();
+				break;
 			case '-':
-				return subtractHandler();
+				subtractHandler();
+				break;
 			case '+':
 			case '*':
 			case '/':
-				return operatorHandler({ target: { value: e.key } });
+				operatorHandler({ target: { value } });
+				break;
 			case 'Delete':
-				return clearHandler();
+				clearHandler();
+				break;
 			case 'Enter':
-				return equalsHandler();
+				equalsHandler();
+				break;
 			default:
-				if (e.key >= 1 && e.key < 10) { return numberHandler({ target: { value: e.key } }) };
-		};
-	};
+				if (parseInt(value) >= 1 && parseInt(value) < 10)
+					numberHandler({ target: { value } });
+				break;
+		}
+	}
 
-	const numberHandler = (e) => {
+	const keyDownHandler: KeyboardEventHandler<HTMLDivElement> = (e) => {
+		inputHandler(e.key);
+	}
+
+	const numberHandler = (e: { target: { value: string } }) => {
 		const newNum = e.target.value;
 		// If there's an evaluated answer, clear everything to start anew
-		if (evaluated !== '') { clearHandler(); };
+		if (evaluated !== '') clearHandler();
 		// Short circuit preventing number from being added if chunk starts with 0 (leading 0s)
-		if (zeroCheck() !== null) { return };
+		if (zeroCheck() !== null) return null;
 		// If an operator has been placed, start a new chunk
 		denyOld();
-		if (opCheck() !== null) { replaceChunk(newNum); }
-		else { addToChunk(newNum); };
+		if (opCheck() !== null) replaceChunk(newNum);
+		else addToChunk(newNum);
 		// If passes short circuit, lways add new number to entire
 		addToEntire(newNum);
-	};
+	}
 
 	const zeroHandler = () => {
 		// If there's an evaluated answer, clear everything to start anew
-		if (evaluated !== '') { clearHandler(); };
+		if (evaluated !== '') clearHandler();
 		// If this is a fresh reset or an operator has been placed, start a new chunk
 		if (chunk === '' || opCheck() !== null) {
 			denyOld();
@@ -99,18 +112,18 @@ const Calculator = () => {
 			denyOld();
 			addToEntire('0');
 			addToChunk('0');
-		};
+		}
 	}
 
-	const replaceOp = (op) => {
+	const replaceOp = (op: string) => {
 		// This func will replace the last char in entire with the new op
 		const newEntire = entire.replace(opRegex, op);
 		setEntire(newEntire);
 		replaceChunk(op);
-	};
+	}
 
-	const operatorHandler = (e) => {
-		const op = e.target.value
+	const operatorHandler = (e: { target: { value: string } }) => {
+		const op = e.target.value;
 		// If the eval string is blank, either already evaluated fresh page load / full clear
 		// Because javascript, the only acceptable blank state is empty string
 		if (entire === '') {
@@ -123,21 +136,21 @@ const Calculator = () => {
 				clearEvaluated();
 			}
 			// If fresh page load / full clear
-			else { addToEntire('0' + op); };
+			else addToEntire('0'.concat(op));
 			allowOld();
 		}
 		// Special functionality: if last in eval string is an operator, replace
-		else if (opCheck() !== null) { replaceOp(op); }
+		else if (opCheck() !== null) replaceOp(op);
 		// Typical use: if last input is a number or decimal(?), add new operator and prepare for replace
 		else {
 			allowOld();
 			addToEntire(op);
 			replaceChunk(op);
-		};
-	};
+		}
+	}
 
 	const decimalHandler = () => {
-		if (evaluated !== '') { clearHandler(); };
+		if (evaluated !== '') clearHandler();
 		if (chunk === '' || opCheck() !== null) {
 			denyOld();
 			addToEntire('0.');
@@ -146,8 +159,8 @@ const Calculator = () => {
 			denyOld();
 			addToEntire('.');
 			addToChunk('.');
-		};
-	};
+		}
+	}
 
 	const subtractHandler = () => {
 		const subtract = '-';
@@ -164,7 +177,7 @@ const Calculator = () => {
 				clearEvaluated();
 			}
 			// If fresh page load / full clear
-			else { addToEntire('0' + subtract); };
+			else addToEntire('0' + subtract);
 			allowOld();
 		}
 		// Special functionality 01: if last in eval string is an operator, add a negative
@@ -173,49 +186,51 @@ const Calculator = () => {
 			addToChunk(negative);
 		}
 		// Special functionality 02: if last in eval string is an operator w/ negative, replace
-		else if (opCheck() !== null) { replaceOp(subtract); }
+		else if (opCheck() !== null) replaceOp(subtract);
 		// Typical use: if last input is a number or decimal(?), add new operator and prepare for replace
 		else {
 			allowOld();
 			addToEntire(subtract);
 			replaceChunk(subtract);
-		};
-	};
+		}
+	}
 
 	// To prevent unnecessary toFixed decimal points if not needed
-	const abridger = (value) => {
+	const abridger = (value: number) => {
 		const stringed = value.toString();
 		// Check if evaluated string contains decimal more precise than 100-thousandth
-		if (stringed.match(/^[-]{0,1}\d+\.\d{5,}$/) !== null) { return value.toFixed(5); };
+		if (stringed.match(/^[-]{0,1}\d+\.\d{5,}$/) !== null)
+			return parseFloat(value.toFixed(5));
 		return value;
-	};
+	}
 
 	// Parses double negatives as addition
-	const dblNeg = (entire) => { return entire.replace(/--/, '+'); };
+	const dblNeg = (entire: string) => entire.replace(/--/, '+');
 
-	const historyUpdater = (entry) => {
-		if (history.length === 5) {
-			setHistory([...history.slice(1, 5), entry]);
-		} else {
-			setHistory([...history, entry]);
-		};
-	};
+	const historyUpdater = (entry: {
+		formula: string,
+		result: string
+	}) => {
+		if (history.length === 5) setHistory([...history.slice(1, 5), entry])
+		else setHistory([...history, entry]);
+	}
 
 	const equalsHandler = () => {
-		if (entire === '') { return }
+		if (entire === '') return null;
 		// If someone accidentally solves after adding op
-		const replacedEntire = entire.replace(/[-]$/, '').replace(/[+\-*/]$/, '')
+		const replacedEntire = entire.replace(/[-]$/, '').replace(/[+\-*/]$/, '');
 		// If already solved, add
-		if (evaluated !== '') { historyUpdater([evaluated, evaluated]); }
+		if (evaluated !== '')
+			historyUpdater({ formula: evaluated, result: evaluated });
 		else {
 			const abridged = abridger(eval(dblNeg(replacedEntire)));
-			setEvaluated(abridged);
-			historyUpdater([replacedEntire, abridged]);
+			setEvaluated(abridged.toString());
+			historyUpdater({ formula: replacedEntire, result: abridged.toString() });
 		}
 		allowOld();
 		clearEntire();
 		clearChunk();
-	};
+	}
 
 	const clearHandler = () => {
 		allowOld();
@@ -231,15 +246,15 @@ const Calculator = () => {
 	};
 
 	// Adds history items as chunks back into equation
-	const pickHistory = (e) => {
+	const pickHistory: MouseEventHandler<HTMLButtonElement> = (e) => {
 		// Only if allowed, to prevent decimal fuckery from happening
-		if (allowOld === false) { return };
-		const histItem = e.target.value;
+		if (oldAllowed === false) return null;
+		const histItem = e.currentTarget.value;
 		addToEntire(histItem);
 		replaceChunk(histItem);
 		denyOld();
 		clearEvaluated();
-	};
+	}
 
 	return (
 		<section
@@ -253,7 +268,7 @@ const Calculator = () => {
 				</div>
 				<div className={calcStyles.grid}>
 					{
-						keyList.map((char) => {
+						Object.keys(keyChars).map((char) => {
 							switch (char) {
 								case 'zero':
 									return <Keypad
@@ -283,7 +298,7 @@ const Calculator = () => {
 										keyId={char}
 										keyVal={keyChars[char]}
 										content={keyChars[char]}
-										handler={operatorHandler}
+										handler={inputHandler}
 										key={`${char}-pad`} />;
 								case 'clear':
 									return <Keypad
@@ -299,12 +314,20 @@ const Calculator = () => {
 										content={keyChars[char]}
 										handler={equalsHandler}
 										key={`${char}-pad`} />;
-								default:
+								case 'one':
+								case 'two':
+								case 'three':
+								case 'four':
+								case 'five':
+								case 'six':
+								case 'seven':
+								case 'eight':
+								case 'nine':
 									return <Keypad
 										keyId={char}
 										keyVal={keyChars[char]}
 										content={keyChars[char]}
-										handler={numberHandler}
+										handler={inputHandler}
 										key={`${char}-pad`} />;
 							}
 						})
@@ -318,6 +341,6 @@ const Calculator = () => {
 				oldAllowed={oldAllowed} />
 		</section >
 	);
-};
+}
 
 export default Calculator;
