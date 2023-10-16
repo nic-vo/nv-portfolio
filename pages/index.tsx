@@ -1,13 +1,15 @@
 import Head from 'next/head';
-import Footer from '../components/global/misc/Footer/Footer';
-import { AboutMe, Hero, Nav } from '../components/homepage';
+import Footer from '@components/global/misc/Footer/Footer';
+import { AboutMe, Hero, Nav } from '@components/homepage';
 
-import { getProjectLists } from '../lib/props/homepage/projects';
-import { getVersionNumber } from '../lib/props/homepage/homepage';
+import { getProjectLists } from '@lib/props/homepage/projects';
+import { getVersionNumber } from '@lib/props/homepage/homepage';
 
-import homeLook from '../components/homepage/Homepage.module.scss';
+import homeLook from '@components/homepage/Homepage.module.scss';
+import { ProjectListProp } from '@lib/props/types/projects';
 
-const Home = ({ projectList, version }) => {
+const Home = (props: { projectList: ProjectListProp[], version: string }) => {
+	const { projectList, version } = props;
 	return (
 		<>
 			<Head>
@@ -36,11 +38,7 @@ const Home = ({ projectList, version }) => {
 export default Home;
 
 export async function getStaticProps() {
-	const projectList = await getProjectLists({
-		dataTypes: [
-			'title',
-			'wip']
-	});
+	const projectList = await getProjectLists(['title', 'wip']);
 	const version = await getVersionNumber();
 	return {
 		props: {

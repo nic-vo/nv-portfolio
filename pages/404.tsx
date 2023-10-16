@@ -3,8 +3,8 @@ import Head from 'next/head';
 import { Duckies } from '../components/homepage';
 import { FaArrowLeft } from 'react-icons/fa';
 
-import fourLook from '../styles/404.module.scss';
-import homeLook from '../components/homepage/Homepage.module.scss';
+import fourLook from '@styles/404.module.scss';
+import homeLook from '@components/homepage/Homepage.module.scss';
 
 const custom404 = () => {
 	return (

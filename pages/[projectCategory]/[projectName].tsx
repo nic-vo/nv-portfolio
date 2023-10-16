@@ -1,15 +1,27 @@
 import Head from 'next/head';
-import { ProjectLayout, ProjectContainer, ProjectInfo } from '../../components/global/layouts';
-
 import {
-	getCategories,
+	ProjectLayout,
+	ProjectContainer,
+	ProjectInfo
+} from '@components/global/layouts';
+import {
 	getCategoryProjects,
 	getProjectData,
 	getProjectLists
-} from '../../lib/props/homepage/projects';
-import { getVersionNumber } from '../../lib/props/homepage/homepage';
+} from '@lib/props/homepage/projects';
+import { getVersionNumber } from '@lib/props/homepage/homepage';
+import {
+	DrumMachineProps,
+	LayoutData,
+	ProjectData,
+} from '@lib/props/types/projects';
 
-const ProjectPage = ({ layoutData, projectData, optionalProps }) => {
+const ProjectPage = (props: {
+	layoutData: LayoutData,
+	projectData: ProjectData,
+	optionalProps?: DrumMachineProps
+}) => {
+	const { layoutData, projectData, optionalProps } = props;
 	const { title,
 		description,
 		techs,
@@ -42,10 +54,15 @@ const ProjectPage = ({ layoutData, projectData, optionalProps }) => {
 
 export default ProjectPage;
 
-export async function getStaticProps({ params }) {
-	const { projectCategory, projectName } = params;
+export async function getStaticProps(args: {
+	params: {
+		projectCategory: 'featured' | 'other',
+		projectName: string
+	}
+}) {
+	const { projectCategory, projectName } = args.params;
 	const layoutFetch = await Promise.all([
-		await getProjectLists({ dataTypes: ['title'] }),
+		await getProjectLists(['title']),
 		await getVersionNumber(),
 		await getProjectData({
 			category: projectCategory,
@@ -68,16 +85,23 @@ export async function getStaticProps({ params }) {
 			optionalProps: layoutFetch[2]['optional']
 		}
 	};
-};
+}
 
 export async function getStaticPaths() {
-	const categories = await getCategories();
+	const categories = ['featured', 'other'] as [
+		'featured' | 'other', 'featured' | 'other'
+	];
 	const projectsInCategories = await Promise.all(
 		categories.map(async (category) => {
-			const categoryProjects = await getCategoryProjects({ category });
+			const categoryProjects = await getCategoryProjects(category);
 			return categoryProjects;
 		}));
-	let paths = [];
+	let paths: {
+		params: {
+			projectCategory: 'featured' | 'other',
+			projectName: string
+		}
+	}[] = [];
 	projectsInCategories.forEach((category) => {
 		category.projects.forEach((project) => {
 			paths.push({
@@ -90,4 +114,4 @@ export async function getStaticPaths() {
 		paths,
 		fallback: false
 	};
-};
+}
