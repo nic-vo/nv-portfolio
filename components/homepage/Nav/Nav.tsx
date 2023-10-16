@@ -1,9 +1,13 @@
+import { ProjectListProp } from '@lib/props/types/projects';
 import { ProjectCard } from '../../global';
 
 import homeLook from '../Homepage.module.scss';
 import navLook from './Nav.module.scss';
 
-const Nav = ({ projectList }) => {
+const Nav = (props: {
+	projectList: ProjectListProp[]
+}) => {
+	const { projectList } = props;
 	return (
 		<section className={navLook.container} id='projectNav'>
 			<h2 className={homeLook.hTwo}>Projects</h2>
