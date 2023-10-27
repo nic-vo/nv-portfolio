@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { FaArrowRight } from 'react-icons/fa';
 
 import cardLook from './ProjectCard.module.scss';
@@ -13,9 +12,9 @@ const ProjectCard = (props: ProjectCardProps) => {
 				<h4 className={cardLook.projectTitle}>{titleCased}</h4>
 				{
 					wip === false &&
-					<Link href={`${categoryName}/${project}`} className={cardLook.link}>
+					<a href={`${categoryName}/${project}`} className={cardLook.link}>
 						Check it out<FaArrowRight />
-					</Link>
+					</a>
 				}
 			</div>
 			<img
