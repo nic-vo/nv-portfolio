@@ -32,7 +32,7 @@ const getSoundList = async (allBanks: string[]) => {
 		return Object.keys(listjson).reduce(
 			(returner, current) => {
 				const fileName = listjson[current] as string;
-				const fileWithExt = fileName.concat('mp3');
+				const fileWithExt = fileName.concat('.mp3');
 				const filePath = '/' + path.join(...midStr, fileWithExt);
 				let newer = { ...returner }
 				newer[current] = { path: filePath, name: listjson[current] }
@@ -45,11 +45,10 @@ const getSoundList = async (allBanks: string[]) => {
 
 const getDrumMachineProps = async (): Promise<DrumMachineProps> => {
 	const bankList = await getBankNames();
-	const { banks, numberOfBanks } = bankList;
+	const { banks } = bankList;
 	const soundList = await getSoundList(banks);
 	return {
 		banks,
-		numberOfBanks,
 		soundList
 	};
 };

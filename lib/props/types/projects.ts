@@ -37,7 +37,6 @@ export type DrumMachineSoundList = {
 
 export type DrumMachineProps = {
 	banks: string[],
-	numberOfBanks: number,
 	soundList: DrumMachineSoundList[]
 }
 
