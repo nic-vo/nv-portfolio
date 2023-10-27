@@ -1,11 +1,10 @@
 import { useState } from 'react';
 
-import Link from 'next/link';
 import { FaPlus, FaBars, FaHome } from 'react-icons/fa';
 
 import headerLook from './Header.module.scss';
 
-const Header = ({ children }) => {
+const Header = (props: { children: React.ReactNode }) => {
 	const [toggled, setToggled] = useState(false);
 	const toggleHandler = () => {
 		setToggled(!toggled);
@@ -34,14 +33,14 @@ const Header = ({ children }) => {
 								role='presentation' />
 					}
 				</button>
-				<Link
+				<a
 					href='/' className={headerLook.toggler}
 					aria-label='Return home'>
 					<FaHome
 						className={headerLook.svg}
 						aria-hidden='true'
 						role='presentation' />
-				</Link>
+				</a>
 			</div>
 			<div
 				onPointerDown={toggleHandler}
@@ -51,11 +50,11 @@ const Header = ({ children }) => {
 				role='navigation'>
 				<h2 className={headerLook.title}>Other Projects</h2>
 				<ul className={headerLook.topList}>
-					{children}
+					{props.children}
 				</ul>
-				<Link href='/' className={headerLook.homer}>
+				<a href='/' className={headerLook.homer}>
 					<FaHome className={headerLook.svg} />
-				</Link>
+				</a>
 			</nav >
 		</header >
 	);

@@ -1,13 +1,21 @@
-import Link from "next/link";
-import { useState, } from "react";
-import { FaCaretDown } from "react-icons/fa";
+import { useState } from 'react';
+import { FaCaretDown } from 'react-icons/fa';
 
 import pCatNavLook from './ProjectCategoryNavItem.module.scss';
 
-const ProjectCategoryNavItem = ({ category, dev }) => {
+const ProjectCategoryNavItem = (props: {
+	category: {
+		categoryName: string,
+		projects: {
+			project: string,
+			title: string
+		}[]
+	},
+	dev: boolean
+}) => {
 	const [catToggled, setCatToggled] = useState(false);
 
-	const { categoryName, projects } = category;
+	const { categoryName, projects } = props.category;
 	const catCased = categoryName[0].toUpperCase() + categoryName.slice(1).toLowerCase();
 
 	const clickToggleListHandler = () => {
@@ -19,7 +27,7 @@ const ProjectCategoryNavItem = ({ category, dev }) => {
 	return (
 		<li className={pCatNavLook.liContainer}>
 			{
-				dev === true ?
+				props.dev === true ?
 					<button
 						id='hndev'
 						onClick={clickToggleListHandler}
@@ -48,14 +56,14 @@ const ProjectCategoryNavItem = ({ category, dev }) => {
 			<ul className={pCatNavLook.inCatList + classer}>
 				{
 					projects.map((project, index) => {
-						if (index === 0 && dev === true) return (
+						if (index === 0 && props.dev === true) return (
 							<li
-								id={dev === true && index === 0 ? 'hnlidev' : ''}
+								id={props.dev === true && index === 0 ? 'hnlidev' : ''}
 								className={pCatNavLook.li + classer}
 								key={`${categoryName}-list-${project.project}`}>
-								<Link href={`/${categoryName}/${project.project}`}>
+								<a href={`/${categoryName}/${project.project}`}>
 									{project.title}
-								</Link>
+								</a>
 							</li>
 						);
 						else
@@ -63,9 +71,9 @@ const ProjectCategoryNavItem = ({ category, dev }) => {
 								<li
 									className={pCatNavLook.li + classer}
 									key={`${categoryName}-list-${project.project}`}>
-									<Link href={`/${categoryName}/${project.project}`}>
+									<a href={`/${categoryName}/${project.project}`}>
 										{project.title}
-									</Link>
+									</a>
 								</li>
 							);
 					})
