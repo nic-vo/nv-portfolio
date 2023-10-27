@@ -17,6 +17,7 @@
 		"dompurify": "^3",
 		"isomorphic-dompurify": "^1",
 		"marked": "^9",
+		"mongoose": "^7",
 		"next": "^13",
 		"nodemailer": "^6",
 		"react": "^18",
@@ -27,11 +28,14 @@
 		"typescript": "^5"
 	},
 	"devDependencies": {
+		"@aws-sdk/client-s3": "^3",
+		"@aws-sdk/s3-request-presigner": "^3",
 		"@types/node": "^20",
 		"@types/react": "^18",
 		"@types/react-dom": "^18",
 		"eslint": "^8",
 		"eslint-config-next": "^13",
-		"puppeteer": "^21"
+		"puppeteer": "^21",
+		"ts-node": "^10.9.1"
 	}
 }
