@@ -7,10 +7,12 @@ const nextConfig = {
 	},
 	webpack(config) {
 		config.module.rules.push({
-			test: /\.svg$/i,
-			issuer: /\.[jt]s$/,
+			test: /\.svg$/,
+			issuer: {
+				and: [/\.(js|ts|md)x?$/]
+			},
 			use: ['@svgr/webpack']
-		})
+		});
 		return config;
 	}
 };

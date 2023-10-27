@@ -88,7 +88,7 @@
 	border-radius: 5px;
 	font-family: Silkscreen, sans-serif;
 	font-size: 1.6rem;
-	transition: background-color var(--fast-transition), color var(--fast-transition), border var(--fast-transition), box-shadow var(--fast-transition);
+	transition: background-image var(--fast-transition), color var(--fast-transition), border var(--fast-transition), box-shadow var(--fast-transition);
 }
 
 @media (min-aspect-ratio: 1) {
@@ -100,40 +100,17 @@
 	}
 }
 
-.pad p {
-	text-align: center;
-	border-radius: 50%;
-	height: auto;
-	transition: width var(--fast-transition), text-shadow var(--fast-transition), filter var(--fast-transition), background-color var(--fast-transition), box-shadow var(--fast-transition);
-}
-
 .padInactive {
 	border: 10px solid rgba(20, 20, 20, 1);
-	background-color: rgba(10, 10, 10, 1);
+	background-image: radial-gradient(circle at center, $pad-glow -50%, rgba(10, 10, 10, 1) 50%);
 	color: $pad-overexpose;
-}
-
-.padInactive p {
-	width: 20%;
-	background-color: $pad-glow;
-	box-shadow: 0px 0px 30px 20px $pad-glow;
-	text-shadow: 0px 0px 5px $pad-glow;
-	filter: drop-shadow(0px 0px 10px $pad-glow);
 }
 
 .padActive {
 	border: 10px solid $pad-overexpose;
 	box-shadow: 0px 0px 40px 10px $pad-glow;
-	background-color: $pad-overexpose;
+	background-image: linear-gradient($pad-overexpose, $pad-overexpose);
 	color: var(--global-background);
-}
-
-.padActive p {
-	width: 40%;
-	background-color: var(--global-color);
-	box-shadow: 0px 0px 30px 20px var(--global-color);
-	text-shadow: 0px 0px 5px var(--global-color);
-	filter: drop-shadow(0px 0px 10px var(--global-color));
 }
 
 .buttons {
