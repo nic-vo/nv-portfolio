@@ -14,30 +14,30 @@ const Pomodoro = () => {
 	const [fullscreen, setFullscreen] = useState(false);
 
 	const workIncHandler = (val = 1) => {
-		if (work + val > 60) { return setWork(60) };
-		setWork((prev) => { return prev + val });
+		if (work + val > 60) return setWork(60);
+		setWork((prev) => prev + val);
 	};
 
 	const workDecHandler = (val = 1) => {
-		if (work - val < 1) { return setWork(1) };
-		setWork((prev) => { return prev - val });
+		if (work - val < 1) return setWork(1);
+		setWork((prev) => prev - val);
 	};
 
 	const restIncHandler = (val = 1) => {
-		if (rest + val > 60) { return setWork(60) };
-		setRest((prev) => { return prev + val });
+		if (rest + val > 60) return setWork(60);
+		setRest((prev) => prev + val);
 	};
 
 	const restDecHandler = (val = 1) => {
-		if (rest - val < 1) { return setWork(1) };
-		setRest((prev) => { return prev - val });
+		if (rest - val < 1) return setWork(1);
+		setRest((prev) => prev - val);
 	};
 
 	const activator = () => {
-		setActivate((prev) => { return !prev });
+		setActivate(prev => !prev);
 	};
 
-	const workToggle = (boo) => {
+	const workToggle = (boo: boolean) => {
 		setWorkPhase(boo);
 	};
 
@@ -49,7 +49,7 @@ const Pomodoro = () => {
 	useEffect(() => {
 		if (fullscreen === true) {
 			setTimeout(() => {
-				const coord = document.getElementById('pomcon')
+				const coord = document.getElementById('pomcon')!
 					.getBoundingClientRect();
 				window.scrollTo({
 					left: 0,
@@ -60,7 +60,10 @@ const Pomodoro = () => {
 		};
 	}, [fullscreen]);
 
-	const containerClass = `${pomoLook.container} ${fullscreen === true ? pomoLook.fullscreen : pomoLook.windowed} ${activate === false ? pomoLook.inactive : workPhase === true ? pomoLook.workin : pomoLook.restin}`;
+	const containerClass = `${pomoLook.container} ${fullscreen === true ?
+		pomoLook.fullscreen : pomoLook.windowed} ${activate === false ?
+			pomoLook.inactive : workPhase === true ?
+				pomoLook.workin : pomoLook.restin}`;
 
 	return (
 		<section id='pomcon' className={containerClass}>
@@ -76,25 +79,25 @@ const Pomodoro = () => {
 					<p>Work Time: {work}</p>
 					<div className={pomoLook.counter}>
 						<button
-							onClick={() => { workIncHandler(5) }}
+							onClick={() => workIncHandler(5)}
 							className={pomoLook.menter}
 							disabled={activate}>
 							<FaPlus />5
 						</button>
 						<button
-							onClick={() => { workIncHandler() }}
+							onClick={() => workIncHandler()}
 							className={pomoLook.menter}
 							disabled={activate}>
 							<FaPlus />1
 						</button>
 						<button
-							onClick={() => { workDecHandler() }}
+							onClick={() => workDecHandler()}
 							className={pomoLook.menter}
 							disabled={activate}>
 							<FaMinus />1
 						</button>
 						<button
-							onClick={() => { workDecHandler(5) }}
+							onClick={() => workDecHandler(5)}
 							className={pomoLook.menter}
 							disabled={activate}>
 							<FaMinus />5
@@ -105,38 +108,38 @@ const Pomodoro = () => {
 					<p>Rest Time: {rest}</p>
 					<div className={pomoLook.counter}>
 						<button
-							onClick={() => { restIncHandler(5) }}
+							onClick={() => restIncHandler(5)}
 							className={pomoLook.menter}
 							disabled={activate}>
 							<FaPlus />5
 						</button>
 						<button
-							onClick={() => { restIncHandler() }}
+							onClick={() => restIncHandler()}
 							className={pomoLook.menter}
 							disabled={activate}>
 							<FaPlus />1
 						</button>
 						<button
-							onClick={() => { restDecHandler() }}
+							onClick={() => restDecHandler()}
 							className={pomoLook.menter}
-							disabled={activate}>
+							disabled={activate} >
 							<FaMinus />1
-						</button>
+						</button >
 						<button
-							onClick={() => { restDecHandler(5) }}
+							onClick={() => restDecHandler(5)}
 							className={pomoLook.menter}
 							disabled={activate}>
 							<FaMinus />5
 						</button>
-					</div>
-				</div>
-			</div>
+					</div >
+				</div >
+			</div >
 			<button
 				onClick={fullscrenHandler}
 				className={pomoLook.fullscreener}>
 				{fullscreen === true ? <FaCompressArrowsAlt /> : <FaExpandArrowsAlt />}
 			</button>
-		</section>
+		</section >
 	);
 };
 
