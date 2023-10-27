@@ -4,9 +4,8 @@ import Keypad from './Keypad/Keypad';
 import keyChars from './Keypad/KeypadChars';
 import History from './History/History';
 
-import calcStyles from './Calculator.module.scss';
+import style from './Calculator.module.scss';
 
-const keyList = Object.keys(keyChars);
 const opRegex = /[+\-*/]-*$/
 
 const Calculator = () => {
@@ -211,7 +210,7 @@ const Calculator = () => {
 		formula: string,
 		result: string
 	}) => {
-		if (history.length === 5) setHistory([...history.slice(1, 5), entry])
+		if (history.length === 10) setHistory([...history.slice(1, 10), entry])
 		else setHistory([...history, entry]);
 	}
 
@@ -246,27 +245,27 @@ const Calculator = () => {
 	};
 
 	// Adds history items as chunks back into equation
-	const pickHistory: MouseEventHandler<HTMLButtonElement> = (e) => {
+	const pickHistory = (value: string) => {
 		// Only if allowed, to prevent decimal fuckery from happening
 		if (oldAllowed === false) return null;
-		const histItem = e.currentTarget.value;
-		addToEntire(histItem);
-		replaceChunk(histItem);
+		addToEntire(value);
+		if (chunk !== '') addToChunk(value);
+		else replaceChunk(value);
 		denyOld();
 		clearEvaluated();
 	}
 
 	return (
 		<section
-			className={calcStyles.container}
+			className={style.container}
 			tabIndex={0}
 			onKeyDown={keyDownHandler}>
-			<div className={calcStyles.calculator}>
-				<div className={calcStyles.screen}>
+			<div className={style.calculator}>
+				<div className={style.screen}>
 					<p>{entire !== '' ? entire : 'Ready'}</p>
 					<p>{evaluated !== '' ? evaluated : chunk !== '' ? chunk : '--'}</p>
 				</div>
-				<div className={calcStyles.grid}>
+				<div className={style.grid}>
 					{
 						Object.keys(keyChars).map((char) => {
 							switch (char) {
