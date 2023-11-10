@@ -14,7 +14,15 @@ const PortfolioSite = dynamic(() => import('./PortfolioSite/PortfolioSite'),
 	}
 );
 
+const LofiCafe = dynamic(() => import('./LofiCafe/LofiCafe'),
+	{
+		ssr: false,
+		loading: ProjectLoader
+	}
+);
+
 export {
 	BlockBuildersGC,
-	PortfolioSite
+	PortfolioSite,
+	LofiCafe
 }

@@ -1,11 +1,11 @@
-import { Calculator } from '../fcc';
-import { DrumMachine } from '../fcc';
-import { Pomodoro } from '../fcc';
-import { AimTrainer, Collatz } from '../personal';
+import { Calculator } from '@components/fcc';
+import { DrumMachine } from '@components/fcc';
+import { Pomodoro } from '@components/fcc';
+import { LofiCafe } from '@components/professional';
 
 export {
 	Calculator,
 	DrumMachine,
 	Pomodoro,
-	AimTrainer
+	LofiCafe
 };
