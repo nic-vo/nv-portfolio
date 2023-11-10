@@ -2,7 +2,11 @@ This is the repo for my personal portfolio
 
 # CHANGELOG
 
-## 1.3.0
+## 1.3.1
+	- Add Lofi Cafe
+	- Replace Aim Trainer with Lofi Cafe
+
+### 1.3.0
   - Bandwidth consumption fixes
   - Fix some issues related to null checks in various components
   - Fix excessive renders related to monolithic state in some components

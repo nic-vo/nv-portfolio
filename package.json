@@ -1,6 +1,6 @@
 {
 	"name": "nv-portfolio",
-	"version": "1.3.0",
+	"version": "1.3.1",
 	"private": true,
 	"scripts": {
 		"dev": "next dev",
@@ -10,7 +10,8 @@
 		"homepagethumbs": "node ./lib/dev/homepagethumbs.mjs",
 		"bbgcthumbs": "node ./lib/dev/bbgcthumbs.mjs",
 		"portfoliothumbs": "node ./lib/dev/portfoliothumbs.mjs",
-		"mytesting": "node ./lib/dev/mytesting.mjs"
+		"mytesting": "node ./lib/dev/mytesting.mjs",
+		"lofithumbs": "node ./lib/dev/lofithumbs.mjs"
 	},
 	"dependencies": {
 		"@svgr/webpack": "^8",
