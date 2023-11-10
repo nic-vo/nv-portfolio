@@ -6,7 +6,7 @@ A JavaScript / `React` drum machine I created for [freeCodeCamp's front-end cert
 
 This project allowed me to practice some basic DOM accessing / manipulation when it came to triggering the sounds to play. I take advantage of the `useRef` hook to access the sound elements for each pad and play them at will.
 
-I tried to get creative with the styling here, too: I wanted to implement a CSS-only glow effect that emulates actual light from faux buttons / screens. The trick to emulating light semi-realistically is to treat the elements as if they were being viewed through a camera. Cameras store light information in terms of 24 bits per pixel(?), roughly speaking: 8 bits each for a red, blue, and green channel. Bright lights aren't actually captured with a brightness value (at least in this --they're stored as closer to the 'white' color. As such, I tried to emulate brightness by desaturating colors and bringing them closer closer to white. The resulting look is rough but passable.
+I tried to get creative with the styling here, too: I wanted to implement a CSS-only glow effect that emulates actual light from faux buttons / screens. The trick to emulating light semi-realistically is to treat the elements as if they were being viewed through a camera. Cameras store light information in terms of 24 bits per pixel(?), roughly speaking: 8 bits each for a red, blue, and green channel. Bright lights aren't actually captured with a brightness value (at least in this) --they're stored as closer to the 'white' color. As such, I tried to emulate brightness by desaturating colors and bringing them closer closer to white. The resulting look is rough but passable.
 
 ### Conclusion
 
