@@ -35,4 +35,4 @@ export {
 	phomeObj,
 	pinteriorObj,
 	pinteriorpreviewObj
-};
+}
