@@ -20,8 +20,8 @@ const ActiveComponent = (props: {
 			return <Featured.Markdown />;
 		case 'Pomodoro':
 			return <Other.Pomodoro />;
-		case 'AimTrainer':
-			return <Other.AimTrainer />;
+		case 'LofiCafe':
+			return <Other.LofiCafe />;
 		case 'Calculator':
 			return <Other.Calculator />;
 		case 'DrumMachine':
