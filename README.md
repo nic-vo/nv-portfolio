@@ -2,9 +2,12 @@ This is the repo for my personal portfolio
 
 # CHANGELOG
 
-## 1.3.1
-	- Add Lofi Cafe
-	- Replace Aim Trainer with Lofi Cafe
+## 1.3.2
+  - Fix homepage thumbnails
+
+### 1.3.1
+  - Add Lofi Cafe
+  - Replace Aim Trainer with Lofi Cafe
 
 ### 1.3.0
   - Bandwidth consumption fixes
