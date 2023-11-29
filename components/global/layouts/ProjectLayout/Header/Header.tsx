@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { FaPlus, FaBars, FaHome } from 'react-icons/fa';
 
-import headerLook from './Header.module.scss';
+import look from './Header.module.scss';
 
 const Header = (props: { children: React.ReactNode }) => {
 	const [toggled, setToggled] = useState(false);
@@ -10,52 +10,50 @@ const Header = (props: { children: React.ReactNode }) => {
 		setToggled(!toggled);
 	};
 
-	const classer = toggled === true ? ` ${headerLook.toggled}` : '';
+	const classer = toggled === true ? ` ${look.toggled}` : '';
 
 	return (
-		<header className={headerLook.header + classer}>
-			<div className={headerLook.floater}>
-				<button
-					id='toggler'
-					onPointerDown={toggleHandler}
-					className={headerLook.toggler + classer}
-					aria-label='Toggle navigation menu'
-					aria-pressed={toggled}>
-					{
-						toggled === false ?
-							<FaBars
-								className={headerLook.svg + classer}
-								aria-hidden='true'
-								role='presentation' /> :
-							<FaPlus
-								className={headerLook.svg + classer}
-								aria-hidden='true'
-								role='presentation' />
-					}
-				</button>
-				<a
-					href='/' className={headerLook.toggler}
-					aria-label='Return home'>
-					<FaHome
-						className={headerLook.svg}
-						aria-hidden='true'
-						role='presentation' />
-				</a>
-			</div>
+		<header className={look.header + classer}>
+			<button
+				id='toggler'
+				onPointerDown={toggleHandler}
+				className={look.toggler + classer}
+				aria-label='Toggle navigation menu'
+				aria-pressed={toggled}>
+				{
+					toggled === false ?
+						<FaBars
+							className={look.svg + classer}
+							aria-hidden='true'
+							role='presentation' /> :
+						<FaPlus
+							className={look.svg + classer}
+							aria-hidden='true'
+							role='presentation' />
+				}
+			</button>
 			<div
 				onPointerDown={toggleHandler}
-				className={headerLook.returner + classer} />
-			<nav className={headerLook.nav + classer}
+				className={look.returner + classer} />
+			<nav className={look.nav + classer}
 				aria-expanded={toggled}
 				role='navigation'>
-				<h2 className={headerLook.title}>Other Projects</h2>
-				<ul className={headerLook.topList}>
+				<h2 className={look.title}>Other Projects</h2>
+				<ul className={look.topList}>
 					{props.children}
 				</ul>
-				<a href='/' className={headerLook.homer}>
-					<FaHome className={headerLook.svg} />
+				<a href='/' className={look.homer}>
+					<FaHome className={look.svg} />
 				</a>
 			</nav >
+			<a
+				href='/' className={look.homerEx}
+				aria-label='Return home'>
+				<FaHome
+					className={look.svg}
+					aria-hidden='true'
+					role='presentation' />
+			</a>
 		</header >
 	);
 };
