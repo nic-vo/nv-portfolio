@@ -60,7 +60,8 @@ const ProjectCategoryNavItem = (props: {
 							<li
 								id={props.dev === true && index === 0 ? 'hnlidev' : ''}
 								className={pCatNavLook.li + classer}
-								key={`${categoryName}-list-${project.project}`}>
+								key={`${categoryName}-list-${project.project}`}
+								tabIndex={-1}>
 								<a href={`/${categoryName}/${project.project}`}>
 									{project.title}
 								</a>
@@ -70,7 +71,8 @@ const ProjectCategoryNavItem = (props: {
 							return (
 								<li
 									className={pCatNavLook.li + classer}
-									key={`${categoryName}-list-${project.project}`}>
+									key={`${categoryName}-list-${project.project}`}
+									tabIndex={-1}	>
 									<a href={`/${categoryName}/${project.project}`}>
 										{project.title}
 									</a>

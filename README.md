@@ -2,7 +2,11 @@ This is the repo for my personal portfolio
 
 # CHANGELOG
 
-## 1.3.2
+## 1.3.3
+  - Clean up homepage styling and DOM
+	- Adjust layout of project page nav for accessibility
+
+### 1.3.2
   - Fix homepage thumbnails
 
 ### 1.3.1

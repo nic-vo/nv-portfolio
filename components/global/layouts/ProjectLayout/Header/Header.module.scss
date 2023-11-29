@@ -31,6 +31,27 @@ $navWidth: 20rem;
 }
 
 .toggler {
+	position: absolute;
+	translate: -150% 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 5px;
+	border: 2px solid;
+	border-color: global.$White;
+	color: global.$White;
+	background-color: global.$Black;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color var(--fast-transition), color var(--fast-transition);
+	transition-timing-function: ease-in-out;
+	z-index: 1;
+	padding: 10px;
+}
+
+.homerEx {
+	position: absolute;
+	translate: -150% 175%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -62,7 +83,7 @@ $navWidth: 20rem;
 	rotate: 0;
 	transition: rotate var(--medium-transition);
 	transition-timing-function: ease-in-out;
-	font-size: 2em;
+	font-size: 2rem;
 }
 
 .nav {
@@ -99,7 +120,8 @@ $navWidth: 20rem;
 
 .toggler.toggled,
 .toggler.toggled:hover,
-.toggler:hover {
+.toggler:hover,
+.homerEx:hover {
 	background-color: global.$White;
 	color: global.$Black;
 	border-color: global.$White;

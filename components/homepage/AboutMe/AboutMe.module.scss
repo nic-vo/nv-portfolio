@@ -5,36 +5,44 @@
 	flex-direction: column;
 	align-items: center;
 	width: 100%;
-	min-height: 50svh;
+	min-height: 60svh;
 	padding: 4em;
 	font-family: Overpass, serif;
+	background-color: global.$slightlyLighter;
+}
+
+.offsetCard {
+	position: relative;
 	background-color: global.$slightlyDarker;
+	padding: 8rem;
+	width: 80%;
+	max-width: 800px;
+	border-radius: 40px;
+	margin: auto;
 }
 
 .heading {
-	text-align: center;
-	font-size: 1.8em;
-	font-weight: 700;
+	display: block;
+	position: absolute;
+	padding: 2rem;
+	background-color: global.$White;
+	color: global.$Black;
+	border-radius: 40px;
+	top: 0;
+	left: 10%;
+	translate: -50% -50%;
 }
 
 .description {
-	font-size: 1.2em;
+	font-size: 1.6rem;
 	font-weight: 200;
 	width: 100%;
 }
 
 @media (min-aspect-ratio: 1) {
-	.container {
-		font-size: 1.2em;
-	}
-
-	.heading {
-		font-size: 1.4em;
-		font-weight: 700;
-	}
 
 	.description {
-		font-size: 1em;
+		font-size: 1.6rem;
 		font-weight: 200;
 	}
 }

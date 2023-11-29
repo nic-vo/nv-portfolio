@@ -8,15 +8,9 @@ const ProjectCard = (props: ProjectCardProps) => {
 	const titleCased = title.replace(/([a-z])([A-Z])/g, '$1 $2');
 	return (
 		<li className={cardLook.cardContainer}>
-			<div className={cardLook.infoContainer}>
-				<h4 className={cardLook.projectTitle}>{titleCased}</h4>
-				{
-					wip === false &&
-					<a href={`${categoryName}/${project}`} className={cardLook.link}>
-						Check it out<FaArrowRight />
-					</a>
-				}
-			</div>
+			<a href={`${categoryName}/${project}`} className={cardLook.link}>
+				{titleCased}<FaArrowRight />
+			</a>
 			<img
 				src={`thumbs/${categoryName}/${project}.png`}
 				className={cardLook.imgBack}
