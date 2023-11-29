@@ -10,7 +10,7 @@ I tried to get creative with the styling here, too: I wanted to implement a CSS-
 
 ### Conclusion
 
-Hopefully I can seamlesslly add sounds to this Drum Machine in the future by taking advantage of server-side prop checking via Next.js. I also think I need to add some event listeners to account for when `<sound>` `src` changes for each pad.
+Hopefully I can seamlessly add sounds to this Drum Machine in the future by taking advantage of server-side prop checking via Next.js. I also think I need to add some event listeners to account for when `<sound>` `src` changes for each pad.
 
 
 
