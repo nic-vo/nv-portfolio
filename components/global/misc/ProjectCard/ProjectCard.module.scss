@@ -49,13 +49,25 @@
 	transition-timing-function: cubic-bezier(0, 0, 0.165, 0.99);
 }
 
+.background {
+	position: absolute;
+	height: 100%;
+	width: auto;
+	filter: none;
+	transition: all var(--medium-transition);
+	transition-timing-function: cubic-bezier(0, 0, 0.165, 0.99);
+}
+
 .link:hover,
 .link:focus {
-	background-color: rgba(10,10,10,0.88);
+	.background {
+		filter: brightness(0.2);
+	}
 
 	.moveable {
 		transform: translateY(0);
 		opacity: 1;
+		z-index: 2;
 	}
 }
 
