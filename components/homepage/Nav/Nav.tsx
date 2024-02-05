@@ -9,42 +9,33 @@ const Nav = (props: {
 }) => {
 	const { projectList } = props;
 	return (
-		<section className={navLook.container} id='projectNav'>
-			<h2 className={homeLook.hTwo}>Projects</h2>
-			<nav className={navLook.nav}>
-				{
-					projectList.map((category) => {
-						const { categoryName, projects } = category;
-						return (
-							<section key={`${category.categoryName}-links`}
-								className={navLook.catSection}>
-								<h3 className={navLook.catHeading}>
-									{categoryName[0].toUpperCase() + categoryName.slice(1)}
-								</h3>
-								{
-									<ul className={navLook.list}>
-										{
-											projects.map((projectObj) => {
-												const { title, project, wip } = projectObj;
-												return (
-													<ProjectCard
-														categoryName={categoryName}
-														title={title}
-														project={project}
-														wip={wip}
-														key={`${categoryName}-${title}`} />
-												);
-											})
-										}
-									</ul>
-								}
-							</section>
-						);
-					})
-				}
-			</nav>
-		</section>
+		<nav className={navLook.nav}>
+			{projectList.map((cat) => {
+				const { categoryName: catName, projects } = cat;
+				return (
+					<section key={`${catName}-links`}
+						className={navLook.catSection}>
+						<h2 className={homeLook.hTwo}>
+							{catName[0].toUpperCase() + catName.slice(1)} Projects
+						</h2>
+						<ul className={navLook.list}>
+							{projects.map((projectObj) => {
+								const { title, project, wip } = projectObj;
+								return (
+									<ProjectCard
+										categoryName={catName}
+										title={title}
+										project={project}
+										wip={wip}
+										key={`${catName}-${title}`} />
+								);
+							})}
+						</ul>
+					</section>
+				);
+			})}
+		</nav>
 	);
-};
+}
 
 export default Nav;
