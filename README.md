@@ -2,9 +2,15 @@ This is the repo for my personal portfolio
 
 # CHANGELOG
 
-## 1.3.3
+## 1.4.0
+  - Really clean up homepage styling and DOM
+    - Nav no longer has weird borders / hover+focus behavior
+    - AboutMe should present correctly on mobile
+  - Update deps
+
+### 1.3.3
   - Clean up homepage styling and DOM
-	- Adjust layout of project page nav for accessibility
+  - Adjust layout of project page nav for accessibility
 
 ### 1.3.2
   - Fix homepage thumbnails

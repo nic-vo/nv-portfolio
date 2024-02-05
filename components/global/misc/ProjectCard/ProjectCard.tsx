@@ -8,18 +8,15 @@ const ProjectCard = (props: ProjectCardProps) => {
 	const { categoryName, project, title, wip } = props;
 	const titleCased = title.replace(/([a-z])([A-Z])/g, '$1 $2');
 	return (
-		<li className={look.cardContainer}
-			style={{
-				backgroundImage:
-					`url('thumbs/${categoryName}/${project}.png')`
-			}}>
-			<a
-				href={`${categoryName}/${project}`}
-				className={look.link}
-			>
+		<li className={look.cardContainer}>
+			<a href={`${categoryName}/${project}`} className={look.link}>
 				<span className={look.moveable}>{titleCased}<FaArrowRight /></span>
+				<img
+					src={`thumbs/${categoryName}/${project}.png`}
+					loading='lazy' alt={`The thumbnail for ${titleCased}.`}
+					className={look.background} />
 			</a>
-		</li>
+		</li >
 	)
 };
 
