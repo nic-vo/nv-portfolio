@@ -6,68 +6,57 @@
 	width: var(--arvalue);
 	height: calc((var(--arvalue) * 3/4));
 	background-color: global.$Black;
-	border: 10px solid;
-	border-color: rgba(20, 20, 20, 0.6);
 	border-radius: 25px;
 	overflow: hidden;
 	list-style: none;
 	box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-	transition: box-shadow var(--medium-transition), border-color var(--medium-transition);
+	transition: all var(--medium-transition);
 	transition-timing-function: ease-in-out;
 	justify-self: center;
+	background-size: cover;
+	background-position: center;
 }
 
 .description {
 	display: block;
 }
 
-.imgBack {
-	position: absolute;
-	height: 100%;
-	width: auto;
-	z-index: 0;
-	top: 50%;
-	left: 50%;
-	translate: -50% -50%;
-}
-
 .link {
-	box-sizing: content-box;
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	translate: -50% 100%;
+	height: 100%;
+	width: 100%;
 	display: flex;
 	justify-content: center;
 	flex-direction: row;
 	align-items: center;
-	background-color: rgba(20, 20, 20, 0.8);
+	background-color: transparent;
 	color: global.$White;
 	padding: 1em;
-	border-radius: 50px;
-	border-width: 2rem;
-	border: solid global.$White;
 	font-family: Overpass, sans-serif;
 	font-weight: bold;
 	font-size: 1.2rem;
-	box-shadow: 10px 10px 2px rgba(0,0,0,0.5);
-	transition-timing-function: ease-out;
 	z-index: 2;
-	white-space: nowrap;
+	transition: all var(--medium-transition);
+	transition-timing-function: cubic-bezier(0, 0, 0.165, 0.99);
 }
 
-.link svg {
-	display: block;
-	margin-left: 0.5em;
+.moveable {
+	display: flex;
+	gap: 0.5em;
+	transform: translateY(200%);
+	border-bottom: 2px solid global.$White;
+	opacity: 0;
+	transition: all var(--medium-transition);
+	transition-timing-function: cubic-bezier(0, 0, 0.165, 0.99);
 }
 
 .link:hover,
 .link:focus {
-	background-color: global.$White;
-	color: global.$Black;
-	padding: 30vh;
-	border-radius: 0;
-	translate: -50% -50%;
+	background-color: rgba(10,10,10,0.8);
+
+	.moveable {
+		transform: translateY(0);
+		opacity: 1;
+	}
 }
 
 .cardContainer:hover {
