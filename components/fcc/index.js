@@ -6,7 +6,7 @@ const DrumMachine = (optionalProps) => dynamic(
 		return import('./drummachine/DrumMachine')
 			.then(mod => {
 				const Component = mod.default;
-				return () => <Component assetInfo={optionalProps} />
+				return <Component assetInfo={optionalProps} />
 			});
 	}, {
 	ssr: false,
