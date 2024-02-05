@@ -35,9 +35,7 @@ const Header = (props: { children: React.ReactNode }) => {
 			<div
 				onPointerDown={toggleHandler}
 				className={look.returner + classer} />
-			<nav className={look.nav + classer}
-				aria-expanded={toggled}
-				role='navigation'>
+			<nav className={look.nav + classer} role='navigation'>
 				<h2 className={look.title}>Other Projects</h2>
 				<ul className={look.topList}>
 					{props.children}

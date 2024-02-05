@@ -6,6 +6,7 @@ const DrumMachine = (optionalProps) => dynamic(
 		return import('./drummachine/DrumMachine')
 			.then(mod => {
 				const Component = mod.default;
+				// eslint-disable-next-line react/display-name
 				return () => <Component assetInfo={optionalProps} />
 			});
 	}, {

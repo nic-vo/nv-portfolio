@@ -1,4 +1,4 @@
-@use '../../../styles/globalStyles.module.scss' as global;
+@use '@styles/globalStyles.module.scss' as global;
 
 .container {
 	@include global.sectionContainer;
@@ -7,7 +7,8 @@
 
 .nav {
 	position: relative;
-	width: 90%;
+	width: 100%;
+	padding: 5svh;
 }
 
 .catSection {
@@ -28,8 +29,8 @@
 	display: grid;
 	grid-template-columns: 1fr;
 	align-items: center;
-	width: 90%;
-	max-width: 1200px;
+	justify-items: center;
+	width: fit-content;
 	gap: 2rem;
 	padding: 0;
 	margin: 2rem;

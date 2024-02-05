@@ -13,7 +13,13 @@
 .hTwo {
 	font-family: Poppins, sans-serif;
 	font-weight: bold;
-	font-size: 3em;
+	font-size: 2rem;
 	text-align: center;
 	margin-bottom: 1em;
+}
+
+@media( min-aspect-ratio: 1) {
+	.hTwo {
+		font-size: 3rem;
+	}
 }

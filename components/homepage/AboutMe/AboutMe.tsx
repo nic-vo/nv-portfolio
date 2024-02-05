@@ -5,10 +5,10 @@ const AboutMe = () => {
 	const twoClasser = [homeLook.hTwo, aboutLook.heading].join(' ');
 	return (
 		<section className={aboutLook.container}>
-			<div className={aboutLook.offsetCard}>
 				<h2 className={twoClasser}>
 					About Me
 				</h2>
+			<div className={aboutLook.offsetCard}>
 				<p className={aboutLook.description}>Hello there! 👋</p>
 				<p className={aboutLook.description}>
 					My name is Nicolas, and I&apos;m a freelance front-end developer

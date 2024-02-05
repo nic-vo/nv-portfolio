@@ -11,32 +11,33 @@
 		"bbgcthumbs": "node ./lib/dev/bbgcthumbs.mjs",
 		"portfoliothumbs": "node ./lib/dev/portfoliothumbs.mjs",
 		"mytesting": "node ./lib/dev/mytesting.mjs",
-		"lofithumbs": "node ./lib/dev/lofithumbs.mjs"
+		"lofithumbs": "node ./lib/dev/lofithumbs.mjs",
+		"tsc": "node tsc"
 	},
 	"dependencies": {
-		"@svgr/webpack": "^8",
-		"dompurify": "^3",
-		"isomorphic-dompurify": "^1",
-		"marked": "^9",
-		"mongoose": "^7",
-		"next": "^13",
-		"nodemailer": "^6",
-		"react": "^18",
-		"react-dom": "^18",
-		"react-icons": "^4",
-		"sass": "^1",
-		"svgo": "^3",
-		"typescript": "^5"
+		"@svgr/webpack": "~8",
+		"dompurify": "~3",
+		"isomorphic-dompurify": "~1",
+		"marked": "~9",
+		"mongoose": "~7",
+		"next": "~13",
+		"nodemailer": "~6",
+		"react": "~18",
+		"react-dom": "~18",
+		"react-icons": "~4",
+		"sass": "~1",
+		"svgo": "~3"
 	},
 	"devDependencies": {
-		"@aws-sdk/client-s3": "^3",
-		"@aws-sdk/s3-request-presigner": "^3",
-		"@types/node": "^20",
-		"@types/react": "^18",
-		"@types/react-dom": "^18",
-		"eslint": "^8",
-		"eslint-config-next": "^13",
-		"puppeteer": "^21",
-		"ts-node": "^10.9.1"
+		"@aws-sdk/client-s3": "~3",
+		"@aws-sdk/s3-request-presigner": "~3",
+		"@types/node": "~20",
+		"@types/react": "~18",
+		"@types/react-dom": "~18",
+		"eslint": "~8",
+		"eslint-config-next": "~13",
+		"puppeteer": "~21",
+		"ts-node": "~10",
+		"typescript": "~5"
 	}
 }
