@@ -39,21 +39,35 @@
 	transition-timing-function: cubic-bezier(0, 0, 0.165, 0.99);
 }
 
+.link::before {
+	content: '';
+	display: block;
+	position: absolute;
+	background: linear-gradient(transparent, rgba(10,10,10,0.8));
+	bottom: 0;
+	height: 50%;
+	width: 100%;
+	z-index: 2;
+	opacity: 0;
+	transition: all var(--medium-transition);
+}
+
 .moveable {
 	display: flex;
 	gap: 0.5em;
-	transform: translateY(200%);
+	transform: translateY(0);
 	border-bottom: 2px solid global.$White;
-	opacity: 0;
 	transition: all var(--medium-transition);
 	transition-timing-function: cubic-bezier(0, 0, 0.165, 0.99);
+	z-index: 3;
+	text-shadow: 0 0 4px black;
 }
 
 .background {
 	position: absolute;
 	height: 100%;
 	width: auto;
-	filter: none;
+	filter: brightness(0.2);
 	transition: all var(--medium-transition);
 	transition-timing-function: cubic-bezier(0, 0, 0.165, 0.99);
 }
@@ -61,14 +75,17 @@
 .link:hover,
 .link:focus {
 	.background {
-		filter: brightness(0.2);
+		filter: brightness(1);
 	}
 
 	.moveable {
-		transform: translateY(0);
-		opacity: 1;
-		z-index: 2;
+		transform: translateY(400%);
 	}
+}
+
+.link:hover::before,
+.link:focus::before {
+	opacity: 1;
 }
 
 .cardContainer:hover {
