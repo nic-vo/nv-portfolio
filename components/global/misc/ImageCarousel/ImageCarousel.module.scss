@@ -76,6 +76,7 @@
 	align-items: center;
 	overflow: hidden;
 	width: 100%;
+	gap: 16px;
 }
 
 @media (min-aspect-ratio: 1) {
@@ -94,6 +95,7 @@
 	padding: 16px;
 	margin: 0;
 	overflow-y: auto;
+	overflow-x: auto;
 	gap: 4svw;
 }
 
@@ -102,24 +104,34 @@
 		display: flex;
 		flex-direction: row;
 		align-items: center;
-		overflow-x: scroll;
-		overflow-y: hidden;
 		height: 100%;
-		margin: 0 16px 0 16px;
+		width: 100%;
 	}
 }
 
 .smallThumb {
+	flex-shrink: 0;
 	cursor: pointer;
+	border-radius: 8px;
 	width: 100%;
 	height: auto;
-	border-radius: 5px;
+	overflow: hidden;
+
+	img {
+		width: 100%;
+		height: auto;
+	}
 }
 
 @media (min-aspect-ratio: 1) {
 	.smallThumb {
-		height: 90%;
+		height: 100%;
 		width: auto;
+
+		img {
+			height: 100%;
+			width: auto;
+		}
 	}
 }
 
