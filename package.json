@@ -16,8 +16,7 @@
 	},
 	"dependencies": {
 		"@svgr/webpack": "~8",
-		"dompurify": "~3",
-		"isomorphic-dompurify": "~1",
+		"isomorphic-dompurify": "~2",
 		"marked": "~9",
 		"mongoose": "~7",
 		"next": "~13",

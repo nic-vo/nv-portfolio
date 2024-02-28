@@ -3,7 +3,7 @@ import { useState, useEffect, useCallback, ChangeEvent, FormEvent } from 'react'
 import { FaArrowsAltH, FaFileDownload, FaPlus } from 'react-icons/fa';
 
 import { parse as mParse } from 'marked';
-import { sanitize } from 'dompurify';
+import { sanitize } from 'isomorphic-dompurify';
 
 import defaultStateString from './mdDefaultState';
 import preprocessing from '../../../lib/client/fcc/Markdown';
