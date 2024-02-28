@@ -2,7 +2,18 @@ This is the repo for my personal portfolio
 
 # CHANGELOG
 
-## 1.4.0
+## 1.5.0
+  - Homepage
+    - Attempt to fix LCP issues with thumbnails
+    - And _document HTML fix
+  - Footer
+    - Add obscured text for accessibility purposes
+  - ImageCarousel
+    - Attempt to address LCP issues with next/image
+  - Fonts
+    - Add font-display to gracefully swap fonts
+
+### 1.4.0
   - Really clean up homepage styling and DOM
     - Nav no longer has weird borders / hover+focus behavior
     - AboutMe should present correctly on mobile
