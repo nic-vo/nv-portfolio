@@ -1,9 +1,7 @@
 import { useState, useRef } from 'react';
-
 import Script from 'next/script';
 import { Spinner } from '../../global';
 import { FaMinus, FaCheckCircle, FaExclamationCircle, FaArrowRight } from 'react-icons/fa';
-
 import { whiteSpaceRemover } from '../../../lib/client/homepage/ContactForm/ContactForm';
 
 import cLook from './ContactForm.module.scss';
@@ -14,7 +12,7 @@ const ContactForm = () => {
 	const [message, setMessage] = useState(null);
 	const [formState, setFormState] = useState('IDLE');
 
-	const nameRef = useRef();
+	const nameRef = useRef<HTMLInputElement>();
 	const emailRef = useRef();
 	const birthdayRef = useRef();
 

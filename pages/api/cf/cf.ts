@@ -1,19 +1,25 @@
-import { htmlStringer, plaintextStringer, validator } from '../../../lib/api/homepage/ContactForm';
+import {
+	htmlStringer,
+	plaintextStringer,
+	validator
+} from '../../../lib/api/homepage/ContactForm';
 
-const formHandler = async (req, res) => {
+import { NextApiRequest, NextApiResponse } from 'next';
+
+const formHandler = async (req: NextApiRequest, res: NextApiResponse) => {
 	if (req.method !== 'POST') {
 		return res.status(405).json({ message: 'Method not allowed' });
 	};
 
-	const { body } = req;
+	const parsed = validator(req.body);
 
 	// Data validation
-	if (validator(body) === false) {
+	if (parsed === false) {
 		return res.status(404).json({ message: 'Not found' });
 	};
 
 	// ReCAPTCHA validation
-	const { threeToken } = body;
+	const { threeToken } = parsed;
 	const ReCAPTCHAResponse = await fetch(`https://www.google.com/recaptcha/api/siteverify?secret=${process.env.PRIVATE_CONTACT_FORM_RECAPTCHA_KEY}&response=${threeToken}`);
 	const ReCAPTCHAData = await ReCAPTCHAResponse.json();
 	// Only valid error to report to user is if they took too long
@@ -29,7 +35,7 @@ const formHandler = async (req, res) => {
 	};
 
 	// Emailer
-	const { name, email } = body;
+	const { name, email } = parsed;
 	const mailer = require('nodemailer');
 	// Some gmail docs indicate the correct smtp settings / procedure for handshakes
 	const transport = mailer.createTransport({
@@ -43,7 +49,7 @@ const formHandler = async (req, res) => {
 		}
 	});
 	// Unknown if this works
-	transport.verify((error, success) => {
+	transport.verify((error: any, success: any) => {
 		if (error) {
 			return res.status(502)
 				.json({ message: 'Server error. Submit your info again.' });

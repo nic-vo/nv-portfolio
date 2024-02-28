@@ -1,12 +1,12 @@
 import * as styleObjs from './styleObjs';
 import * as copyStrings from './copyText';
 
-const plaintextStringer = (name) => {
+const plaintextStringer = (name: string) => {
 	const { plaintextCopyStrings } = copyStrings;
 	return plaintextCopyStrings[0] + name + plaintextCopyStrings[1];
 };
 
-const htmlStringer = (name) => {
+const htmlStringer = (name: string) => {
 	// Takes name from contact form and creates an HTML string to be used in email
 	const { divStyle, hOneStyle } = styleObjs;
 	const pStrings = copyStrings.htmlCopyStrings.reduce((output, current) => {
@@ -27,7 +27,7 @@ const htmlStringer = (name) => {
 	return htmlStr;
 };
 
-const pString = (str) => {
+const pString = (str: string) => {
 	// Closure
 	// runs elementToString for <p> elements
 	const { pStyle } = styleObjs;
@@ -38,7 +38,12 @@ const pString = (str) => {
 	});
 };
 
-const elementToString = ({ element, str, style }) => {
+const elementToString = (args: {
+	element: string,
+	str: string,
+	style: Record<string, string>
+}) => {
+	const { element, str, style } = args;
 	// Takes element, content string, and style object
 	// Wraps content string in opening / closing tags of element
 	// Opening tag contains keys and values of style object
