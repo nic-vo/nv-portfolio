@@ -1,25 +1,25 @@
-import landing from './landing.png';
-import legend from './legend.png';
-import picker from './picker.png';
-import playing from './playing.png';
+import landing from './landing.webp';
+import legend from './legend.webp';
+import picker from './picker.webp';
+import playing from './playing.webp';
 
 const landingObj = {
-	photo: landing,
+	image: landing,
 	desc: 'Lofi Cafe landing page'
 };
 
 const legendObj = {
-	photo: legend,
+	image: legend,
 	desc: 'Legend for Lofi Cafe keyboard controls'
 };
 
 const pickerObj = {
-	photo: picker,
+	image: picker,
 	desc: 'Modal to jump directly to a different stream within a channel'
 };
 
 const playingObj = {
-	photo: playing,
+	image: playing,
 	desc: 'The player in its play state'
 };
 

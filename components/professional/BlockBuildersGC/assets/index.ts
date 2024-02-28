@@ -1,31 +1,39 @@
-import contact from './contact.png';
-import home from './home.png';
-import phome from './phome.png';
-import pinterior from './pinterior.png';
-import pinteriorpreview from './pinteriorpreview.png';
+import contact from './contact.webp';
+import home from './home.webp';
+import phome from './phome.webp';
+import pinterior from './pinterior.webp';
+import pinteriorpreview from './pinteriorpreview.webp';
+
+// export {
+// 	contact,
+// 	home,
+// 	phome,
+// 	pinterior,
+// 	pinteriorpreview
+// }
 
 const contactObj = {
-	photo: contact,
+	image: contact,
 	desc: 'BBGC contact form'
 };
 
 const homeObj = {
-	photo: home,
+	image: home,
 	desc: 'BBGC homepage'
 };
 
 const phomeObj = {
-	photo: phome,
+	image: phome,
 	desc: 'BBGC portfolio landing page'
 };
 
 const pinteriorObj = {
-	photo: pinterior,
+	image: pinterior,
 	desc: 'BBGC portfolio interior category'
 };
 
 const pinteriorpreviewObj = {
-	photo: pinteriorpreview,
+	image: pinteriorpreview,
 	desc: 'BBGC portfolio interior example preview'
 };
 

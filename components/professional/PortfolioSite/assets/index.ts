@@ -1,43 +1,43 @@
-import carousel from './carousel.png';
-import carouselPreview from './carouselPreview.png';
-import contactFooter from './contactFooter.png';
-import home from './home.png';
-import markdown from './markdown.png';
-import projectNav from './projectNav.png';
-import headerNav from './headerNav.png';
+import carousel from './carousel.webp';
+import carouselPreview from './carouselPreview.webp';
+import contactFooter from './contactFooter.webp';
+import home from './home.webp';
+import markdown from './markdown.webp';
+import projectNav from './projectNav.webp';
+import headerNav from './headerNav.webp';
 
 const carouselObj = {
-	photo: carousel,
+	image: carousel,
 	desc: 'Example of image carousel'
 };
 
 const carouselPreviewObj = {
-	photo: carouselPreview,
+	image: carouselPreview,
 	desc: 'Example of image carousel preview'
 };
 
 const contactFooterObj = {
-	photo: contactFooter,
+	image: contactFooter,
 	desc: 'Screenshot of contact form'
 };
 
 const homeObj = {
-	photo: home,
+	image: home,
 	desc: 'Screenshot of landing page'
 };
 
 const markdownObj = {
-	photo: markdown,
+	image: markdown,
 	desc: 'Screenshot of the markdown project'
 };
 
 const projectNavObj = {
-	photo: projectNav,
+	image: projectNav,
 	desc: 'Screenshot of the homepage project navigation section'
 };
 
 const headerNavObj = {
-	photo: headerNav,
+	image: headerNav,
 	desc: 'Screenshot of a toggled nav on a project page'
 };
 
