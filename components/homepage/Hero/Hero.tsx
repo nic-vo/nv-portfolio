@@ -7,7 +7,7 @@ const Hero = () => {
 		<header className={heroLook.hOne}>
 			<h1 className={heroLook.name}>Nicolas Vo</h1>
 			<h2 className={heroLook.title}>Frontend Developer</h2>
-			<Crosses limit={40} />
+			<Crosses limit={32} />
 		</header>
 	);
 }
