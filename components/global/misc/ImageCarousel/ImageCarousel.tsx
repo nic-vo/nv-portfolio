@@ -1,12 +1,12 @@
 import { useState, useRef, useMemo, useEffect } from 'react';
-
 import { FaCaretLeft, FaCaretRight, FaPlus } from 'react-icons/fa';
+import Image, { StaticImageData } from 'next/image';
 
 import look from './ImageCarousel.module.scss';
 
 const ImageCarousel = (props: {
 	photos: {
-		src: string,
+		image: StaticImageData
 		desc: string
 	}[]
 }) => {
@@ -68,15 +68,17 @@ const ImageCarousel = (props: {
 
 	const photoElements = useMemo(() => {
 		return photos.map((photo, index) => {
-			const { src, desc } = photo;
 			return (
-				<img
-					src={src}
-					alt={desc}
-					id={index === 0 ? 'devex' : ''}
-					onClick={() => { thumbClickHandler(index) }}
-					key={src}
-					className={look.smallThumb} />
+				<div
+					className={look.smallThumb}
+					key={`photo-${index}`}
+					onClick={() => { thumbClickHandler(index) }}>
+					<Image
+						src={photo.image}
+						alt={photo.desc}
+						sizes='(max-aspect-ratio: 1) 100vw, 75vw'
+					/>
+				</div>
 			);
 		});
 	}, [thumbClickHandler]);
@@ -102,9 +104,10 @@ const ImageCarousel = (props: {
 						onPointerDown={decrementActiveImage}>
 						<FaCaretLeft />
 					</button>
-					<img
-						src={photos[activeImage].src}
+					<Image
+						src={photos[activeImage].image}
 						alt={photos[activeImage].desc}
+						sizes='100vw'
 						className={classer} />
 					<button
 						className={look.button}
