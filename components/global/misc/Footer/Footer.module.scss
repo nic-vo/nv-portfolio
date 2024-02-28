@@ -25,3 +25,10 @@
 	max-width: 1000px;
 	gap: 2em;
 }
+
+.hidden {
+	display: block;
+	height: 0px;
+	width: 0px;
+	overflow: hidden;
+}
