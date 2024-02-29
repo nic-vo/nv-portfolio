@@ -2,7 +2,11 @@ This is the repo for my personal portfolio
 
 # CHANGELOG
 
-## 1.5.0
+## 1.5.1
+  - Contact Form
+    - Type checking
+
+### 1.5.0
   - Homepage
     - Attempt to fix LCP issues with thumbnails
     - And _document HTML fix
