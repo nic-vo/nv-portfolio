@@ -2,7 +2,7 @@ import {
 	htmlStringer,
 	plaintextStringer,
 	validator
-} from '../../../lib/api/homepage/ContactForm';
+} from '../../lib/api/homepage/ContactForm';
 
 import { NextApiRequest, NextApiResponse } from 'next';
 
