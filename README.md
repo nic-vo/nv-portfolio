@@ -2,7 +2,10 @@ This is the repo for my personal portfolio
 
 # CHANGELOG
 
-## 1.5.1
+## 1.5.2
+  - Attempt to fix image carousel LCP
+
+### 1.5.1
   - Contact Form
     - Type checking
 
