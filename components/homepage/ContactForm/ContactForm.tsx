@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, ElementRef } from 'react';
 import Script from 'next/script';
 import { Spinner } from '../../global';
 import { FaMinus, FaCheckCircle, FaExclamationCircle, FaArrowRight } from 'react-icons/fa';
@@ -8,38 +8,64 @@ import cLook from './ContactForm.module.scss';
 import homeLook from '../Homepage.module.scss';
 
 const ContactForm = () => {
-	const [status, setStatus] = useState(null);
-	const [message, setMessage] = useState(null);
+	const [status, setStatus] = useState<number | null>(null);
+	const [message, setMessage] = useState<string | null>(null);
 	const [formState, setFormState] = useState('IDLE');
 
-	const nameRef = useRef<HTMLInputElement>();
-	const emailRef = useRef();
-	const birthdayRef = useRef();
+	const nameRef = useRef<ElementRef<'input'>>(null);
+	const emailRef = useRef<ElementRef<'input'>>(null);
+	const birthdayRef = useRef<ElementRef<'input'>>(null);
 
-	const submitHandler = async (e) => {
+	const submitHandler = async (e: React.FormEvent) => {
 		e.preventDefault();
+		if (
+			!nameRef.current
+			|| !emailRef.current
+			|| !birthdayRef.current
+		) {
+			setStatus(400);
+			setMessage('Error with your input somehow')
+			return null;
+		}
 		setFormState('PENDING');
+		setStatus(null);
 		setMessage(null);
 		const cleanName = whiteSpaceRemover(nameRef.current.value);
 		const cleanEmail = whiteSpaceRemover(emailRef.current.value);
 		nameRef.current.value = cleanName;
 		emailRef.current.value = cleanEmail;
-		const grcRep = await window.grecaptcha.execute(
-			process.env.NEXT_PUBLIC_CONTACT_FORM_RECAPTCHA_KEY,
-			{ action: 'simple_contact_form_submit' });
-		const response = await fetch('/api/cf/cf', {
-			method: 'POST',
-			headers: { 'Content-type': 'application/json' },
-			body: JSON.stringify({
-				name: cleanName,
-				email: cleanEmail,
-				birthday: birthdayRef.current.value,
-				threeToken: grcRep
-			})
-		});
-		const { message } = await response.json();
-		setStatus(response.status);
-		setMessage(message);
+		let statusNumber = 500;
+		let statusMessage = 'Unknown error';
+		try {
+			let grcRep: string;
+			try {
+				grcRep = await window.grecaptcha.execute(
+					process.env.NEXT_PUBLIC_CONTACT_FORM_RECAPTCHA_KEY,
+					{ action: 'simple_contact_form_submit' }) as string;
+			} catch {
+				statusMessage = 'There was an error with ReCAPTCHA. Try again or refresh';
+				throw new Error();
+			}
+			try {
+				const response = await fetch('/api/cf/cf', {
+					method: 'POST',
+					headers: { 'Content-type': 'application/json' },
+					body: JSON.stringify({
+						name: cleanName,
+						email: cleanEmail,
+						birthday: birthdayRef.current.value,
+						threeToken: grcRep
+					})
+				});
+				const inc = await response.json() as { message: string };
+				statusMessage = inc.message;
+				statusNumber = response.status;
+			} catch {
+				statusMessage = 'There was an error reaching the server; try again'
+			}
+		} catch { }
+		setStatus(statusNumber);
+		setMessage(statusMessage);
 		setFormState('DONE');
 	};
 
