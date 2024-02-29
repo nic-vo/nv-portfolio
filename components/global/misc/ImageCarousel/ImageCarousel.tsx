@@ -1,4 +1,4 @@
-import { useState, useRef, useMemo, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { FaCaretLeft, FaCaretRight, FaPlus } from 'react-icons/fa';
 import Image, { StaticImageData } from 'next/image';
 
@@ -66,23 +66,6 @@ const ImageCarousel = (props: {
 		});
 	};
 
-	const photoElements = useMemo(() => {
-		return photos.map((photo, index) => {
-			return (
-				<div
-					className={look.smallThumb}
-					key={`photo-${index}`}
-					onClick={() => { thumbClickHandler(index) }}>
-					<Image
-						src={photo.image}
-						alt={photo.desc}
-						sizes='(max-aspect-ratio: 1) 100vw, 75vw'
-					/>
-				</div>
-			);
-		});
-	}, [thumbClickHandler]);
-
 	const classer = look.previewImg;
 
 	return (
@@ -126,7 +109,22 @@ const ImageCarousel = (props: {
 				<div
 					className={look.ringExposed}
 					ref={scrollRef}>
-					{photoElements}
+					{photos.map((photo, index) => {
+						return (
+							<div
+								className={look.smallThumb}
+								key={`photo-${index}`}
+								onClick={() => { thumbClickHandler(index) }}>
+								<Image
+									placeholder='blur'
+									src={photo.image}
+									alt={photo.desc}
+									sizes='(max-aspect-ratio: 1) 100vw, 75vw'
+									priority={index < 2}
+								/>
+							</div>
+						);
+					})}
 				</div>
 				<button
 					className={look.button}
