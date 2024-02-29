@@ -51,6 +51,7 @@ const Header = (props: { children: React.ReactNode }) => {
 					className={look.svg}
 					aria-hidden='true'
 					role='presentation' />
+				<span className={look.hidden}>Return home</span>
 			</a>
 		</header >
 	);

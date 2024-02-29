@@ -141,3 +141,11 @@ $navWidth: 20rem;
 	background-color: global.$Black;
 	color: global.$White;
 }
+
+.hidden {
+	display: block;
+	position: absolute;
+	height: 0px;
+	width: 0px;
+	overflow: hidden;
+}
