@@ -1,4 +1,5 @@
 import { FaArrowRight } from 'react-icons/fa';
+import Image from 'next/image';
 
 import { ProjectCardProps } from '@lib/props/types/projects';
 
@@ -11,9 +12,12 @@ const ProjectCard = (props: ProjectCardProps) => {
 		<li className={look.cardContainer}>
 			<a href={`${categoryName}/${project}`} className={look.link}>
 				<span className={look.moveable}>{titleCased}<FaArrowRight /></span>
-				<img
-					src={`thumbs/${categoryName}/${project}.png`}
-					loading='lazy' alt={`The thumbnail for ${titleCased}.`}
+				<Image
+					src={`/thumbs/${categoryName}/${project}.webp`}
+					alt={`Check out the ${titleCased} project!`}
+					width={1920}
+					height={1200}
+					sizes='(max-aspect-ratio: 1) 100vw, 50vw'
 					className={look.background} />
 			</a>
 		</li >

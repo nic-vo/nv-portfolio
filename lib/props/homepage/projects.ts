@@ -41,7 +41,7 @@ export const getCategoryProjects = async (category: 'other' | 'featured') => {
 	// const categoryDir = path.join(process.cwd(), 'pages', category);
 	// Returns the pages available for a specific category within the components dir
 	const catIndex = await fs.promises.readFile(
-		path.join(process.cwd(), 'components', category, 'index.js'), 'utf-8'
+		path.join(process.cwd(), 'components', category, 'index.ts'), 'utf-8'
 	);
 	const exportStr = catIndex.match(/export \{[^}]*\}/);
 	if (exportStr === null) throw 'Prop error: category projects';

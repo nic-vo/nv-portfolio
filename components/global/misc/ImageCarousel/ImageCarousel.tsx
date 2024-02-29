@@ -1,12 +1,12 @@
-import { useState, useRef, useMemo, useEffect } from 'react';
-
+import { useState, useRef, useEffect } from 'react';
 import { FaCaretLeft, FaCaretRight, FaPlus } from 'react-icons/fa';
+import Image, { StaticImageData } from 'next/image';
 
 import look from './ImageCarousel.module.scss';
 
 const ImageCarousel = (props: {
 	photos: {
-		src: string,
+		image: StaticImageData
 		desc: string
 	}[]
 }) => {
@@ -66,21 +66,6 @@ const ImageCarousel = (props: {
 		});
 	};
 
-	const photoElements = useMemo(() => {
-		return photos.map((photo, index) => {
-			const { src, desc } = photo;
-			return (
-				<img
-					src={src}
-					alt={desc}
-					id={index === 0 ? 'devex' : ''}
-					onClick={() => { thumbClickHandler(index) }}
-					key={src}
-					className={look.smallThumb} />
-			);
-		});
-	}, [thumbClickHandler]);
-
 	const classer = look.previewImg;
 
 	return (
@@ -102,9 +87,10 @@ const ImageCarousel = (props: {
 						onPointerDown={decrementActiveImage}>
 						<FaCaretLeft />
 					</button>
-					<img
-						src={photos[activeImage].src}
+					<Image
+						src={photos[activeImage].image}
 						alt={photos[activeImage].desc}
+						sizes='100vw'
 						className={classer} />
 					<button
 						className={look.button}
@@ -123,7 +109,22 @@ const ImageCarousel = (props: {
 				<div
 					className={look.ringExposed}
 					ref={scrollRef}>
-					{photoElements}
+					{photos.map((photo, index) => {
+						return (
+							<div
+								className={look.smallThumb}
+								key={`photo-${index}`}
+								onClick={() => { thumbClickHandler(index) }}>
+								<Image
+									placeholder='blur'
+									src={photo.image}
+									alt={photo.desc}
+									sizes='(max-aspect-ratio: 1) 100vw, 75vw'
+									priority={index < 2}
+								/>
+							</div>
+						);
+					})}
 				</div>
 				<button
 					className={look.button}
