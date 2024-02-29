@@ -1,5 +1,5 @@
-import { htmlStringer, plaintextStringer } from './emailer/stringer.js';
-import validator from './validation/cfvalidation.js';
+import { htmlStringer, plaintextStringer } from './emailer/stringer';
+import validator from './validation/cfvalidation';
 
 export {
 	htmlStringer,

@@ -10,7 +10,8 @@ const parser = z.object({
 const validator = (body: Record<string, unknown>) => {
 	try {
 		return parser.parse(body);
-	} catch {
+	} catch (e:any) {
+		console.error(e);
 		return false;
 	}
 };
