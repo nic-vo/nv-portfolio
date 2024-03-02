@@ -69,7 +69,7 @@ const ImageCarousel = (props: {
 	const classer = look.previewImg;
 
 	return (
-		<div className={look.container}>
+		<>
 			{
 				activeImage !== null &&
 				(<div
@@ -100,39 +100,41 @@ const ImageCarousel = (props: {
 				</div>)
 			}
 			<span className={look.instructions}>Click/tap to expand</span>
-			<div className={look.ringContainer}>
+			<div className={look.container}>
+				<div className={look.ringContainer}>
 				<button
 					className={look.button}
 					onPointerDown={() => { scrollerHandler(false) }}>
 					<FaCaretLeft />
 				</button>
-				<div
-					className={look.ringExposed}
-					ref={scrollRef}>
-					{photos.map((photo, index) => {
-						return (
-							<div
-								className={look.smallThumb}
-								key={`photo-${index}`}
-								onClick={() => { thumbClickHandler(index) }}>
-								<Image
-									placeholder='blur'
-									src={photo.image}
-									alt={photo.desc}
-									sizes='(max-aspect-ratio: 1) 100vw, 75vw'
-									priority={index < 2}
-								/>
-							</div>
-						);
-					})}
-				</div>
+					<div
+						className={look.ringExposed}
+						ref={scrollRef}>
+						{photos.map((photo, index) => {
+							return (
+								<div
+									className={look.smallThumb}
+									key={`photo-${index}`}
+									onClick={() => { thumbClickHandler(index) }}>
+									<Image
+										placeholder='blur'
+										src={photo.image}
+										alt={photo.desc}
+										sizes='(max-aspect-ratio: 1) 100vw, 75vw'
+										priority={index < 2}
+									/>
+								</div>
+							);
+						})}
+					</div>
 				<button
 					className={look.button}
 					onPointerDown={() => { scrollerHandler(true) }}>
 					<FaCaretRight />
 				</button>
+				</div>
 			</div>
-		</div>
+		</>
 	);
 };
 
