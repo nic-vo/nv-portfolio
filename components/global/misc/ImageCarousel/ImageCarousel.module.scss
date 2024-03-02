@@ -2,18 +2,12 @@
 
 .container {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	justify-content: center;
 	align-items: center;
 	width: 80%;
 	height: 70%;
 	max-width: 1200px;
-}
-
-@media (min-aspect-ratio: 1) {
-	.container {
-		width: 80%;
-	}
 }
 
 .instructions {
@@ -71,17 +65,17 @@
 }
 
 .ringContainer {
+	flex-shrink: 1;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	overflow: hidden;
 	width: 100%;
+	height: 100%;
 	gap: 16px;
 }
 
 @media (min-aspect-ratio: 1) {
 	.ringContainer {
-		width: 100%;
 		height: 50%;
 	}
 }
@@ -91,19 +85,17 @@
 	flex-direction: column;
 	align-items: center;
 	scrollbar-width: thin;
+	overflow: auto;
 	height: 100%;
 	padding: 16px;
-	margin: 0;
-	overflow-y: auto;
-	overflow-x: auto;
 	gap: 4svw;
+	z-index: 1;
 }
 
 @media (min-aspect-ratio: 1) {
 	.ringExposed {
 		display: flex;
 		flex-direction: row;
-		align-items: center;
 		height: 100%;
 		width: 100%;
 	}
@@ -114,10 +106,10 @@
 	cursor: pointer;
 	border-radius: 8px;
 	width: 100%;
-	height: auto;
 	overflow: hidden;
 
 	img {
+		display: block;
 		width: 100%;
 		height: auto;
 	}
@@ -126,11 +118,10 @@
 @media (min-aspect-ratio: 1) {
 	.smallThumb {
 		height: 100%;
-		width: auto;
+		width: max-content;
 
 		img {
 			height: 100%;
-			width: auto;
 		}
 	}
 }
@@ -154,6 +145,7 @@
 @media (min-aspect-ratio: 1) {
 	.button {
 		display: block;
+		z-index: 2;
 	}
 }
 

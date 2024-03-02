@@ -2,7 +2,10 @@ This is the repo for my personal portfolio
 
 # CHANGELOG
 
-## 1.5.2
+## 1.5.3
+	- Fix content size issue for carousel images
+
+### 1.5.2
   - Attempt to fix image carousel LCP
 
 ### 1.5.1

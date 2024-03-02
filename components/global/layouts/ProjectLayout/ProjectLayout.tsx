@@ -28,8 +28,8 @@ const ProjectLayout = (props: {
 			</Header>
 			<main className={layoutLook.projectMain}>
 				{props.children}
-				<ScrollToTop />
 			</main>
+			<ScrollToTop />
 			<Footer version={version} />
 		</>
 	);
