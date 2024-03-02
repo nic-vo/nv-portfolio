@@ -10,7 +10,10 @@ const getBankNames = async () => {
 		'assets',
 		'fcc',
 		'DrumMachine');
-	const banks = await fs.promises.readdir(targetdir);
+	const banks = await (async () => {
+		const jsons = await fs.promises.readdir(targetdir);
+		return jsons.map(str => str.replace(/.json$/, ''));
+	})();
 	return {
 		banks,
 		numberOfBanks: banks.length - 1
@@ -18,24 +21,32 @@ const getBankNames = async () => {
 };
 
 const getSoundList = async (allBanks: string[]) => {
+	console.log(allBanks)
 	// Return an array where each bank name
 	const soundsWithPaths = await Promise.all(allBanks.map(async (bank) => {
 		// Is used to construct a new dir path
-		const midStr = ['assets', 'fcc', 'DrumMachine', bank];
+		const midStr = ['assets', 'fcc', 'DrumMachine'];
 		const dir = path.join(process.cwd(), 'public', ...midStr);
 		// To a dir containing a json file that
-		const target = path.join(dir, 'soundlist.json');
+		const target = path.join(dir, bank.concat('.json'));
 		const jsonRaw = await fs.promises.readFile(target, 'utf8');
+		console.log(jsonRaw);
 		// Is read and parsed into a JS object
 		const listjson = await JSON.parse(jsonRaw);
 		// Init return obj
 		return Object.keys(listjson).reduce(
 			(returner, current) => {
+				const baseUrl = ''.concat(
+					process.env.CLOUDFRONT_URL as string,
+					'/DrumMachine/',
+					`${bank}/`
+				);
 				const fileName = listjson[current] as string;
-				const fileWithExt = fileName.concat('.mp3');
-				const filePath = '/' + path.join(...midStr, fileWithExt);
+				const fileUrl = baseUrl.concat(
+					`${fileName.replaceAll(' ', '+')}`, '.mp3'
+				);
 				let newer = { ...returner }
-				newer[current] = { path: filePath, name: listjson[current] }
+				newer[current] = { path: fileUrl, name: fileName }
 				return newer;
 			}, {} as DrumMachineSoundList
 		);
