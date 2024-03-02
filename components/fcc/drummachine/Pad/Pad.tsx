@@ -34,6 +34,7 @@ const Pad = (props: { char: string }) => {
 		Can play on click or upon receiving keypress event pulse
 		activate boolean prop from the parent grid onKeyPress event
 	*/
+	const [error, setError] = useState(false);
 	// if pad is playing sound (for styling)
 	const [isPlaying, setIsPlaying] = useState(false);
 	// holds volume
@@ -115,51 +116,55 @@ const Pad = (props: { char: string }) => {
 			machineLook.loopon : machineLook.loop}`,
 		[loop]);
 
-	return useMemo(() => {
-		console.log('render PAD', char.toUpperCase());
-		return (
-			<div className={padLook.container}>
+	if (error) return (
+		<div className={padLook.container}>
+			<p>There was an error loading this sound. Refresh or try switching to a different bank.</p>
+		</div>
+	);
+
+	return (
+		<div className={padLook.container}>
+			<button
+				className={padClasser}
+				style={{ animationDuration: `${Math.random() * 1000 + 300}ms` }}
+				onClick={playSound} >
+				{char.toUpperCase()}
+			</button>
+			<input
+				type="range"
+				min="0"
+				max="1"
+				step="0.05"
+				value={padVolume}
+				onInput={volumeOnInputHandler} />
+			<div className={padLook.buttons}>
 				<button
-					className={padClasser}
-					style={{ animationDuration: `${Math.random() * 1000 + 300}ms` }}
-					onClick={playSound} >
-					{char.toUpperCase()}
+					onClick={muteOnClick}
+					className={muteClasser}>
+					{muted ? <FaVolumeMute /> : <FaVolumeOff />}
 				</button>
-				<input
-					type="range"
-					min="0"
-					max="1"
-					step="0.05"
-					value={padVolume}
-					onInput={volumeOnInputHandler} />
-				<div className={padLook.buttons}>
-					<button
-						onClick={muteOnClick}
-						className={muteClasser}>
-						{muted ? <FaVolumeMute /> : <FaVolumeOff />}
-					</button>
-					<button
-						onClick={stopOnClick}
-						className={`${machineLook.button} ${machineLook.stop}`}>
-						<FaStop />
-					</button>
-					<button
-						onClick={loopOnClick}
-						className={loopClasser}>
-						<FaUndoAlt />
-					</button>
-				</div>
-				<audio
-					src={padData.path}
-					id={char}
-					ref={soundRef}
-					onLoadStart={onEndedHandler}
-					onPlay={onPlayHandler}
-					onPause={onEndedHandler}
-					onEnded={onEndedHandler} />
+				<button
+					onClick={stopOnClick}
+					className={`${machineLook.button} ${machineLook.stop}`}>
+					<FaStop />
+				</button>
+				<button
+					onClick={loopOnClick}
+					className={loopClasser}>
+					<FaUndoAlt />
+				</button>
 			</div>
-		)
-	}, [isPlaying, loop, muted, muteAll, padData, padVolume, masterVolume]);
+			<audio
+				src={padData.path}
+				id={char}
+				ref={soundRef}
+				onLoadedData={onEndedHandler}
+				onPlay={onPlayHandler}
+				onPause={onEndedHandler}
+				onEnded={onEndedHandler}
+				onError={() => setError(true)} />
+		</div>
+	);
 }
 
 export default Pad;
