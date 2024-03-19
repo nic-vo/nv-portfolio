@@ -17,9 +17,9 @@ const ActiveComponent = (props: {
 		case 'PortfolioSite':
 			return <Featured.PortfolioSite />;
 		case 'Markdown':
-			return <Featured.Markdown />;
-		case 'Pomodoro':
-			return <Other.Pomodoro />;
+			return <Other.Markdown />;
+		case 'MixDelta':
+			return <Featured.MixDelta />;
 		case 'LofiCafe':
 			return <Other.LofiCafe />;
 		case 'Calculator':
