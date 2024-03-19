@@ -1,8 +1,8 @@
-import { Markdown } from '@components/fcc';
 import { BlockBuildersGC, PortfolioSite } from '@components/professional';
+import { MixDelta }  from '@components/personal';
 
 export {
 	BlockBuildersGC,
 	PortfolioSite,
-	Markdown
+	MixDelta,
 };
