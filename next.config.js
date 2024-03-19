@@ -1,5 +1,3 @@
-import { NextConfig } from 'next';
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	reactStrictMode: false,
@@ -7,7 +5,7 @@ const nextConfig = {
 	eslint: {
 		ignoreDuringBuilds: true
 	},
-	webpack(config: NextConfig) {
+	webpack(config) {
 		config.module.rules.push({
 			test: /\.svg$/,
 			issuer: {
