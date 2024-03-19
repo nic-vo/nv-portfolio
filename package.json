@@ -11,8 +11,7 @@
 		"bbgcthumbs": "node ./lib/dev/bbgcthumbs.mjs",
 		"portfoliothumbs": "node ./lib/dev/portfoliothumbs.mjs",
 		"mytesting": "node ./lib/dev/mytesting.mjs",
-		"lofithumbs": "node ./lib/dev/lofithumbs.mjs",
-		"tsc": "npx tsc"
+		"lofithumbs": "node ./lib/dev/lofithumbs.mjs"
 	},
 	"dependencies": {
 		"@svgr/webpack": "~8",
@@ -40,5 +39,6 @@
 		"sharp": "~0.33",
 		"ts-node": "~10",
 		"typescript": "~5"
-	}
+	},
+	"packageManager": "yarn@4.1.1"
 }

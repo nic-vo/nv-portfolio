@@ -2,8 +2,13 @@
 
 # dependencies
 /node_modules
+.yarn
+.vscode
+
+# yarn
 /.pnp
-.pnp.js
+.pnp.*
+yarn.lock
 
 # testing
 /coverage
