@@ -13,7 +13,7 @@ const Home = (props: { projectList: ProjectListProp[], version: string }) => {
 	return (
 		<>
 			<Head>
-				<title>Nicolas Vo - Frontend Developer</title>
+				<title>Nicolas Vo - Front End Developer</title>
 				<meta
 					name='description'
 					content="Nicolas Vo's personal front-end development portfolio" />
