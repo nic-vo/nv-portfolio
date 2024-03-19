@@ -6,7 +6,7 @@ const Hero = () => {
 	return (
 		<header className={heroLook.hOne}>
 			<h1 className={heroLook.name}>Nicolas Vo</h1>
-			<h2 className={heroLook.title}>Frontend Developer</h2>
+			<h2 className={heroLook.title}>Front End Developer</h2>
 			<Crosses limit={32} />
 		</header>
 	);

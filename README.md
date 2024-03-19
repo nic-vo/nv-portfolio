@@ -1,9 +1,18 @@
-This is the repo for my personal portfolio
+# Welcome to the repo for Nicolas Vo's portfolio website!
 
-# CHANGELOG
+This is a Next.js Pages router endeavor. App router / Tailwind pending!
 
-## 1.5.3
-	- Fix content size issue for carousel images
+## CHANGELOG
+
+### 1.6.0
+  - Add MixDelta
+  - Move Markdown and AimTrainer
+  - Fix z-fighting for Project ScrollToTop and ImageCarousel buttons
+  - Darken global background
+  - Return to next/link but with prefetch=false
+
+### 1.5.3
+  - Fix content size issue for carousel images
 
 ### 1.5.2
   - Attempt to fix image carousel LCP

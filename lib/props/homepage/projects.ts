@@ -48,7 +48,8 @@ export const getCategoryProjects = async (category: 'other' | 'featured') => {
 	const projects = exportStr[0].replace('export {', '')
 		.replace('}', '')
 		.split(',')
-		.map(str => str.trim());
+		.map(str => str.trim())
+		.filter((pathSeg) => { return pathSeg.length > 1 });
 	// const projects = unfilteredProjects.filter((project) => { return project !== 'index.js' });
 	// Return files with .js suffix removed
 	// return { category, projects: projects.map((item) => { return item.replace('.js', ''); }) };

@@ -7,7 +7,7 @@ import scrollLook from './ScrollToTop.module.scss';
 const ScrollToTop = () => {
 	const [distanceDisable, setDistanceDisable] = useState(true);
 	const [scrollThrottle, setScrollThrottle] = useState(false);
-	const [timeouter, setTimeouter] = useState(null);
+	const [timeouter, setTimeouter] = useState<null | NodeJS.Timeout>(null);
 
 	const handlePortScroll = () => {
 		if (scrollThrottle === true) { return };
@@ -24,7 +24,7 @@ const ScrollToTop = () => {
 	const returnToTopOnClick = () => {
 		if (window.scrollY >= 300) {
 			// Clear any existing timeouts and prevent scroll
-			clearTimeout(timeouter);
+			if (timeouter) clearTimeout(timeouter);
 			setScrollThrottle(true);
 			// Scroll to top and disable
 			setDistanceDisable(true);

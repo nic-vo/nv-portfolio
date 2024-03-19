@@ -1,0 +1,19 @@
+{
+	"title": "MixDelta - Spotify Playlist Tool",
+	"slugline": "A summary of my progress in developing an online presence for Block Builders General Contracting, Inc.",
+	"techs": [
+		"HTML5",
+		"CSS3",
+		"Sass",
+		"React",
+		"Redux",
+		"MongoDB",
+		"Redis",
+		"Next.js"
+	],
+	"original": {
+		"type": "live",
+		"link": "https://mixdeltatool.vercel.app"
+	},
+	"wip": false
+}

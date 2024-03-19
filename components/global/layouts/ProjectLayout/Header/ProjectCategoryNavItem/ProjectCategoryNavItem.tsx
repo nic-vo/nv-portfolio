@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { FaCaretDown } from 'react-icons/fa';
 
 import pCatNavLook from './ProjectCategoryNavItem.module.scss';
+import Link from 'next/link';
 
 const ProjectCategoryNavItem = (props: {
 	category: {
@@ -62,9 +63,9 @@ const ProjectCategoryNavItem = (props: {
 								className={pCatNavLook.li + classer}
 								key={`${categoryName}-list-${project.project}`}
 								tabIndex={-1}>
-								<a href={`/${categoryName}/${project.project}`}>
+								<Link href={`/${categoryName}/${project.project}`} prefetch={false}>
 									{project.title}
-								</a>
+								</Link>
 							</li>
 						);
 						else
@@ -73,9 +74,9 @@ const ProjectCategoryNavItem = (props: {
 									className={pCatNavLook.li + classer}
 									key={`${categoryName}-list-${project.project}`}
 									tabIndex={-1}	>
-									<a href={`/${categoryName}/${project.project}`}>
+									<Link href={`/${categoryName}/${project.project}`} prefetch={false}>
 										{project.title}
-									</a>
+									</Link>
 								</li>
 							);
 					})

@@ -43,7 +43,7 @@
 	content: '';
 	display: block;
 	position: absolute;
-	background: linear-gradient(transparent, rgba(10,10,10,0.8));
+	background: linear-gradient(transparent, rgba(10, 10, 10, 0.8));
 	bottom: 0;
 	height: 50%;
 	width: 100%;
@@ -79,7 +79,7 @@
 	}
 
 	.moveable {
-		transform: translateY(400%);
+		transform: translateY(600%);
 	}
 }
 
@@ -91,4 +91,14 @@
 .cardContainer:hover {
 	box-shadow: 0px 0px 20px 5px global.$White;
 	border-color: global.$White;
+}
+
+@media (min-aspect-ratio: 1) {
+
+	.link:hover,
+	.link:focus {
+		.moveable {
+			transform: translateY(400%);
+		}
+	}
 }
