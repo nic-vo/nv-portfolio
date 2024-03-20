@@ -1,5 +1,3 @@
-@use '@styles/globalStyles.module.scss' as global;
-
 .container {
 	position: absolute;
 	width: auto;
@@ -71,12 +69,6 @@
 		transform: translateZ(-20vw);
 		opacity: 0;
 	}
-}
-
-
-.rotator {
-	width: 100%;
-	height: 100%;
 }
 
 .container svg {
