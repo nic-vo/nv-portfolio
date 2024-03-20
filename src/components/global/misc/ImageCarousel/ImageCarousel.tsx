@@ -3,6 +3,7 @@ import { FaCaretLeft, FaCaretRight, FaPlus } from 'react-icons/fa';
 import Image, { StaticImageData } from 'next/image';
 
 import look from './ImageCarousel.module.scss';
+import globalLook from '@/styles/globalStyles.module.scss';
 
 const ImageCarousel = (props: {
 	photos: {
@@ -86,6 +87,7 @@ const ImageCarousel = (props: {
 						className={look.button}
 						onPointerDown={decrementActiveImage}>
 						<FaCaretLeft />
+						<span className={globalLook.hiddenAccess}>Previous image</span>
 					</button>
 					<Image
 						src={photos[activeImage].image}
@@ -98,6 +100,7 @@ const ImageCarousel = (props: {
 						className={look.button}
 						onPointerDown={incrementActiveImage}>
 						<FaCaretRight />
+						<span className={globalLook.hiddenAccess}>Previous image</span>
 					</button>
 				</div>
 			)}
