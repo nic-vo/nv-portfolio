@@ -3,14 +3,6 @@ import ContactForm from './ContactForm';
 import { cache } from 'react';
 import path from 'path';
 import fs from 'fs/promises';
-import { Overpass } from 'next/font/google';
-
-const overpass = Overpass({
-	subsets: ['latin-ext'],
-	display: 'swap',
-	weight: 'variable',
-	fallback: ['sans-serif'],
-});
 
 import globalLook from '@/styles/globalStyles.module.scss';
 
@@ -27,12 +19,10 @@ const getCopyrightDate = cache(() => new Date().getFullYear());
 const Footer = async () => {
 	const version = await getVersionNumber();
 	const date = getCopyrightDate();
-	const footerClasser =
-		overpass.className + ' flex flex-col items-center w-full h-svh py-48';
 
 	return (
 		<footer
-			className={footerClasser}
+			className='flex flex-col items-center w-full h-svh py-48'
 			id='footer'>
 			<ContactForm />
 			<hr className='w-1/12' />
