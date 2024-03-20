@@ -1,9 +1,9 @@
-import BlockBuildersGC from './BlockBuildersGC/BlockBuildersGC';
-import PortfolioSite from './PortfolioSite/PortfolioSite';
-import LofiCafe from './LofiCafe/LofiCafe';
+import BlockBuildersGC from "./BlockBuildersGC/BlockBuildersGC";
+import PortfolioSite from "./PortfolioSite/PortfolioSite";
+import LofiCafe from "./LofiCafe/LofiCafe";
 
 // import dynamic from 'next/dynamic';
-// import ProjectLoader from '@components/global/layouts/ProjectLayout/ProjectLoader/ProjectLoader';
+// import ProjectLoader from '@/components/global/layouts/ProjectLayout/ProjectLoader/ProjectLoader';
 
 // const BlockBuildersGC = dynamic(() => import('./BlockBuildersGC/BlockBuildersGC'),
 // 	{
@@ -25,8 +25,4 @@ import LofiCafe from './LofiCafe/LofiCafe';
 // 	}
 // );
 
-export {
-	BlockBuildersGC,
-	PortfolioSite,
-	LofiCafe
-}
+export { BlockBuildersGC, PortfolioSite, LofiCafe };

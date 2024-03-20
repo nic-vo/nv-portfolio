@@ -1,14 +1,14 @@
-import Head from 'next/head';
-import Footer from '@components/global/misc/Footer/Footer';
-import { AboutMe, Hero, Nav } from '@components/homepage';
+import Head from "next/head";
+import Footer from "@/components/global/misc/Footer/Footer";
+import { AboutMe, Hero, Nav } from "@/components/homepage";
 
-import { getProjectLists } from '@lib/props/homepage/projects';
-import { getVersionNumber } from '@lib/props/homepage/homepage';
+import { getProjectLists } from "@/lib/props/homepage/projects";
+import { getVersionNumber } from "@/lib/props/homepage/homepage";
 
-import homeLook from '@components/homepage/Homepage.module.scss';
-import { ProjectListProp } from '@lib/props/types/projects';
+import homeLook from "@/components/homepage/Homepage.module.scss";
+import { ProjectListProp } from "@/lib/props/types/projects";
 
-const Home = (props: { projectList: ProjectListProp[], version: string }) => {
+const Home = (props: { projectList: ProjectListProp[]; version: string }) => {
 	const { projectList, version } = props;
 	return (
 		<>
@@ -16,13 +16,16 @@ const Home = (props: { projectList: ProjectListProp[], version: string }) => {
 				<title>Nicolas Vo - Front End Developer</title>
 				<meta
 					name='description'
-					content="Nicolas Vo's personal front-end development portfolio" />
+					content="Nicolas Vo's personal front-end development portfolio"
+				/>
 				<meta
 					property='og:description'
-					content="Nicolas Vo's personal front-end development portfolio" />
+					content="Nicolas Vo's personal front-end development portfolio"
+				/>
 				<meta
 					property='og:image'
-					content='ogicon.png' />
+					content='ogicon.png'
+				/>
 			</Head>
 
 			<main className={homeLook.main}>
@@ -38,12 +41,12 @@ const Home = (props: { projectList: ProjectListProp[], version: string }) => {
 export default Home;
 
 export async function getStaticProps() {
-	const projectList = await getProjectLists(['title', 'wip']);
+	const projectList = await getProjectLists(["title", "wip"]);
 	const version = await getVersionNumber();
 	return {
 		props: {
 			projectList,
-			version
-		}
+			version,
+		},
 	};
-};
+}
