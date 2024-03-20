@@ -1,4 +1,4 @@
-import { Overpass, Lato, Poppins } from 'next/font/google';
+import { Overpass, Lato, Poppins, JetBrains_Mono } from 'next/font/google';
 
 export const overpassClass = Overpass({
 	subsets: ['latin-ext'],
@@ -19,4 +19,11 @@ export const latoClass = Lato({
 	display: 'swap',
 	subsets: ['latin-ext'],
 	fallback: ['serif'],
+});
+
+export const jbMonoClass = JetBrains_Mono({
+	weight: 'variable',
+	fallback: ['monospace'],
+	display: 'swap',
+	subsets: ['latin-ext'],
 });

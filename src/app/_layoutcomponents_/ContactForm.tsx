@@ -9,6 +9,8 @@ import {
 } from 'react-icons/fa';
 import { whiteSpaceRemover } from '@/lib/client/homepage/ContactForm/ContactForm';
 
+import { jbMonoClass, latoClass, poppinsClass } from '@/styles/fonts';
+
 import cLook from './ContactForm.module.scss';
 import homeLook from '../Homepage.module.scss';
 
@@ -86,17 +88,22 @@ const ContactForm = () => {
 		<>
 			<Script src={`https://www.google.com/recaptcha/api.js?render=${reKey}`} />
 
-			<section className={cLook.container}>
-				<h2 className={homeLook.hTwo}>Need something done?</h2>
+			<section className='flex flex-col items-center w-full'>
+				<h2 className='font-bold text-4xl lg:text-5xl text-center mb-4'>
+					Need something done?
+				</h2>
 				<form
 					onSubmit={submitHandler}
-					className={cLook.form}>
+					className='w-4/5 lg:w-2/5 mt-8'>
 					<fieldset
 						disabled={disableToggle}
-						className={cLook.fieldset}>
+						className={
+							latoClass +
+							' flex flex-col items-center gap-4 border-0 p-0 m-0 disabled:opacity-50'
+						}>
 						<label
 							htmlFor='name'
-							className={cLook.label}>
+							className='grid grid-flow-col py-4 bg-black bg-opacity-20 rounded-tr-full rounded-bl-full text-xl font-bold'>
 							Name:
 							<input
 								id='name'
@@ -108,12 +115,15 @@ const ContactForm = () => {
 								pattern="^([A-Za-z]|\d| |'|\.|,|-|\(|\)){4,100}$"
 								autoComplete='name'
 								required
-								className={cLook.input}
+								className={
+									jbMonoClass +
+									' justify-self-start w-11/12 border-0 border-b-4 border-b-black bg-transparent outline-0 text-base text-white font-normal focus:border-b-white transition-[border-bottom] invalid:border-b-red-600'
+								}
 							/>
 						</label>
 						<label
 							htmlFor='email'
-							className={cLook.label}>
+							className='grid grid-flow-col py-4 bg-black bg-opacity-20 rounded-tr-full rounded-bl-full text-xl font-bold'>
 							Email:
 							<input
 								id='email'
@@ -122,12 +132,14 @@ const ContactForm = () => {
 								type='email'
 								autoComplete='email'
 								required
-								className={cLook.input}
+								className={
+									jbMonoClass +
+									' justify-self-start w-11/12 border-0 border-b-4 border-b-black bg-transparent outline-0 text-base text-white font-normal focus:border-b-white transition-[border-bottom] invalid:border-b-red-600'
+								}
 							/>
 						</label>
 						<label
 							htmlFor='birthday'
-							className={cLook.label}
 							style={{ display: 'none' }}>
 							Birthday:
 							<input
@@ -139,31 +151,44 @@ const ContactForm = () => {
 							/>
 						</label>
 					</fieldset>
-					<div className={cLook.buttons}>
-						<p className={cLook.disclaimer}>
+					<div className='flex flex-col justify-start items-center m-4 min-h-32'>
+						<p className='text-center opacity-80'>
 							This site is protected by reCAPTCHA and the Google
-							<a href='https://policies.google.com/privacy'>Privacy Policy</a>
+							<a
+								href='https://policies.google.com/privacy'
+								className='underline m-1 font-semibold'>
+								Privacy Policy
+							</a>
 							and
-							<a href='https://policies.google.com/terms'>Terms of Service</a>
+							<a
+								href='https://policies.google.com/terms'
+								className='underline m-1 font-semibold'>
+								Terms of Service
+							</a>
 							apply.
 						</p>
-						<button
-							type='submit'
-							disabled={disableToggle}
-							className={cLook.button}>
-							Submit
-							<FaArrowRight />
-						</button>
+						{!disableToggle && (
+							<button
+								type='submit'
+								className='cursor-pointer flex items-center justify-center w-40 p-4 m-2 border-4 border-white text-xl rounded-3xl bg-transparent gap-2 hover:bg-white hover:text-black focus:bg-white focus:text-black active:bg-white active:text-black hover:last:translate-x-4 disabled:hidden transition-all'>
+								Submit
+								<FaArrowRight />
+							</button>
+						)}
 					</div>
 				</form>
-				<div className={cLook.responseArea}>
+				<div className='flex items-center justify-center min-h-48 w-4/5 text-xl '>
 					{formState === 'PENDING' && (
 						<Spinner>
-							<FaMinus style={{ color: 'darkgoldenrod' }} />
+							<FaMinus className='text-9xl' />
 						</Spinner>
 					)}
 					{formState === 'DONE' && responseIcon}
-					{message !== null && <p className={cLook.responseMsg}>{message}</p>}
+					{message !== null && (
+						<p className={'text-center p-0 m-0 ml-4 ' + cLook.responseMesg}>
+							{message}
+						</p>
+					)}
 				</div>
 			</section>
 		</>
