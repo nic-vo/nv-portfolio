@@ -6,9 +6,9 @@ import look from './ImageCarousel.module.scss';
 
 const ImageCarousel = (props: {
 	photos: {
-		image: StaticImageData
-		desc: string
-	}[]
+		image: StaticImageData;
+		desc: string;
+	}[];
 }) => {
 	const { photos } = props;
 	// If this changes, load a fullscreen-esque viewer
@@ -20,18 +20,18 @@ const ImageCarousel = (props: {
 	const thumbClickHandler = (index: number) => setActiveImage(index);
 
 	// Clears active image and deactivates fullscreen viewer
-	const returner = () => setActiveImage(null)
+	const returner = () => setActiveImage(null);
 
 	// These next two are for within fullscreen viewer
 	const decrementActiveImage = () => {
 		if (activeImage === 0 || activeImage === null) return null;
 		setActiveImage(activeImage - 1);
-	}
+	};
 
 	const incrementActiveImage = () => {
 		if (activeImage === photos.length - 1 || activeImage === null) return null;
 		setActiveImage(activeImage + 1);
-	}
+	};
 
 	useEffect(() => {
 		if (activeImage === null || viewerRef.current === null) return;
@@ -51,18 +51,19 @@ const ImageCarousel = (props: {
 				break;
 			default:
 				return;
-		};
+		}
 	};
 
 	const scrollerHandler = (right: boolean) => {
 		if (scrollRef.current === null) return null;
 		const increment = scrollRef.current.getBoundingClientRect().width * 0.6;
 		const { scrollLeft } = scrollRef.current;
-		const newScrollValue = right === false ?
-			scrollLeft - increment :
-			scrollLeft + increment;
+		const newScrollValue =
+			right === false ? scrollLeft - increment : scrollLeft + increment;
 		scrollRef.current.scroll({
-			top: 0, left: newScrollValue, behavior: "smooth"
+			top: 0,
+			left: newScrollValue,
+			behavior: 'smooth',
 		});
 	};
 
@@ -70,9 +71,8 @@ const ImageCarousel = (props: {
 
 	return (
 		<>
-			{
-				activeImage !== null &&
-				(<div
+			{activeImage !== null && (
+				<div
 					className={look.preview}
 					tabIndex={0}
 					ref={viewerRef}
@@ -91,22 +91,26 @@ const ImageCarousel = (props: {
 						src={photos[activeImage].image}
 						alt={photos[activeImage].desc}
 						sizes='100vw'
-						className={classer} />
+						placeholder='blur'
+						className={classer}
+					/>
 					<button
 						className={look.button}
 						onPointerDown={incrementActiveImage}>
 						<FaCaretRight />
 					</button>
-				</div>)
-			}
+				</div>
+			)}
 			<span className={look.instructions}>Click/tap to expand</span>
 			<div className={look.container}>
 				<div className={look.ringContainer}>
-				<button
-					className={look.button}
-					onPointerDown={() => { scrollerHandler(false) }}>
-					<FaCaretLeft />
-				</button>
+					<button
+						className={look.button}
+						onPointerDown={() => {
+							scrollerHandler(false);
+						}}>
+						<FaCaretLeft />
+					</button>
 					<div
 						className={look.ringExposed}
 						ref={scrollRef}>
@@ -115,7 +119,9 @@ const ImageCarousel = (props: {
 								<div
 									className={look.smallThumb}
 									key={`photo-${index}`}
-									onClick={() => { thumbClickHandler(index) }}>
+									onClick={() => {
+										thumbClickHandler(index);
+									}}>
 									<Image
 										placeholder='blur'
 										src={photo.image}
@@ -127,11 +133,13 @@ const ImageCarousel = (props: {
 							);
 						})}
 					</div>
-				<button
-					className={look.button}
-					onPointerDown={() => { scrollerHandler(true) }}>
-					<FaCaretRight />
-				</button>
+					<button
+						className={look.button}
+						onPointerDown={() => {
+							scrollerHandler(true);
+						}}>
+						<FaCaretRight />
+					</button>
 				</div>
 			</div>
 		</>
