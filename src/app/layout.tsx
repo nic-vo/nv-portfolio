@@ -1,7 +1,12 @@
-const RootLayout = () => {
+import { PropsWithChildren } from 'react';
+import { overpassClass } from '@/styles/fonts';
+
+import '@/styles/globals.css';
+
+const RootLayout = (props: PropsWithChildren) => {
 	return (
 		<html lang='en'>
-			<body></body>
+			<body className={overpassClass}>{props.children}</body>
 		</html>
 	);
 };
