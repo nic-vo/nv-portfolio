@@ -9,10 +9,9 @@ import {
 } from 'react-icons/fa';
 import { whiteSpaceRemover } from '@/lib/client/homepage/ContactForm/ContactForm';
 
-import { jbMonoClass, latoClass, poppinsClass } from '@/styles/fonts';
+import { jbMonoClass, latoClass } from '@/styles/fonts';
 
 import cLook from './ContactForm.module.scss';
-import homeLook from '../Homepage.module.scss';
 
 const ContactForm = () => {
 	const [status, setStatus] = useState<number | null>(null);
