@@ -1,7 +1,14 @@
 import { Metadata } from 'next';
+import { Hero, Nav, AboutMe } from './_rootpage_';
 
 const Homepage = () => {
-	return <main></main>;
+	return (
+		<main className='min-h-svh flex flex-col items-center'>
+			<Hero />
+			<AboutMe />
+			<Nav />
+		</main>
+	);
 };
 
 export default Homepage;
