@@ -1,12 +1,21 @@
-import { useEffect, useState } from 'react';
+'use client';
+
+import { useEffect, useRef, useState } from 'react';
 import { FaArrowUp } from 'react-icons/fa';
 
 import scrollLook from './ScrollToTop.module.scss';
 
 const ScrollToTop = () => {
+	const buttonRef = useRef<HTMLButtonElement>(null);
 	const [distanceDisable, setDistanceDisable] = useState(true);
 	const [scrollThrottle, setScrollThrottle] = useState(false);
 	const [timeouter, setTimeouter] = useState<null | NodeJS.Timeout>(null);
+
+	useEffect(() => {
+		const { current: button } = buttonRef;
+		if (!button || !distanceDisable) return;
+		button.blur();
+	}, [distanceDisable]);
 
 	const handlePortScroll = () => {
 		if (scrollThrottle === true) {
@@ -54,7 +63,8 @@ const ScrollToTop = () => {
 			onClick={returnToTopOnClick}
 			className={scrollLook.scroller + classer}
 			disabled={distanceDisable}
-			tabIndex={distanceDisable ? -1 : 0}>
+			tabIndex={distanceDisable ? -1 : 0}
+			ref={buttonRef}>
 			<FaArrowUp />
 			Return to top
 		</button>
