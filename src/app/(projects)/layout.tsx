@@ -1,10 +1,11 @@
 import Header from '@/components/global/layouts/ProjectLayout/Header/Header';
+import ProjectCategoryNavItem from '@/components/global/layouts/ProjectLayout/Header/ProjectCategoryNavItem/ProjectCategoryNavItem';
 import ScrollToTop from '@/components/global/layouts/ProjectLayout/ScrollToTop/ScrollToTop';
 import { getFeaturedPaths, getOtherPaths } from '@/lib/props/paths';
 import { PropsWithChildren } from 'react';
 
 const ProjectRootLayout = async (
-	props: PropsWithChildren & { interactive: React.ReactNode },
+	props: PropsWithChildren & { description: React.ReactNode },
 ) => {
 	const [featuredPaths, otherPaths] = await Promise.all([
 		getFeaturedPaths(),
@@ -13,11 +14,12 @@ const ProjectRootLayout = async (
 	return (
 		<>
 			<Header>
-				<>{/* TODO: Fetch list of available projects */}</>
+				<ProjectCategoryNavItem paths={featuredPaths} />
+				<ProjectCategoryNavItem paths={otherPaths} />
 			</Header>
-			<main>
-				{props.interactive}
+			<main className='flex flex-col items-center w-full'>
 				{props.children}
+				{props.description}
 			</main>
 			<ScrollToTop />
 		</>
