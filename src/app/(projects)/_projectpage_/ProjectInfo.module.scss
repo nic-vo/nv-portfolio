@@ -1,0 +1,90 @@
+@use '../../../../../styles/globalStyles.module.scss' as global;
+
+.info {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin-bottom: 2em;
+	padding: 1em;
+}
+
+.description {
+	display: flex;
+	flex-direction: column;
+	padding-top: 1em;
+
+	h2,
+	h3,
+	h4 {
+		font-family: Overpass, sans-serif;
+		font-weight: bold;
+		margin-top: 1rem;
+	}
+
+	h2 {
+		font-size: 1.6rem;
+	}
+
+	h3 {
+		font-size: 1.4rem;
+	}
+
+	h4 {
+		font-size: 1.2rem;
+	}
+
+	p {
+		font-family: Overpass, sans-serif;
+		font-weight: 200;
+		font-size: 1rem;
+	}
+
+	a {
+		font-weight: bolder;
+		text-decoration: underline;
+	}
+
+	ul,
+	ol {
+		padding: 1em;
+		margin: 0;
+	}
+
+	code {
+		font-family: JetBrain Mono, monospace;
+		background-color: global.$slightlyDarker;
+	}
+
+	hr {
+		width: 50%;
+	}
+
+	img,
+	svg {
+		display: block;
+		margin: 1rem auto 1rem auto;
+		max-width: 100%;
+	}
+
+	blockquote {
+		padding: 1rem;
+		background-color: global.$slightlyDarker;
+	}
+}
+
+@media (min-aspect-ratio: 1) {
+	.description {
+		h2 {
+			font-size: 2rem;
+		}
+
+		h3 {
+			font-size: 1.6rem;
+		}
+
+		h4 {
+			font-size: 1.4rem;
+		}
+
+	}
+}
