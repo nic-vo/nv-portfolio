@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-
 import { FaArrowUp } from 'react-icons/fa';
 
 import scrollLook from './ScrollToTop.module.scss';
@@ -10,14 +9,16 @@ const ScrollToTop = () => {
 	const [timeouter, setTimeouter] = useState<null | NodeJS.Timeout>(null);
 
 	const handlePortScroll = () => {
-		if (scrollThrottle === true) { return };
+		if (scrollThrottle === true) {
+			return;
+		}
 		setScrollThrottle(true);
 		// Set disable if viewport is close to top
 		setDistanceDisable(window.scrollY < 300);
 		setTimeouter(() => {
 			return setTimeout(() => {
 				setScrollThrottle(false);
-			}, 50)
+			}, 50);
 		});
 	};
 
@@ -34,20 +35,29 @@ const ScrollToTop = () => {
 					setScrollThrottle(false);
 				}, 150);
 			});
-		};
+		}
 	};
 
 	useEffect(() => {
 		const current = handlePortScroll;
 		window.addEventListener('scroll', current);
 		// Hopefully the closures here work for cleanup
-		return () => { window.removeEventListener('scroll', current) };
+		return () => {
+			window.removeEventListener('scroll', current);
+		};
 	}, [scrollThrottle]);
 
 	const classer = distanceDisable === false ? ` ${scrollLook.visible}` : '';
 
 	return (
-		<button onClick={returnToTopOnClick} className={scrollLook.scroller + classer} disabled={distanceDisable}><FaArrowUp />Return to top</button>
+		<button
+			onClick={returnToTopOnClick}
+			className={scrollLook.scroller + classer}
+			disabled={distanceDisable}
+			tabIndex={distanceDisable ? -1 : 0}>
+			<FaArrowUp />
+			Return to top
+		</button>
 	);
 };
 

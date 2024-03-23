@@ -1,6 +1,4 @@
-import Header from '@/components/global/layouts/ProjectLayout/Header/Header';
-import ProjectCategoryNavItem from '@/components/global/layouts/ProjectLayout/Header/ProjectCategoryNavItem/ProjectCategoryNavItem';
-import ScrollToTop from '@/components/global/layouts/ProjectLayout/ScrollToTop/ScrollToTop';
+import { Header, ProjectCategoryNavItem, ScrollToTop } from './_projectlayout_';
 import { getFeaturedPaths, getOtherPaths } from '@/lib/props/paths';
 import { PropsWithChildren } from 'react';
 
