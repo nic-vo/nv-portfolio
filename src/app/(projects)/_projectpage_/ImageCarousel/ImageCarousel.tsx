@@ -1,3 +1,5 @@
+'use client';
+
 import { useState, useRef, useEffect } from 'react';
 import { FaCaretLeft, FaCaretRight, FaPlus } from 'react-icons/fa';
 import Image, { StaticImageData } from 'next/image';
@@ -74,7 +76,7 @@ const ImageCarousel = (props: {
 		<>
 			{activeImage !== null && (
 				<div
-					className={look.preview}
+					className='fixed flex items-center justify-between w-full h-full top-0 left-0 z-10 backdrop-brightness-50 backdrop-blur'
 					tabIndex={0}
 					ref={viewerRef}
 					onKeyDown={viewKeyDownHandler}>
@@ -104,23 +106,26 @@ const ImageCarousel = (props: {
 					</button>
 				</div>
 			)}
-			<span className={look.instructions}>Click/tap to expand</span>
-			<div className={look.container}>
-				<div className={look.ringContainer}>
+			<span className='font-light text-2xl text-center m-4'>
+				Click/tap to expand
+			</span>
+			<div className='flex justify-center items-center w-4/5 h-3/4 max-w-screen-xl'>
+				<div className='flex items-center w-full h-full gap-4 shrink lg:h-1/2'>
 					<button
 						className={look.button}
 						onPointerDown={() => {
 							scrollerHandler(false);
 						}}>
 						<FaCaretLeft />
+						<span className={globalLook.hiddenAccess}>Scroll left</span>
 					</button>
 					<div
-						className={look.ringExposed}
+						className='flex flex-col lg:flex-row items-center h-full overflow-auto gap-8 p-4 lg:w-full'
 						ref={scrollRef}>
 						{photos.map((photo, index) => {
 							return (
 								<div
-									className={look.smallThumb}
+									className={look.button}
 									key={`photo-${index}`}
 									onClick={() => {
 										thumbClickHandler(index);
@@ -137,11 +142,12 @@ const ImageCarousel = (props: {
 						})}
 					</div>
 					<button
-						className={look.button}
+						className='cursor-pointer bg-black text-white hover:bg-white hover:text-black focus:bg-white focus:text-black p-3 rounded-full border-2 border-white transition-colors hidden lg:block '
 						onPointerDown={() => {
 							scrollerHandler(true);
 						}}>
 						<FaCaretRight />
+						<span className={globalLook.hiddenAccess}>Scroll right</span>
 					</button>
 				</div>
 			</div>
