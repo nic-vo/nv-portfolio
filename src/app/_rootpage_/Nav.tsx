@@ -2,8 +2,6 @@ import { getFeaturedPaths, getOtherPaths } from '@/lib/props/paths';
 import Link from 'next/link';
 import Image from 'next/image';
 
-import homeLook from '../Homepage.module.scss';
-import navLook from './Nav.module.scss';
 import { latoClass } from '@/styles/fonts';
 
 const NavLink = (props: { page: { title: string; segment: string } }) => {

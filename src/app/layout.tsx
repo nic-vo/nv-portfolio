@@ -1,4 +1,4 @@
-import { Footer } from './_layoutcomponents_';
+import { Footer } from './_rootlayout_';
 import { overpassClass } from '@/styles/fonts';
 
 import { PropsWithChildren } from 'react';
