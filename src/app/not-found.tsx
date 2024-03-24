@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Duckies } from './_rootpage_';
+import { Duckies } from './_components/page';
 import { FaArrowLeft } from 'react-icons/fa';
 
 import { poppinsClass } from '@/styles/fonts';

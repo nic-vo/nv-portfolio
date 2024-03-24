@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { Hero, Nav, AboutMe } from './_rootpage_';
+import { Hero, Nav, AboutMe } from './_components/page';
 
 const Homepage = () => {
 	return (

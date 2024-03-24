@@ -1,9 +1,13 @@
-import { Header, ProjectCategoryNavItem, ScrollToTop } from './_projectlayout_';
+import {
+	Header,
+	ProjectCategoryNavItem,
+	ScrollToTop,
+} from './_components/layout';
 import { getFeaturedPaths, getOtherPaths } from '@/lib/props/paths';
 import { PropsWithChildren } from 'react';
 
 const ProjectRootLayout = async (
-	props: PropsWithChildren & { description: React.ReactNode },
+	props: PropsWithChildren & { interactive: React.ReactNode },
 ) => {
 	const [featuredPaths, otherPaths] = await Promise.all([
 		getFeaturedPaths(),
@@ -16,8 +20,8 @@ const ProjectRootLayout = async (
 				<ProjectCategoryNavItem paths={otherPaths} />
 			</Header>
 			<main className='flex flex-col items-center w-full'>
+				{props.interactive}
 				{props.children}
-				{props.description}
 			</main>
 			<ScrollToTop />
 		</>
