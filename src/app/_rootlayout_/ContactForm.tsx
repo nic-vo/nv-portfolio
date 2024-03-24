@@ -1,6 +1,6 @@
 import { useState, useRef, ElementRef } from 'react';
 import Script from 'next/script';
-import { Spinner } from '../../components/global';
+import Spinner from './Spinner';
 import {
 	FaMinus,
 	FaCheckCircle,
