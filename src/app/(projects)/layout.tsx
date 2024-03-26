@@ -3,7 +3,7 @@ import {
 	ProjectCategoryNavItem,
 	ScrollToTop,
 } from './_components/layout';
-import { getFeaturedPaths, getOtherPaths } from '@/lib/props/paths';
+import { getFeaturedPaths, getOtherPaths } from '../_components/paths';
 import { PropsWithChildren } from 'react';
 
 const ProjectRootLayout = async (
