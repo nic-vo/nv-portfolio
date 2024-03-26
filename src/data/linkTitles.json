@@ -1,13 +1,13 @@
 {
 	"featured": {
 		"PortfolioSite": "Portfolio Version 1.x",
-		"BlockBuildersGC": "Block Builders General Contracting, Inc.",
+		"BlockBuilders": "Block Builders Gen. Contracting, Inc.",
 		"MixDelta": "MixDelta Tool for Spotify"
 	},
 	"other": {
-		"LofiCafe": "Lofi Cafe",
-		"DrumMachine": "Drum Machine",
-		"Markdown": "Markdown Editor",
-		"Calculator": "Calculator"
+		"LofiCafe": "A Lofi Cafe",
+		"DrumMachine": "A Drum Machine",
+		"Markdown": "A Markdown Editor",
+		"Calculator": "A Calculator"
 	}
 }
