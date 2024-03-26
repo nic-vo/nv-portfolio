@@ -8,7 +8,7 @@ import '@/styles/globals.css';
 const RootLayout = (props: PropsWithChildren) => {
 	return (
 		<html lang='en'>
-			<body className={overpassClass}>
+			<body className={overpassClass.className}>
 				{props.children}
 				<Footer />
 			</body>
@@ -17,3 +17,7 @@ const RootLayout = (props: PropsWithChildren) => {
 };
 
 export default RootLayout;
+
+export const metadata = {
+	metadataBase: new URL('https://nicvo.dev'),
+};
