@@ -1,3 +1,5 @@
+'use client';
+
 import { useState, useRef, ElementRef } from 'react';
 import Script from 'next/script';
 import Spinner from './Spinner';
@@ -7,7 +9,7 @@ import {
 	FaExclamationCircle,
 	FaArrowRight,
 } from 'react-icons/fa';
-import { whiteSpaceRemover } from '@/lib/client/homepage/ContactForm/ContactForm';
+import { whiteSpaceRemover } from './_lib';
 
 import { jbMonoClass, latoClass } from '@/styles/fonts';
 
