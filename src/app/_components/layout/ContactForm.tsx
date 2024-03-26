@@ -11,7 +11,7 @@ import {
 } from 'react-icons/fa';
 import { whiteSpaceRemover } from './_lib';
 
-import { jbMonoClass, latoClass } from '@/styles/fonts';
+import { jbMonoClass, latoClass, poppinsClass } from '@/styles/fonts';
 
 import cLook from './ContactForm.module.scss';
 
@@ -89,22 +89,26 @@ const ContactForm = () => {
 		<>
 			<Script src={`https://www.google.com/recaptcha/api.js?render=${reKey}`} />
 
-			<section className='flex flex-col items-center w-full'>
-				<h2 className='font-bold text-4xl lg:text-5xl text-center mb-4'>
+			<section className='flex flex-col items-center w-full h-full gap-8'>
+				<h2
+					className={
+						poppinsClass.className +
+						' font-bold text-4xl lg:text-5xl text-center mb-4'
+					}>
 					Need something done?
 				</h2>
 				<form
 					onSubmit={submitHandler}
-					className='w-4/5 lg:w-2/5 mt-8'>
+					className='w-4/5 lg:w-2/5 mt-8 flex flex-col items-center gap-8'>
 					<fieldset
 						disabled={disableToggle}
 						className={
-							latoClass +
+							latoClass.className +
 							' flex flex-col items-center gap-4 border-0 p-0 m-0 disabled:opacity-50'
 						}>
 						<label
 							htmlFor='name'
-							className='grid grid-flow-col py-4 bg-black bg-opacity-20 rounded-tr-full rounded-bl-full text-xl font-bold'>
+							className='w-min px-12 line h-20 text-center grid grid-flow-col py-4 bg-black bg-opacity-20 rounded-tr-full rounded-bl-full text-xl font-bold'>
 							Name:
 							<input
 								id='name'
@@ -117,14 +121,14 @@ const ContactForm = () => {
 								autoComplete='name'
 								required
 								className={
-									jbMonoClass +
-									' justify-self-start w-11/12 border-0 border-b-4 border-b-black bg-transparent outline-0 text-base text-white font-normal focus:border-b-white transition-[border-bottom] invalid:border-b-red-600'
+									jbMonoClass.className +
+									' ml-8 justify-self-start w-96 border-0 border-b-4 px-4 border-b-black bg-transparent outline-0 text-base text-white font-normal focus:border-b-white transition-[border-bottom] '
 								}
 							/>
 						</label>
 						<label
 							htmlFor='email'
-							className='grid grid-flow-col py-4 bg-black bg-opacity-20 rounded-tr-full rounded-bl-full text-xl font-bold'>
+							className='w-min px-12 line h-20 text-center grid grid-flow-col py-4 bg-black bg-opacity-20 rounded-tr-full rounded-bl-full text-xl font-bold'>
 							Email:
 							<input
 								id='email'
@@ -134,8 +138,8 @@ const ContactForm = () => {
 								autoComplete='email'
 								required
 								className={
-									jbMonoClass +
-									' justify-self-start w-11/12 border-0 border-b-4 border-b-black bg-transparent outline-0 text-base text-white font-normal focus:border-b-white transition-[border-bottom] invalid:border-b-red-600'
+									jbMonoClass.className +
+									' ml-8 justify-self-start w-96 border-0 border-b-4 px-4 border-b-black bg-transparent outline-0 text-base text-white font-normal focus:border-b-white transition-[border-bottom]'
 								}
 							/>
 						</label>
@@ -152,7 +156,7 @@ const ContactForm = () => {
 							/>
 						</label>
 					</fieldset>
-					<div className='flex flex-col justify-start items-center m-4 min-h-32'>
+					<div className='flex flex-col justify-start items-center m-4 min-h-32 gap-8'>
 						<p className='text-center opacity-80'>
 							This site is protected by reCAPTCHA and the Google
 							<a
@@ -178,7 +182,7 @@ const ContactForm = () => {
 						)}
 					</div>
 				</form>
-				<div className='flex items-center justify-center min-h-48 w-4/5 text-xl '>
+				<div className='flex items-center justify-center h-full w-4/5 text-xl '>
 					{formState === 'PENDING' && (
 						<Spinner>
 							<FaMinus className='text-9xl' />
