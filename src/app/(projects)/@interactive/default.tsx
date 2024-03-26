@@ -1,5 +1,13 @@
+import { poppinsClass } from '@/styles/fonts';
+
 const ProjectInteractiveDefault = () => {
-	return <p>The description for this page hasn&apos;t been implemented yet</p>;
+	return (
+		<div className='h-svh w-full flex items-center justify-center'>
+			<h2 className={poppinsClass.className + ' block text-center text-5xl'}>
+				under maintenance, brb
+			</h2>
+		</div>
+	);
 };
 
 export default ProjectInteractiveDefault;

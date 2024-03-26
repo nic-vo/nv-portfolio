@@ -1,8 +1,10 @@
+import { poppinsClass } from '@/styles/fonts';
+
 const ProjectInteractiveLoading = () => {
 	return (
-		<div className='flex justify-center items-center text-3xl'>
-			<p className='m-0 p-0'>Project loading...</p>;
-		</div>
+		<h2 className={poppinsClass.className + ' block text-center text-5xl'}>
+			Project loading...
+		</h2>
 	);
 };
 
