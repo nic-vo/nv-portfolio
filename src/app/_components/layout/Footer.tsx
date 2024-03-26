@@ -22,10 +22,9 @@ const Footer = async () => {
 
 	return (
 		<footer
-			className='flex flex-col items-center w-full h-svh py-48'
+			className='flex flex-col items-center w-full h-svh py-24 bg-[linear-gradient(transparent,black)]'
 			id='footer'>
 			<ContactForm />
-			<hr className='w-1/12' />
 			<div className='flex text-4xl gap-4 p-4'>
 				<a
 					href='https://github.com/nic-vo'
