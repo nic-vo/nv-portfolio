@@ -1,10 +1,18 @@
 import { getFeaturedPaths, getOtherPaths } from '@/lib/props/paths';
 import Link from 'next/link';
 import Image from 'next/image';
+import * as thumbs from '@/public/thumbs';
+import DefaultThumb from '@/public/thumbs/default';
+import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 
 import { latoClass } from '@/styles/fonts';
 
-const NavLink = (props: { page: { title: string; segment: string } }) => {
+const referenced = thumbs as Record<string, StaticImport | undefined>;
+
+const NavLink = async (props: {
+	root: string;
+	page: { title: string; segment: string };
+}) => {
 	const { title, segment } = props.page;
 	return (
 		<li className='w-[40svh] h-[calc(40svh*3/4)] bg-black rounded-3xl overflow-hidden list-none transition-all justify-self-center bg-cover shadow-none hover:shadow-white hover:shadow-[0px_0px_20px_5px]'>
@@ -16,10 +24,8 @@ const NavLink = (props: { page: { title: string; segment: string } }) => {
 					{title}
 				</span>
 				<Image
-					src={`/thumbs/featured/${segment}.webp`}
+					src={referenced[segment] ?? DefaultThumb}
 					alt={`Check out ${title}!`}
-					width={1920}
-					height={1200}
 					sizes='(max-aspect-ratio: 1) 100vw, 50vw'
 					className='absolute h-full w-auto brightness-50 transition-all'
 				/>
