@@ -1,4 +1,4 @@
-## From Simple Branding to Full-Stack Development
+## From Branding to Full-Stack Development
 
 This project began as a design exercise for a local contractor, crafting a logo and basic branding elements. Recognizing the client's need for a strong online presence, I leveraged the project as an opportunity to expand my skillset into full-stack development.
 
