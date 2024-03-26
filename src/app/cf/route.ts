@@ -1,8 +1,4 @@
-import {
-	htmlStringer,
-	plaintextStringer,
-	validator,
-} from '../../lib/api/homepage/ContactForm';
+import { htmlStringer, plaintextStringer, validator } from './_lib';
 
 import { NextApiRequest, NextApiResponse } from 'next';
 
