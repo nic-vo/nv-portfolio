@@ -7,6 +7,10 @@ module.exports = {
 			serif: ['serif'],
 			mono: ['monospace'],
 		},
+		colors: {
+			white: '#D6E5E3',
+			black: '#0c1821',
+		},
 		extend: {},
 	},
 	plugins: [],
