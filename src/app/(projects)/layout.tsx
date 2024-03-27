@@ -19,7 +19,7 @@ const ProjectRootLayout = async (
 				<ProjectCategoryNavItem paths={featuredPaths} />
 				<ProjectCategoryNavItem paths={otherPaths} />
 			</Header>
-			<main className='flex flex-col items-center w-full'>
+			<main className='flex flex-col items-center w-full gap-8'>
 				{props.interactive}
 				{props.children}
 			</main>
@@ -32,7 +32,7 @@ export default ProjectRootLayout;
 
 export const metadata = {
 	title: {
-		template: 'Nicolas Vo | $s',
+		template: 'Nicolas Vo | %s',
 		default: 'Nicolas Vo | Portfolio',
 	},
 };
