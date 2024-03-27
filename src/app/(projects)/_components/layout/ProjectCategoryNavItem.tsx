@@ -1,4 +1,4 @@
-'use cilent';
+'use client';
 
 import { useState } from 'react';
 import { FaCaretDown } from 'react-icons/fa';
@@ -35,7 +35,7 @@ const ProjectCategoryNavItem = (props: {
 					id='hndev'
 					onClick={clickToggleListHandler}
 					className={
-						latoClass +
+						latoClass.className +
 						' cursor-pointer flex justify-between items-center h-16 w-full p-4 text-xl font-bold bg-inherit text-inherit border-0 border-black border-b'
 					}
 					aria-label={`Toggle navigation submenu for ${catCased}`}
@@ -51,7 +51,7 @@ const ProjectCategoryNavItem = (props: {
 				<button
 					onClick={clickToggleListHandler}
 					className={
-						latoClass +
+						latoClass.className +
 						' cursor-pointer flex justify-between items-center h-16 w-full p-4 text-xl font-bold bg-inherit text-inherit border-0 border-black border-b'
 					}
 					aria-label={`Toggle navigation submenu for ${catCased}`}
