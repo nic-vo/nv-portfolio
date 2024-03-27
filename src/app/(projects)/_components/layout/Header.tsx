@@ -1,11 +1,20 @@
-import { useState } from 'react';
+'use client';
 
+import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { FaPlus, FaBars, FaHome } from 'react-icons/fa';
 
 import look from './Header.module.scss';
 
 const Header = (props: { children: React.ReactNode }) => {
+	const location = usePathname();
 	const [toggled, setToggled] = useState(false);
+
+	useEffect(() => {
+		setToggled(false);
+		const active = document.activeElement as HTMLElement;
+		if (active) active.blur();
+	}, [location]);
 
 	const toggleHandler = () => {
 		setToggled(!toggled);

@@ -8,7 +8,7 @@ const RootNotFound = () => {
 	return (
 		<>
 			<main className='h-full w-full flex flex-col items-center justify-center gap-8'>
-				<h1 className={poppinsClass + ' text-[8vmax] font-bold m-0'}>
+				<h1 className={poppinsClass.className + ' text-[8vmax] font-bold m-0'}>
 					404: Not Found.
 				</h1>
 				<Link href='/'>
