@@ -1,15 +1,21 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { FaArrowUp } from 'react-icons/fa';
 
 import scrollLook from './ScrollToTop.module.scss';
 
 const ScrollToTop = () => {
 	const buttonRef = useRef<HTMLButtonElement>(null);
+	const location = usePathname();
 	const [distanceDisable, setDistanceDisable] = useState(true);
 	const [scrollThrottle, setScrollThrottle] = useState(false);
 	const [timeouter, setTimeouter] = useState<null | NodeJS.Timeout>(null);
+
+	useEffect(() => {
+		window.scroll({ top: 0, left: 0 });
+	}, [location]);
 
 	useEffect(() => {
 		const { current: button } = buttonRef;
@@ -42,7 +48,7 @@ const ScrollToTop = () => {
 			setTimeouter(() => {
 				return setTimeout(() => {
 					setScrollThrottle(false);
-				}, 150);
+				}, 300);
 			});
 		}
 	};
