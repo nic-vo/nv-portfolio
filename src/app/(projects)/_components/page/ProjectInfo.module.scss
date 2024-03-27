@@ -1,4 +1,4 @@
-@use '../../../../../styles/globalStyles.module.scss' as global;
+@use '@/styles/globalStyles.module.scss' as global;
 
 .info {
 	display: flex;
@@ -11,7 +11,8 @@
 .description {
 	display: flex;
 	flex-direction: column;
-	padding-top: 1em;
+
+	gap: 1rem;
 
 	h2,
 	h3,
