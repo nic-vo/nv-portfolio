@@ -84,6 +84,7 @@ const ImageCarousel = (props: {
 						className={look.buttonReturner}
 						onPointerDown={returner}>
 						<FaPlus />
+						<span className={globalLook.hiddenAccess}>Close viewer</span>
 					</button>
 					<button
 						className={look.button}
