@@ -17,8 +17,8 @@ const ImageCarousel = (props: {
 	// If this changes, load a fullscreen-esque viewer
 	const [activeImage, setActiveImage] = useState<number | null>(null);
 
-	const scrollRef = useRef<HTMLDivElement>(null);
-	const viewerRef = useRef<HTMLImageElement>(null);
+	const scrollRef = useRef<HTMLUListElement>(null);
+	const viewerRef = useRef<HTMLDialogElement>(null);
 
 	const thumbClickHandler = (index: number) => setActiveImage(index);
 
@@ -37,8 +37,13 @@ const ImageCarousel = (props: {
 	};
 
 	useEffect(() => {
-		if (activeImage === null || viewerRef.current === null) return;
-		viewerRef.current.focus();
+		const { current } = viewerRef;
+		if (!current) return;
+		if (activeImage === null) {
+			current.close();
+			return;
+		}
+		current.showModal();
 	}, [activeImage]);
 
 	const viewKeyDownHandler = (params: React.KeyboardEvent) => {
@@ -71,42 +76,45 @@ const ImageCarousel = (props: {
 	};
 
 	const classer = look.previewImg;
+	activeImage && console.log(photos[activeImage]);
 
 	return (
 		<>
-			{activeImage !== null && (
+			<dialog
+				ref={viewerRef}
+				style={{ zIndex: 20 }}>
 				<div
 					className={look.preview}
-					tabIndex={0}
-					ref={viewerRef}
 					onKeyDown={viewKeyDownHandler}>
 					<button
 						className={look.buttonReturner}
-						onPointerDown={returner}>
+						onClick={returner}>
 						<FaPlus />
 						<span className={globalLook.hiddenAccess}>Close viewer</span>
 					</button>
 					<button
 						className={look.button}
-						onPointerDown={decrementActiveImage}>
+						onClick={decrementActiveImage}>
 						<FaCaretLeft />
 						<span className={globalLook.hiddenAccess}>Previous image</span>
 					</button>
-					<Image
-						src={photos[activeImage].image}
-						alt={photos[activeImage].desc}
-						sizes='100vw'
-						placeholder='blur'
-						className={classer}
-					/>
+					{activeImage !== null && (
+						<Image
+							src={photos[activeImage].image}
+							alt={photos[activeImage].desc}
+							sizes='100vw'
+							placeholder='blur'
+							className={classer}
+						/>
+					)}
 					<button
 						className={look.button}
-						onPointerDown={incrementActiveImage}>
+						onClick={incrementActiveImage}>
 						<FaCaretRight />
 						<span className={globalLook.hiddenAccess}>Previous image</span>
 					</button>
 				</div>
-			)}
+			</dialog>
 			<span className={look.instructions}>Click/tap to expand</span>
 			<div className={look.container}>
 				<div className={look.ringContainer}>
@@ -118,12 +126,12 @@ const ImageCarousel = (props: {
 						<FaCaretLeft />
 						<span className={globalLook.hiddenAccess}>Scroll left</span>
 					</button>
-					<div
+					<ul
 						className={look.ringExposed}
 						ref={scrollRef}>
 						{photos.map((photo, index) => {
 							return (
-								<div
+								<li
 									className={look.smallThumb}
 									key={`photo-${index}`}
 									onClick={() => {
@@ -136,10 +144,10 @@ const ImageCarousel = (props: {
 										sizes='(max-aspect-ratio: 1) 100vw, 75vw'
 										priority={index < 2}
 									/>
-								</div>
+								</li>
 							);
 						})}
-					</div>
+					</ul>
 					<button
 						className={look.button}
 						onPointerDown={() => {
