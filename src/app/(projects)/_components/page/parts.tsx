@@ -46,7 +46,8 @@ const ProjectInfo = (props: {
 			</section>
 			<section
 				className={
-					look.description + ' max-w-prose border-t-2 border-white pb-8'
+					look.description +
+					' max-w-prose border-t-2 border-white pb-8 *:list-disc'
 				}
 				dangerouslySetInnerHTML={{ __html: description }}
 			/>
@@ -57,7 +58,7 @@ const ProjectInfo = (props: {
 				<a
 					href={link}
 					target='_blank'
-					className='block px-4 py-2 rounded-3xl bg-green-500'>
+					className='block px-4 py-2 rounded-3xl bg-green-500 text-black'>
 					Original / Live
 				</a>
 			</section>
