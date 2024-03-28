@@ -1,10 +1,12 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { FaPlus, FaBars, FaHome } from 'react-icons/fa';
 
 import look from './Header.module.scss';
+
+export const ToggleContext = createContext(false);
 
 const Header = (props: { children: React.ReactNode }) => {
 	const location = usePathname();
@@ -66,7 +68,9 @@ const Header = (props: { children: React.ReactNode }) => {
 				<ul
 					className={look.topList}
 					tabIndex={toggled ? 0 : -1}>
-					{props.children}
+					<ToggleContext.Provider value={toggled}>
+						{props.children}
+					</ToggleContext.Provider>
 				</ul>
 			</nav>
 		</header>
