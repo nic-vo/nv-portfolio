@@ -1,5 +1,4 @@
 import DrumMachine from './DrumMachine';
+import getDrumMachineProps from './assets';
 
-export {
-	DrumMachine
-};
+export { DrumMachine, getDrumMachineProps };

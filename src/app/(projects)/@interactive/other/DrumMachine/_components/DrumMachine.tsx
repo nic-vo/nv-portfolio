@@ -1,3 +1,5 @@
+'use client';
+
 import { KeyboardEventHandler } from 'react';
 import Pad from './Pad/Pad';
 import ControlPanel from './ControlPanel/ControlPanel';
@@ -6,7 +8,6 @@ import look from './DrumMachine.module.scss';
 import { DrumMachineProps } from './types';
 import { ContentContextProvider } from './ContentContext/ContentContext';
 import { PlayStateContextProvider } from './PlayStateContext/PlayStateContext';
-
 
 const DrumMachine = (props: { assetInfo: DrumMachineProps }) => {
 	const { assetInfo } = props;
@@ -24,7 +25,7 @@ const DrumMachine = (props: { assetInfo: DrumMachineProps }) => {
 		} else if (e.key === ' ') {
 			stopAllHandler();
 		}
-	}
+	};
 
 	// Iterate through all audio elements and stop them
 	const stopAllHandler = () => {
@@ -33,7 +34,7 @@ const DrumMachine = (props: { assetInfo: DrumMachineProps }) => {
 			audio.pause();
 			audio.currentTime = 0;
 		}
-	}
+	};
 
 	return (
 		<ContentContextProvider data={assetInfo}>
@@ -43,15 +44,15 @@ const DrumMachine = (props: { assetInfo: DrumMachineProps }) => {
 					tabIndex={0}
 					onKeyDown={keyDownHandler}>
 					<ControlPanel stopAllHandler={stopAllHandler} />
-					<div className={look.grid} >
-						{
-							chars.map(char => {
-								return <Pad
+					<div className={look.grid}>
+						{chars.map((char) => {
+							return (
+								<Pad
 									char={char}
 									key={`pad-${char}`}
 								/>
-							})
-						}
+							);
+						})}
 					</div>
 				</section>
 			</PlayStateContextProvider>

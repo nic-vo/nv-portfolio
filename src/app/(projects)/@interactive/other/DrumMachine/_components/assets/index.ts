@@ -1,22 +1,40 @@
-import {
-	DrumMachineProps,
-	DrumMachineSoundList,
-} from "@/lib/props/types/projects";
-import fs from "fs";
-import path from "path";
+import fs from 'fs/promises';
+import path from 'path';
+
+const keypadChars = ['q', 'w', 'e', 'a', 's', 'd', 'z', 'x', 'c'];
+
+type DrumMachineSoundList = {
+	[key in (typeof keypadChars)[number]]: DrumMachineSound;
+};
+
+type DrumMachineSound = {
+	name: string;
+	path: string;
+};
+
+export type DrumMachineProps = {
+	banks: string[];
+	soundList: DrumMachineSoundList[];
+};
 
 const getBankNames = async () => {
 	// return array of dirnames in public assets drummachine folder
 	const targetdir = path.join(
 		process.cwd(),
-		"public",
-		"assets",
-		"fcc",
-		"DrumMachine",
+		'src',
+		'app',
+		'(projects)',
+		'@interactive',
+		'other',
+		'DrumMachine',
+		'_components',
+		'assets',
 	);
 	const banks = await (async () => {
-		const jsons = await fs.promises.readdir(targetdir);
-		return jsons.map((str) => str.replace(/.json$/, ""));
+		const jsons = await fs.readdir(targetdir);
+		return jsons
+			.map((str) => str.replace(/.json$/, ''))
+			.filter((name) => /\.ts$/.test(name) === false);
 	})();
 	return {
 		banks,
@@ -30,25 +48,33 @@ const getSoundList = async (allBanks: string[]) => {
 	const soundsWithPaths = await Promise.all(
 		allBanks.map(async (bank) => {
 			// Is used to construct a new dir path
-			const midStr = ["assets", "fcc", "DrumMachine"];
-			const dir = path.join(process.cwd(), "public", ...midStr);
+			const midStr = [
+				'src',
+				'app',
+				'(projects)',
+				'@interactive',
+				'other',
+				'DrumMachine',
+				'_components',
+				'assets',
+			];
+			const dir = path.join(process.cwd(), ...midStr);
 			// To a dir containing a json file that
-			const target = path.join(dir, bank.concat(".json"));
-			const jsonRaw = await fs.promises.readFile(target, "utf8");
-			console.log(jsonRaw);
+			const target = path.join(dir, bank.concat('.json'));
+			const jsonRaw = await fs.readFile(target, 'utf8');
 			// Is read and parsed into a JS object
 			const listjson = await JSON.parse(jsonRaw);
 			// Init return obj
 			return Object.keys(listjson).reduce((returner, current) => {
-				const baseUrl = "".concat(
+				const baseUrl = ''.concat(
 					process.env.CLOUDFRONT_URL as string,
-					"/DrumMachine/",
+					'/DrumMachine/',
 					`${bank}/`,
 				);
 				const fileName = listjson[current] as string;
 				const fileUrl = baseUrl.concat(
-					`${fileName.replaceAll(" ", "+")}`,
-					".mp3",
+					`${fileName.replaceAll(' ', '+')}`,
+					'.mp3',
 				);
 				let newer = { ...returner };
 				newer[current] = { path: fileUrl, name: fileName };

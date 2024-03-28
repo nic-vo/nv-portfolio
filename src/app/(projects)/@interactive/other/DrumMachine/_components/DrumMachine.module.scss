@@ -1,6 +1,7 @@
 @use 'DrumMachineColors.module.scss' as *;
 
 .machine {
+	font-family: SilkScreen, sans-serif;
 	display: flex;
 	width: 90%;
 	max-width: 800px;
