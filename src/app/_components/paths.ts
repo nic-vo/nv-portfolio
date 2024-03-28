@@ -19,7 +19,7 @@ const getPaths = async (segments: string[]) => {
 		return (
 			/^\(/.test(segment) === false &&
 			/^\_/.test(segment) === false &&
-			/\.((png)|(webp)|(jpg)|(ico)|(tsx)|(ts)|(js)|(jsx)|(jpg))$/.test(
+			/\.((png)|(webp)|(jpg)|(ico)|(tsx)|(ts)|(js)|(jsx)|(jpg)|(json)|(module\.scss))$/.test(
 				segment,
 			) === false
 		);
