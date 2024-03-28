@@ -1,3 +1,5 @@
+const defaultColors = require('tailwindcss/colors');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
 	content: ['./src/**/*.{js,ts,jsx,tsx}'],
@@ -8,6 +10,7 @@ module.exports = {
 			mono: ['monospace'],
 		},
 		colors: {
+			...defaultColors,
 			white: '#D6E5E3',
 			black: '#0c1821',
 		},
