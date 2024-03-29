@@ -22,13 +22,21 @@ const Header = (props: { children: React.ReactNode }) => {
 		setToggled(!toggled);
 	};
 
+	const blurHandler = (e: React.FocusEvent) => {
+		if (e.relatedTarget === null) return;
+		const classes = new Set(e.relatedTarget.classList);
+		if (!classes.has('bflag')) setToggled(false);
+	};
+
 	const classer = toggled === true ? ` ${look.toggled}` : '';
 
 	return (
-		<header className={look.header + classer}>
+		<header
+			className={look.header + classer + ' bflag'}
+			onBlur={blurHandler}>
 			<a
 				href='/'
-				className={look.homerEx}
+				className={look.homerEx + ' bflag'}
 				aria-label='Return home'>
 				<FaHome
 					className={look.svg}
@@ -40,8 +48,7 @@ const Header = (props: { children: React.ReactNode }) => {
 			<button
 				id='toggler'
 				onClick={toggleHandler}
-				className={look.toggler + classer}
-				aria-label='Toggle navigation menu'
+				className={look.toggler + classer + ' bflag'}
 				aria-pressed={toggled}>
 				{toggled === false ? (
 					<FaBars
@@ -56,6 +63,7 @@ const Header = (props: { children: React.ReactNode }) => {
 						role='presentation'
 					/>
 				)}
+				<span className={look.hidden}>Return home</span>
 			</button>
 			<div
 				onPointerDown={toggleHandler}
@@ -65,13 +73,13 @@ const Header = (props: { children: React.ReactNode }) => {
 				className={look.nav + classer}
 				role='navigation'>
 				<h2 className={look.title}>Other Projects</h2>
-				<ul
-					className={look.topList}
-					tabIndex={toggled ? 0 : -1}>
+				<menu
+					className={look.topList + ' bflag'}
+					tabIndex={-1}>
 					<ToggleContext.Provider value={toggled}>
 						{props.children}
 					</ToggleContext.Provider>
-				</ul>
+				</menu>
 			</nav>
 		</header>
 	);
