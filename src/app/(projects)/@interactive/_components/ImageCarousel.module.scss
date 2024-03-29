@@ -150,7 +150,9 @@
 }
 
 .button:hover,
-.buttonReturner:hover {
+.buttonReturner:hover,
+.button:focus,
+.buttonReturner:focus {
 	color: global.$Black;
 	background-color: global.$White;
 }
