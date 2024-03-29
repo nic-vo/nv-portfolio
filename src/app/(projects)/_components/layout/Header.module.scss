@@ -121,7 +121,11 @@ $navWidth: 20rem;
 .toggler.toggled,
 .toggler.toggled:hover,
 .toggler:hover,
-.homerEx:hover {
+.homerEx:hover,
+.toggler.toggled,
+.toggler.toggled:focus,
+.toggler:focus,
+.homerEx:focus {
 	background-color: global.$White;
 	color: global.$Black;
 	border-color: global.$White;

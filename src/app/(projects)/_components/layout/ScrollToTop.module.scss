@@ -27,7 +27,8 @@
 	}
 }
 
-.scroller:hover {
+.scroller:hover,
+.scroller:focus {
 	color: global.$Black;
 	background-color: global.$White;
 }
