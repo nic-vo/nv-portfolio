@@ -3,10 +3,10 @@
 import { useContext, useState } from 'react';
 import { FaCaretDown } from 'react-icons/fa';
 import Link from 'next/link';
+import { ToggleContext } from './Header';
 
 import pCatNavLook from './ProjectCategoryNavItem.module.scss';
 import { latoClass } from '@/styles/fonts';
-import { ToggleContext } from './Header';
 
 const ProjectCategoryNavItem = (props: {
 	paths: {
@@ -32,15 +32,15 @@ const ProjectCategoryNavItem = (props: {
 
 	return (
 		<li
-			className='w-full'
-			tabIndex={parentToggled ? 0 : -1}>
+			className='w-full bflag'
+			tabIndex={-1}>
 			{props.dev === true ? (
 				<button
 					id='hndev'
 					onClick={clickToggleListHandler}
 					className={
 						latoClass.className +
-						' cursor-pointer flex justify-between items-center h-16 w-full p-4 text-xl font-bold bg-inherit text-inherit border-0 border-black border-b'
+						` transition-colors cursor-pointer flex justify-between items-center h-16 w-full p-4 text-xl font-bold border-0 border-black border-b bflag ${catToggled ? 'bg-black text-white' : 'bg-white text-black'}`
 					}
 					aria-label={`Toggle navigation submenu for ${catCased}`}
 					aria-pressed={catToggled}
@@ -57,7 +57,8 @@ const ProjectCategoryNavItem = (props: {
 					onClick={clickToggleListHandler}
 					className={
 						latoClass.className +
-						' cursor-pointer flex justify-between items-center h-16 w-full p-4 text-xl font-bold bg-inherit text-inherit border-0 border-black border-b'
+						`${catToggled ? ` ${pCatNavLook.subcatToggled}` : ''}` +
+						` transition-colors cursor-pointer flex justify-between items-center h-16 w-full p-4 text-xl font-bold border-0 border-black border-b bflag ${catToggled ? 'bg-black text-white' : 'bg-white text-black'}`
 					}
 					aria-label={`Toggle navigation submenu for ${catCased}`}
 					aria-pressed={catToggled}
@@ -70,17 +71,17 @@ const ProjectCategoryNavItem = (props: {
 					/>
 				</button>
 			)}
-			<ul
-				className={pCatNavLook.inCatList + classer}
-				tabIndex={catToggled && parentToggled ? 0 : -1}>
+			<menu
+				className={pCatNavLook.inCatList + classer + ' bflag'}
+				tabIndex={-1}>
 				{pages.map((page, index) => {
 					if (index === 0 && props.dev === true)
 						return (
 							<li
 								id={props.dev === true && index === 0 ? 'hnlidev' : ''}
-								className={pCatNavLook.li + classer}
+								className={pCatNavLook.li + classer + ' bflag'}
 								key={`${root}-list-${page.segment}`}
-								tabIndex={catToggled && parentToggled ? 0 : -1}>
+								tabIndex={-1}>
 								<Link
 									href={`/${root}/${page.segment}`}
 									prefetch={false}
@@ -92,19 +93,20 @@ const ProjectCategoryNavItem = (props: {
 					else
 						return (
 							<li
-								className={pCatNavLook.li + classer}
+								className={pCatNavLook.li + classer + ' bflag'}
 								key={`${root}-list-${page.segment}`}
-								tabIndex={catToggled && parentToggled ? 0 : -1}>
+								tabIndex={-1}>
 								<Link
 									href={`/${root}/${page.segment}`}
 									prefetch={false}
-									tabIndex={catToggled && parentToggled ? 0 : -1}>
+									tabIndex={catToggled && parentToggled ? 0 : -1}
+									className='bflag'>
 									{page.title}
 								</Link>
 							</li>
 						);
 				})}
-			</ul>
+			</menu>
 		</li>
 	);
 };
