@@ -108,8 +108,10 @@ const ContactForm = () => {
 						}>
 						<label
 							htmlFor='name'
-							className='w-min px-12 line h-20 text-center grid grid-flow-col py-4 bg-black bg-opacity-20 rounded-tr-full rounded-bl-full text-xl font-bold'>
-							Name:
+							className='w-min px-12 line text-center flex items-center gap-4 p-4 bg-transparent rounded-tr-full rounded-bl-full text-xl font-bold first:*:block'>
+							<span className='block border-transparent border-b-4 p-4'>
+								Name:
+							</span>
 							<input
 								id='name'
 								ref={nameRef}
@@ -122,14 +124,16 @@ const ContactForm = () => {
 								required
 								className={
 									jbMonoClass.className +
-									' ml-8 justify-self-start w-96 border-0 border-b-4 px-4 border-b-black bg-transparent outline-0 text-base text-white font-normal focus:border-b-white transition-[border-bottom] '
+									' justify-self-start w-96 border-0 p-4 border-b-white border-b-4 bg-transparent outline-0 text-base text-white font-normal focus:bg-white focus:text-black placeholder:focus:text-black transition-all h-full outline-none'
 								}
 							/>
 						</label>
 						<label
 							htmlFor='email'
-							className='w-min px-12 line h-20 text-center grid grid-flow-col py-4 bg-black bg-opacity-20 rounded-tr-full rounded-bl-full text-xl font-bold'>
-							Email:
+							className='w-min px-12 line text-center flex items-center gap-4 p-4 bg-transparent rounded-tr-full rounded-bl-full text-xl font-bold first:*:block'>
+							<span className='block border-transparent border-b-4 p-4'>
+								Email:
+							</span>
 							<input
 								id='email'
 								ref={emailRef}
@@ -139,7 +143,7 @@ const ContactForm = () => {
 								required
 								className={
 									jbMonoClass.className +
-									' ml-8 justify-self-start w-96 border-0 border-b-4 px-4 border-b-black bg-transparent outline-0 text-base text-white font-normal focus:border-b-white transition-[border-bottom]'
+									' justify-self-start w-96 border-0 p-4 border-b-white border-b-4 bg-transparent outline-0 text-base text-white font-normal focus:bg-white focus:text-black placeholder:focus:text-black transition-all h-full outline-none'
 								}
 							/>
 						</label>
