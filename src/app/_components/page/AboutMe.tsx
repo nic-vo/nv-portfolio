@@ -2,7 +2,7 @@ import { poppinsClass } from '@/styles/fonts';
 
 const AboutMe = () => {
 	return (
-		<section className='items-center p-48 grid grid-cols-4 gap-8'>
+		<section className='items-center p-48 flex flex-col lg:grid grid-cols-4 gap-8'>
 			<h2
 				className={
 					poppinsClass.className +
