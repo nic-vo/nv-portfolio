@@ -120,7 +120,7 @@ const ImageCarousel = (props: {
 				<div className={look.ringContainer}>
 					<button
 						className={look.button}
-						onPointerDown={() => {
+						onClick={() => {
 							scrollerHandler(false);
 						}}>
 						<FaCaretLeft />
@@ -128,29 +128,38 @@ const ImageCarousel = (props: {
 					</button>
 					<ul
 						className={look.ringExposed}
+						tabIndex={-1}
 						ref={scrollRef}>
 						{photos.map((photo, index) => {
 							return (
 								<li
 									className={look.smallThumb}
 									key={`photo-${index}`}
-									onClick={() => {
-										thumbClickHandler(index);
-									}}>
-									<Image
-										placeholder='blur'
-										src={photo.image}
-										alt={photo.desc}
-										sizes='(max-aspect-ratio: 1) 100vw, 75vw'
-										priority={index < 2}
-									/>
+									tabIndex={-1}>
+									<button
+										className={look.smallThumb}
+										tabIndex={0}
+										onClick={() => {
+											thumbClickHandler(index);
+										}}>
+										<Image
+											placeholder='blur'
+											src={photo.image}
+											alt={photo.desc}
+											sizes='(max-aspect-ratio: 1) 100vw, 75vw'
+											priority={index < 2}
+										/>
+										<span className={globalLook.hiddenAccess}>
+											Toggle the large view for picture no. {index + 1}
+										</span>
+									</button>
 								</li>
 							);
 						})}
 					</ul>
 					<button
 						className={look.button}
-						onPointerDown={() => {
+						onClick={() => {
 							scrollerHandler(true);
 						}}>
 						<FaCaretRight />

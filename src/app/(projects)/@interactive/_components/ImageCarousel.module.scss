@@ -10,12 +10,17 @@
 	max-width: 1200px;
 }
 
+@media (min-aspect-ratio:1) {
+	.container {
+		height: 50%;
+	}
+}
+
 .instructions {
 	font-family: Overpass, sans-serif;
 	font-weight: lighter;
-	font-size: 1.4em;
+	font-size: 1.4rem;
 	text-align: center;
-	margin: 1em;
 }
 
 .preview {
@@ -106,9 +111,9 @@
 	cursor: pointer;
 	border-radius: 8px;
 	width: 100%;
-	overflow: hidden;
 
 	img {
+		border-radius: 8px;
 		display: block;
 		width: 100%;
 		height: auto;
