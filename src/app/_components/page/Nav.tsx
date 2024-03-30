@@ -27,7 +27,7 @@ const NavLink = async (props: {
 					src={referenced[segment] ?? DefaultThumb}
 					alt={`Check out ${title}!`}
 					sizes='(max-aspect-ratio: 1) 100vw, 50vw'
-					className='absolute h-full w-auto transition-all'
+					className='absolute h-full w-auto transition-all max-w-none'
 				/>
 			</Link>
 		</li>
