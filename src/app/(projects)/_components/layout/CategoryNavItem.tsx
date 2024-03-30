@@ -5,10 +5,10 @@ import { FaCaretDown } from 'react-icons/fa';
 import Link from 'next/link';
 import { ToggleContext } from './Header';
 
-import pCatNavLook from './ProjectCategoryNavItem.module.scss';
+import look from './CategoryNavItem.module.scss';
 import { latoClass } from '@/styles/fonts';
 
-const ProjectCategoryNavItem = (props: {
+const CategoryNavItem = (props: {
 	paths: {
 		root: string;
 		pages: {
@@ -28,7 +28,7 @@ const ProjectCategoryNavItem = (props: {
 		setCatToggled(!catToggled);
 	};
 
-	const classer = catToggled === true ? ` ${pCatNavLook.toggled}` : '';
+	const classer = catToggled === true ? ` ${look.toggled}` : '';
 
 	return (
 		<li
@@ -40,14 +40,14 @@ const ProjectCategoryNavItem = (props: {
 					onClick={clickToggleListHandler}
 					className={
 						latoClass.className +
-						` transition-colors cursor-pointer flex justify-between items-center h-16 w-full p-4 text-xl font-bold border-0 border-black border-b bflag ${catToggled ? 'bg-black text-white' : 'bg-white text-black'}`
+						` transition-colors cursor-pointer flex justify-between items-center h-16 w-full p-4 text-xl font-bold border-0 border-black border-b bflag ${catToggled ? 'bg-black text-white' : 'bg-white text-black'} z-10`
 					}
 					aria-label={`Toggle navigation submenu for ${catCased}`}
 					aria-pressed={catToggled}
 					tabIndex={parentToggled ? 0 : -1}>
 					{catCased}
 					<FaCaretDown
-						className={pCatNavLook.svg + classer}
+						className={look.svg + classer}
 						aria-hidden='true'
 						role='presentation'
 					/>
@@ -57,29 +57,29 @@ const ProjectCategoryNavItem = (props: {
 					onClick={clickToggleListHandler}
 					className={
 						latoClass.className +
-						`${catToggled ? ` ${pCatNavLook.subcatToggled}` : ''}` +
-						` transition-colors cursor-pointer flex justify-between items-center h-16 w-full p-4 text-xl font-bold border-0 border-black border-b bflag ${catToggled ? 'bg-black text-white' : 'bg-white text-black'}`
+						`${catToggled ? ` ${look.subcatToggled}` : ''}` +
+						` transition-colors cursor-pointer flex justify-between items-center h-16 w-full p-4 text-xl font-bold border-0 border-black border-b bflag ${catToggled ? 'bg-black text-white' : 'bg-white text-black'} z-10`
 					}
 					aria-label={`Toggle navigation submenu for ${catCased}`}
 					aria-pressed={catToggled}
 					tabIndex={parentToggled ? 0 : -1}>
 					{catCased}
 					<FaCaretDown
-						className={pCatNavLook.svg + classer}
+						className={look.svg + classer}
 						aria-hidden='true'
 						role='presentation'
 					/>
 				</button>
 			)}
 			<menu
-				className={pCatNavLook.inCatList + classer + ' bflag'}
+				className={look.inCatList + classer + ' bflag z-0'}
 				tabIndex={-1}>
 				{pages.map((page, index) => {
 					if (index === 0 && props.dev === true)
 						return (
 							<li
 								id={props.dev === true && index === 0 ? 'hnlidev' : ''}
-								className={pCatNavLook.li + classer + ' bflag'}
+								className={look.li + classer + ' bflag'}
 								key={`${root}-list-${page.segment}`}
 								tabIndex={-1}>
 								<Link
@@ -93,7 +93,7 @@ const ProjectCategoryNavItem = (props: {
 					else
 						return (
 							<li
-								className={pCatNavLook.li + classer + ' bflag'}
+								className={look.li + classer + ' bflag'}
 								key={`${root}-list-${page.segment}`}
 								tabIndex={-1}>
 								<Link
@@ -111,4 +111,4 @@ const ProjectCategoryNavItem = (props: {
 	);
 };
 
-export default ProjectCategoryNavItem;
+export default CategoryNavItem;

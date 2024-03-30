@@ -1,5 +1,5 @@
 import Header from './Header';
-import ProjectCategoryNavItem from './ProjectCategoryNavItem';
+import CategoryNavItem from './CategoryNavItem';
 import ScrollToTop from './ScrollToTop';
 
-export { Header, ProjectCategoryNavItem, ScrollToTop };
+export { Header, CategoryNavItem, ScrollToTop };
