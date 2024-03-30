@@ -3,7 +3,7 @@ import { Hero, Nav, AboutMe } from './_components/page';
 
 const Homepage = () => {
 	return (
-		<main className='min-h-svh flex flex-col items-center'>
+		<main className='min-h-svh flex flex-col items-center w-full'>
 			<Hero />
 			<AboutMe />
 			<Nav />
