@@ -1,5 +1,9 @@
 import { Metadata } from 'next';
 import { Hero, Nav, AboutMe } from './_components/page';
+import { sharedOGData } from '@/data/metadata';
+
+const title = 'Nicolas Vo | Front End Developer';
+const description = "Nicolas Vo's personal front-end development portfolio";
 
 const Homepage = () => {
 	return (
@@ -14,8 +18,9 @@ const Homepage = () => {
 export default Homepage;
 
 export const metadata: Metadata = {
-	title: 'Nicolas Vo | Front End Developer',
-	description: "Nicolas Vo's personal front-end development portfolio",
+	title,
+	description,
+	openGraph: { ...sharedOGData, title, description },
 };
 
 export const revalidate = false;

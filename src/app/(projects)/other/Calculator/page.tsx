@@ -1,7 +1,7 @@
 import ProjectInfo, {
 	getProjectDescription,
 } from '../../_components/page/parts';
-import { sharedOGData } from '@/data/metadata';
+import { sharedOGData, sharedRobots } from '@/data/metadata';
 
 const title = 'A Calculator';
 const description =
@@ -25,4 +25,9 @@ export const metadata = {
 	title,
 	description,
 	openGraph: { ...sharedOGData, title, description },
+	robots: {
+		...sharedRobots,
+		index: false,
+		googleBot: { ...sharedRobots.googleBot, index: false },
+	},
 };

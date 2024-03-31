@@ -1,5 +1,6 @@
 import { Footer } from './_components/layout';
 import { overpassClass } from '@/styles/fonts';
+import { sharedRobots } from '@/data/metadata';
 
 import { PropsWithChildren } from 'react';
 
@@ -30,4 +31,5 @@ export const metadata = {
 	],
 	creator: 'Nicolas Vo',
 	category: 'software',
+	robots: sharedRobots,
 };
