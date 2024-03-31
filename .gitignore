@@ -45,3 +45,4 @@ next-env.d.ts
 src/lib/dev
 src/pages/dev
 src/components/dev
+src/app/dev
