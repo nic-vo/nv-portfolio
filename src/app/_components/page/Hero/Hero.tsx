@@ -32,7 +32,7 @@ const generateCrosses = unstable_cache(
 );
 
 const Hero = async () => {
-	const pair = await generateCrosses(20);
+	const pair = await generateCrosses(24);
 	return (
 		<header
 			className='flex flex-col items-center justify-center w-full h-svh z-10 bg-[linear-gradient(black,transparent_80%)]'
