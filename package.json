@@ -1,24 +1,19 @@
 {
 	"name": "nv-portfolio",
-	"version": "1.6.0",
+	"version": "2.0.0",
 	"private": true,
 	"scripts": {
 		"dev": "next dev",
 		"build": "next build",
 		"start": "next start",
-		"lint": "next lint",
-		"homepagethumbs": "node ./lib/dev/homepagethumbs.mjs",
-		"bbgcthumbs": "node ./lib/dev/bbgcthumbs.mjs",
-		"portfoliothumbs": "node ./lib/dev/portfoliothumbs.mjs",
-		"mytesting": "node ./lib/dev/mytesting.mjs",
-		"lofithumbs": "node ./lib/dev/lofithumbs.mjs"
+		"lint": "next lint"
 	},
 	"dependencies": {
 		"@svgr/webpack": "~8",
 		"isomorphic-dompurify": "~2",
 		"marked": "~9",
 		"mongoose": "~7",
-		"next": "~14",
+		"next": "^14.1.4",
 		"nodemailer": "~6",
 		"react": "~18",
 		"react-dom": "~18",
@@ -38,11 +33,12 @@
 		"eslint-config-next": "~14",
 		"postcss": "~8.4.37",
 		"prettier": "3.2.5",
+		"prettier-plugin-tailwindcss": "~0.5.12",
 		"puppeteer": "~21",
 		"sharp": "~0.33",
 		"tailwindcss": "~3.4.1",
 		"ts-node": "~10",
-		"typescript": "~5"
+		"typescript": "<=5.4.0"
 	},
 	"packageManager": "yarn@4.1.1"
 }
