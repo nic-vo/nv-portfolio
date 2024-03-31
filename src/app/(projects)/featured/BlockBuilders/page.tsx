@@ -1,8 +1,11 @@
 import ProjectInfo, {
 	getProjectDescription,
 } from '../../_components/page/parts';
+import { sharedOGData } from '@/data/metadata';
 
 const title = 'Block Builders General Contracting, Inc.';
+const description =
+	'A React SPA for a small construction contracting business serving Los Angeles.';
 
 const BlockBuildersPage = async () => {
 	const description = await getProjectDescription(__dirname);
@@ -20,4 +23,6 @@ export default BlockBuildersPage;
 
 export const metadata = {
 	title,
+	description,
+	openGraph: { ...sharedOGData, title, description },
 };

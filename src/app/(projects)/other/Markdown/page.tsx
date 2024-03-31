@@ -1,8 +1,11 @@
 import ProjectInfo, {
 	getProjectDescription,
 } from '../../_components/page/parts';
+import { sharedOGData } from '@/data/metadata';
 
 const title = 'A Markdown Editor';
+const description =
+	'A simple React tool for editing, live previewing, and downloading Markdown files';
 
 const MarkdownPage = async () => {
 	const description = await getProjectDescription(__dirname);
@@ -18,4 +21,8 @@ const MarkdownPage = async () => {
 
 export default MarkdownPage;
 
-export const metadata = { title };
+export const metadata = {
+	title,
+	description,
+	openGraph: { ...sharedOGData, title, description },
+};

@@ -1,8 +1,11 @@
 import ProjectInfo, {
 	getProjectDescription,
 } from '../../_components/page/parts';
+import { sharedOGData } from '@/data/metadata';
 
 const title = 'A Lofi Cafe / Radio Station';
+const description =
+	'An early prototype for a guided meditation experience / app';
 
 const LofiCafePage = async () => {
 	const description = await getProjectDescription(__dirname);
@@ -18,4 +21,8 @@ const LofiCafePage = async () => {
 
 export default LofiCafePage;
 
-export const metadata = { title };
+export const metadata = {
+	title,
+	description,
+	openGraph: { ...sharedOGData, title, description },
+};

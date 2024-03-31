@@ -20,4 +20,14 @@ export default RootLayout;
 
 export const metadata = {
 	metadataBase: new URL('https://nicvo.dev'),
+	keywords: [
+		'Front end',
+		'React',
+		'Next.js',
+		'Full stack',
+		'Developer',
+		'TypeScript',
+	],
+	creator: 'Nicolas Vo',
+	category: 'software',
 };

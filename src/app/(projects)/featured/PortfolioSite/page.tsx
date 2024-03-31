@@ -1,8 +1,10 @@
 import ProjectInfo, {
 	getProjectDescription,
 } from '../../_components/page/parts';
+import { sharedOGData } from '@/data/metadata';
 
-const title = 'My Portfolio Site, v. 1.0';
+const title = 'My Portfolio Site, v. 2.x';
+const description = 'A Next 14 endeavor';
 
 const PortfolioSitePage = async () => {
 	const description = await getProjectDescription(__dirname);
@@ -18,4 +20,8 @@ const PortfolioSitePage = async () => {
 
 export default PortfolioSitePage;
 
-export const metadata = { title };
+export const metadata = {
+	title,
+	description,
+	openGraph: { ...sharedOGData, title, description },
+};

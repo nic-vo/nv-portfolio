@@ -1,8 +1,11 @@
 import ProjectInfo, {
 	getProjectDescription,
 } from '../../_components/page/parts';
+import { sharedOGData } from '@/data/metadata';
 
 const title = 'A Calculator';
+const description =
+	'A simple React / JavaScript calculator with history functionality';
 
 const CalculatorPage = async () => {
 	const description = await getProjectDescription(__dirname);
@@ -18,4 +21,8 @@ const CalculatorPage = async () => {
 
 export default CalculatorPage;
 
-export const metadata = { title };
+export const metadata = {
+	title,
+	description,
+	openGraph: { ...sharedOGData, title, description },
+};
