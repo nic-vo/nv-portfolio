@@ -2,14 +2,14 @@ import {
 	useContext,
 	PointerEventHandler,
 	ChangeEventHandler,
-	useMemo
+	useMemo,
 } from 'react';
 import {
 	FaVolumeMute,
 	FaStop,
 	FaMusic,
 	FaVolumeUp,
-	FaVolumeOff
+	FaVolumeOff,
 } from 'react-icons/fa';
 import ContentContext from '../ContentContext/ContentContext';
 import PlayStateContext from '../PlayStateContext/PlayStateContext';
@@ -19,15 +19,14 @@ import controlLook from './ControlPanel.module.scss';
 
 const MasterSlider = () => {
 	const { masterVolume, newMasterVolume } = useContext(PlayStateContext);
-	console.log('render MASTER VOLUME')
 
 	const pointerUpHandler: PointerEventHandler<HTMLInputElement> = (e) => {
 		newMasterVolume(parseFloat(e.currentTarget.value));
-	}
+	};
 
 	const changeHandler: ChangeEventHandler<HTMLInputElement> = (e) => {
 		newMasterVolume(parseFloat(e.target.value));
-	}
+	};
 
 	return (
 		<label htmlFor='mVolume'>
@@ -40,18 +39,18 @@ const MasterSlider = () => {
 				step='0.05'
 				value={masterVolume}
 				onChange={changeHandler}
-				onPointerUp={pointerUpHandler} />
+				onPointerUp={pointerUpHandler}
+			/>
 		</label>
 	);
-}
+};
 
 const BankSlider = () => {
 	const { banks, activeBank, changeActiveBank } = useContext(ContentContext);
-	console.log('render BANK CHANGE')
 
 	const bankOnChangeHandler: ChangeEventHandler<HTMLInputElement> = (e) => {
 		changeActiveBank(parseInt(e.target.value));
-	}
+	};
 
 	return (
 		<label htmlFor='bank'>
@@ -63,16 +62,16 @@ const BankSlider = () => {
 				max={banks.length - 1}
 				step='1'
 				value={activeBank}
-				onChange={bankOnChangeHandler} />
+				onChange={bankOnChangeHandler}
+			/>
 		</label>
 	);
-}
+};
 
 const Display = () => {
 	const { displaySound } = useContext(PlayStateContext);
 	const { banks, activeBank } = useContext(ContentContext);
 	return useMemo(() => {
-		console.log('render DISPLAY')
 		return (
 			<div className={controlLook.display}>
 				<p className={controlLook.bankName}>{banks[activeBank]}:</p>
@@ -80,7 +79,7 @@ const Display = () => {
 			</div>
 		);
 	}, [displaySound, activeBank]);
-}
+};
 
 const MuteAllButton = () => {
 	const { muteAll, toggleMuteAll } = useContext(PlayStateContext);
@@ -92,11 +91,9 @@ const MuteAllButton = () => {
 			{muteAll === true ? <FaVolumeMute /> : <FaVolumeOff />}
 		</button>
 	);
-}
+};
 
-const ControlPanel = (props: {
-	stopAllHandler: () => void,
-}) => {
+const ControlPanel = (props: { stopAllHandler: () => void }) => {
 	// This component sets master volume and active sound bank; also displays them in a stylized screen
 	const { stopAllHandler } = props;
 
@@ -119,6 +116,6 @@ const ControlPanel = (props: {
 			</div>
 		</div>
 	);
-}
+};
 
 export default ControlPanel;

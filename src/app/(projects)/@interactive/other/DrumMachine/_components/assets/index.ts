@@ -43,7 +43,6 @@ const getBankNames = async () => {
 };
 
 const getSoundList = async (allBanks: string[]) => {
-	console.log(allBanks);
 	// Return an array where each bank name
 	const soundsWithPaths = await Promise.all(
 		allBanks.map(async (bank) => {
