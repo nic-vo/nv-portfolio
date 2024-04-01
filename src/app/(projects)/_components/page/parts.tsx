@@ -5,8 +5,15 @@ import { parse } from 'marked';
 import { poppinsClass } from '@/styles/fonts';
 import look from './ProjectInfo.module.scss';
 
-export const getProjectDescription = async (relativePath: string) => {
-	const replaceWithSrc = relativePath.split('\\').slice(-4);
+type ProjectInfo = {
+	title?: string;
+	slugline?: string;
+	link?: string;
+	techs?: string[];
+};
+
+export const getProjectDescription = async (absolutePath: string) => {
+	const replaceWithSrc = absolutePath.split('\\').slice(-4);
 	const mdPath = path.join(
 		process.cwd(),
 		'src',
@@ -15,6 +22,20 @@ export const getProjectDescription = async (relativePath: string) => {
 	);
 	const buffer = await fs.readFile(mdPath, { encoding: 'utf-8' });
 	return await parse(buffer, { async: true });
+};
+
+export const getProjectInfo = async (
+	absolutePath: string,
+): Promise<ProjectInfo> => {
+	const replaceWithSrc = absolutePath.split('\\').slice(-4);
+	const jsonPath = path.join(
+		process.cwd(),
+		'src',
+		...replaceWithSrc,
+		'info.json',
+	);
+	const buffer = await fs.readFile(jsonPath, { encoding: 'utf-8' });
+	return await JSON.parse(buffer);
 };
 
 const ProjectInfo = (props: {
