@@ -1,18 +1,23 @@
 import ProjectInfo, {
 	getProjectDescription,
+	getProjectInfo,
 } from '../../_components/page/parts';
 import { sharedOGData } from '@/data/metadata';
 
-const title = 'My Portfolio Site, v. 2.x';
-const description = 'A Next 14 endeavor';
-
 const PortfolioSitePage = async () => {
-	const description = await getProjectDescription(__dirname);
+	const [description, info] = await Promise.all([
+		getProjectDescription(__dirname),
+		getProjectInfo(__dirname),
+	]);
+	const { title, link, techs } = info;
+	if (!title || !link || !techs || !description)
+		throw new Error('PortfolioSite missing info');
+
 	return (
 		<ProjectInfo
 			title={title}
-			link={'https://nicvo.dev'}
-			techs={['Next 14', 'React', 'TailwindCSS', 'Sass', 'Node.js']}
+			link={link}
+			techs={techs}
 			description={description}
 		/>
 	);
@@ -20,8 +25,14 @@ const PortfolioSitePage = async () => {
 
 export default PortfolioSitePage;
 
-export const metadata = {
-	title,
-	description,
-	openGraph: { ...sharedOGData, title, description },
-};
+export async function generateMetadata() {
+	const info = await getProjectInfo(__dirname);
+	const { title, slugline: description } = info;
+	if (!title || !description)
+		throw new Error('PortfolioSite metadata generation failed');
+	return {
+		title,
+		description,
+		openGraph: { ...sharedOGData, title, description },
+	};
+}

@@ -1,0 +1,12 @@
+{
+	"title": "My Portfolio Site, v. 2.x",
+	"slugline": "An endeavor in Next 14 and TailwindCSS.",
+	"link": "https://nicvo.dev",
+	"techs": [
+		"Next 14",
+		"React",
+		"TailwindCSS",
+		"SCSS",
+		"Node.js"
+	]
+}

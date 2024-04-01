@@ -1,0 +1,12 @@
+{
+	"title": "A Lofi Cafe / Radio Station",
+	"slugline": "An early prototype for a guided meditation experience / app",
+	"link": "https://lofi-cafe.vercel.app",
+	"techs": [
+		"React",
+		"CSS3",
+		"Next 13",
+		"Sass",
+		"Webhooks"
+	]
+}

@@ -1,0 +1,13 @@
+{
+	"title": "MixDelta - Spotify Playlist Tool",
+	"slugline": "A tool for Spotify users to make bulk comparisons and changes to their playlists.",
+	"link": "https://mixdelta.vercel.app",
+	"techs": [
+		"Next 13",
+		"React",
+		"Redux",
+		"Sass",
+		"MongoDB",
+		"Redis"
+	]
+}

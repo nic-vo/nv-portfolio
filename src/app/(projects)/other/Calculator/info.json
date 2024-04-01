@@ -1,0 +1,9 @@
+{
+	"title": "A Calculator",
+	"slugline": "A simple React / JavaScript calculator with history functionality",
+	"link": "https://codepen.io/jungle_cone/pen/VwMdemx",
+	"techs": [
+		"React",
+		"CSS3"
+	]
+}

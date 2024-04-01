@@ -1,0 +1,9 @@
+{
+	"title": "A Markdown Editor",
+	"slugline": "A simple React tool for editing, live previewing, and downloading Markdown files",
+	"link": "https://codepen.io/jungle_cone/pen/mdMpGvY",
+	"techs": [
+		"React",
+		"CSS3"
+	]
+}

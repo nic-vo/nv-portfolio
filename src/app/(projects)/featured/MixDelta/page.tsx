@@ -1,19 +1,23 @@
 import ProjectInfo, {
 	getProjectDescription,
+	getProjectInfo,
 } from '../../_components/page/parts';
 import { sharedOGData } from '@/data/metadata';
 
-const title = 'MixDelta - Spotify Playlist Tool';
-const description =
-	'A tool for Spotify users to make bulk comparisons and changes to their playlists.';
-
 const MixDeltaPage = async () => {
-	const description = await getProjectDescription(__dirname);
+	const [description, info] = await Promise.all([
+		getProjectDescription(__dirname),
+		getProjectInfo(__dirname),
+	]);
+	const { title, link, techs } = info;
+	if (!title || !link || !techs || !description)
+		throw new Error('MixDelta missing info');
+
 	return (
 		<ProjectInfo
 			title={title}
-			link={'https://mixdelta.vercel.app'}
-			techs={['Next 13', 'React', 'Redux', 'Sass', 'MongoDB', 'Redis']}
+			link={link}
+			techs={techs}
 			description={description}
 		/>
 	);
@@ -21,8 +25,14 @@ const MixDeltaPage = async () => {
 
 export default MixDeltaPage;
 
-export const metadata = {
-	title,
-	description,
-	openGraph: { ...sharedOGData, title, description },
-};
+export async function generateMetadata() {
+	const info = await getProjectInfo(__dirname);
+	const { title, slugline: description } = info;
+	if (!title || !description)
+		throw new Error('MixDelta metadata generation failed');
+	return {
+		title,
+		description,
+		openGraph: { ...sharedOGData, title, description },
+	};
+}

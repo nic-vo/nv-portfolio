@@ -1,6 +1,6 @@
 ## About
 
-This is my personal portfolio site, representing my first huge foray into a modern framework. I learned a lot about both server-side and front-end development by implementing a number of features.
+This is my personal portfolio site, representing my first huge foray into a modern framework. I learned a lot about both server-side and front-end development by implementing a number of features. I learned even more rewriting my portfolio the Next 14 App router from the Pages router.
 
 ## List of notable features:
 
