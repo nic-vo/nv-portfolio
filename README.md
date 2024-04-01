@@ -4,6 +4,13 @@ This is a Next.js App router endeavor!
 
 ## CHANGELOG
 
+### 2.1.0
+
+- Colocate props for projects
+- Expand metadata for pages
+  - Nest and override where appropriate
+- Adjust default pages
+
 ### 2.0.0
 
 - Convert to Next 14 App router
