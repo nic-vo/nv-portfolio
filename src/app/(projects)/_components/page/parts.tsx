@@ -12,12 +12,13 @@ type ProjectInfo = {
 	techs?: string[];
 };
 
-export const getProjectDescription = async (absolutePath: string) => {
-	const replaceWithSrc = absolutePath.split('\\').slice(-4);
+export const getProjectDescription = async (pathSegments: string[]) => {
 	const mdPath = path.join(
 		process.cwd(),
 		'src',
-		...replaceWithSrc,
+		'app',
+		'(projects)',
+		...pathSegments,
 		'description.md',
 	);
 	const buffer = await fs.readFile(mdPath, { encoding: 'utf-8' });
@@ -25,13 +26,14 @@ export const getProjectDescription = async (absolutePath: string) => {
 };
 
 export const getProjectInfo = async (
-	absolutePath: string,
+	pathSegments: string[],
 ): Promise<ProjectInfo> => {
-	const replaceWithSrc = absolutePath.split('\\').slice(-4);
 	const jsonPath = path.join(
 		process.cwd(),
 		'src',
-		...replaceWithSrc,
+		'app',
+		'(projects)',
+		...pathSegments,
 		'info.json',
 	);
 	const buffer = await fs.readFile(jsonPath, { encoding: 'utf-8' });
