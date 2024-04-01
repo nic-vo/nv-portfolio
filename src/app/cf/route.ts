@@ -1,17 +1,13 @@
+import { NextRequest } from 'next/server';
 import { htmlStringer, plaintextStringer, validator } from './_lib';
 
-import { NextApiRequest, NextApiResponse } from 'next';
-
-const formHandler = async (req: NextApiRequest, res: NextApiResponse) => {
-	if (req.method !== 'POST') {
-		return res.status(405).json({ message: 'Method not allowed' });
-	}
-
-	const parsed = validator(req.body);
+export async function POST(req: NextRequest) {
+	const json = await req.json();
+	const parsed = validator(json);
 
 	// Data validation
 	if (parsed === false) {
-		return res.status(404).json({ message: 'Not found' });
+		return Response.json({ message: 'Not found' }, { status: 404 });
 	}
 
 	// ReCAPTCHA validation
@@ -25,14 +21,15 @@ const formHandler = async (req: NextApiRequest, res: NextApiResponse) => {
 		ReCAPTCHAData['error-codes'] !== undefined &&
 		ReCAPTCHAData['error-codes'].includes('timeout-or-duplicate') === true
 	) {
-		return res
-			.status(502)
-			.json({ message: 'ReCAPTCHA response expired. Please submit again.' });
+		return Response.json(
+			{ message: 'ReCAPTCHA response expired. Please submit again.' },
+			{ status: 502 },
+		);
 	}
 	// If request fails at network level?
 	// Arbritrary score indicaitng bot?
 	if (ReCAPTCHAData.score < 0.3 || ReCAPTCHAData.success === false) {
-		return res.status(404).json({ message: 'Not found' });
+		return Response.json({ message: 'Not found' }, { status: 404 });
 	}
 
 	// Emailer
@@ -52,9 +49,10 @@ const formHandler = async (req: NextApiRequest, res: NextApiResponse) => {
 	// Unknown if this works
 	transport.verify((error: any, success: any) => {
 		if (error) {
-			return res
-				.status(502)
-				.json({ message: 'Server error. Submit your info again.' });
+			return Response.json(
+				{ message: 'Server rror. Submit your info again.' },
+				{ status: 502 },
+			);
 		}
 	});
 	// Send both plaintext and HTML; HTML from stringer function
@@ -67,13 +65,13 @@ const formHandler = async (req: NextApiRequest, res: NextApiResponse) => {
 	};
 	const sendResult = await transport.sendMail(emailMessage);
 	if (sendResult.err) {
-		return res
-			.status(502)
-			.json({ message: 'Server error. Submit your info again.' });
+		return Response.json(
+			{ message: 'Server rror. Submit your info again.' },
+			{ status: 502 },
+		);
 	}
-	return res
-		.status(200)
-		.json({ message: `Received. An email confirmation should arrive soon.` });
-};
-
-export default formHandler;
+	return Response.json(
+		{ message: `Received. An email confirmation should arrive soon.` },
+		{ status: 201 },
+	);
+}
