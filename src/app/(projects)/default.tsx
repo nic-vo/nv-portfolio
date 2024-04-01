@@ -1,13 +1,17 @@
-import { poppinsClass } from '@/styles/fonts';
+import Link from 'next/link';
 
 const ProjectPageDefault = () => {
 	return (
-		<div className='h-full w-full flex flex-col justify-center items-center text-red-500 *:m-0'>
-			<h2 className={poppinsClass.className + ' font-bold text-9xl'}>WIP</h2>
-			<p className='font-light text-6xl'>
-				This page hasn&apos;t been implemented yet
-			</p>
-		</div>
+		<section className='h-svh w-full flex flex-col justify-center items-center text-red-500 *:m-0 gap-8'>
+			<h1>
+				This project description is missing or hasn&apos;t implemented yet
+			</h1>
+			<Link
+				href='/'
+				className='text-black p-4 bg-white rounded-full cursor-pointer'>
+				Return home
+			</Link>
+		</section>
 	);
 };
 
