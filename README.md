@@ -4,6 +4,10 @@ This is a Next.js App router endeavor!
 
 ## CHANGELOG
 
+### 2.1.1
+
+- Refactor contact form route
+
 ### 2.1.0
 
 - Colocate props for projects
