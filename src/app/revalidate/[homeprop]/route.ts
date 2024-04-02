@@ -1,3 +1,4 @@
+import { heroCrossesTag } from '@/app/_components/page/Hero/Hero';
 import { revalidateTag } from 'next/cache';
 import { NextRequest } from 'next/server';
 
@@ -11,11 +12,9 @@ export async function OPTIONS(
 	const {
 		HOMEPAGE_PROP_SAFE_ORIGIN: allowOrigin,
 		NEXT_PUBLIC_HOMEPAGE_PROP_URL: obfus,
-		HOOK_IP: allowIP,
 	} = process.env;
+	console.log(requestHeaders.get('origin'));
 	if (
-		!allowIP ||
-		request.ip !== allowIP ||
 		!homeprop ||
 		!obfus ||
 		homeprop !== obfus ||
@@ -46,21 +45,17 @@ export async function POST(
 	const {
 		HOMEPAGE_PROP_SAFE_ORIGIN: allowOrigin,
 		NEXT_PUBLIC_HOMEPAGE_PROP_URL: obfus,
-		HOOK_IP: allowIP,
 		NEXT_PUBLIC_HOMEPAGE_PROP_SECRET: secret,
 	} = process.env;
 
 	if (
-		process.env.NODE_ENV !== 'development' &&
-		(!allowIP ||
-			request.ip !== allowIP ||
-			!homeprop ||
-			!obfus ||
-			homeprop !== obfus ||
-			!allowOrigin ||
-			allowOrigin !== origin ||
-			!authorization ||
-			authorization !== secret)
+		!homeprop ||
+		!obfus ||
+		homeprop !== obfus ||
+		!allowOrigin ||
+		allowOrigin !== origin ||
+		!authorization ||
+		authorization !== secret
 	)
 		return new Response('Server error', {
 			status: 500,
@@ -69,11 +64,19 @@ export async function POST(
 	await new Promise((r) => setTimeout(r, 3000));
 
 	try {
-		revalidateTag('hero-particle-coords');
+		revalidateTag(heroCrossesTag);
 	} catch {
 		return new Response('Error revalidating', { status: 500 });
 	}
-	return new Response('Revalidated', { status: 201 });
+
+	return new Response('Revalidated', {
+		status: 201,
+		headers: {
+			'Access-Control-Allow-Origin': allowOrigin,
+			'Access-Control-Allow-Methods': 'POST, OPTIONS',
+			'Access-Control-Allow-Headers': 'Authorization',
+		},
+	});
 }
 
 export const dynamic = 'force-dynamic';
