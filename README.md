@@ -4,6 +4,17 @@ This is a Next.js App router endeavor!
 
 ## CHANGELOG
 
+### 2.2.0
+
+- Update Hero with parallax effect
+- Fix mobile widths
+- Make Header read colocated .json files
+- Add new info to Nav links
+
+### 2.1.2
+
+- Make prop getters root dir agnostic
+
 ### 2.1.1
 
 - Refactor contact form route
