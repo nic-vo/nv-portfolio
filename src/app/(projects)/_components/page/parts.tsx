@@ -74,7 +74,7 @@ const ProjectInfo = (props: {
 				}
 				dangerouslySetInnerHTML={{ __html: description }}
 			/>
-			<section className='flex font-bold gap-4 w-11/12 justify-center max-w-prose border-b-2 border-white pb-8'>
+			<section className='flex font-bold gap-4 w-11/12 justify-center max-w-prose pb-8 mb-16'>
 				<h2 className={poppinsClass.className + ' text-3xl'}>
 					Link to original:
 				</h2>

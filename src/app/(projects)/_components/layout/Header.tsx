@@ -63,7 +63,9 @@ const Header = (props: { children: React.ReactNode }) => {
 						role='presentation'
 					/>
 				)}
-				<span className={look.hidden}>Return home</span>
+				<span className={look.hidden}>
+					{toggled ? 'Close' : 'Open'} nav menu
+				</span>
 			</button>
 			<div
 				onPointerDown={toggleHandler}

@@ -22,7 +22,7 @@ const Footer = async () => {
 
 	return (
 		<footer
-			className='flex flex-col items-center w-full h-svh py-24 bg-[linear-gradient(transparent,black)]'
+			className='flex flex-col items-center w-full min-h-lvh py-24 bg-[linear-gradient(transparent,black)]'
 			id='footer'>
 			<ContactForm />
 			<div className='flex text-4xl gap-4 p-4'>

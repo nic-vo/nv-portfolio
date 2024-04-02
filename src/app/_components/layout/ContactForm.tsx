@@ -78,7 +78,7 @@ const ContactForm = () => {
 	const disableToggle =
 		formState === 'PENDING' || (formState === 'DONE' && status === 200);
 	const responseIcon =
-		status === 200 ? (
+		status && status < 300 ? (
 			<FaCheckCircle style={{ color: 'mediumseagreen' }} />
 		) : (
 			<FaExclamationCircle style={{ color: 'firebrick' }} />
@@ -124,7 +124,7 @@ const ContactForm = () => {
 								required
 								className={
 									jbMonoClass.className +
-									' focus:rounded-3xl justify-self-start w-full border-0 p-4 border-b-white border-b-4 bg-transparent outline-0 text-base text-white font-normal focus:bg-white focus:text-black placeholder:focus:text-black transition-all h-full outline-none'
+									' justify-self-start w-full border-4 p-4 border-transparent border-b-white border-b-4 bg-transparent outline-0 text-base text-white font-normal focus:bg-white focus:text-black placeholder:focus:text-black transition-all h-full outline-none invalid:text-rose-500 invalid:border-rose-500 invalid:focus:bg-rose-200'
 								}
 							/>
 						</label>
@@ -143,7 +143,7 @@ const ContactForm = () => {
 								required
 								className={
 									jbMonoClass.className +
-									' focus:rounded-3xl justify-self-start w-full border-0 p-4 border-b-white border-b-4 bg-transparent outline-0 text-base text-white font-normal focus:bg-white focus:text-black placeholder:focus:text-black transition-all h-full outline-none'
+									' justify-self-start w-full border-4 p-4 border-transparent border-b-white bg-transparent outline-0 text-base text-white font-normal focus:bg-white focus:text-black placeholder:focus:text-black transition-all h-full outline-none invalid:text-rose-500 invalid:border-rose-500 invalid:focus:bg-rose-200'
 								}
 							/>
 						</label>
@@ -185,20 +185,20 @@ const ContactForm = () => {
 							</button>
 						)}
 					</div>
+					<div className='flex items-center justify-center min-h-32 w-4/5 text-xl '>
+						{formState === 'PENDING' && (
+							<Spinner>
+								<FaMinus className='text-9xl' />
+							</Spinner>
+						)}
+						{formState === 'DONE' && responseIcon}
+						{message !== null && (
+							<p className={'text-center p-0 m-0 ml-4 ' + cLook.responseMesg}>
+								{message}
+							</p>
+						)}
+					</div>
 				</form>
-				<div className='flex items-center justify-center h-full w-4/5 text-xl '>
-					{formState === 'PENDING' && (
-						<Spinner>
-							<FaMinus className='text-9xl' />
-						</Spinner>
-					)}
-					{formState === 'DONE' && responseIcon}
-					{message !== null && (
-						<p className={'text-center p-0 m-0 ml-4 ' + cLook.responseMesg}>
-							{message}
-						</p>
-					)}
-				</div>
 			</section>
 		</>
 	);
