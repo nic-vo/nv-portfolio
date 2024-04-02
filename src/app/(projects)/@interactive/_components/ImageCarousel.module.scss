@@ -1,0 +1,205 @@
+@use '@/styles/globalStyles.module.scss' as global;
+
+.container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	width: 80%;
+	height: 70%;
+	max-width: 1200px;
+}
+
+@media (min-aspect-ratio:1) {
+	.container {
+		height: 50%;
+	}
+}
+
+.instructions {
+	font-family: Overpass, sans-serif;
+	font-weight: lighter;
+	font-size: 1.4rem;
+	text-align: center;
+}
+
+.preview {
+	position: fixed;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	backdrop-filter: brightness(0.01) blur(10px);
+	z-index: 3;
+}
+
+.previewImg {
+	position: absolute;
+	width: 90%;
+	left: 5%;
+	height: auto;
+	border-radius: 5px;
+	z-index: 2;
+	animation-name: pImgFadeIn;
+	animation-duration: 0.5s;
+	animation-timing-function: ease-in-out;
+	animation-fill-mode: both;
+}
+
+@media (min-aspect-ratio: 1) {
+	.previewImg {
+		position: relative;
+		z-index: 2;
+		left: 0;
+		height: 80%;
+		width: auto;
+	}
+}
+
+@keyframes pImgFadeIn {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+.ringContainer {
+	flex-shrink: 1;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	gap: 16px;
+}
+
+@media (min-aspect-ratio: 1) {
+	.ringContainer {
+		height: 50%;
+	}
+}
+
+.ringExposed {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	scrollbar-width: thin;
+	overflow: auto;
+	height: 100%;
+	padding: 16px;
+	gap: 4svw;
+	z-index: 1;
+}
+
+@media (min-aspect-ratio: 1) {
+	.ringExposed {
+		display: flex;
+		flex-direction: row;
+		height: 100%;
+		width: 100%;
+	}
+}
+
+.smallThumb {
+	flex-shrink: 0;
+	cursor: pointer;
+	border-radius: 8px;
+	width: 100%;
+
+	img {
+		border-radius: 8px;
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+}
+
+@media (min-aspect-ratio: 1) {
+	.smallThumb {
+		height: 100%;
+		width: max-content;
+
+		img {
+			height: 100%;
+		}
+	}
+}
+
+.button,
+.buttonReturner {
+	cursor: pointer;
+	background-color: global.$Black;
+	color: global.$White;
+	padding: 0.8em;
+	border-radius: 50%;
+	border: 2px solid global.$White;
+	transition: color var(--fast-transition), background-color var(--fast-transition);
+	transition-timing-function: ease-in-out;
+}
+
+.button {
+	display: none;
+}
+
+@media (min-aspect-ratio: 1) {
+	.button {
+		display: block;
+		z-index: 2;
+	}
+}
+
+.button:hover,
+.buttonReturner:hover,
+.button:focus,
+.buttonReturner:focus {
+	color: global.$Black;
+	background-color: global.$White;
+}
+
+.button svg {
+	display: block;
+	margin: auto;
+	font-size: 2em;
+}
+
+.preview .button {
+	display: block;
+	position: relative;
+	z-index: 3;
+	margin: 8%;
+	padding: 0.5em;
+}
+
+@media (min-aspect-ratio: 1) {
+	.preview .button {
+		position: relative;
+		margin: 4em;
+	}
+}
+
+.buttonReturner {
+	position: absolute;
+	top: 2em;
+	left: 2em;
+	z-index: 3;
+
+	svg {
+		display: block;
+		margin: auto;
+		font-size: 2em;
+		rotate: 45deg;
+	}
+}
+
+@media (min-aspect-ratio: 1) {
+	.buttonReturner {
+		top: 4em;
+		left: 4em;
+	}
+}

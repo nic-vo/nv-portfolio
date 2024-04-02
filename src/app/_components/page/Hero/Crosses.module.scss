@@ -1,0 +1,103 @@
+.animated,
+.static {
+	transform-style: flat;
+	animation-name: twinkling;
+	animation-fill-mode: both;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-out;
+}
+
+.static {
+	display: none;
+}
+
+@keyframes twinkling {
+	0% {
+		opacity: 0;
+	}
+
+	25% {
+		opacity: 0.4;
+	}
+
+	50% {
+		opacity: 0.0;
+	}
+
+	75% {
+		opacity: 0.4;
+	}
+
+	100% {
+		opacity: 0;
+	}
+}
+
+@media (min-aspect-ratio: 1) {
+	.animated {
+		animation-name: focusing;
+		transform-style: preserve-3d;
+	}
+
+	.static {
+		display: block;
+		animation-iteration-count: infinite;
+		animation-fill-mode: both;
+		animation-name: none;
+	}
+}
+
+@keyframes focusing {
+	0% {
+		transform: translateZ(300px);
+		opacity: 0;
+		filter: blur(10px) brightness(0);
+	}
+
+	5% {
+		opacity: 0;
+	}
+
+	45% {
+		opacity: 1;
+
+	}
+
+	50% {
+		filter: blur(0px) brightness(1);
+	}
+
+	55% {
+		opacity: 1;
+	}
+
+	100% {
+		transform: translateZ(-300px);
+		opacity: 0;
+		filter: blur(20px) brightness(0);
+	}
+}
+
+@keyframes wiggle {
+	0% {
+		rotate: -45deg
+	}
+
+	50% {
+		rotate: 45deg
+	}
+
+	100% {
+		rotate: -45deg
+	}
+}
+
+.activate3d {
+	transform-style: preserve-3d;
+}
+
+@media (min-aspect-ratio: 1) {
+	.activate3d {
+		rotate: 0deg;
+	}
+}

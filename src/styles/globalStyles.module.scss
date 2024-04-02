@@ -1,0 +1,23 @@
+$Black: #0c1821;
+$White: #D6E5E3;
+$Green: #26A96C;
+$Blue: #4F7CAC;
+$slightlyDarker: rgba(0, 0, 0, 0.2);
+$slightlyLighter: rgba(48, 48, 48, 0.2);
+
+@mixin sectionContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-top: 10vh;
+	padding-bottom: 10vh;
+	width: 100%;
+}
+
+.hiddenAccess {
+	position: absolute;
+	display: block;
+	height: 0px;
+	width: 0px;
+	overflow: hidden;
+}
