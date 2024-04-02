@@ -13,6 +13,8 @@ export async function OPTIONS(
 		NEXT_PUBLIC_HOMEPAGE_PROP_URL: obfus,
 		HOOK_IP: allowIP,
 	} = process.env;
+	console.log(allowIP, request.ip);
+	console.log(requestHeaders.get('origin'));
 	if (
 		!allowIP ||
 		request.ip !== allowIP ||
