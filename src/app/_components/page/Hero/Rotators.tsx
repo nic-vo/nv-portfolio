@@ -26,7 +26,7 @@ export const HeaderTrackingRotate = (props: PropsWithChildren) => {
 		setY(parseFloat((e.pageX / right).toFixed(2)));
 		setX(parseFloat((e.pageY / bottom).toFixed(2)));
 		setRateLimit(true);
-		setTimeout(() => setRateLimit(false), 16.7);
+		setTimeout(() => setRateLimit(false), 17);
 	};
 
 	const disableHandler = () => {
