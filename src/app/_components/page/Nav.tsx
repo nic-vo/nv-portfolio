@@ -1,33 +1,44 @@
-import { getFeaturedPaths, getOtherPaths } from '../paths';
 import Link from 'next/link';
 import Image from 'next/image';
 import * as thumbs from '@/public/thumbs';
 import DefaultThumb from '@/public/thumbs/default';
+import { getFeaturedPaths, getOtherPaths } from '../paths';
+import { ProjectInfo } from '@/app/(projects)/_components/page/parts';
+import { FaArrowRight } from 'react-icons/fa';
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 
-import { latoClass } from '@/styles/fonts';
+import { poppinsClass } from '@/styles/fonts';
 
 const referenced = thumbs as Record<string, StaticImport | undefined>;
 
 const NavLink = async (props: {
 	root: string;
-	page: { title: string; segment: string };
+	page: { segment: string; data: ProjectInfo };
 }) => {
-	const { title, segment } = props.page;
+	const {
+		data: { title, slugline },
+		segment,
+	} = props.page;
 	return (
-		<li className='w-[40svh] h-[calc(40svh*3/4)] list-none transition-all justify-self-center bg-cover '>
+		<li className='w-[45svh] h-[calc(45svh*3/4)] list-none transition-all justify-self-center bg-cover '>
 			<Link
 				href={`${props.root}/${segment}`}
 				prefetch={false}
-				className='overflow-hidden h-full w-full flex justify-center items-center bg-transparent rounded-3xl p-4 text-white font-bold text-xl shadow-none hover:shadow-white hover:shadow-[0px_0px_20px_5px] focus:shadow-white focus:shadow-[0px_0px_20px_5px] transition-all first:*:hover:translate-y-[350%] first:*:focus:translate-y-[350%] before:bg-[linear-gradient(transparent,rgba(0,0,0,0.6),rgba(0,0,0,0.8))] before:content-[""] before:transition-all before:z-10 before:h-1/3 before:w-full before:absolute before:bottom-0 before:opacity-0 before:hover:opacity-100 before:focus:opacity-100 last:*:brightness-50 last:*:hover:brightness-100 last:*:focus:brightness-100'>
-				<span className='flex gap-2 transition-all z-20 drop-shadow-md border-b-2 border-white bg-transparent'>
+				className='overflow-hidden h-full w-full flex flex-col gap-4 justify-center items-center bg-transparent rounded-3xl p-8 text-white font-bold text-lg shadow-none border-8 border-slate-800 hover:border-white focus:border-white hover:shadow-white hover:shadow-[0px_0px_20px_5px] focus:shadow-white focus:shadow-[0px_0px_20px_5px] transition-all before:bg-[linear-gradient(transparent,rgba(0,0,0,0.6),rgba(0,0,0,0.8))] before:content-[""] before:transition-all before:z-10 before:h-1/3 before:w-full before:absolute before:bottom-0 before:opacity-100 before:hover:opacity-0 before:focus:opacity-0 group/navlink'>
+				<span className='z-20 drop-shadow-md border-b-2 border-white bg-transparent transition-all translate-y-[18svh] group-hover/navlink:translate-y-0 group-focus/navlink:translate-y-0 font-extrabold text-xl'>
 					{title}
+				</span>
+				<span className='z-20 drop-shadow-md bg-transparent transition-all opacity-0 group-hover/navlink:opacity-100 group-focus/navlink:opacity-100 font-light'>
+					{slugline}
+				</span>
+				<span className='z-20 drop-shadow-md bg-transparent transition-all opacity-0 group-hover/navlink:opacity-100 group-focus/navlink:opacity-100 flex items-center gap-2 *:block border-b-2 text-center font-light border-white'>
+					Details <FaArrowRight />
 				</span>
 				<Image
 					src={referenced[segment] ?? DefaultThumb}
 					alt={`Check out ${title}!`}
 					sizes='(max-aspect-ratio: 1) 100vw, 50vw'
-					className='absolute h-full w-auto transition-all max-w-none'
+					className='absolute h-full w-auto transition-all max-w-none group-hover/navlink:brightness-[0.15] group-focus/navlink:brightness-[0.15]'
 				/>
 			</Link>
 		</li>
@@ -40,9 +51,13 @@ const Nav = async () => {
 		getOtherPaths(),
 	]);
 	return (
-		<nav className='w-full py-48 px-16'>
-			<section className='flex flex-col items-center mb-48 gap-8'>
-				<h2 className={latoClass.className + ' text-4xl text-center font-bold'}>
+		<nav className='w-10/12'>
+			<section className='flex flex-col w-full items-center mb-48 gap-8'>
+				<h2
+					className={
+						poppinsClass.className +
+						' block p-4 bg-white text-black top-0 m-0 z-10 text-4xl text-center rounded-3xl'
+					}>
 					Featured Projects
 				</h2>
 				{featuredPaths.pages.length === 0 ? (
@@ -59,8 +74,12 @@ const Nav = async () => {
 					</ul>
 				)}
 			</section>
-			<section className='flex flex-col items-center mb-48'>
-				<h2 className={latoClass.className + ' text-4xl text-center font-bold'}>
+			<section className='flex flex-col items-center mb-48 gap-8'>
+				<h2
+					className={
+						poppinsClass.className +
+						' block p-4 bg-white text-black top-0 m-0 z-10 text-4xl text-center rounded-3xl'
+					}>
 					Other Projects
 				</h2>
 				{otherPaths.pages.length === 0 ? (
