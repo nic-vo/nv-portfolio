@@ -11,13 +11,9 @@ export async function OPTIONS(
 	const {
 		HOMEPAGE_PROP_SAFE_ORIGIN: allowOrigin,
 		NEXT_PUBLIC_HOMEPAGE_PROP_URL: obfus,
-		HOOK_IP: allowIP,
 	} = process.env;
-	console.log(allowIP, request.ip);
 	console.log(requestHeaders.get('origin'));
 	if (
-		!allowIP ||
-		request.ip !== allowIP ||
 		!homeprop ||
 		!obfus ||
 		homeprop !== obfus ||
@@ -48,15 +44,12 @@ export async function POST(
 	const {
 		HOMEPAGE_PROP_SAFE_ORIGIN: allowOrigin,
 		NEXT_PUBLIC_HOMEPAGE_PROP_URL: obfus,
-		HOOK_IP: allowIP,
 		NEXT_PUBLIC_HOMEPAGE_PROP_SECRET: secret,
 	} = process.env;
 
 	if (
 		process.env.NODE_ENV !== 'development' &&
-		(!allowIP ||
-			request.ip !== allowIP ||
-			!homeprop ||
+		(!homeprop ||
 			!obfus ||
 			homeprop !== obfus ||
 			!allowOrigin ||
