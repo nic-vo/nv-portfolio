@@ -4,6 +4,10 @@ This is a Next.js App router endeavor!
 
 ## CHANGELOG
 
+### 2.2.1
+
+- Remove svh to prevent layout shift on mobile
+
 ### 2.2.0
 
 - Update Hero with parallax effect
