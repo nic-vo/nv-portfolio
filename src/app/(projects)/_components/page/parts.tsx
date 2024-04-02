@@ -50,7 +50,10 @@ const ProjectInfo = (props: {
 
 	return (
 		<>
-			<h1 className={poppinsClass.className + ' text-6xl text-center'}>
+			<h1
+				className={
+					poppinsClass.className + ' text-6xl w-11/12 text-center max-w-prose'
+				}>
 				{title}
 			</h1>
 			<section className='flex gap-4 w-11/12 max-w-prose'>
