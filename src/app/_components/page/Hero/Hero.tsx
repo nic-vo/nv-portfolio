@@ -2,6 +2,8 @@ import Crosses from './Crosses';
 import { HeaderTrackingRotate, Headings } from './Rotators';
 import { unstable_cache } from 'next/cache';
 
+export const heroCrossesTag = 'hero-particle-coords';
+
 const generateCrosses = unstable_cache(
 	async (limit: number) => {
 		const calculator = () => {
@@ -31,7 +33,7 @@ const generateCrosses = unstable_cache(
 
 		return [initer, frontStaticIniter, rearStaticIniter];
 	},
-	['hero-particle-coords'],
+	[heroCrossesTag],
 	{ revalidate: false },
 );
 
