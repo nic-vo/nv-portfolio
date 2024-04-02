@@ -1,10 +1,14 @@
 .animated,
 .static {
-	transform-style: flat;
+	transform-style: preserve-3d;
 	animation-name: twinkling;
 	animation-fill-mode: both;
 	animation-iteration-count: infinite;
 	animation-timing-function: ease-out;
+}
+
+.animated {
+	display: block;
 }
 
 .static {
@@ -36,14 +40,11 @@
 @media (min-aspect-ratio: 1) {
 	.animated {
 		animation-name: focusing;
-		transform-style: preserve-3d;
 	}
 
 	.static {
 		display: block;
-		animation-iteration-count: infinite;
-		animation-fill-mode: both;
-		animation-name: none;
+		animation-name: wiggle;
 	}
 }
 
@@ -80,24 +81,19 @@
 
 @keyframes wiggle {
 	0% {
-		rotate: -45deg
+		transalte: 0 0 -10px
 	}
 
 	50% {
-		rotate: 45deg
+		transalte: 0 0 10px
 	}
 
 	100% {
-		rotate: -45deg
+		transalte: 0 0 -10px
 	}
 }
 
 .activate3d {
 	transform-style: preserve-3d;
-}
-
-@media (min-aspect-ratio: 1) {
-	.activate3d {
-		rotate: 0deg;
-	}
+	transform: translateZ(-2px)
 }

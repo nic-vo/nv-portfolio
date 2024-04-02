@@ -12,10 +12,10 @@ const MouseRotateContext = createContext<{ x: number; y: number }>({
 	y: 0.5,
 });
 
-export const degrees = 12;
+export const degrees = 15;
 
 export const HeaderTrackingRotate = (props: PropsWithChildren) => {
-	const [deactivate, setDeactivate] = useState<boolean>(false);
+	const [deactivate, setDeactivate] = useState<boolean>(true);
 	const [rateLimit, setRateLimit] = useState<boolean>(false);
 	const [x, setX] = useState(0.5);
 	const [y, setY] = useState(0.5);
@@ -26,7 +26,7 @@ export const HeaderTrackingRotate = (props: PropsWithChildren) => {
 		setY(parseFloat((e.pageX / right).toFixed(2)));
 		setX(parseFloat((e.pageY / bottom).toFixed(2)));
 		setRateLimit(true);
-		setTimeout(() => setRateLimit(false), 17);
+		setTimeout(() => setRateLimit(false), Math.ceil(1000 / 40));
 	};
 
 	const disableHandler = () => {
@@ -41,7 +41,7 @@ export const HeaderTrackingRotate = (props: PropsWithChildren) => {
 
 	return (
 		<header
-			className='flex flex-col items-center justify-center w-full min-h-svh z-10 bg-[linear-gradient(black,transparent_80%)] overflow-hidden'
+			className='flex flex-col items-center justify-center w-full min-h-svh z-10 bg-[linear-gradient(black,transparent_80%)]'
 			style={{
 				perspective: '400px',
 			}}
@@ -51,9 +51,9 @@ export const HeaderTrackingRotate = (props: PropsWithChildren) => {
 			</MouseRotateContext.Provider>
 			<button
 				onClick={disableHandler}
-				className='absolute text-2xl w-24 bg-transparent backdrop-blur bottom-8 border-4 rounded-full border-white group/heroslide hover:bg-black focus:bg-black transition-all outline-none overflow-hidden'>
+				className='absolute text-2xl w-24 bg-transparent backdrop-blur bottom-8 border-4 rounded-full border-white group/heroslide hover:bg-black focus:bg-black transition-all overflow-hidden'>
 				<span
-					className={`block h-full w-min p-4 rounded-full group-focus/heroslide:bg-white group-hover/heroslide:bg-white group-focus/heroslide:text-black group-hover/heroslide:text-black transition-all ${deactivate ? 'translate-x-2/3' : 'translate-x-0'}`}>
+					className={`block h-full w-min p-4 rounded-full group-focus/heroslide:bg-white group-hover/heroslide:bg-white group-focus/heroslide:text-black group-hover/heroslide:text-black transition-all ${deactivate ? 'translate-x-0' : 'translate-x-2/3'}`}>
 					{deactivate ? <FaPowerOff /> : <FaCube />}
 				</span>
 				<span className={global.hiddenAccess}>
@@ -68,7 +68,7 @@ export const Headings = () => {
 	const { x, y } = useContext(MouseRotateContext);
 	return (
 		<div
-			className={style.activate3d}
+			className={'bg-transparent z-10 ' + style.activate3d}
 			style={{
 				rotate: `${0.5 - x} ${y - 0.5} 0 15deg`,
 			}}>
