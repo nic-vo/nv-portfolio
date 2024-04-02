@@ -7,7 +7,7 @@ import { poppinsClass } from '@/styles/fonts';
 const RootNotFound = () => {
 	return (
 		<>
-			<main className='h-svh w-full flex flex-col items-center justify-center gap-8'>
+			<main className='h-lvh w-full flex flex-col items-center justify-center gap-8'>
 				<h1 className={poppinsClass.className + ' text-6xl font-bold m-0'}>
 					404: Not Found.
 				</h1>

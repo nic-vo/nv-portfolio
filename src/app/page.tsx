@@ -7,7 +7,7 @@ const description = "Nicolas Vo's personal front-end development portfolio";
 
 const Homepage = () => {
 	return (
-		<main className='min-h-svh flex flex-col items-center w-full'>
+		<main className='min-h-lvh flex flex-col items-center w-full'>
 			<Hero />
 			<AboutMe />
 			<Nav />

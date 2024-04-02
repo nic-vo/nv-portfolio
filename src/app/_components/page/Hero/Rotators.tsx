@@ -41,7 +41,7 @@ export const HeaderTrackingRotate = (props: PropsWithChildren) => {
 
 	return (
 		<header
-			className='flex flex-col items-center justify-center w-full h-svh z-10 bg-[linear-gradient(black,transparent_80%)] overflow-hidden'
+			className='flex flex-col items-center justify-center w-full h-lvh z-10 bg-[linear-gradient(black,transparent_80%)] overflow-hidden'
 			style={{
 				perspective: '400px',
 			}}
@@ -75,7 +75,7 @@ export const Headings = () => {
 			<h1
 				className={
 					poppinsClass.className +
-					' text-[8svh] lg:text-[8svw] text-center font-bold m-0 ' +
+					' text-[8lvh] lg:text-[8lvw] text-center font-bold m-0 ' +
 					style.activate3d
 				}>
 				Nicolas Vo
@@ -83,7 +83,7 @@ export const Headings = () => {
 			<h2
 				className={
 					latoClass.className +
-					' text-[4svh] lg:text-[4svw] text-center font-light m-0 ' +
+					' text-[4lvh] lg:text-[4lvw] text-center font-light m-0 ' +
 					style.activate3d
 				}>
 				Front End Developer
