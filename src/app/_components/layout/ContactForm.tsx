@@ -53,7 +53,7 @@ const ContactForm = () => {
 				throw new Error();
 			}
 			try {
-				const response = await fetch('/api/cf', {
+				const response = await fetch('/cf', {
 					method: 'POST',
 					headers: { 'Content-Type': 'application/json' },
 					body: JSON.stringify({
