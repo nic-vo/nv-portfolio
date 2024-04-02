@@ -89,7 +89,7 @@ const ContactForm = () => {
 		<>
 			<Script src={`https://www.google.com/recaptcha/api.js?render=${reKey}`} />
 
-			<section className='flex flex-col items-center w-full h-full gap-8'>
+			<section className='flex flex-col items-center w-full h-full gap-4'>
 				<h2
 					className={
 						poppinsClass.className +
@@ -99,16 +99,16 @@ const ContactForm = () => {
 				</h2>
 				<form
 					onSubmit={submitHandler}
-					className='w-4/5 lg:w-2/5 mt-8 flex flex-col items-center gap-8'>
+					className='w-11/12 max-w-prose flex flex-col items-center gap-8'>
 					<fieldset
 						disabled={disableToggle}
 						className={
 							latoClass.className +
-							' flex flex-col items-center gap-4 border-0 p-0 m-0 disabled:opacity-50'
+							' w-full flex flex-col items-center gap-4 border-0 p-0 m-0 disabled:opacity-50'
 						}>
 						<label
 							htmlFor='name'
-							className='w-min px-12 line text-center flex items-center gap-4 p-4 bg-transparent rounded-tr-full rounded-bl-full text-xl font-bold first:*:block'>
+							className='w-full line text-center flex items-center gap-4 p-4 bg-transparent text-xl font-bold first:*:block'>
 							<span className='block border-transparent border-b-4 p-4'>
 								Name:
 							</span>
@@ -124,13 +124,13 @@ const ContactForm = () => {
 								required
 								className={
 									jbMonoClass.className +
-									' justify-self-start w-96 border-0 p-4 border-b-white border-b-4 bg-transparent outline-0 text-base text-white font-normal focus:bg-white focus:text-black placeholder:focus:text-black transition-all h-full outline-none'
+									' focus:rounded-3xl justify-self-start w-full border-0 p-4 border-b-white border-b-4 bg-transparent outline-0 text-base text-white font-normal focus:bg-white focus:text-black placeholder:focus:text-black transition-all h-full outline-none'
 								}
 							/>
 						</label>
 						<label
 							htmlFor='email'
-							className='w-min px-12 line text-center flex items-center gap-4 p-4 bg-transparent rounded-tr-full rounded-bl-full text-xl font-bold first:*:block'>
+							className='w-full line text-center flex items-center gap-4 p-4 bg-transparent text-xl font-bold first:*:block'>
 							<span className='block border-transparent border-b-4 p-4'>
 								Email:
 							</span>
@@ -143,7 +143,7 @@ const ContactForm = () => {
 								required
 								className={
 									jbMonoClass.className +
-									' justify-self-start w-96 border-0 p-4 border-b-white border-b-4 bg-transparent outline-0 text-base text-white font-normal focus:bg-white focus:text-black placeholder:focus:text-black transition-all h-full outline-none'
+									' focus:rounded-3xl justify-self-start w-full border-0 p-4 border-b-white border-b-4 bg-transparent outline-0 text-base text-white font-normal focus:bg-white focus:text-black placeholder:focus:text-black transition-all h-full outline-none'
 								}
 							/>
 						</label>
