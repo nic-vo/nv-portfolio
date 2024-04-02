@@ -1,15 +1,16 @@
+'use client';
+
+import { useMemo, useContext } from 'react';
 import { FaPlus } from 'react-icons/fa';
 import { PropsWithChildren } from 'react';
 
 import crossLook from './Crosses.module.scss';
+import MouseRotateContext, { degrees } from './Rotators';
 
 const Cross = (props: { coords: { x: number; y: number } }) => {
-	const rotate = (() => {
-		const sign = Math.random() > 0.5;
-		const deg = parseFloat(Math.random().toFixed(3)) * 15;
-		return sign ? 0 + deg : 0 - deg;
-	})();
-	const seed = parseFloat(Math.random().toFixed(3));
+	const { x, y } = useContext(MouseRotateContext);
+
+	const seed = useMemo(() => parseFloat(Math.random().toFixed(3)), []);
 	return (
 		<div
 			className={'absolute w-auto h-auto bg-transparent ' + crossLook.animated}
@@ -17,64 +18,71 @@ const Cross = (props: { coords: { x: number; y: number } }) => {
 				left: `${props.coords.x * 100}%`,
 				top: `${props.coords.y * 80}%`,
 				animationDelay: `${seed * 60 - 30}s`,
-				animationDuration: `${seed * 30 + 30}s`,
+				animationDuration: `${seed * 150 + 30}s`,
+				rotate: `${0.5 - x} ${y - 0.5} 0 ${degrees}deg`,
 			}}>
-			<FaPlus
-				className='block text-2xl text-white'
-				style={{ transform: `rotate(${rotate}deg)` }}
-			/>
+			<FaPlus className='block text-2xl text-white' />
 		</div>
 	);
 };
 
-const StaticCross = (props: { coords: { x: number; y: number } }) => {
-	const rotate = (() => {
-		const sign = Math.random() > 0.5;
-		const deg = parseFloat(Math.random().toFixed(3)) * 20;
-		return sign ? 0 + deg : 0 - deg;
-	})();
+const StaticCross = (props: {
+	coords: { x: number; y: number };
+	rear: boolean;
+}) => {
+	const { x, y } = useContext(MouseRotateContext);
 
-	const distance = parseFloat(Math.random().toFixed(2));
-	const signedDistance = Math.random() > 0.5 ? 0 + distance : 0 - distance;
-	const seed = parseFloat(Math.random().toFixed(3));
+	const distance = useMemo(() => parseFloat(Math.random().toFixed(2)), []);
+	const signedDistance = useMemo(
+		() => (!props.rear ? 0 + distance : 0 - distance),
+		[],
+	);
+	const seed = useMemo(() => parseFloat(Math.random().toFixed(3)), []);
 
 	return (
 		<div
-			className={'absolute w-auto h-auto bg-transparent ' + crossLook.static}
+			className={`absolute w-auto h-auto bg-transparent ${props.rear ? 'z-0' : 'z-20'} ${crossLook.static}`}
 			style={{
-				left: `${props.coords.x * 80 + 10}%`,
+				left: `${props.coords.x * 30 + 30}%`,
 				top: `${props.coords.y * 30 + 30}%`,
 				animationDelay: `${seed * 60 - 30}s`,
 				animationDuration: `${seed * 30 + 30}s`,
-				transform: `translateZ(${Math.floor(250 * signedDistance)}px)`,
+				transform: `translateZ(${Math.floor(300 * signedDistance)}px)`,
 				filter: `blur(${Math.floor(distance * 5)}px) brightness(${1 - distance})`,
+				rotate: `${0.5 - x} ${y - 0.5} 0 ${degrees}deg`,
 			}}>
-			<FaPlus
-				className='block text-2xl text-white'
-				style={{ transform: `rotate(${rotate}deg)` }}
-			/>
+			<FaPlus className='block text-2xl text-white' />
 		</div>
 	);
 };
 
-const Crosses = async (
+const Crosses = (
 	props: PropsWithChildren & {
 		pair: { x: number; y: number }[][];
 	},
 ) => {
-	const [initer, staticIniter] = props.pair;
-
+	const [initer, frontStaticIniter, rearStaticIniter] = props.pair;
 	return (
 		<>
-			{staticIniter.map((coords, index) => {
+			{frontStaticIniter.map((coords, index) => {
 				return (
 					<StaticCross
 						coords={coords}
-						key={'static-' + index}
+						key={'staticfront-' + index}
+						rear={false}
 					/>
 				);
 			})}
 			{props.children}
+			{rearStaticIniter.map((coords, index) => {
+				return (
+					<StaticCross
+						coords={coords}
+						key={'staticrear-' + index}
+						rear={true}
+					/>
+				);
+			})}
 			{initer.map((coords, index) => {
 				return (
 					<Cross

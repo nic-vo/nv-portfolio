@@ -1,7 +1,5 @@
 import Crosses from './Crosses';
-
-import { poppinsClass, latoClass } from '@/styles/fonts';
-import style from './Crosses.module.scss';
+import { HeaderTrackingRotate, Headings } from './Rotators';
 import { unstable_cache } from 'next/cache';
 
 const generateCrosses = unstable_cache(
@@ -19,13 +17,19 @@ const generateCrosses = unstable_cache(
 			return arr;
 		})();
 
-		const staticIniter = (() => {
+		const frontStaticIniter = (() => {
 			let arr = [];
-			for (let i = 0; i < Math.floor(limit / 2); i++) arr.push(calculator());
+			for (let i = 0; i < Math.floor(limit / 4); i++) arr.push(calculator());
 			return arr;
 		})();
 
-		return [initer, staticIniter];
+		const rearStaticIniter = (() => {
+			let arr = [];
+			for (let i = 0; i < Math.floor(limit / 4); i++) arr.push(calculator());
+			return arr;
+		})();
+
+		return [initer, frontStaticIniter, rearStaticIniter];
 	},
 	['hero-particle-coords'],
 	{ revalidate: false },
@@ -34,26 +38,11 @@ const generateCrosses = unstable_cache(
 const Hero = async () => {
 	const pair = await generateCrosses(24);
 	return (
-		<header
-			className='flex flex-col items-center justify-center w-full h-svh z-10 bg-[linear-gradient(black,transparent_80%)]'
-			style={{ perspective: '400px' }}>
+		<HeaderTrackingRotate>
 			<Crosses pair={pair}>
-				<h1
-					className={
-						poppinsClass.className +
-						' text-9xl font-bold m-0 ' +
-						style.activate3d
-					}>
-					Nicolas Vo
-				</h1>
-				<h2
-					className={
-						latoClass.className + ' text-6xl font-light m-0 ' + style.activate3d
-					}>
-					Front End Developer
-				</h2>
+				<Headings />
 			</Crosses>
-		</header>
+		</HeaderTrackingRotate>
 	);
 };
 
