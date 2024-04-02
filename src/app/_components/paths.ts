@@ -1,20 +1,12 @@
 import { cache } from 'react';
 import { promises as fs } from 'fs';
 import path from 'path';
+import { getProjectInfo } from '../(projects)/_components/page/parts';
 
 const getPaths = async (segments: string[]) => {
 	const fullPath = path.join(process.cwd(), ...segments);
-	const root = segments.pop() ?? 'random';
-	const [dirs, titles] = await Promise.all([
-		fs.readdir(fullPath),
-		await (async () => {
-			const file = await fs.readFile(
-				path.join(process.cwd(), 'src', 'data', 'linkTitles.json'),
-				{ encoding: 'utf-8' },
-			);
-			return JSON.parse(file) as Record<string, Record<string, string>>;
-		})(),
-	]);
+	const root = segments[segments.length - 1] ?? 'random';
+	const dirs = await fs.readdir(fullPath);
 	const filtered = dirs.filter((segment) => {
 		return (
 			/^\(/.test(segment) === false &&
@@ -25,14 +17,17 @@ const getPaths = async (segments: string[]) => {
 			) === false
 		);
 	});
+	const segmentsWithData = await (async () => {
+		return await Promise.all([
+			...filtered.map(async (segment) => {
+				const data = await getProjectInfo([root, segment]);
+				return { segment, data };
+			}),
+		]);
+	})();
 	return {
 		root,
-		pages: filtered.map((page) => {
-			return {
-				segment: page,
-				title: titles[root][page] ?? page,
-			};
-		}),
+		pages: segmentsWithData,
 	};
 };
 

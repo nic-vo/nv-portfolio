@@ -5,16 +5,15 @@ import { FaCaretDown } from 'react-icons/fa';
 import Link from 'next/link';
 import { ToggleContext } from './Header';
 
+import { ProjectInfo } from '../page/parts';
+
 import look from './CategoryNavItem.module.scss';
 import { latoClass } from '@/styles/fonts';
 
 const CategoryNavItem = (props: {
 	paths: {
 		root: string;
-		pages: {
-			segment: string;
-			title: string;
-		}[];
+		pages: { segment: string; data: ProjectInfo }[];
 	};
 	dev?: boolean;
 }) => {
@@ -75,18 +74,20 @@ const CategoryNavItem = (props: {
 				className={look.inCatList + classer + ' bflag z-0'}
 				tabIndex={-1}>
 				{pages.map((page, index) => {
+					const { segment, data } = page;
+					const { title } = data;
 					if (index === 0 && props.dev === true)
 						return (
 							<li
 								id={props.dev === true && index === 0 ? 'hnlidev' : ''}
 								className={look.li + classer + ' bflag'}
-								key={`${root}-list-${page.segment}`}
+								key={`${root}-list-${segment}`}
 								tabIndex={-1}>
 								<Link
-									href={`/${root}/${page.segment}`}
+									href={`/${root}/${segment}`}
 									prefetch={false}
 									tabIndex={catToggled && parentToggled ? 0 : -1}>
-									{page.title}
+									{title}
 								</Link>
 							</li>
 						);
@@ -94,14 +95,14 @@ const CategoryNavItem = (props: {
 						return (
 							<li
 								className={look.li + classer + ' bflag'}
-								key={`${root}-list-${page.segment}`}
+								key={`${root}-list-${segment}`}
 								tabIndex={-1}>
 								<Link
-									href={`/${root}/${page.segment}`}
+									href={`/${root}/${segment}`}
 									prefetch={false}
 									tabIndex={catToggled && parentToggled ? 0 : -1}
 									className='bflag'>
-									{page.title}
+									{title}
 								</Link>
 							</li>
 						);

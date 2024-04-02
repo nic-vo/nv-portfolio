@@ -5,11 +5,11 @@ import { parse } from 'marked';
 import { poppinsClass } from '@/styles/fonts';
 import look from './ProjectInfo.module.scss';
 
-type ProjectInfo = {
-	title?: string;
-	slugline?: string;
-	link?: string;
-	techs?: string[];
+export type ProjectInfo = {
+	title: string;
+	slugline: string;
+	link: string;
+	techs: string[];
 };
 
 export const getProjectDescription = async (pathSegments: string[]) => {
@@ -53,7 +53,7 @@ const ProjectInfo = (props: {
 			<h1 className={poppinsClass.className + ' text-6xl text-center'}>
 				{title}
 			</h1>
-			<section className='flex gap-4'>
+			<section className='flex gap-4 w-11/12 max-w-prose'>
 				<h2 className={poppinsClass.className + ' text-3xl shrink-0'}>
 					The stack:
 				</h2>
@@ -70,11 +70,11 @@ const ProjectInfo = (props: {
 			<section
 				className={
 					look.description +
-					' max-w-prose border-t-2 border-white pb-8 *:list-disc'
+					' w-11/12 max-w-prose border-t-2 border-white pb-8 *:list-disc'
 				}
 				dangerouslySetInnerHTML={{ __html: description }}
 			/>
-			<section className='flex font-bold gap-4 w-full max-w-prose border-b-2 border-white pb-8'>
+			<section className='flex font-bold gap-4 w-11/12 justify-center max-w-prose border-b-2 border-white pb-8'>
 				<h2 className={poppinsClass.className + ' text-3xl'}>
 					Link to original:
 				</h2>
