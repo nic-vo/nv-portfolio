@@ -48,14 +48,13 @@ export async function POST(
 	} = process.env;
 
 	if (
-		process.env.NODE_ENV !== 'development' &&
-		(!homeprop ||
-			!obfus ||
-			homeprop !== obfus ||
-			!allowOrigin ||
-			allowOrigin !== origin ||
-			!authorization ||
-			authorization !== secret)
+		!homeprop ||
+		!obfus ||
+		homeprop !== obfus ||
+		!allowOrigin ||
+		allowOrigin !== origin ||
+		!authorization ||
+		authorization !== secret
 	)
 		return new Response('Server error', {
 			status: 500,
@@ -68,7 +67,15 @@ export async function POST(
 	} catch {
 		return new Response('Error revalidating', { status: 500 });
 	}
-	return new Response('Revalidated', { status: 201 });
+
+	return new Response('Revalidated', {
+		status: 201,
+		headers: {
+			'Access-Control-Allow-Origin': allowOrigin,
+			'Access-Control-Allow-Methods': 'POST, OPTIONS',
+			'Access-Control-Allow-Headers': 'Authorization',
+		},
+	});
 }
 
 export const dynamic = 'force-dynamic';
