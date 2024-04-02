@@ -4,6 +4,10 @@ This is a Next.js App router endeavor!
 
 ## CHANGELOG
 
+### 2.2.2
+
+- Fix issue causing crosses to clip only on Firefox
+
 ### 2.2.1
 
 - Remove svh to prevent layout shift on mobile
