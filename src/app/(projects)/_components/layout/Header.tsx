@@ -33,7 +33,8 @@ const Header = (props: { children: React.ReactNode }) => {
 	return (
 		<header
 			className={look.header + classer + ' bflag'}
-			onBlur={blurHandler}>
+			onBlur={blurHandler}
+			aria-expanded={toggled}>
 			<a
 				href='/'
 				className={look.homerEx + ' bflag'}
@@ -42,7 +43,6 @@ const Header = (props: { children: React.ReactNode }) => {
 				<FaHome
 					className={look.svg}
 					aria-hidden='true'
-					role='presentation'
 				/>
 				<span className={look.hidden}>Return home</span>
 			</a>
@@ -50,18 +50,17 @@ const Header = (props: { children: React.ReactNode }) => {
 				id='toggler'
 				onClick={toggleHandler}
 				className={look.toggler + classer + ' bflag'}
-				aria-pressed={toggled}>
+				aria-pressed={toggled}
+				onFocus={() => setToggled(true)}>
 				{toggled === false ? (
 					<FaBars
 						className={look.svg + classer}
 						aria-hidden='true'
-						role='presentation'
 					/>
 				) : (
 					<FaPlus
 						className={look.svg + classer}
 						aria-hidden='true'
-						role='presentation'
 					/>
 				)}
 				<span className={look.hidden}>
@@ -71,10 +70,9 @@ const Header = (props: { children: React.ReactNode }) => {
 			<div
 				onPointerDown={toggleHandler}
 				className={look.returner + classer}
+				aria-hidden={true}
 			/>
-			<nav
-				className={look.nav + classer}
-				role='navigation'>
+			<nav className={look.nav + classer}>
 				<h2 className={look.title}>Other Projects</h2>
 				<menu
 					className={look.topList + ' bflag'}
