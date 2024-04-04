@@ -123,7 +123,7 @@
 @media (min-aspect-ratio: 1) {
 	.smallThumb {
 		height: 100%;
-		width: max-content;
+		width: auto;
 
 		img {
 			height: 100%;
