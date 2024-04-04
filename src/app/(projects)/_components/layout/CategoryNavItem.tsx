@@ -41,14 +41,13 @@ const CategoryNavItem = (props: {
 						latoClass.className +
 						` transition-colors cursor-pointer flex justify-between items-center h-16 w-full p-4 text-xl font-bold border-0 border-black border-b bflag ${catToggled ? 'bg-black text-white' : 'bg-white text-black'} z-10`
 					}
-					aria-label={`Toggle navigation submenu for ${catCased}`}
-					aria-pressed={catToggled}
+					aria-label={`${catToggled ? 'Close' : 'Open'} navigation submenu for ${catCased}`}
+					aria-pressed={catToggled && !parentToggled}
 					tabIndex={parentToggled ? 0 : -1}>
 					{catCased}
 					<FaCaretDown
 						className={look.svg + classer}
 						aria-hidden='true'
-						role='presentation'
 					/>
 				</button>
 			) : (
@@ -59,20 +58,20 @@ const CategoryNavItem = (props: {
 						`${catToggled ? ` ${look.subcatToggled}` : ''}` +
 						` transition-colors cursor-pointer flex justify-between items-center h-16 w-full p-4 text-xl font-bold border-0 border-black border-b bflag ${catToggled ? 'bg-black text-white' : 'bg-white text-black'} z-10`
 					}
-					aria-label={`Toggle navigation submenu for ${catCased}`}
-					aria-pressed={catToggled}
+					aria-label={`${catToggled ? 'Close' : 'Open'} navigation submenu for ${catCased}`}
+					aria-pressed={catToggled && !parentToggled}
 					tabIndex={parentToggled ? 0 : -1}>
 					{catCased}
 					<FaCaretDown
 						className={look.svg + classer}
 						aria-hidden='true'
-						role='presentation'
 					/>
 				</button>
 			)}
 			<menu
 				className={look.inCatList + classer + ' bflag z-0'}
-				tabIndex={-1}>
+				tabIndex={-1}
+				aria-expanded={catToggled && !parentToggled}>
 				{pages.map((page, index) => {
 					const { segment, data } = page;
 					const { title } = data;
