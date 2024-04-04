@@ -67,28 +67,30 @@ export const HeaderTrackingRotate = (props: PropsWithChildren) => {
 export const Headings = () => {
 	const { x, y } = useContext(MouseRotateContext);
 	return (
-		<div
-			className={'bg-transparent z-10 ' + style.activate3d}
-			style={{
-				rotate: `${0.5 - x} ${y - 0.5} 0 15deg`,
-			}}>
+		<>
 			<h1
 				className={
 					poppinsClass.className +
-					' text-6xl lg:text-9xl text-center font-bold m-0 ' +
+					' text-6xl lg:text-9xl text-center font-bold m-0 z-10 ' +
 					style.activate3d
-				}>
+				}
+				style={{
+					rotate: `${0.5 - x} ${y - 0.5} 0 15deg`,
+				}}>
 				Nicolas Vo
 			</h1>
 			<h2
 				className={
 					latoClass.className +
-					' text-3xl lg:text-4xl text-center font-light m-0 ' +
+					' text-3xl lg:text-4xl text-center font-light m-0 z-10 ' +
 					style.activate3d
-				}>
+				}
+				style={{
+					rotate: `${0.5 - x} ${y - 0.5} 0 15deg`,
+				}}>
 				Front End Developer
 			</h2>
-		</div>
+		</>
 	);
 };
 
