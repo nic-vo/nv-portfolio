@@ -64,7 +64,7 @@ const ProjectInfo = (props: {
 					{techs.map((tech) => (
 						<li
 							key={tech}
-							className='flex items-center p-2 m-1 h-8 rounded-md font-bold text-base text-center text-white bg-sky-600'>
+							className='flex items-center p-2 m-1 h-8 rounded-md font-bold text-base text-center text-white bg-sky-800'>
 							{tech}
 						</li>
 					))}

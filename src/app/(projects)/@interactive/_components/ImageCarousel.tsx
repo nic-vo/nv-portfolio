@@ -89,13 +89,13 @@ const ImageCarousel = (props: {
 					<button
 						className={look.buttonReturner}
 						onClick={returner}>
-						<FaPlus />
+						<FaPlus aria-hidden={true} />
 						<span className={globalLook.hiddenAccess}>Close viewer</span>
 					</button>
 					<button
 						className={look.button}
 						onClick={decrementActiveImage}>
-						<FaCaretLeft />
+						<FaCaretLeft aria-hidden={true} />
 						<span className={globalLook.hiddenAccess}>Previous image</span>
 					</button>
 					{activeImage !== null && (
@@ -110,7 +110,7 @@ const ImageCarousel = (props: {
 					<button
 						className={look.button}
 						onClick={incrementActiveImage}>
-						<FaCaretRight />
+						<FaCaretRight aria-hidden={true} />
 						<span className={globalLook.hiddenAccess}>Previous image</span>
 					</button>
 				</div>
@@ -123,7 +123,7 @@ const ImageCarousel = (props: {
 						onClick={() => {
 							scrollerHandler(false);
 						}}>
-						<FaCaretLeft />
+						<FaCaretLeft aria-hidden={true} />
 						<span className={globalLook.hiddenAccess}>Scroll left</span>
 					</button>
 					<ul
@@ -146,7 +146,7 @@ const ImageCarousel = (props: {
 											placeholder='blur'
 											src={photo.image}
 											alt={photo.desc}
-											sizes='(max-aspect-ratio: 1) 100vw, 75vw'
+											sizes='(aspect-ratio: 1) 100vw, 75vw'
 											priority={index < 2}
 										/>
 										<span className={globalLook.hiddenAccess}>
@@ -162,7 +162,7 @@ const ImageCarousel = (props: {
 						onClick={() => {
 							scrollerHandler(true);
 						}}>
-						<FaCaretRight />
+						<FaCaretRight aria-hidden={true} />
 						<span className={globalLook.hiddenAccess}>Scroll right</span>
 					</button>
 				</div>

@@ -21,6 +21,8 @@ const Cross = (props: { coords: { x: number; y: number } }) => {
 				animationDuration: `${seed * 150 + 30}s`,
 				rotate: `${0.5 - x} ${y - 0.5} 0 ${degrees}deg`,
 			}}
+			aria-hidden={true}
+			role='presentation'
 		/>
 	);
 };
@@ -50,6 +52,8 @@ const StaticCross = (props: {
 				filter: `blur(${Math.floor(distance * 5)}px) brightness(${1 - distance})`,
 				rotate: `${0.5 - x} ${y - 0.5} 0 ${degrees}deg`,
 			}}
+			aria-hidden={true}
+			role='presentation'
 		/>
 	);
 };

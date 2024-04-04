@@ -38,7 +38,7 @@ const generateCrosses = unstable_cache(
 );
 
 const Hero = async () => {
-	const pair = await generateCrosses(28);
+	const pair = await generateCrosses(20);
 	return (
 		<HeaderTrackingRotate>
 			<Crosses pair={pair}>
