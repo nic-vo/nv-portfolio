@@ -25,20 +25,23 @@ const NavLink = async (props: {
 				href={`${props.root}/${segment}`}
 				prefetch={false}
 				className='overflow-hidden w-96 h-96 flex flex-col gap-8 justify-center items-center bg-transparent rounded-3xl p-8 text-white font-bold text-lg shadow-none border-8 border-slate-800 hover:border-white focus:border-white hover:shadow-white hover:shadow-[0px_0px_20px_5px] focus:shadow-white focus:shadow-[0px_0px_20px_5px] transition-all before:bg-[linear-gradient(transparent,rgba(0,0,0,0.6),rgba(0,0,0,0.8))] before:content-[""] before:transition-all before:z-10 before:h-2/5 before:w-full before:absolute before:bottom-0 before:opacity-100 before:hover:opacity-0 before:focus:opacity-0 group/navlink'>
-				<span className='z-20 drop-shadow-md border-b-2 border-white bg-transparent transition-all translate-y-52 group-hover/navlink:translate-y-0 group-focus/navlink:translate-y-0 font-bold text-xl'>
+				<span className='z-20 drop-shadow-md border-b-2 border-white bg-transparent transition-all translate-y-52 group-hover/navlink:translate-y-0 group-focus/navlink:translate-y-0 font-bold text-xl '>
 					{title}
 				</span>
-				<span className='z-20 drop-shadow-md bg-transparent transition-all opacity-0 group-hover/navlink:opacity-100 group-focus/navlink:opacity-100 font-extralight'>
+				<span className='z-20 drop-shadow-md bg-transparent transition-all opacity-0 group-hover/navlink:opacity-100 group-focus/navlink:opacity-100 font-extralight '>
 					{slugline}
 				</span>
-				<span className='z-20 drop-shadow-md bg-transparent transition-all opacity-0 group-hover/navlink:opacity-100 group-focus/navlink:opacity-100 flex items-center gap-2 *:block border-b-2 text-center font-extralight border-white'>
-					Details <FaArrowRight />
+				<span
+					className='z-20 drop-shadow-md bg-transparent transition-all opacity-0 group-hover/navlink:opacity-100 group-focus/navlink:opacity-100 flex items-center gap-2 *:block border-b-2 text-center font-extralight border-white '
+					aria-hidden={true}>
+					Details <FaArrowRight aria-hidden={true} />
 				</span>
 				<Image
 					src={referenced[segment] ?? DefaultThumb}
-					alt={`Check out ${title}!`}
-					sizes='(max-aspect-ratio: 1) 100vw, 50vw'
-					className='absolute h-full w-auto transition-all max-w-none group-hover/navlink:brightness-[0.15] group-focus/navlink:brightness-[0.15]'
+					alt=''
+					sizes='(aspect-ratio: 1) 100vw, 50vw'
+					className='absolute h-full w-auto transition-all max-w-none group-hover/navlink:brightness-[0.15] group-focus/navlink:brightness-[0.15] group-hover/navlink:blur-sm group-focus/navlink:blur-sm'
+					aria-hidden={true}
 				/>
 			</Link>
 		</li>
