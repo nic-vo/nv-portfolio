@@ -71,8 +71,7 @@ export const Headings = () => {
 			<h1
 				className={
 					poppinsClass.className +
-					' text-6xl lg:text-9xl text-center font-bold m-0 z-10 ' +
-					style.activate3d
+					' text-6xl lg:text-9xl text-center font-bold m-0 z-10 '
 				}
 				style={{
 					rotate: `${0.5 - x} ${y - 0.5} 0 15deg`,
@@ -82,8 +81,7 @@ export const Headings = () => {
 			<h2
 				className={
 					latoClass.className +
-					' text-3xl lg:text-4xl text-center font-light m-0 z-10 ' +
-					style.activate3d
+					' text-3xl lg:text-4xl text-center font-light m-0 z-10'
 				}
 				style={{
 					rotate: `${0.5 - x} ${y - 0.5} 0 15deg`,

@@ -8,8 +8,14 @@ const generateCrosses = unstable_cache(
 	async (limit: number) => {
 		const calculator = () => {
 			// Distance from top and left
-			const y = Math.random() * 0.8;
-			const x = Math.random() * 0.8 + 0.1;
+			const y = parseFloat(
+				(() =>
+					Math.random() > 0.5 ? Math.random() : 0 - Math.random())().toFixed(4),
+			);
+			const x = parseFloat(
+				(() =>
+					Math.random() > 0.5 ? Math.random() : 0 - Math.random())().toFixed(4),
+			);
 			return { x, y };
 		};
 

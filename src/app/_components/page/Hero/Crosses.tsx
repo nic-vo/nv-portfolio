@@ -15,11 +15,10 @@ const Cross = (props: { coords: { x: number; y: number } }) => {
 		<FaPlus
 			className={`block text-2xl text-white absolute bg-transparent z-0 ${crossLook.animated}`}
 			style={{
-				left: `${props.coords.x * 100}%`,
-				top: `${props.coords.y * 80}%`,
 				animationDelay: `${seed * 60 - 30}s`,
 				animationDuration: `${seed * 150 + 30}s`,
 				rotate: `${0.5 - x} ${y - 0.5} 0 ${degrees}deg`,
+				translate: `${props.coords.x * 30}svw ${props.coords.y * 20}svh`,
 			}}
 			aria-hidden={true}
 			role='presentation'
@@ -42,15 +41,14 @@ const StaticCross = (props: {
 
 	return (
 		<FaPlus
-			className={`absolute block text-2xl text-white bg-transparent ${props.rear ? 'z-0' : 'z-20'} ${crossLook.static}`}
+			className={`absolute block text-2xl text-white bg-transparent drop-shadow ${props.rear ? 'z-0' : 'z-20'} ${crossLook.static}`}
 			style={{
-				left: `${props.coords.x * 30 + 30}%`,
-				top: `${props.coords.y * 30 + 30}%`,
 				animationDelay: `${seed * 60 - 30}s`,
 				animationDuration: `${seed * 30 + 30}s`,
-				transform: `translateZ(${Math.floor(200 * signedDistance)}px)`,
+				transform: `translateZ(${Math.floor(100 * signedDistance)}px)`,
 				filter: `blur(${Math.floor(distance * 5)}px) brightness(${1 - distance})`,
 				rotate: `${0.5 - x} ${y - 0.5} 0 ${degrees}deg`,
+				translate: `${props.coords.x * 20}svw ${props.coords.y * 15}svh`,
 			}}
 			aria-hidden={true}
 			role='presentation'
