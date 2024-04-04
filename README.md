@@ -4,6 +4,13 @@ This is a Next.js App router endeavor!
 
 ## CHANGELOG
 
+### 2.2.3
+
+- Various accessibility changes
+  - ARIA roles
+  - Fixing weird focusing
+  - Reducing DOM complexity
+
 ### 2.2.2
 
 - Fix issue causing crosses to clip only on Firefox
