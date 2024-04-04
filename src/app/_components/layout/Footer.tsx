@@ -29,17 +29,18 @@ const Footer = async () => {
 				<a
 					href='https://github.com/nic-vo'
 					target='_blank'>
-					<FaGithub /> <span className={globalLook.hiddenAccess}>Github</span>
+					<FaGithub aria-hidden={true} />{' '}
+					<span className={globalLook.hiddenAccess}>Github</span>
 				</a>
 				<a
 					href='https://www.linkedin.com/in/nicolasvo/'
 					target='_blank'>
-					<FaLinkedin />{' '}
+					<FaLinkedin aria-hidden={true} />{' '}
 					<span className={globalLook.hiddenAccess}>LinkedIn</span>
 				</a>
 			</div>
 			<div className='flex items-center max-w-screen-lg gap-8'>
-				<p>v. {version}</p>
+				<span>v. {version}</span>
 				<p>&copy; {date} Nicolas Vo</p>
 			</div>
 		</footer>
