@@ -79,18 +79,7 @@ html,
 body {
 	padding: 0;
 	margin: 0;
-	font-family:
-		-apple-system,
-		BlinkMacSystemFont,
-		Segoe UI,
-		Roboto,
-		Oxygen,
-		Ubuntu,
-		Cantarell,
-		Fira Sans,
-		Droid Sans,
-		Helvetica Neue,
-		sans-serif;
+	font-family: sans-serif;
 	color: #d6e5e3;
 	background-color: #0f1a26;
 	overflow-x: hidden;
@@ -141,6 +130,10 @@ h6 {
 svg,
 img {
 	display: block;
+}
+
+.thinscroll {
+	scrollbar-width: thin;
 }
 
 @tailwind base;
