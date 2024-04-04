@@ -45,6 +45,8 @@ const ScrollToTop = () => {
 			// Scroll to top and disable
 			setDistanceDisable(true);
 			window.scroll({ top: 0, left: 0, behavior: 'smooth' });
+			const first = document.querySelector('a,button') as HTMLElement;
+			if (first) first.focus();
 			setTimeouter(() => {
 				return setTimeout(() => {
 					setScrollThrottle(false);

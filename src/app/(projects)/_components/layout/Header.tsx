@@ -37,6 +37,7 @@ const Header = (props: { children: React.ReactNode }) => {
 			<a
 				href='/'
 				className={look.homerEx + ' bflag'}
+				id='home'
 				aria-label='Return home'>
 				<FaHome
 					className={look.svg}
