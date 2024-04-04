@@ -1,8 +1,8 @@
 'use client';
 
-import { useState, useRef, ElementRef } from 'react';
+import { useState, useRef, ElementRef, PropsWithChildren } from 'react';
 import Script from 'next/script';
-import Spinner from './Spinner';
+import { HiddenButAccessible } from '@/components/global';
 import {
 	FaMinus,
 	FaCheckCircle,
@@ -13,7 +13,13 @@ import { whiteSpaceRemover } from './_lib';
 
 import { jbMonoClass, latoClass, poppinsClass } from '@/styles/fonts';
 
-import cLook from './ContactForm.module.scss';
+const Spinner = (props: PropsWithChildren) => {
+	return (
+		<div className='flex items-center justify-center animate-spin m-0 p-0 origin-center'>
+			{props.children}
+		</div>
+	);
+};
 
 const ContactForm = () => {
 	const [status, setStatus] = useState<number | null>(null);
@@ -190,17 +196,21 @@ const ContactForm = () => {
 						</button>
 					)}
 				</div>
-				<div className='flex items-center justify-center min-h-32 w-4/5 text-xl '>
+				<div
+					role='status'
+					className='flex items-center justify-center min-h-32 w-4/5 text-xl '>
 					{formState === 'PENDING' && (
 						<Spinner>
-							<FaMinus className='text-9xl' />
+							<FaMinus
+								className='text-9xl'
+								aria-hidden={true}
+							/>
+							<HiddenButAccessible>Loading...</HiddenButAccessible>
 						</Spinner>
 					)}
 					{formState === 'DONE' && responseIcon}
 					{message !== null && (
-						<p className={'text-center p-0 m-0 ml-4 ' + cLook.responseMesg}>
-							{message}
-						</p>
+						<p className='text-center p-0 m-0 ml-4'>{message}</p>
 					)}
 				</div>
 			</form>
