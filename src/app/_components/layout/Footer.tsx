@@ -1,10 +1,9 @@
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { HiddenButAccessible } from '@/components/global';
 import ContactForm from './ContactForm';
 import { cache } from 'react';
 import path from 'path';
 import fs from 'fs/promises';
-
-import globalLook from '@/styles/globalStyles.module.scss';
 
 const getVersionNumber = cache(async (): Promise<string> => {
 	// Read package.json
@@ -30,13 +29,13 @@ const Footer = async () => {
 					href='https://github.com/nic-vo'
 					target='_blank'>
 					<FaGithub aria-hidden={true} />{' '}
-					<span className={globalLook.hiddenAccess}>Github</span>
+					<HiddenButAccessible>GitHub</HiddenButAccessible>
 				</a>
 				<a
 					href='https://www.linkedin.com/in/nicolasvo/'
 					target='_blank'>
 					<FaLinkedin aria-hidden={true} />{' '}
-					<span className={globalLook.hiddenAccess}>LinkedIn</span>
+					<HiddenButAccessible>LinkedIn</HiddenButAccessible>
 				</a>
 			</div>
 			<div className='flex items-center max-w-screen-lg gap-8'>
