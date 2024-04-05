@@ -21,7 +21,7 @@ const Footer = async () => {
 
 	return (
 		<footer
-			className='flex flex-col items-center w-full min-h-lvh py-24 bg-[linear-gradient(transparent,black)]'
+			className='flex flex-col items-center w-full min-h-lvh py-12 bg-[linear-gradient(transparent,black)] gap-4'
 			id='footer'>
 			<ContactForm />
 			<div className='flex text-4xl gap-4 p-4'>
@@ -38,7 +38,7 @@ const Footer = async () => {
 					<HiddenButAccessible>LinkedIn</HiddenButAccessible>
 				</a>
 			</div>
-			<div className='flex items-center max-w-screen-lg gap-8'>
+			<div className='font-lato font-light flex items-center max-w-screen-lg gap-8'>
 				<span>v. {version}</span>
 				<p>&copy; {date} Nicolas Vo</p>
 			</div>

@@ -11,8 +11,6 @@ import {
 } from 'react-icons/fa';
 import { whiteSpaceRemover } from './_lib';
 
-import { jbMonoClass, latoClass, poppinsClass } from '@/styles/fonts';
-
 const Spinner = (props: PropsWithChildren) => {
 	return (
 		<div className='flex items-center justify-center animate-spin m-0 p-0 origin-center'>
@@ -104,22 +102,15 @@ const ContactForm = () => {
 			<form
 				onSubmit={submitHandler}
 				className='w-11/12 max-w-prose flex flex-col items-center gap-8'>
-				<h2
-					className={
-						poppinsClass.className +
-						' font-bold text-4xl lg:text-5xl text-center mb-4'
-					}>
+				<h2 className='font-poppins font-bold text-4xl lg:text-5xl text-center mb-4'>
 					Need something done?
 				</h2>
 				<fieldset
 					disabled={disableToggle}
-					className={
-						latoClass.className +
-						' w-full flex flex-col items-center gap-4 border-0 p-0 m-0 disabled:opacity-50'
-					}>
+					className='font-lato w-full flex flex-col items-center gap-4 border-0 p-0 m-0 disabled:opacity-50'>
 					<label
 						htmlFor='name'
-						className='w-full line text-center flex items-center gap-4 p-4 bg-transparent text-xl font-bold first:*:block'>
+						className='font-lato w-full line text-center flex items-center gap-4 p-4 bg-transparent text-xl font-bold first:*:block'>
 						<span className='block border-transparent border-b-4 p-4'>
 							Name:
 						</span>
@@ -133,15 +124,12 @@ const ContactForm = () => {
 							pattern="^([A-Za-z]|\d| |'|\.|,|-|\(|\)){4,100}$"
 							autoComplete='name'
 							required
-							className={
-								jbMonoClass.className +
-								' justify-self-start w-full border-4 p-4 border-transparent border-b-white border-b-4 bg-transparent outline-0 text-base text-white font-normal focus:bg-white focus:text-black placeholder:focus:text-black transition-all h-full outline-none'
-							}
+							className='font-jbmono justify-self-start w-full border-4 p-4 border-transparent border-b-white border-b-4 bg-transparent text-base text-white font-normal focus:bg-white focus:text-black placeholder:focus:text-black transition-all h-full outline-none'
 						/>
 					</label>
 					<label
 						htmlFor='email'
-						className='w-full line text-center flex items-center gap-4 p-4 bg-transparent text-xl font-bold first:*:block'>
+						className='font-lato w-full line text-center flex items-center gap-4 p-4 bg-transparent text-xl font-bold first:*:block'>
 						<span className='block border-transparent border-b-4 p-4'>
 							Email:
 						</span>
@@ -152,10 +140,7 @@ const ContactForm = () => {
 							type='email'
 							autoComplete='email'
 							required
-							className={
-								jbMonoClass.className +
-								' justify-self-start w-full border-4 p-4 border-transparent border-b-white bg-transparent outline-0 text-base text-white font-normal focus:bg-white focus:text-black placeholder:focus:text-black transition-all h-full outline-none'
-							}
+							className='font-jbmono justify-self-start w-full border-4 p-4 border-transparent border-b-white border-b-4 bg-transparent text-base text-white font-normal focus:bg-white focus:text-black placeholder:focus:text-black transition-all h-full outline-none'
 						/>
 					</label>
 					<label
