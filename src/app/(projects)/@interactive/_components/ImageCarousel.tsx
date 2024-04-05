@@ -1,11 +1,23 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, PropsWithChildren } from 'react';
 import { FaCaretLeft, FaCaretRight, FaPlus } from 'react-icons/fa';
 import Image, { StaticImageData } from 'next/image';
+import { HiddenButAccessible } from '@/components/global';
 
-import look from './ImageCarousel.module.scss';
-import globalLook from '@/styles/globalStyles.module.scss';
+const CarouselButton = (
+	props: PropsWithChildren & { clicker: () => void; classes?: string[] },
+) => {
+	const classer =
+		props.classes && props.classes.length > 0 ? props.classes.join(' ') : '';
+	return (
+		<button
+			onClick={props.clicker}
+			className={`bg-black text-white p-4 rounded-full border-2 border-white hover:bg-white hover:text-black focus:bg-white focus:text-black transition-all text-xl ${classer}`}>
+			{props.children}
+		</button>
+	);
+};
 
 const ImageCarousel = (props: {
 	photos: {
@@ -75,69 +87,59 @@ const ImageCarousel = (props: {
 		});
 	};
 
-	const classer = look.previewImg;
-	activeImage && console.log(photos[activeImage]);
-
 	return (
 		<>
 			<dialog
 				ref={viewerRef}
-				style={{ zIndex: 20 }}>
-				<div
-					className={look.preview}
-					onKeyDown={viewKeyDownHandler}>
-					<button
-						className={look.buttonReturner}
-						onClick={returner}>
+				className='fixed z-20 h-svh w-full max-w-[100svw] max-h-[100svh] p-0 m-0 bg-transparent backdrop-blur backdrop-brightness-50'
+				onKeyDown={viewKeyDownHandler}>
+				<div className='h-full w-full flex items-center justify-between bg-transparent px-8'>
+					<CarouselButton
+						clicker={returner}
+						classes={['absolute', 'top-8', 'left-8']}>
 						<FaPlus aria-hidden={true} />
-						<span className={globalLook.hiddenAccess}>Close viewer</span>
-					</button>
-					<button
-						className={look.button}
-						onClick={decrementActiveImage}>
+						<HiddenButAccessible>Close viewer</HiddenButAccessible>
+					</CarouselButton>
+					<CarouselButton clicker={decrementActiveImage}>
 						<FaCaretLeft aria-hidden={true} />
-						<span className={globalLook.hiddenAccess}>Previous image</span>
-					</button>
+						<HiddenButAccessible>Previous image</HiddenButAccessible>
+					</CarouselButton>
 					{activeImage !== null && (
 						<Image
 							src={photos[activeImage].image}
 							alt={photos[activeImage].desc}
 							sizes='100vw'
 							placeholder='blur'
-							className={classer}
+							className='rounded-md w-9/12 h-auto animate-fadein'
 						/>
 					)}
-					<button
-						className={look.button}
-						onClick={incrementActiveImage}>
+					<CarouselButton clicker={incrementActiveImage}>
 						<FaCaretRight aria-hidden={true} />
-						<span className={globalLook.hiddenAccess}>Previous image</span>
-					</button>
+						<HiddenButAccessible>Previous image</HiddenButAccessible>
+					</CarouselButton>
 				</div>
 			</dialog>
-			<span className={look.instructions}>Click/tap to expand</span>
-			<div className={look.container}>
-				<div className={look.ringContainer}>
-					<button
-						className={look.button}
-						onClick={() => {
-							scrollerHandler(false);
-						}}>
+			<span className='font-lato font-light text-xl text-center'>
+				Click/tap to expand
+			</span>
+			<div className='flex justify-center items-center w-4/5 h-3/4'>
+				<div className='shrink flex items-center w-ful h-full gap-4 lg:h-1/2'>
+					<CarouselButton clicker={() => scrollerHandler(false)}>
 						<FaCaretLeft aria-hidden={true} />
-						<span className={globalLook.hiddenAccess}>Scroll left</span>
-					</button>
+						<HiddenButAccessible>Scroll left</HiddenButAccessible>
+					</CarouselButton>
 					<ul
-						className={look.ringExposed}
+						className='flex flex-col lg:flex-row h-full p-4 gap-8 items-center overflow-auto w-full thinscroll'
 						tabIndex={-1}
 						ref={scrollRef}>
 						{photos.map((photo, index) => {
 							return (
 								<li
-									className={look.smallThumb}
+									className='shrink-0 cursor-pointer rounded-lg w-full lg:h-full lg:w-auto'
 									key={`photo-${index}`}
 									tabIndex={-1}>
 									<button
-										className={look.smallThumb}
+										className='shrink-0 cursor-pointer rounded-lg w-full lg:h-full lg:w-auto'
 										tabIndex={0}
 										onClick={() => {
 											thumbClickHandler(index);
@@ -148,23 +150,20 @@ const ImageCarousel = (props: {
 											alt={photo.desc}
 											sizes='(aspect-ratio: 1) 100vw, 75vw'
 											priority={index < 2}
+											className='rounded-lg block w-full h-auto lg:h-full'
 										/>
-										<span className={globalLook.hiddenAccess}>
+										<HiddenButAccessible>
 											Toggle the large view for picture no. {index + 1}
-										</span>
+										</HiddenButAccessible>
 									</button>
 								</li>
 							);
 						})}
 					</ul>
-					<button
-						className={look.button}
-						onClick={() => {
-							scrollerHandler(true);
-						}}>
+					<CarouselButton clicker={() => scrollerHandler(true)}>
 						<FaCaretRight aria-hidden={true} />
-						<span className={globalLook.hiddenAccess}>Scroll right</span>
-					</button>
+						<HiddenButAccessible>Scroll right</HiddenButAccessible>
+					</CarouselButton>
 				</div>
 			</div>
 		</>

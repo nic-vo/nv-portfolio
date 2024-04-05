@@ -7,8 +7,6 @@ import { ProjectInfo } from '@/app/(projects)/_components/page/parts';
 import { FaArrowRight } from 'react-icons/fa';
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 
-import { poppinsClass } from '@/styles/fonts';
-
 const referenced = thumbs as Record<string, StaticImport | undefined>;
 
 const NavLink = async (props: {
@@ -56,11 +54,7 @@ const Nav = async () => {
 	return (
 		<nav className='w-10/12'>
 			<section className='flex flex-col w-full items-center mb-48 gap-8'>
-				<h2
-					className={
-						poppinsClass.className +
-						' block p-4 bg-white text-black top-0 m-0 z-10 text-4xl text-center rounded-3xl'
-					}>
+				<h2 className='font-poppins block p-4 bg-white text-black top-0 m-0 z-10 text-4xl text-center rounded-3xl'>
 					Featured Projects
 				</h2>
 				{featuredPaths.pages.length === 0 ? (
@@ -78,11 +72,7 @@ const Nav = async () => {
 				)}
 			</section>
 			<section className='flex flex-col items-center mb-48 gap-8'>
-				<h2
-					className={
-						poppinsClass.className +
-						' block p-4 bg-white text-black top-0 m-0 z-10 text-4xl text-center rounded-3xl'
-					}>
+				<h2 className='font-poppins block p-4 bg-white text-black top-0 m-0 z-10 text-4xl text-center rounded-3xl'>
 					Other Projects
 				</h2>
 				{otherPaths.pages.length === 0 ? (

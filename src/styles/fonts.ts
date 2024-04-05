@@ -1,31 +1,47 @@
-import { Overpass, Lato, Poppins, JetBrains_Mono } from 'next/font/google';
+import {
+	Overpass,
+	Lato,
+	Poppins,
+	JetBrains_Mono,
+	Silkscreen,
+} from 'next/font/google';
 
-const overpassClass = Overpass({
+export const overpassClass = Overpass({
 	subsets: ['latin-ext'],
 	display: 'swap',
 	weight: 'variable',
 	fallback: ['sans-serif'],
+	variable: '--font-overpass',
 });
 
-const poppinsClass = Poppins({
+export const poppinsClass = Poppins({
 	weight: ['700'],
 	subsets: ['latin-ext'],
 	display: 'swap',
 	fallback: ['sans-serif'],
+	variable: '--font-poppins',
 });
 
-const latoClass = Lato({
+export const latoClass = Lato({
 	weight: ['100', '300', '400', '700', '900'],
 	display: 'swap',
 	subsets: ['latin-ext'],
 	fallback: ['serif'],
+	variable: '--font-lato',
 });
 
-const jbMonoClass = JetBrains_Mono({
+export const jbMonoClass = JetBrains_Mono({
 	weight: 'variable',
 	fallback: ['monospace'],
 	display: 'swap',
 	subsets: ['latin-ext'],
+	variable: '--font-jbmono',
 });
 
-export { overpassClass, poppinsClass, latoClass, jbMonoClass };
+export const silkscreenClass = Silkscreen({
+	weight: '400',
+	fallback: ['monospace'],
+	subsets: ['latin'],
+	display: 'swap',
+	variable: '--font-silkscreen',
+});
