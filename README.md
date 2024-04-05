@@ -4,6 +4,11 @@ This is a Next.js App router endeavor!
 
 ## CHANGELOG
 
+### 2.3.0
+
+- Convert majority to Tailwind
+- Consolidate fonts to reduce initial loads
+
 ### 2.2.3
 
 - Various accessibility changes
