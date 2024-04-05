@@ -3,8 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { FaArrowUp } from 'react-icons/fa';
-
-import scrollLook from './ScrollToTop.module.scss';
+import { HiddenButAccessible } from '@/components/global';
 
 const ScrollToTop = () => {
 	const buttonRef = useRef<HTMLButtonElement>(null);
@@ -64,17 +63,15 @@ const ScrollToTop = () => {
 		};
 	}, [scrollThrottle]);
 
-	const classer = distanceDisable === false ? ` ${scrollLook.visible}` : '';
-
 	return (
 		<button
 			onClick={returnToTopOnClick}
-			className={scrollLook.scroller + classer}
+			className={`${distanceDisable ? 'hidden' : 'flex'} items-center fixed gap-4 left-4 bottom-4 lg:left-10 lg:bottom-10 p-4 text-white bg-black hover:text-black hover:bg-white focus:text-black focus:bg-white border-2 border-white rounded-md transition-colors z-10 font-bold`}
 			disabled={distanceDisable}
 			tabIndex={distanceDisable ? -1 : 0}
 			ref={buttonRef}>
-			<FaArrowUp />
-			Return to top
+			<FaArrowUp aria-hidden={true} />
+			<HiddenButAccessible>Return to top</HiddenButAccessible>
 		</button>
 	);
 };
