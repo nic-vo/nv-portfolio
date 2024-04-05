@@ -47,3 +47,5 @@ export const metadata = {
 	category: 'software',
 	robots: sharedRobots,
 };
+
+export const revalidate = false;

@@ -22,5 +22,3 @@ export const metadata: Metadata = {
 	description,
 	openGraph: { ...sharedOGData, title, description },
 };
-
-export const revalidate = false;
