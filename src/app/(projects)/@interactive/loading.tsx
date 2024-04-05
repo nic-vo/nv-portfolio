@@ -1,8 +1,6 @@
-import { poppinsClass } from '@/styles/fonts';
-
 const ProjectInteractiveLoading = () => {
 	return (
-		<h2 className={poppinsClass.className + ' block text-center text-5xl'}>
+		<h2 className='font-poppins block text-center text-5xl'>
 			Project loading...
 		</h2>
 	);
