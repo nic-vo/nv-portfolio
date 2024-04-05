@@ -111,6 +111,7 @@ $borderRadius: 20px;
 .textarea {
 	background-color: #b4bbc5;
 	font-size: 1.2em;
+	font-family: var(--font-lato), sans-serif
 }
 
 .output {
@@ -130,6 +131,16 @@ $borderRadius: 20px;
 	* {
 		margin: 1rem;
 		color: global.$Black;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-family: var(--font-lato), sans-serif;
+		font-weight: bold;
 	}
 
 	h1 {
@@ -172,6 +183,7 @@ $borderRadius: 20px;
 	}
 
 	code {
+		font-family: var(--font-jbmono), monospace;
 		margin: 0;
 		padding: 0.5em;
 		font-size: 0.8em;
@@ -180,6 +192,7 @@ $borderRadius: 20px;
 
 	pre {
 		code {
+			font-family: var(--font-jbmono), monospace;
 			display: block;
 		}
 	}
@@ -410,7 +423,7 @@ $borderRadius: 20px;
 	align-items: center;
 	padding: 0.8em;
 	font-size: inherit;
-	background-color: global.$slightlyLighter;
+	background-color: rgba(48, 48, 48, 0.2);
 	border-radius: $borderRadius;
 	gap: $borderRadius;
 
