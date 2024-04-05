@@ -2,10 +2,10 @@
 
 import { useMemo, useContext } from 'react';
 import { FaPlus } from 'react-icons/fa';
+import MouseRotateContext, { degrees } from './Rotators';
 import { PropsWithChildren } from 'react';
 
 import crossLook from './Crosses.module.scss';
-import MouseRotateContext, { degrees } from './Rotators';
 
 const Cross = (props: { coords: { x: number; y: number } }) => {
 	const { x, y } = useContext(MouseRotateContext);
