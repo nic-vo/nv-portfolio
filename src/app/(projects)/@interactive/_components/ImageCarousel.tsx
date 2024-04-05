@@ -5,8 +5,6 @@ import { FaCaretLeft, FaCaretRight, FaPlus } from 'react-icons/fa';
 import Image, { StaticImageData } from 'next/image';
 import { HiddenButAccessible } from '@/components/global';
 
-import { overpassClass } from '@/styles/fonts';
-
 const CarouselButton = (
 	props: PropsWithChildren & { clicker: () => void; classes?: string[] },
 ) => {
@@ -121,8 +119,7 @@ const ImageCarousel = (props: {
 					</CarouselButton>
 				</div>
 			</dialog>
-			<span
-				className={overpassClass.className + ' font-light text-xl text-center'}>
+			<span className='font-lato font-light text-xl text-center'>
 				Click/tap to expand
 			</span>
 			<div className='flex justify-center items-center w-4/5 h-3/4'>
