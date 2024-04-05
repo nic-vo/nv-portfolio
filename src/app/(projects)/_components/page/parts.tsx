@@ -2,7 +2,6 @@ import path from 'path';
 import fs from 'fs/promises';
 import { parse } from 'marked';
 
-import { poppinsClass } from '@/styles/fonts';
 import look from './ProjectInfo.module.scss';
 
 export type ProjectInfo = {
@@ -50,16 +49,11 @@ const ProjectInfo = (props: {
 
 	return (
 		<>
-			<h1
-				className={
-					poppinsClass.className + ' text-6xl w-11/12 text-center max-w-prose'
-				}>
+			<h1 className='font-poppins text-6xl w-11/12 text-center max-w-prose'>
 				{title}
 			</h1>
 			<section className='flex gap-4 w-11/12 max-w-prose'>
-				<h2 className={poppinsClass.className + ' text-3xl shrink-0'}>
-					The stack:
-				</h2>
+				<h2 className='font-poppins text-3xl shrink-0'>The stack:</h2>
 				<ul className='flex flex-wrap w-11/12 max-w-screen-lg p-0 z-10 text-xl'>
 					{techs.map((tech) => (
 						<li
@@ -78,9 +72,7 @@ const ProjectInfo = (props: {
 				dangerouslySetInnerHTML={{ __html: description }}
 			/>
 			<section className='flex font-bold gap-4 w-11/12 justify-center max-w-prose pb-8 mb-16'>
-				<h2 className={poppinsClass.className + ' text-3xl'}>
-					Link to original:
-				</h2>
+				<h2 className='font-poppins text-3xl'>Link to original:</h2>
 				<a
 					href={link}
 					target='_blank'

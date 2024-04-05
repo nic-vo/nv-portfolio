@@ -1,23 +1,14 @@
 @use '@/styles/globalStyles.module.scss' as global;
 
-.info {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	margin-bottom: 2em;
-	padding: 1em;
-}
-
 .description {
 	display: flex;
 	flex-direction: column;
-
 	gap: 1rem;
 
 	h2,
 	h3,
 	h4 {
-		font-family: Overpass, sans-serif;
+		font-family: var(--font-overpass), sans-serif;
 		font-weight: bold;
 		margin-top: 1rem;
 	}
@@ -35,7 +26,6 @@
 	}
 
 	p {
-		font-family: Overpass, sans-serif;
 		font-weight: 200;
 		font-size: 1rem;
 	}
@@ -52,8 +42,8 @@
 	}
 
 	code {
-		font-family: JetBrain Mono, monospace;
-		background-color: global.$slightlyDarker;
+		font-family: var(--font-jbmono), monospace;
+		background-color: rgba(0, 0, 0, 0.2);
 	}
 
 	hr {
@@ -69,7 +59,7 @@
 
 	blockquote {
 		padding: 1rem;
-		background-color: global.$slightlyDarker;
+		background-color: rgba(0, 0, 0, 0.2);
 	}
 }
 
