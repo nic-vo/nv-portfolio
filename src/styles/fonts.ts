@@ -6,4 +6,5 @@ export const silkscreenClass = Silkscreen({
 	display: 'swap',
 	variable: '--font-silkscreen',
 	fallback: ['monospace', 'ui-monospace', 'system-ui'],
+	preload: true,
 });
