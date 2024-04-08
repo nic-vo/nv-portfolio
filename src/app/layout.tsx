@@ -1,17 +1,42 @@
 import { Footer } from './_components/layout';
-import {
-	overpassClass,
-	poppinsClass,
-	latoClass,
-	jbMonoClass,
-	silkscreenClass,
-} from '@/styles/fonts';
+import { silkscreenClass } from '@/styles/fonts';
+import { JetBrains_Mono, Lato, Overpass, Poppins } from 'next/font/google';
+import Script from 'next/script';
 import { sharedRobots } from '@/data/metadata';
 
 import { PropsWithChildren } from 'react';
 
 import '@/styles/globals.css';
-import Script from 'next/script';
+
+const overpassClass = Overpass({
+	subsets: ['latin-ext'],
+	display: 'swap',
+	variable: '--font-overpass',
+	preload: true,
+});
+
+const poppinsClass = Poppins({
+	weight: ['400', '700'],
+	subsets: ['latin-ext'],
+	display: 'swap',
+	variable: '--font-poppins',
+	preload: true,
+});
+
+const latoClass = Lato({
+	weight: ['300', '400', '700'],
+	display: 'swap',
+	subsets: ['latin-ext'],
+	variable: '--font-lato',
+	preload: true,
+});
+
+const jbMonoClass = JetBrains_Mono({
+	display: 'swap',
+	subsets: ['latin-ext'],
+	variable: '--font-jbmono',
+	preload: true,
+});
 
 const reKey = process.env.NEXT_PUBLIC_CONTACT_FORM_RECAPTCHA_KEY;
 
@@ -29,7 +54,7 @@ const RootLayout = (props: PropsWithChildren) => {
 				].join(' ')}>
 				<Script
 					src={`https://www.google.com/recaptcha/api.js?render=${reKey}`}
-					strategy='beforeInteractive'
+					strategy='lazyOnload'
 				/>
 				{props.children}
 				<Footer />
