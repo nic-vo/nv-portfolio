@@ -50,6 +50,11 @@ const RootLayout = (props: PropsWithChildren) => {
 					latoClass.variable,
 					jbMonoClass.variable,
 					silkscreenClass.variable,
+					overpassClass.className,
+					poppinsClass.className,
+					latoClass.className,
+					jbMonoClass.className,
+					silkscreenClass.className,
 					'font-overpass',
 				].join(' ')}>
 				<Script
