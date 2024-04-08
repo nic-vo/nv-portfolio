@@ -67,4 +67,4 @@ const StaticHero = () => {
 	);
 };
 
-export default Hero;
+export default StaticHero;

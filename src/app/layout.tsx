@@ -27,10 +27,10 @@ const RootLayout = (props: PropsWithChildren) => {
 					silkscreenClass.variable,
 					'font-overpass',
 				].join(' ')}>
-				{/* <Script
+				<Script
 					src={`https://www.google.com/recaptcha/api.js?render=${reKey}`}
 					strategy='beforeInteractive'
-				/> */}
+				/>
 				{props.children}
 				<Footer />
 			</body>
