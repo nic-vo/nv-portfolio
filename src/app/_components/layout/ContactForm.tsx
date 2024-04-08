@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useRef, ElementRef, PropsWithChildren } from 'react';
-import Script from 'next/script';
 import { HiddenButAccessible } from '@/components/global';
 import {
 	FaMinus,
@@ -93,113 +92,106 @@ const ContactForm = () => {
 				style={{ color: 'firebrick' }}
 			/>
 		);
-	const reKey = process.env.NEXT_PUBLIC_CONTACT_FORM_RECAPTCHA_KEY;
 
 	return (
-		<>
-			<Script src={`https://www.google.com/recaptcha/api.js?render=${reKey}`} />
-
-			<form
-				onSubmit={submitHandler}
-				className='w-11/12 max-w-prose flex flex-col items-center gap-8'>
-				<h2 className='font-poppins font-bold text-4xl lg:text-5xl text-center mb-4'>
-					Need something done?
-				</h2>
-				<fieldset
-					disabled={disableToggle}
-					className='font-lato w-full flex flex-col items-center gap-4 border-0 p-0 m-0 disabled:opacity-50'>
-					<label
-						htmlFor='name'
-						className='font-lato w-full line text-center flex items-center gap-4 p-4 bg-transparent text-xl font-bold first:*:block'>
-						<span className='block border-transparent border-b-4 p-4'>
-							Name:
-						</span>
-						<input
-							id='name'
-							ref={nameRef}
-							placeholder='Type here...'
-							type='text'
-							minLength={4}
-							maxLength={100}
-							pattern="^([A-Za-z]|\d| |'|\.|,|-|\(|\)){4,100}$"
-							autoComplete='name'
-							required
-							className='font-jbmono justify-self-start w-full border-4 p-4 border-transparent border-b-white border-b-4 bg-transparent text-base text-white font-normal focus:bg-white focus:text-black placeholder:focus:text-black transition-all h-full outline-none'
+		<form
+			onSubmit={submitHandler}
+			className='w-11/12 max-w-prose flex flex-col items-center gap-8'>
+			<h2 className='font-poppins font-bold text-4xl lg:text-5xl text-center mb-4'>
+				Need something done?
+			</h2>
+			<fieldset
+				disabled={disableToggle}
+				className='font-lato w-full flex flex-col items-center gap-4 border-0 p-0 m-0 disabled:opacity-50'>
+				<label
+					htmlFor='name'
+					className='font-lato w-full line text-center flex items-center gap-4 p-4 bg-transparent text-xl font-bold first:*:block'>
+					<span className='block border-transparent border-b-4 p-4'>Name:</span>
+					<input
+						id='name'
+						ref={nameRef}
+						placeholder='Type here...'
+						type='text'
+						minLength={4}
+						maxLength={100}
+						pattern="^([A-Za-z]|\d| |'|\.|,|-|\(|\)){4,100}$"
+						autoComplete='name'
+						required
+						className='font-jbmono justify-self-start w-full border-4 p-4 border-transparent border-b-white border-b-4 bg-transparent text-base text-white font-normal focus:bg-white focus:text-black placeholder:focus:text-black transition-all h-full outline-none'
+					/>
+				</label>
+				<label
+					htmlFor='email'
+					className='font-lato w-full line text-center flex items-center gap-4 p-4 bg-transparent text-xl font-bold first:*:block'>
+					<span className='block border-transparent border-b-4 p-4'>
+						Email:
+					</span>
+					<input
+						id='email'
+						ref={emailRef}
+						placeholder='Type here...'
+						type='email'
+						autoComplete='email'
+						required
+						className='font-jbmono justify-self-start w-full border-4 p-4 border-transparent border-b-white border-b-4 bg-transparent text-base text-white font-normal focus:bg-white focus:text-black placeholder:focus:text-black transition-all h-full outline-none'
+					/>
+				</label>
+				<label
+					htmlFor='birthday'
+					style={{ display: 'none' }}>
+					Birthday:
+					<input
+						id='birthday'
+						ref={birthdayRef}
+						type='date'
+						defaultValue='1984-06-21'
+						autoComplete='off'
+					/>
+				</label>
+			</fieldset>
+			<div className='flex flex-col justify-start items-center m-4 min-h-32 gap-8'>
+				<p className='text-center opacity-80'>
+					This site is protected by reCAPTCHA and the Google
+					<a
+						href='https://policies.google.com/privacy'
+						className='underline m-1 font-semibold'>
+						Privacy Policy
+					</a>
+					and
+					<a
+						href='https://policies.google.com/terms'
+						className='underline m-1 font-semibold'>
+						Terms of Service
+					</a>
+					apply.
+				</p>
+				{!disableToggle && (
+					<button
+						type='submit'
+						className='cursor-pointer flex items-center justify-center w-40 p-4 m-2 border-4 border-white text-xl rounded-3xl bg-transparent gap-2 hover:bg-white hover:text-black focus:bg-white focus:text-black active:bg-white active:text-black last:*:transition-all last:*:hover:translate-x-4 last:*:focus:translate-x-4 disabled:hidden transition-all'>
+						Submit
+						<FaArrowRight aria-hidden={true} />
+					</button>
+				)}
+			</div>
+			<div
+				role='status'
+				className='flex items-center justify-center min-h-32 w-4/5 text-xl '>
+				{formState === 'PENDING' && (
+					<Spinner>
+						<FaMinus
+							className='text-9xl'
+							aria-hidden={true}
 						/>
-					</label>
-					<label
-						htmlFor='email'
-						className='font-lato w-full line text-center flex items-center gap-4 p-4 bg-transparent text-xl font-bold first:*:block'>
-						<span className='block border-transparent border-b-4 p-4'>
-							Email:
-						</span>
-						<input
-							id='email'
-							ref={emailRef}
-							placeholder='Type here...'
-							type='email'
-							autoComplete='email'
-							required
-							className='font-jbmono justify-self-start w-full border-4 p-4 border-transparent border-b-white border-b-4 bg-transparent text-base text-white font-normal focus:bg-white focus:text-black placeholder:focus:text-black transition-all h-full outline-none'
-						/>
-					</label>
-					<label
-						htmlFor='birthday'
-						style={{ display: 'none' }}>
-						Birthday:
-						<input
-							id='birthday'
-							ref={birthdayRef}
-							type='date'
-							defaultValue='1984-06-21'
-							autoComplete='off'
-						/>
-					</label>
-				</fieldset>
-				<div className='flex flex-col justify-start items-center m-4 min-h-32 gap-8'>
-					<p className='text-center opacity-80'>
-						This site is protected by reCAPTCHA and the Google
-						<a
-							href='https://policies.google.com/privacy'
-							className='underline m-1 font-semibold'>
-							Privacy Policy
-						</a>
-						and
-						<a
-							href='https://policies.google.com/terms'
-							className='underline m-1 font-semibold'>
-							Terms of Service
-						</a>
-						apply.
-					</p>
-					{!disableToggle && (
-						<button
-							type='submit'
-							className='cursor-pointer flex items-center justify-center w-40 p-4 m-2 border-4 border-white text-xl rounded-3xl bg-transparent gap-2 hover:bg-white hover:text-black focus:bg-white focus:text-black active:bg-white active:text-black last:*:transition-all last:*:hover:translate-x-4 last:*:focus:translate-x-4 disabled:hidden transition-all'>
-							Submit
-							<FaArrowRight aria-hidden={true} />
-						</button>
-					)}
-				</div>
-				<div
-					role='status'
-					className='flex items-center justify-center min-h-32 w-4/5 text-xl '>
-					{formState === 'PENDING' && (
-						<Spinner>
-							<FaMinus
-								className='text-9xl'
-								aria-hidden={true}
-							/>
-							<HiddenButAccessible>Loading...</HiddenButAccessible>
-						</Spinner>
-					)}
-					{formState === 'DONE' && responseIcon}
-					{message !== null && (
-						<p className='text-center p-0 m-0 ml-4'>{message}</p>
-					)}
-				</div>
-			</form>
-		</>
+						<HiddenButAccessible>Loading...</HiddenButAccessible>
+					</Spinner>
+				)}
+				{formState === 'DONE' && responseIcon}
+				{message !== null && (
+					<p className='text-center p-0 m-0 ml-4'>{message}</p>
+				)}
+			</div>
+		</form>
 	);
 };
 
