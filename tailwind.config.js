@@ -2,21 +2,16 @@
 module.exports = {
 	content: ['./src/**/*.{js,ts,jsx,tsx}'],
 	theme: {
-		fontFamily: {
-			sans: ['sans-serif'],
-			serif: ['serif'],
-			mono: ['monospace'],
-		},
 		extend: {
 			colors: {
 				white: '#D6E5E3',
 				black: '#0c1821',
 			},
 			fontFamily: {
-				overpass: 'var(--font-overpass)',
-				poppins: 'var(--font-poppins)',
-				lato: 'var(--font-lato)',
-				jbmono: 'var(--font-jbmono)',
+				overpass: 'var(--font-overpass), serif, ui-serif system-ui',
+				poppins: 'var(--font-poppins), sans-serif, ui-sans-serif, system-ui',
+				lato: 'var(--font-lato), sans-serif, ui-sans-serif, system-ui',
+				jbmono: 'var(--font-jbmono), monospace, ui-monospace, system-ui',
 			},
 			keyframes: {
 				fadein: {
