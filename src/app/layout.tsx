@@ -11,6 +11,9 @@ import { sharedRobots } from '@/data/metadata';
 import { PropsWithChildren } from 'react';
 
 import '@/styles/globals.css';
+import Script from 'next/script';
+
+const reKey = process.env.NEXT_PUBLIC_CONTACT_FORM_RECAPTCHA_KEY;
 
 const RootLayout = (props: PropsWithChildren) => {
 	return (
@@ -24,6 +27,10 @@ const RootLayout = (props: PropsWithChildren) => {
 					silkscreenClass.variable,
 					'font-overpass',
 				].join(' ')}>
+				<Script
+					src={`https://www.google.com/recaptcha/api.js?render=${reKey}`}
+					strategy='beforeInteractive'
+				/>
 				{props.children}
 				<Footer />
 			</body>
@@ -47,3 +54,5 @@ export const metadata = {
 	category: 'software',
 	robots: sharedRobots,
 };
+
+export const revalidate = false;
