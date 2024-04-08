@@ -5,4 +5,5 @@ export const silkscreenClass = Silkscreen({
 	subsets: ['latin'],
 	display: 'swap',
 	variable: '--font-silkscreen',
+	fallback: ['monospace', 'ui-monospace', 'system-ui'],
 });
