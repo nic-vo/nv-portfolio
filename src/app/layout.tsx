@@ -12,7 +12,7 @@ const overpassClass = Overpass({
 	subsets: ['latin-ext'],
 	display: 'swap',
 	variable: '--font-overpass',
-	preload: true,
+	preload: false,
 	fallback: ['serif', 'ui-serif', 'system-ui'],
 });
 
@@ -21,7 +21,7 @@ const poppinsClass = Poppins({
 	subsets: ['latin-ext'],
 	display: 'swap',
 	variable: '--font-poppins',
-	preload: true,
+	preload: false,
 	fallback: ['sans-serif', 'ui-sans-serif', 'system-ui'],
 });
 
@@ -30,7 +30,7 @@ const latoClass = Lato({
 	display: 'swap',
 	subsets: ['latin-ext'],
 	variable: '--font-lato',
-	preload: true,
+	preload: false,
 	fallback: ['sans-serif', 'ui-sans-serif', 'system-ui'],
 });
 
@@ -38,7 +38,7 @@ const jbMonoClass = JetBrains_Mono({
 	display: 'swap',
 	subsets: ['latin-ext'],
 	variable: '--font-jbmono',
-	preload: true,
+	preload: false,
 	fallback: ['monospace', 'ui-monospace', 'system-ui'],
 });
 
