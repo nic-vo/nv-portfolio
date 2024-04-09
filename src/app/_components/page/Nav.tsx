@@ -54,7 +54,7 @@ const Nav = async () => {
 	return (
 		<nav className='w-10/12'>
 			<section className='flex flex-col w-full items-center mb-48 gap-8'>
-				<h2 className='font-poppins block p-4 bg-white text-black top-0 m-0 z-10 text-4xl text-center rounded-3xl'>
+				<h2 className='font-poppins font-semibold block p-4 bg-white text-black top-0 m-0 z-10 text-4xl text-center rounded-3xl'>
 					Featured Projects
 				</h2>
 				{featuredPaths.pages.length === 0 ? (
@@ -72,7 +72,7 @@ const Nav = async () => {
 				)}
 			</section>
 			<section className='flex flex-col items-center mb-48 gap-8'>
-				<h2 className='font-poppins block p-4 bg-white text-black top-0 m-0 z-10 text-4xl text-center rounded-3xl'>
+				<h2 className='font-poppins font-semibold block p-4 bg-white text-black top-0 m-0 z-10 text-4xl text-center rounded-3xl'>
 					Other Projects
 				</h2>
 				{otherPaths.pages.length === 0 ? (

@@ -17,7 +17,7 @@ const overpassClass = Overpass({
 });
 
 const poppinsClass = Poppins({
-	weight: ['400', '700'],
+	weight: ['400', '600', '700'],
 	subsets: ['latin-ext'],
 	display: 'swap',
 	variable: '--font-poppins',
@@ -54,11 +54,6 @@ const RootLayout = (props: PropsWithChildren) => {
 					latoClass.variable,
 					jbMonoClass.variable,
 					silkscreenClass.variable,
-					overpassClass.className,
-					poppinsClass.className,
-					latoClass.className,
-					jbMonoClass.className,
-					silkscreenClass.className,
 					'font-overpass',
 				].join(' ')}>
 				<Script
