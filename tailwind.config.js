@@ -8,7 +8,7 @@ module.exports = {
 				black: '#0c1821',
 			},
 			fontFamily: {
-				overpass: 'var(--font-overpass), serif, ui-serif system-ui',
+				overpass: 'var(--font-overpass), serif, ui-serif, system-ui',
 				poppins: 'var(--font-poppins), sans-serif, ui-sans-serif, system-ui',
 				lato: 'var(--font-lato), sans-serif, ui-sans-serif, system-ui',
 				jbmono: 'var(--font-jbmono), monospace, ui-monospace, system-ui',

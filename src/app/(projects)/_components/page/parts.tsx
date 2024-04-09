@@ -49,11 +49,11 @@ const ProjectInfo = (props: {
 
 	return (
 		<>
-			<h1 className='font-poppins text-6xl w-11/12 text-center max-w-prose'>
+			<h1 className='font-poppins font-bold text-6xl w-11/12 text-center max-w-prose'>
 				{title}
 			</h1>
 			<section className='flex gap-4 w-11/12 max-w-prose'>
-				<h2 className='font-poppins text-3xl shrink-0'>The stack:</h2>
+				<h2 className='font-poppins font-bold text-3xl shrink-0'>The stack:</h2>
 				<ul className='flex flex-wrap w-11/12 max-w-screen-lg p-0 z-10 text-xl'>
 					{techs.map((tech) => (
 						<li

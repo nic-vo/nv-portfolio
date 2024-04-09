@@ -4,6 +4,10 @@ This is a Next.js App router endeavor!
 
 ## CHANGELOG
 
+### 2.3.1
+
+- Font LCP fixes
+
 ### 2.3.0
 
 - Convert majority to Tailwind

@@ -93,14 +93,16 @@ const ImageCarousel = (props: {
 				ref={viewerRef}
 				className='fixed z-20 h-svh w-full max-w-[100svw] max-h-[100svh] p-0 m-0 bg-transparent backdrop-blur backdrop-brightness-50'
 				onKeyDown={viewKeyDownHandler}>
-				<div className='h-full w-full flex items-center justify-between bg-transparent px-8'>
+				<div className='h-full w-full flex items-center justify-center bg-transparent px-8 gap-2'>
 					<CarouselButton
 						clicker={returner}
-						classes={['absolute', 'top-8', 'left-8']}>
+						classes={['block', 'absolute', 'top-8', 'left-8', 'rotate-45']}>
 						<FaPlus aria-hidden={true} />
 						<HiddenButAccessible>Close viewer</HiddenButAccessible>
 					</CarouselButton>
-					<CarouselButton clicker={decrementActiveImage}>
+					<CarouselButton
+						classes={['block', 'absolute', 'z-10', 'left-4']}
+						clicker={decrementActiveImage}>
 						<FaCaretLeft aria-hidden={true} />
 						<HiddenButAccessible>Previous image</HiddenButAccessible>
 					</CarouselButton>
@@ -110,10 +112,12 @@ const ImageCarousel = (props: {
 							alt={photos[activeImage].desc}
 							sizes='100vw'
 							placeholder='blur'
-							className='rounded-md w-9/12 h-auto animate-fadein'
+							className='rounded-md w-11/12 h-auto animate-fadein'
 						/>
 					)}
-					<CarouselButton clicker={incrementActiveImage}>
+					<CarouselButton
+						classes={['block', 'absolute', 'z-10', 'right-4']}
+						clicker={incrementActiveImage}>
 						<FaCaretRight aria-hidden={true} />
 						<HiddenButAccessible>Previous image</HiddenButAccessible>
 					</CarouselButton>
@@ -124,7 +128,9 @@ const ImageCarousel = (props: {
 			</span>
 			<div className='flex justify-center items-center w-4/5 h-3/4'>
 				<div className='shrink flex items-center w-ful h-full gap-4 lg:h-1/2'>
-					<CarouselButton clicker={() => scrollerHandler(false)}>
+					<CarouselButton
+						classes={['hidden', 'lg:block']}
+						clicker={() => scrollerHandler(false)}>
 						<FaCaretLeft aria-hidden={true} />
 						<HiddenButAccessible>Scroll left</HiddenButAccessible>
 					</CarouselButton>
@@ -160,7 +166,9 @@ const ImageCarousel = (props: {
 							);
 						})}
 					</ul>
-					<CarouselButton clicker={() => scrollerHandler(true)}>
+					<CarouselButton
+						classes={['hidden', 'lg:block']}
+						clicker={() => scrollerHandler(true)}>
 						<FaCaretRight aria-hidden={true} />
 						<HiddenButAccessible>Scroll right</HiddenButAccessible>
 					</CarouselButton>
