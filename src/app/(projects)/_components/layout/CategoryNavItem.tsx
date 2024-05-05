@@ -1,7 +1,7 @@
 'use client';
 
 import { useContext, useState } from 'react';
-import { FaCaretDown } from 'react-icons/fa';
+import { IoCaretDown } from 'react-icons/io5';
 import Link from 'next/link';
 import { ToggleContext } from './Header';
 import { ProjectInfo } from '../page/parts';
@@ -34,7 +34,7 @@ const CategoryNavItem = (props: {
 				aria-pressed={catToggled && !parentToggled}
 				tabIndex={parentToggled ? 0 : -1}>
 				{catCased}
-				<FaCaretDown
+				<IoCaretDown
 					className={`block text-2xl transition-all ${catToggled ? 'rotate-180' : ''}`}
 					aria-hidden='true'
 				/>
