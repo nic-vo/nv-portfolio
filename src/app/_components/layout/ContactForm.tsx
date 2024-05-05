@@ -3,11 +3,11 @@
 import { useState, useRef, ElementRef, PropsWithChildren } from 'react';
 import { HiddenButAccessible } from '@/components/global';
 import {
-	IoRemove,
-	IoCheckmarkCircle,
-	IoAlertCircle,
-	IoArrowForward,
-} from 'react-icons/io5';
+	FaMinus,
+	FaCheckCircle,
+	FaExclamationCircle,
+	FaArrowRight,
+} from 'react-icons/fa';
 import { whiteSpaceRemover } from './_lib';
 
 const Spinner = (props: PropsWithChildren) => {
@@ -82,12 +82,12 @@ const ContactForm = () => {
 		formState === 'PENDING' || (formState === 'DONE' && status === 200);
 	const responseIcon =
 		status && status < 300 ? (
-			<IoCheckmarkCircle
+			<FaCheckCircle
 				aria-label='Contact form submission success'
 				style={{ color: 'mediumseagreen' }}
 			/>
 		) : (
-			<IoAlertCircle
+			<FaExclamationCircle
 				aria-label='Contact form submission error'
 				style={{ color: 'firebrick' }}
 			/>
@@ -170,7 +170,7 @@ const ContactForm = () => {
 						type='submit'
 						className='cursor-pointer flex items-center justify-center w-40 p-4 m-2 border-4 border-white text-xl rounded-3xl bg-transparent gap-2 hover:bg-white hover:text-black focus:bg-white focus:text-black active:bg-white active:text-black last:*:transition-all last:*:hover:translate-x-4 last:*:focus:translate-x-4 disabled:hidden transition-all'>
 						Submit
-						<IoArrowForward aria-hidden={true} />
+						<FaArrowRight aria-hidden={true} />
 					</button>
 				)}
 			</div>
@@ -179,7 +179,7 @@ const ContactForm = () => {
 				className='flex items-center justify-center min-h-32 w-4/5 text-xl '>
 				{formState === 'PENDING' && (
 					<Spinner>
-						<IoRemove
+						<FaMinus
 							className='text-9xl'
 							aria-hidden={true}
 						/>

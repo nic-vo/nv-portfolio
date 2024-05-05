@@ -5,9 +5,9 @@ import {
 	useCallback,
 	useContext,
 	ChangeEvent,
-	useMemo,
+	useMemo
 } from 'react';
-import { IoVolumeMute, IoVolumeOff, IoStop, IoRefresh } from 'react-icons/io5';
+import { FaVolumeMute, FaVolumeOff, FaStop, FaUndoAlt } from 'react-icons/fa';
 import ContentContext from '../ContentContext/ContentContext';
 import PlayStateContext from '../PlayStateContext/PlayStateContext';
 
@@ -18,8 +18,11 @@ const Pad = (props: { char: string }) => {
 	const { char } = props;
 	const { activeList } = useContext(ContentContext);
 
-	const { muteAll, masterVolume, newDisplaySound, clearDisplaySound } =
-		useContext(PlayStateContext);
+	const {
+		muteAll,
+		masterVolume,
+		newDisplaySound,
+		clearDisplaySound } = useContext(PlayStateContext);
 
 	const padData = useMemo(() => activeList[char], [activeList]);
 
@@ -55,7 +58,7 @@ const Pad = (props: { char: string }) => {
 
 	// Sound fires whenever div clicked or keydown event in parent grid
 	const playSound = useCallback(() => {
-		const sound = soundRef.current!;
+		const sound = soundRef.current!
 		// Reset sound to time 0 and play
 		sound.currentTime = 0;
 		sound.play();
@@ -73,12 +76,9 @@ const Pad = (props: { char: string }) => {
 		setIsPlaying(false);
 	}, [padData]);
 
-	const volumeOnInputHandler = useCallback(
-		(e: ChangeEvent<HTMLInputElement>) => {
-			setPadVolume(parseFloat(e.target.value));
-		},
-		[],
-	);
+	const volumeOnInputHandler = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+		setPadVolume(parseFloat(e.target.value));
+	}, []);
 
 	const muteOnClick = useCallback(() => {
 		// Mute button changes state and set soundRef to state
@@ -91,7 +91,7 @@ const Pad = (props: { char: string }) => {
 
 	const stopOnClick = useCallback(() => {
 		// Stops sound
-		const sound = soundRef.current!;
+		const sound = soundRef.current!
 		sound.pause();
 		sound.currentTime = 0;
 		setIsPlaying(false);
@@ -104,64 +104,54 @@ const Pad = (props: { char: string }) => {
 	}, [loop]);
 
 	const padClasser = useMemo(
-		() =>
-			`${padLook.pad} ${
-				isPlaying === true ? padLook.padActive : padLook.padInactive
-			}`,
-		[isPlaying],
-	);
+		() => `${padLook.pad} ${isPlaying === true ?
+			padLook.padActive : padLook.padInactive}`,
+		[isPlaying]);
 	const muteClasser = useMemo(
-		() =>
-			`${machineLook.button} ${muted ? machineLook.muteon : machineLook.mute}`,
-		[muted],
-	);
+		() => `${machineLook.button} ${muted ?
+			machineLook.muteon : machineLook.mute}`,
+		[muted]);
 	const loopClasser = useMemo(
-		() =>
-			`${machineLook.button} ${loop ? machineLook.loopon : machineLook.loop}`,
-		[loop],
-	);
+		() => `${machineLook.button} ${loop ?
+			machineLook.loopon : machineLook.loop}`,
+		[loop]);
 
-	if (error)
-		return (
-			<div className={padLook.container}>
-				<p>
-					There was an error loading this sound. Refresh or try switching to a
-					different bank.
-				</p>
-			</div>
-		);
+	if (error) return (
+		<div className={padLook.container}>
+			<p>There was an error loading this sound. Refresh or try switching to a different bank.</p>
+		</div>
+	);
 
 	return (
 		<div className={padLook.container}>
 			<button
 				className={padClasser}
 				style={{ animationDuration: `${Math.random() * 1000 + 300}ms` }}
-				onClick={playSound}>
+				onClick={playSound} >
 				{char.toUpperCase()}
 			</button>
 			<input
-				type='range'
-				min='0'
-				max='1'
-				step='0.05'
+				type="range"
+				min="0"
+				max="1"
+				step="0.05"
 				value={padVolume}
-				onInput={volumeOnInputHandler}
-			/>
+				onInput={volumeOnInputHandler} />
 			<div className={padLook.buttons}>
 				<button
 					onClick={muteOnClick}
 					className={muteClasser}>
-					{muted ? <IoVolumeMute /> : <IoVolumeOff />}
+					{muted ? <FaVolumeMute /> : <FaVolumeOff />}
 				</button>
 				<button
 					onClick={stopOnClick}
 					className={`${machineLook.button} ${machineLook.stop}`}>
-					<IoStop />
+					<FaStop />
 				</button>
 				<button
 					onClick={loopOnClick}
 					className={loopClasser}>
-					<IoRefresh />
+					<FaUndoAlt />
 				</button>
 			</div>
 			<audio
@@ -172,10 +162,9 @@ const Pad = (props: { char: string }) => {
 				onPlay={onPlayHandler}
 				onPause={onEndedHandler}
 				onEnded={onEndedHandler}
-				onError={() => setError(true)}
-			/>
+				onError={() => setError(true)} />
 		</div>
 	);
-};
+}
 
 export default Pad;

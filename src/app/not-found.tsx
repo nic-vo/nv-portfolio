@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Duckies } from './_components/page';
-import { IoArrowBack } from 'react-icons/io5';
+import { FaArrowLeft } from 'react-icons/fa';
 
 const RootNotFound = () => {
 	return (
@@ -10,7 +10,7 @@ const RootNotFound = () => {
 				<Link
 					href='/'
 					className='flex gap-4 bg-white text-black p-4 rounded-full *:block items-center'>
-					<IoArrowBack />
+					<FaArrowLeft />
 					<p>Back to home</p>
 				</Link>
 				<p>

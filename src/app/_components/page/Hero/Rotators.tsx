@@ -1,7 +1,7 @@
 'use client';
 
 import { PropsWithChildren, createContext, useContext, useState } from 'react';
-import { IoCube, IoPower } from 'react-icons/io5';
+import { FaCube, FaPowerOff } from 'react-icons/fa';
 import { HiddenButAccessible } from '@/components/global';
 
 const MouseRotateContext = createContext<{ x: number; y: number }>({
@@ -54,9 +54,9 @@ export const HeaderTrackingRotate = (props: PropsWithChildren) => {
 				<span
 					className={`block h-full w-min p-4 rounded-full group-focus/heroslide:bg-white group-hover/heroslide:bg-white group-focus/heroslide:text-black group-hover/heroslide:text-black transition-all ${deactivate ? 'translate-x-0' : 'translate-x-2/3'}`}>
 					{deactivate ? (
-						<IoPower aria-hidden={true} />
+						<FaPowerOff aria-hidden={true} />
 					) : (
-						<IoCube aria-hidden={true} />
+						<FaCube aria-hidden={true} />
 					)}
 				</span>
 				<HiddenButAccessible>

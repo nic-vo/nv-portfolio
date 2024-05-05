@@ -8,7 +8,7 @@ import {
 	FormEvent,
 } from 'react';
 
-import { IoExpand, IoDownloadOutline, IoAdd } from 'react-icons/io5';
+import { FaArrowsAltH, FaFileDownload, FaPlus } from 'react-icons/fa';
 
 import { parse as mParse } from 'marked';
 import { sanitize } from 'isomorphic-dompurify';
@@ -158,7 +158,7 @@ const Markdown = () => {
 						<button
 							className={style.button + ' ' + style.paneToggler}
 							onClick={editorToggle}>
-							<IoExpand />
+							<FaArrowsAltH />
 						</button>
 					</div>
 					<div className={style.contentContainer}>
@@ -175,7 +175,7 @@ const Markdown = () => {
 						<button
 							className={style.button + ' ' + style.paneToggler}
 							onClick={previewToggle}>
-							<IoExpand />
+							<FaArrowsAltH />
 						</button>
 						<p className={style.heading}>preview</p>
 						{allowLiveUpdates === false && (
@@ -209,7 +209,7 @@ const Markdown = () => {
 							setToggleDlList(false);
 						}}
 						className={style.closer}>
-						<IoAdd />
+						<FaPlus />
 					</button>
 					<form
 						id='urlgen'
@@ -251,7 +251,7 @@ const Markdown = () => {
 													removeDlUrlFromList(index);
 												}}
 												className={style.button + ' ' + style.dlRemover}>
-												<IoAdd />
+												<FaPlus />
 											</button>
 											<button
 												onClick={() => {
@@ -265,7 +265,7 @@ const Markdown = () => {
 												href={url}
 												download={`md_parser_${filename}.${extension}`}
 												className={style.dlLink}>
-												<IoDownloadOutline />
+												<FaFileDownload />
 												Download
 											</a>
 										</li>

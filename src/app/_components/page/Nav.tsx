@@ -4,7 +4,7 @@ import * as thumbs from '@/public/thumbs';
 import DefaultThumb from '@/public/thumbs/default';
 import { getFeaturedPaths, getOtherPaths } from '../paths';
 import { ProjectInfo } from '@/app/(projects)/_components/page/parts';
-import { IoArrowForward } from 'react-icons/io5';
+import { FaArrowRight } from 'react-icons/fa';
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 
 const referenced = thumbs as Record<string, StaticImport | undefined>;
@@ -32,7 +32,7 @@ const NavLink = async (props: {
 				<span
 					className='z-20 drop-shadow-md bg-transparent transition-all opacity-0 group-hover/navlink:opacity-100 group-focus/navlink:opacity-100 flex items-center gap-2 *:block border-b-2 text-center font-extralight border-white '
 					aria-hidden={true}>
-					Details <IoArrowForward aria-hidden={true} />
+					Details <FaArrowRight aria-hidden={true} />
 				</span>
 				<Image
 					src={referenced[segment] ?? DefaultThumb}

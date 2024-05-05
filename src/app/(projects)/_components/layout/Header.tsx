@@ -2,7 +2,7 @@
 
 import { createContext, useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
-import { IoAdd, IoMenu, IoHomeSharp } from 'react-icons/io5';
+import { FaPlus, FaBars, FaHome } from 'react-icons/fa';
 import { HiddenButAccessible } from '@/components/global';
 
 export const ToggleContext = createContext(false);
@@ -37,7 +37,7 @@ const Header = (props: { children: React.ReactNode }) => {
 				className='flex items-center justify-center border border-white text-white bg-black backdrop-blur-sm rounded-md cursor-pointer transition-colors p-2 absolute translate-x-[-125%] translate-y-[150%] hover:bg-white hover:text-black focus:bg-white focus:text-black z-10 bflag'
 				id='home'
 				aria-label='Return home'>
-				<IoHomeSharp
+				<FaHome
 					className='block text-2xl'
 					aria-hidden='true'
 				/>
@@ -50,12 +50,12 @@ const Header = (props: { children: React.ReactNode }) => {
 				aria-pressed={toggled}
 				onFocus={() => setToggled(true)}>
 				{toggled === false ? (
-					<IoMenu
+					<FaBars
 						className={`block ${toggled ? '-rotate-45' : 'rotate-0'} transition-all text-2xl`}
 						aria-hidden='true'
 					/>
 				) : (
-					<IoAdd
+					<FaPlus
 						className={`block ${toggled ? '-rotate-45' : 'rotate-0'} transition-all text-2xl`}
 						aria-hidden='true'
 					/>
