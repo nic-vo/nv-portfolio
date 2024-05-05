@@ -1,4 +1,4 @@
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { IoLogoGithub, IoLogoLinkedin } from 'react-icons/io5';
 import { HiddenButAccessible } from '@/components/global';
 import ContactForm from './ContactForm';
 import { cache } from 'react';
@@ -28,13 +28,13 @@ const Footer = async () => {
 				<a
 					href='https://github.com/nic-vo'
 					target='_blank'>
-					<FaGithub aria-hidden={true} />{' '}
+					<IoLogoGithub aria-hidden={true} />{' '}
 					<HiddenButAccessible>GitHub</HiddenButAccessible>
 				</a>
 				<a
 					href='https://www.linkedin.com/in/nicolasvo/'
 					target='_blank'>
-					<FaLinkedin aria-hidden={true} />{' '}
+					<IoLogoLinkedin aria-hidden={true} />{' '}
 					<HiddenButAccessible>LinkedIn</HiddenButAccessible>
 				</a>
 			</div>

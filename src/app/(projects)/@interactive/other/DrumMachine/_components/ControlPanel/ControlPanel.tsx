@@ -5,12 +5,12 @@ import {
 	useMemo,
 } from 'react';
 import {
-	FaVolumeMute,
-	FaStop,
-	FaMusic,
-	FaVolumeUp,
-	FaVolumeOff,
-} from 'react-icons/fa';
+	IoVolumeMute,
+	IoStop,
+	IoMusicalNotes,
+	IoVolumeHigh,
+	IoVolumeOff,
+} from 'react-icons/io5';
 import ContentContext from '../ContentContext/ContentContext';
 import PlayStateContext from '../PlayStateContext/PlayStateContext';
 
@@ -30,7 +30,7 @@ const MasterSlider = () => {
 
 	return (
 		<label htmlFor='mVolume'>
-			<FaVolumeUp />
+			<IoVolumeHigh />
 			<input
 				id='mVolume'
 				type='range'
@@ -54,7 +54,7 @@ const BankSlider = () => {
 
 	return (
 		<label htmlFor='bank'>
-			<FaMusic />
+			<IoMusicalNotes />
 			<input
 				id='bank'
 				type='range'
@@ -88,7 +88,7 @@ const MuteAllButton = () => {
 		<button
 			className={`${machineLook.button} ${muteAll ? machineLook.muteon : machineLook.mute}`}
 			onClick={toggleMuteAll}>
-			{muteAll === true ? <FaVolumeMute /> : <FaVolumeOff />}
+			{muteAll === true ? <IoVolumeMute /> : <IoVolumeOff />}
 		</button>
 	);
 };
@@ -109,7 +109,7 @@ const ControlPanel = (props: { stopAllHandler: () => void }) => {
 					<button
 						className={`${machineLook.button} ${machineLook.stop}`}
 						onClick={stopAllHandler}>
-						<FaStop />
+						<IoStop />
 					</button>
 					<MuteAllButton />
 				</div>

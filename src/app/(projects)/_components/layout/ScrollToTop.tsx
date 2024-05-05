@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
-import { FaArrowUp } from 'react-icons/fa';
+import { IoArrowUp } from 'react-icons/io5';
 import { HiddenButAccessible } from '@/components/global';
 
 const ScrollToTop = () => {
@@ -70,7 +70,7 @@ const ScrollToTop = () => {
 			disabled={distanceDisable}
 			tabIndex={distanceDisable ? -1 : 0}
 			ref={buttonRef}>
-			<FaArrowUp aria-hidden={true} />
+			<IoArrowUp aria-hidden={true} />
 			<HiddenButAccessible>Return to top</HiddenButAccessible>
 		</button>
 	);
