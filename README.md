@@ -4,6 +4,11 @@ This is a Next.js App router endeavor!
 
 ## CHANGELOG
 
+### 2.3.2
+
+- Switch icons
+- Font LCP fixes
+
 ### 2.3.1
 
 - Font LCP fixes
