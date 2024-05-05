@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect, PropsWithChildren } from 'react';
-import { FaCaretLeft, FaCaretRight, FaPlus } from 'react-icons/fa';
+import { IoCaretBack, IoCaretForward, IoAdd } from 'react-icons/io5';
 import Image, { StaticImageData } from 'next/image';
 import { HiddenButAccessible } from '@/components/global';
 
@@ -97,13 +97,13 @@ const ImageCarousel = (props: {
 					<CarouselButton
 						clicker={returner}
 						classes={['block', 'absolute', 'top-8', 'left-8', 'rotate-45']}>
-						<FaPlus aria-hidden={true} />
+						<IoAdd aria-hidden={true} />
 						<HiddenButAccessible>Close viewer</HiddenButAccessible>
 					</CarouselButton>
 					<CarouselButton
 						classes={['block', 'absolute', 'z-10', 'left-4']}
 						clicker={decrementActiveImage}>
-						<FaCaretLeft aria-hidden={true} />
+						<IoCaretBack aria-hidden={true} />
 						<HiddenButAccessible>Previous image</HiddenButAccessible>
 					</CarouselButton>
 					{activeImage !== null && (
@@ -118,7 +118,7 @@ const ImageCarousel = (props: {
 					<CarouselButton
 						classes={['block', 'absolute', 'z-10', 'right-4']}
 						clicker={incrementActiveImage}>
-						<FaCaretRight aria-hidden={true} />
+						<IoCaretForward aria-hidden={true} />
 						<HiddenButAccessible>Previous image</HiddenButAccessible>
 					</CarouselButton>
 				</div>
@@ -131,7 +131,7 @@ const ImageCarousel = (props: {
 					<CarouselButton
 						classes={['hidden', 'lg:block']}
 						clicker={() => scrollerHandler(false)}>
-						<FaCaretLeft aria-hidden={true} />
+						<IoCaretBack aria-hidden={true} />
 						<HiddenButAccessible>Scroll left</HiddenButAccessible>
 					</CarouselButton>
 					<ul
@@ -169,7 +169,7 @@ const ImageCarousel = (props: {
 					<CarouselButton
 						classes={['hidden', 'lg:block']}
 						clicker={() => scrollerHandler(true)}>
-						<FaCaretRight aria-hidden={true} />
+						<IoCaretForward aria-hidden={true} />
 						<HiddenButAccessible>Scroll right</HiddenButAccessible>
 					</CarouselButton>
 				</div>
