@@ -8,7 +8,7 @@ const ProjectPageDefault = () => {
 			</h1>
 			<Link
 				href='/'
-				className='text-black p-4 bg-white rounded-full cursor-pointer'>
+				className='text-black p-4 bg-white rounded-full cursor-pointer outline-white focus-visible:outline'>
 				Return home
 			</Link>
 		</section>

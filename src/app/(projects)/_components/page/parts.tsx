@@ -76,7 +76,7 @@ const ProjectInfo = (props: {
 				<a
 					href={link}
 					target='_blank'
-					className='block px-4 py-2 rounded-3xl bg-green-500 text-black'>
+					className='block px-4 py-2 rounded-3xl bg-green-500 text-black outline-green-500 outline-offset-2 focus-visible:outline'>
 					Original / Live
 				</a>
 			</section>

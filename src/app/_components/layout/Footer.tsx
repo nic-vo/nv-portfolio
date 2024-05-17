@@ -1,5 +1,5 @@
 import { IoLogoGithub, IoLogoLinkedin } from 'react-icons/io5';
-import { HiddenButAccessible } from '@/components/global';
+import { SRText } from '@/components/global';
 import ContactForm from './ContactForm';
 import { cache } from 'react';
 import path from 'path';
@@ -27,20 +27,24 @@ const Footer = async () => {
 			<div className='flex text-4xl gap-4 p-4'>
 				<a
 					href='https://github.com/nic-vo'
-					target='_blank'>
+					target='_blank'
+					className='p-2 focus-visible:outline outline-white outline-offset-4 rounded-lg'
+					aria-label='Check out my GitHub'>
 					<IoLogoGithub aria-hidden={true} />{' '}
-					<HiddenButAccessible>GitHub</HiddenButAccessible>
+					<SRText>Check out my GitHub</SRText>
 				</a>
 				<a
 					href='https://www.linkedin.com/in/nicolasvo/'
-					target='_blank'>
+					target='_blank'
+					className='p-2 focus-visible:outline outline-white outline-offset-4 rounded-lg'
+					aria-label='View my LinkedIn profile'>
 					<IoLogoLinkedin aria-hidden={true} />{' '}
-					<HiddenButAccessible>LinkedIn</HiddenButAccessible>
+					<SRText>View my LinkedIn profile</SRText>
 				</a>
 			</div>
 			<div className='font-lato font-light flex items-center max-w-screen-lg gap-8'>
 				<span>v. {version}</span>
-				<p>&copy; {date} Nicolas Vo</p>
+				<p>&copy;{date} Nicolas Vo</p>
 			</div>
 		</footer>
 	);

@@ -44,7 +44,7 @@
 
 	.static {
 		display: block;
-		animation-name: wiggle;
+		animation-name: none;
 	}
 }
 
@@ -76,20 +76,6 @@
 		transform: translateZ(-300px);
 		opacity: 0;
 		filter: blur(10px) brightness(0);
-	}
-}
-
-@keyframes wiggle {
-	0% {
-		transalte: 0 0 -10px
-	}
-
-	50% {
-		transalte: 0 0 10px
-	}
-
-	100% {
-		transalte: 0 0 -10px
 	}
 }
 

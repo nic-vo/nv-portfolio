@@ -44,7 +44,7 @@
 	box-shadow: 0px 0px 20px 5px $pad-glow;
 }
 
-.container input:focus::-moz-range-thumb {
+.container input:focus-visible::-moz-range-thumb {
 	background: $pad-overexpose;
 	box-shadow: 0px 0px 20px 5px $pad-glow;
 }
@@ -66,7 +66,7 @@
 	box-shadow: 0px 0px 20px 5px $pad-glow;
 }
 
-.container input:focus::-webkit-range-thumb {
+.container input:focus-visible::-webkit-range-thumb {
 	background: $pad-overexpose;
 	box-shadow: 0px 0px 20px 5px $pad-glow;
 }

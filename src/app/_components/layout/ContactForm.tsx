@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef, ElementRef, PropsWithChildren } from 'react';
-import { HiddenButAccessible } from '@/components/global';
+import { SRText } from '@/components/global';
 import {
 	IoRemove,
 	IoCheckmarkCircle,
@@ -84,12 +84,12 @@ const ContactForm = () => {
 		status && status < 300 ? (
 			<IoCheckmarkCircle
 				aria-label='Contact form submission success'
-				style={{ color: 'mediumseagreen' }}
+				className='block text-xl text-green-500'
 			/>
 		) : (
 			<IoAlertCircle
 				aria-label='Contact form submission error'
-				style={{ color: 'firebrick' }}
+				className='block text-xl text-red-500'
 			/>
 		);
 
@@ -117,7 +117,7 @@ const ContactForm = () => {
 						pattern="^([A-Za-z]|\d| |'|\.|,|-|\(|\)){4,100}$"
 						autoComplete='name'
 						required
-						className='font-jbmono justify-self-start w-full border-4 p-4 border-transparent border-b-white border-b-4 bg-transparent text-base text-white font-normal focus:bg-white focus:text-black placeholder:focus:text-black transition-all h-full outline-none'
+						className='font-jbmono justify-self-start w-full border-4 p-4 border-transparent border-b-white border-b-4 bg-transparent text-base text-white font-normal focus-visible:bg-white focus-visible:text-black placeholder:focus-visible:text-black transition-all h-full outline-none'
 					/>
 				</label>
 				<label
@@ -133,7 +133,7 @@ const ContactForm = () => {
 						type='email'
 						autoComplete='email'
 						required
-						className='font-jbmono justify-self-start w-full border-4 p-4 border-transparent border-b-white border-b-4 bg-transparent text-base text-white font-normal focus:bg-white focus:text-black placeholder:focus:text-black transition-all h-full outline-none'
+						className='font-jbmono justify-self-start w-full border-4 p-4 border-transparent border-b-white border-b-4 bg-transparent text-base text-white font-normal focus-visible:bg-white focus-visible:text-black placeholder:focus-visible:text-black transition-all h-full outline-none'
 					/>
 				</label>
 				<label
@@ -154,21 +154,21 @@ const ContactForm = () => {
 					This site is protected by reCAPTCHA and the Google
 					<a
 						href='https://policies.google.com/privacy'
-						className='underline m-1 font-semibold'>
+						className='underline m-1 font-semibold outline-white outline-offset-4 focus-visible:outline rounded-lg'>
 						Privacy Policy
 					</a>
 					and
 					<a
 						href='https://policies.google.com/terms'
-						className='underline m-1 font-semibold'>
+						className='underline m-1 font-semibold outline-white outline-offset-4 focus-visible:outline rounded-lg'>
 						Terms of Service
 					</a>
 					apply.
 				</p>
-				{!disableToggle && (
+				{!disableToggle && status !== 201 && (
 					<button
 						type='submit'
-						className='cursor-pointer flex items-center justify-center w-40 p-4 m-2 border-4 border-white text-xl rounded-3xl bg-transparent gap-2 hover:bg-white hover:text-black focus:bg-white focus:text-black active:bg-white active:text-black last:*:transition-all last:*:hover:translate-x-4 last:*:focus:translate-x-4 disabled:hidden transition-all'>
+						className='cursor-pointer flex items-center justify-center w-40 p-4 m-2 border-4 border-white text-xl rounded-3xl bg-transparent gap-2 outline-none hover:bg-white hover:text-black focus-visible:bg-white focus-visible:text-black active:bg-white active:text-black last:*:transition-all last:*:hover:translate-x-4 last:*:focus-visible:translate-x-4 disabled:hidden transition-all'>
 						Submit
 						<IoArrowForward aria-hidden={true} />
 					</button>
@@ -180,10 +180,10 @@ const ContactForm = () => {
 				{formState === 'PENDING' && (
 					<Spinner>
 						<IoRemove
-							className='text-9xl'
+							className='text-6xl origin-center block'
 							aria-hidden={true}
 						/>
-						<HiddenButAccessible>Loading...</HiddenButAccessible>
+						<SRText>Loading...</SRText>
 					</Spinner>
 				)}
 				{formState === 'DONE' && responseIcon}

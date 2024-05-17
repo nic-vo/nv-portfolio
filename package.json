@@ -1,11 +1,10 @@
 {
 	"name": "nv-portfolio",
-	"version": "2.3.2",
+	"version": "2.4.0",
 	"private": true,
 	"scripts": {
 		"dev": "next dev",
 		"build": "next build",
-		"start": "next start",
 		"lint": "next lint"
 	},
 	"dependencies": {
@@ -27,6 +26,7 @@
 		"@aws-sdk/s3-request-presigner": "~3",
 		"@next/bundle-analyzer": "^14",
 		"@types/node": "~20",
+		"@types/nodemailer": "^6.4.15",
 		"@types/react": "~18",
 		"@types/react-dom": "~18",
 		"autoprefixer": "~10.4.18",
