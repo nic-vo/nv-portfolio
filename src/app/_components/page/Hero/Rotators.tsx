@@ -47,7 +47,7 @@ export const HeaderTrackingRotate = (props: PropsWithChildren) => {
 			</MouseRotateContext.Provider>
 			<button
 				onClick={disableHandler}
-				className='absolute text-2xl w-24 bg-transparent backdrop-blur bottom-8 border-4 rounded-full border-white group/heroslide hover:bg-black focus:bg-black transition-all overflow-hidden'
+				className='absolute text-2xl w-24 bg-transparent backdrop-blur bottom-8 border-4 rounded-full outline-none border-white group/heroslide hover:bg-black focus-visible:bg-black transition-all overflow-hidden'
 				role='switch'
 				aria-checked={!deactivate}
 				aria-label={`Press to ${deactivate ? 'turn on' : 'turn off'} the 3D effect`}>
@@ -67,22 +67,22 @@ export const HeaderTrackingRotate = (props: PropsWithChildren) => {
 export const Headings = () => {
 	const { x, y } = useContext(MouseRotateContext);
 	return (
-		<>
+		<hgroup style={{ perspective: '400px' }}>
 			<h1
-				className='font-poppins text-6xl lg:text-9xl text-center font-bold m-0 z-10 '
+				className='font-poppins text-6xl md:text-9xl text-center font-bold m-0 z-10 '
 				style={{
 					rotate: `${0.5 - x} ${y - 0.5} 0 15deg`,
 				}}>
 				Nicolas Vo
 			</h1>
-			<h2
-				className='font-lato text-3xl lg:text-4xl text-center font-light m-0 z-10'
+			<p
+				className='font-lato text-3xl md:text-4xl text-center font-light m-0 z-10'
 				style={{
 					rotate: `${0.5 - x} ${y - 0.5} 0 15deg`,
 				}}>
 				Front End Developer
-			</h2>
-		</>
+			</p>
+		</hgroup>
 	);
 };
 

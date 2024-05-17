@@ -13,7 +13,7 @@ const Cross = (props: { coords: { x: number; y: number } }) => {
 	const seed = useMemo(() => parseFloat(Math.random().toFixed(3)), []);
 	return (
 		<IoAdd
-			className={`block text-2xl text-white absolute bg-transparent z-0 ${crossLook.animated}`}
+			className={`block text-4xl text-white absolute bg-transparent z-0 ${crossLook.animated}`}
 			style={{
 				animationDelay: `${seed * 60 - 30}s`,
 				animationDuration: `${seed * 150 + 30}s`,
@@ -41,7 +41,7 @@ const StaticCross = (props: {
 
 	return (
 		<IoAdd
-			className={`absolute block text-2xl text-white bg-transparent drop-shadow ${props.rear ? 'z-0' : 'z-20'} ${crossLook.static}`}
+			className={`absolute block text-4xl text-white bg-transparent drop-shadow ${props.rear ? 'z-0' : 'z-20'} ${crossLook.static}`}
 			style={{
 				animationDelay: `${seed * 60 - 30}s`,
 				animationDuration: `${seed * 30 + 30}s`,
