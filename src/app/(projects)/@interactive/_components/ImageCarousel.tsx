@@ -3,7 +3,6 @@
 import { useState, useRef, useEffect, PropsWithChildren } from 'react';
 import { IoCaretBack, IoCaretForward, IoAdd } from 'react-icons/io5';
 import Image, { StaticImageData } from 'next/image';
-import { HiddenButAccessible } from '@/components/global';
 
 const CarouselButton = (
 	props: PropsWithChildren & { clicker: () => void; classes?: string[] },
@@ -96,15 +95,16 @@ const ImageCarousel = (props: {
 				<div className='h-full w-full flex items-center justify-center bg-transparent px-8 gap-2'>
 					<CarouselButton
 						clicker={returner}
-						classes={['block', 'absolute', 'top-8', 'left-8', 'rotate-45']}>
+						classes={['block', 'absolute', 'top-8', 'left-8', 'rotate-45']}
+						aria-label='Close viewer'>
 						<IoAdd aria-hidden={true} />
-						<HiddenButAccessible>Close viewer</HiddenButAccessible>
 					</CarouselButton>
 					<CarouselButton
 						classes={['block', 'absolute', 'z-10', 'left-4']}
-						clicker={decrementActiveImage}>
+						clicker={decrementActiveImage}
+						disabled={activeImage === 0}
+						aria-label='Previous image'>
 						<IoCaretBack aria-hidden={true} />
-						<HiddenButAccessible>Previous image</HiddenButAccessible>
 					</CarouselButton>
 					{activeImage !== null && (
 						<Image
@@ -117,9 +117,10 @@ const ImageCarousel = (props: {
 					)}
 					<CarouselButton
 						classes={['block', 'absolute', 'z-10', 'right-4']}
-						clicker={incrementActiveImage}>
+						clicker={incrementActiveImage}
+						disabled={activeImage === photos.length - 1}
+						aria-label='Next image'>
 						<IoCaretForward aria-hidden={true} />
-						<HiddenButAccessible>Previous image</HiddenButAccessible>
 					</CarouselButton>
 				</div>
 			</dialog>
@@ -130,9 +131,9 @@ const ImageCarousel = (props: {
 				<div className='shrink flex items-center w-ful h-full gap-4 lg:h-1/2'>
 					<CarouselButton
 						classes={['hidden', 'lg:block']}
-						clicker={() => scrollerHandler(false)}>
+						clicker={() => scrollerHandler(false)}
+						aria-label='Scroll left'>
 						<IoCaretBack aria-hidden={true} />
-						<HiddenButAccessible>Scroll left</HiddenButAccessible>
 					</CarouselButton>
 					<ul
 						className='flex flex-col lg:flex-row h-full p-4 gap-8 items-center overflow-auto w-full thinscroll'
@@ -145,11 +146,12 @@ const ImageCarousel = (props: {
 									key={`photo-${index}`}
 									tabIndex={-1}>
 									<button
-										className='shrink-0 cursor-pointer rounded-lg w-full lg:h-full lg:w-auto'
+										className='shrink-0 cursor-pointer rounded-lg w-full lg:h-full lg:w-auto outline-white focus-visible:outline outline-offset-4'
 										tabIndex={0}
 										onClick={() => {
 											thumbClickHandler(index);
-										}}>
+										}}
+										aria-label={`Toggle the large view for picture no. ${index + 1}`}>
 										<Image
 											placeholder='blur'
 											src={photo.image}
@@ -158,9 +160,6 @@ const ImageCarousel = (props: {
 											priority={index < 2}
 											className='rounded-lg block w-full h-auto lg:h-full'
 										/>
-										<HiddenButAccessible>
-											Toggle the large view for picture no. {index + 1}
-										</HiddenButAccessible>
 									</button>
 								</li>
 							);
@@ -168,9 +167,9 @@ const ImageCarousel = (props: {
 					</ul>
 					<CarouselButton
 						classes={['hidden', 'lg:block']}
-						clicker={() => scrollerHandler(true)}>
+						clicker={() => scrollerHandler(true)}
+						aria-label='Scroll right'>
 						<IoCaretForward aria-hidden={true} />
-						<HiddenButAccessible>Scroll right</HiddenButAccessible>
 					</CarouselButton>
 				</div>
 			</div>

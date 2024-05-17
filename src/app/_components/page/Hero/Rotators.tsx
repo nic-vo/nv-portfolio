@@ -2,7 +2,6 @@
 
 import { PropsWithChildren, createContext, useContext, useState } from 'react';
 import { IoCube, IoPower } from 'react-icons/io5';
-import { HiddenButAccessible } from '@/components/global';
 
 const MouseRotateContext = createContext<{ x: number; y: number }>({
 	x: 0.5,
@@ -50,7 +49,8 @@ export const HeaderTrackingRotate = (props: PropsWithChildren) => {
 				onClick={disableHandler}
 				className='absolute text-2xl w-24 bg-transparent backdrop-blur bottom-8 border-4 rounded-full border-white group/heroslide hover:bg-black focus:bg-black transition-all overflow-hidden'
 				role='switch'
-				aria-checked={!deactivate}>
+				aria-checked={!deactivate}
+				aria-label={`Press to ${deactivate ? 'turn on' : 'turn off'} the 3D effect`}>
 				<span
 					className={`block h-full w-min p-4 rounded-full group-focus/heroslide:bg-white group-hover/heroslide:bg-white group-focus/heroslide:text-black group-hover/heroslide:text-black transition-all ${deactivate ? 'translate-x-0' : 'translate-x-2/3'}`}>
 					{deactivate ? (
@@ -59,9 +59,6 @@ export const HeaderTrackingRotate = (props: PropsWithChildren) => {
 						<IoCube aria-hidden={true} />
 					)}
 				</span>
-				<HiddenButAccessible>
-					Press to {deactivate ? 'turn on' : 'turn off'} the 3D effect
-				</HiddenButAccessible>
 			</button>
 		</header>
 	);

@@ -3,7 +3,6 @@
 import { createContext, useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { IoAdd, IoMenu, IoHomeSharp } from 'react-icons/io5';
-import { HiddenButAccessible } from '@/components/global';
 
 export const ToggleContext = createContext(false);
 
@@ -41,13 +40,13 @@ const Header = (props: { children: React.ReactNode }) => {
 					className='block text-2xl'
 					aria-hidden='true'
 				/>
-				<HiddenButAccessible>Return home</HiddenButAccessible>
 			</a>
 			<button
 				id='toggler'
 				onClick={toggleHandler}
 				className={`flex items-center justify-center border border-white ${toggled ? 'text-black' : 'text-white'} ${toggled ? 'bg-white' : 'bg-black'} backdrop-blur-sm rounded-md cursor-pointer transition-colors p-2 absolute translate-x-[-125%] translate-y-1/4 hover:bg-white hover:text-black focus:bg-white focus:text-black z-10 bflag`}
 				aria-pressed={toggled}
+				aria-label={`${toggled ? 'Close' : 'Open'} nav menu`}
 				onFocus={() => setToggled(true)}>
 				{toggled === false ? (
 					<IoMenu
@@ -60,9 +59,6 @@ const Header = (props: { children: React.ReactNode }) => {
 						aria-hidden='true'
 					/>
 				)}
-				<HiddenButAccessible>
-					{toggled ? 'Close' : 'Open'} nav menu
-				</HiddenButAccessible>
 			</button>
 			<div
 				onPointerDown={toggleHandler}

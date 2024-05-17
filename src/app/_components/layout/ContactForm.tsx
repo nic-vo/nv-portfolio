@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef, ElementRef, PropsWithChildren } from 'react';
-import { HiddenButAccessible } from '@/components/global';
+import { SRText } from '@/components/global';
 import {
 	IoRemove,
 	IoCheckmarkCircle,
@@ -183,7 +183,7 @@ const ContactForm = () => {
 							className='text-9xl'
 							aria-hidden={true}
 						/>
-						<HiddenButAccessible>Loading...</HiddenButAccessible>
+						<SRText>Loading...</SRText>
 					</Spinner>
 				)}
 				{formState === 'DONE' && responseIcon}
