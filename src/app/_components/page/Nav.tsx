@@ -22,7 +22,7 @@ const NavLink = async (props: {
 			<Link
 				href={`${props.root}/${segment}`}
 				prefetch={false}
-				className='overflow-hidden w-96 h-96 flex flex-col gap-8 justify-center items-center bg-transparent rounded-3xl p-8 text-white font-bold text-lg shadow-none border-8 border-slate-800 hover:border-white focus:border-white hover:shadow-white hover:shadow-[0px_0px_20px_5px] focus:shadow-white focus:shadow-[0px_0px_20px_5px] transition-all before:bg-[linear-gradient(transparent,rgba(0,0,0,0.6),rgba(0,0,0,0.8))] before:content-[""] before:transition-all before:z-10 before:h-2/5 before:w-full before:absolute before:bottom-0 before:opacity-100 before:hover:opacity-0 before:focus:opacity-0 group/navlink'>
+				className='overflow-hidden w-96 h-96 flex flex-col gap-8 justify-center items-center bg-transparent rounded-3xl p-8 text-white font-bold text-lg shadow-none border-8 border-slate-800 hover:border-white focus-visible:border-white hover:shadow-white hover:shadow-[0px_0px_20px_5px] focus-visible:shadow-white focus-visible:shadow-[0px_0px_20px_5px] transition-all before:bg-[linear-gradient(transparent,rgba(0,0,0,0.6),rgba(0,0,0,0.8))] before:content-[""] before:transition-all before:z-10 before:h-2/5 before:w-full before:absolute before:bottom-0 before:opacity-100 before:hover:opacity-0 before:focus-visible:opacity-0 group/navlink outline-none'>
 				<span className='z-20 drop-shadow-md border-b-2 border-white bg-transparent transition-all translate-y-52 group-hover/navlink:translate-y-0 group-focus/navlink:translate-y-0 font-bold text-xl '>
 					{title}
 				</span>

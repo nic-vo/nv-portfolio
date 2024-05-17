@@ -65,7 +65,7 @@ const ScrollToTop = () => {
 	return (
 		<button
 			onClick={returnToTopOnClick}
-			className={`${distanceDisable ? 'hidden' : 'flex'} items-center fixed gap-4 left-4 bottom-4 lg:left-10 lg:bottom-10 p-4 text-white bg-black hover:text-black hover:bg-white focus:text-black focus:bg-white border-2 border-white rounded-md transition-colors z-10 font-bold`}
+			className={`${distanceDisable ? 'hidden' : 'flex'} items-center fixed gap-4 left-4 bottom-4 lg:left-10 lg:bottom-10 p-4 text-white bg-black hover:text-black hover:bg-white focus-visible:text-black focus-visible:bg-white border-2 border-white rounded-md transition-colors z-10 font-bold outline-none`}
 			disabled={distanceDisable}
 			tabIndex={distanceDisable ? -1 : 0}
 			aria-label='Return to the top'

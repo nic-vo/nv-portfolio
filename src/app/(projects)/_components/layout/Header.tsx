@@ -33,7 +33,7 @@ const Header = (props: { children: React.ReactNode }) => {
 			aria-expanded={toggled}>
 			<a
 				href='/'
-				className='flex items-center justify-center border border-white text-white bg-black backdrop-blur-sm rounded-md cursor-pointer transition-colors p-2 absolute translate-x-[-125%] translate-y-[150%] hover:bg-white hover:text-black focus:bg-white focus:text-black z-10 bflag'
+				className='flex items-center justify-center border border-white text-white bg-black backdrop-blur-sm rounded-md cursor-pointer transition-colors p-2 absolute translate-x-[-125%] translate-y-[150%] hover:bg-white hover:text-black focus-visible:bg-white focus-visible:text-black z-10 bflag outline-white focus-visible:outline'
 				id='home'
 				aria-label='Return home'>
 				<IoHomeSharp
@@ -44,7 +44,7 @@ const Header = (props: { children: React.ReactNode }) => {
 			<button
 				id='toggler'
 				onClick={toggleHandler}
-				className={`flex items-center justify-center border border-white ${toggled ? 'text-black' : 'text-white'} ${toggled ? 'bg-white' : 'bg-black'} backdrop-blur-sm rounded-md cursor-pointer transition-colors p-2 absolute translate-x-[-125%] translate-y-1/4 hover:bg-white hover:text-black focus:bg-white focus:text-black z-10 bflag`}
+				className={`flex items-center justify-center border border-white ${toggled ? 'text-black' : 'text-white'} ${toggled ? 'bg-white' : 'bg-black'} backdrop-blur-sm rounded-md cursor-pointer transition-colors p-2 absolute translate-x-[-125%] translate-y-1/4 hover:bg-white hover:text-black focus-visible:bg-white focus-visible:text-black z-10 bflag outline-white focus-visible:outline`}
 				aria-pressed={toggled}
 				aria-label={`${toggled ? 'Close' : 'Open'} nav menu`}
 				onFocus={() => setToggled(true)}>
@@ -68,7 +68,7 @@ const Header = (props: { children: React.ReactNode }) => {
 			<nav className='flex flex-col items-center h-screen bg-white text-black w-full p-4 py-8 gap-2'>
 				<h2 className='font-poppins font-bold text-3xl'>Other Projects</h2>
 				<menu
-					className='p-0 m-0 list-none w-full bflag'
+					className='p-0 m-0 list-none w-full bflag gap-4 flex flex-col'
 					tabIndex={-1}>
 					<ToggleContext.Provider value={toggled}>
 						{props.children}

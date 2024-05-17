@@ -133,7 +133,7 @@
 	border: none;
 }
 
-.sliders input:focus::-moz-range-thumb {
+.sliders input:focus-visible::-moz-range-thumb {
 	background-color: $cpanel-overexpose;
 	box-shadow: 0px 0px 20px 5px $cpanel-glow;
 }
@@ -149,7 +149,7 @@
 	border: none;
 }
 
-.sliders input:focus::-webkit-range-thumb {
+.sliders input:focus-visible::-webkit-range-thumb {
 	background-color: $cpanel-overexpose;
 	box-shadow: 0px 0px 20px 5px $cpanel-glow;
 }

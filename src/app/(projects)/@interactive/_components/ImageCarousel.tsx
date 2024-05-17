@@ -5,14 +5,19 @@ import { IoCaretBack, IoCaretForward, IoAdd } from 'react-icons/io5';
 import Image, { StaticImageData } from 'next/image';
 
 const CarouselButton = (
-	props: PropsWithChildren & { clicker: () => void; classes?: string[] },
+	props: PropsWithChildren & {
+		clicker: () => void;
+		classes?: string[];
+		disabled?: boolean;
+	},
 ) => {
 	const classer =
 		props.classes && props.classes.length > 0 ? props.classes.join(' ') : '';
 	return (
 		<button
 			onClick={props.clicker}
-			className={`bg-black text-white p-4 rounded-full border-2 border-white hover:bg-white hover:text-black focus:bg-white focus:text-black transition-all text-xl ${classer}`}>
+			className={`bg-black text-white p-4 rounded-full border-2 border-white hover:bg-white hover:text-black focus-visible:bg-white focus-visible:text-black transition-all text-xl disabled:opacity-10 ${classer}`}
+			disabled={props.disabled ? true : false}>
 			{props.children}
 		</button>
 	);

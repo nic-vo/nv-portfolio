@@ -44,7 +44,7 @@ const Footer = async () => {
 			</div>
 			<div className='font-lato font-light flex items-center max-w-screen-lg gap-8'>
 				<span>v. {version}</span>
-				<p>&copy; {date} Nicolas Vo</p>
+				<p>&copy;{date} Nicolas Vo</p>
 			</div>
 		</footer>
 	);

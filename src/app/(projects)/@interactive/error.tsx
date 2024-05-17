@@ -11,12 +11,12 @@ const ProjectInteractiveError = (props: {
 			<h2 className='font-poppins font-bold text-6xl'>Something went wrong!</h2>
 			<Link
 				href='/'
-				className='block bg-transparent hover:bg-white focus:bg-white text-white hover:text-black focus:text-black p-4 font-bold text-2xl rounded-3xl border-2 border-white transition-all'>
+				className='block bg-transparent hover:bg-white focus-visible:bg-white text-white hover:text-black focus-visible:text-black p-4 font-bold text-2xl rounded-3xl border-2 border-white transition-all'>
 				Go back home
 			</Link>
 			<button
 				onClick={props.reset}
-				className='block bg-transparent hover:bg-white focus:bg-white text-white hover:text-black focus:text-black p-4 font-bold text-2xl rounded-3xl border-2 border-white transition-all'>
+				className='block bg-transparent hover:bg-white focus-visible:bg-white text-white hover:text-black focus-visible:text-black p-4 font-bold text-2xl rounded-3xl border-2 border-white transition-all'>
 				Refresh?
 			</button>
 		</>
