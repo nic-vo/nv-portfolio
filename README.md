@@ -4,6 +4,14 @@ This is a Next.js App router endeavor!
 
 ## CHANGELOG
 
+### 2.4.0
+
+- Address accessibility issues with sr text vs. aria-label
+  - Adjust focus styling globally
+- Adjust contact form styling
+- Add minor metadata changes
+- Adjust hero styling
+
 ### 2.3.2
 
 - Switch icons
