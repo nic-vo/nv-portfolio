@@ -165,10 +165,10 @@ const ContactForm = () => {
 					</a>
 					apply.
 				</p>
-				{!disableToggle && (
+				{!disableToggle && status !== 201 && (
 					<button
 						type='submit'
-						className='cursor-pointer flex items-center justify-center w-40 p-4 m-2 border-4 border-white text-xl rounded-3xl bg-transparent gap-2 hover:bg-white hover:text-black focus:bg-white focus:text-black active:bg-white active:text-black last:*:transition-all last:*:hover:translate-x-4 last:*:focus:translate-x-4 disabled:hidden transition-all'>
+						className='cursor-pointer flex items-center justify-center w-40 p-4 m-2 border-4 border-white text-xl rounded-3xl bg-transparent gap-2 outline-none hover:bg-white hover:text-black focus-visible:bg-white focus-visible:text-black active:bg-white active:text-black last:*:transition-all last:*:hover:translate-x-4 last:*:focus-visible:translate-x-4 disabled:hidden transition-all'>
 						Submit
 						<IoArrowForward aria-hidden={true} />
 					</button>
