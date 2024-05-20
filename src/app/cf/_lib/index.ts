@@ -1,8 +1,4 @@
 import { htmlStringer, plaintextStringer } from './emailer/stringer';
-import validator from './validation/cfvalidation';
+import validator from './emailer/validation';
 
-export {
-	htmlStringer,
-	plaintextStringer,
-	validator
-};
+export { htmlStringer, plaintextStringer, validator };

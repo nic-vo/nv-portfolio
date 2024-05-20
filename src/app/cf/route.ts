@@ -1,51 +1,55 @@
-import { NextRequest } from 'next/server';
 import { htmlStringer, plaintextStringer, validator } from './_lib';
 import { createTransport } from 'nodemailer';
 
+import { NextRequest } from 'next/server';
+
 export async function POST(req: NextRequest) {
 	let parsed;
+	// Data validation
 	try {
-		// Data validation
-		const json = await req.json();
-		parsed = validator(json);
+		parsed = validator(await req.json());
+		if (typeof parsed === 'boolean') {
+			return Response.json({ message: 'Not found' }, { status: 404 });
+		}
 	} catch {
+		// Catch JSON-object error; validator catches zod internally
 		return Response.json(
 			{ message: 'Something happened with the request, try again' },
 			{ status: 400 },
 		);
 	}
-	if (typeof parsed === 'boolean') {
-		return Response.json({ message: 'Not found' }, { status: 404 });
-	}
 
 	// ReCAPTCHA validation
-	let ReCAPTCHAData;
 	try {
 		const { threeToken } = parsed;
-		const ReCAPTCHAResponse = await fetch(
-			`https://www.google.com/recaptcha/api/siteverify?secret=${process.env.PRIVATE_CONTACT_FORM_RECAPTCHA_KEY}&response=${threeToken}`,
-		);
-		ReCAPTCHAData = await ReCAPTCHAResponse.json();
-		// Only valid error to report to user is if they took too long
+		const ReCAPTCHAData = await (async () => {
+			const req = await fetch(
+				`https://www.google.com/recaptcha/api/siteverify?secret=${process.env.PRIVATE_CONTACT_FORM_RECAPTCHA_KEY}&response=${threeToken}`,
+			);
+			return await req.json();
+		})();
+
+		// Early return in case of duplicated / expired token
+		if (
+			ReCAPTCHAData['error-codes'] &&
+			ReCAPTCHAData['error-codes'].includes('timeout-or-duplicate')
+		)
+			return Response.json(
+				{ message: 'ReCAPTCHA response expired. Please submit again.' },
+				{ status: 502 },
+			);
+
+		// If request fails at network level?
+		// Arbritrary score indicaitng bot?
+		if (ReCAPTCHAData.score < 0.3 || ReCAPTCHAData.success === false) {
+			return Response.json({ message: 'Not found' }, { status: 404 });
+		}
 	} catch {
 		return Response.json(
+			// Catch fetch error
 			{ message: 'Something happened with the server; try again' },
 			{ status: 502 },
 		);
-	}
-	if (
-		ReCAPTCHAData['error-codes'] &&
-		ReCAPTCHAData['error-codes'].includes('timeout-or-duplicate')
-	)
-		return Response.json(
-			{ message: 'ReCAPTCHA response expired. Please submit again.' },
-			{ status: 502 },
-		);
-
-	// If request fails at network level?
-	// Arbritrary score indicaitng bot?
-	if (ReCAPTCHAData.score < 0.3 || ReCAPTCHAData.success === false) {
-		return Response.json({ message: 'Not found' }, { status: 404 });
 	}
 
 	// Emailer
@@ -62,14 +66,16 @@ export async function POST(req: NextRequest) {
 		},
 	});
 	// Unknown if this works
-	transport.verify((error: any, success: any) => {
-		if (error) {
-			return Response.json(
-				{ message: 'Server error. Submit your info again.' },
-				{ status: 502 },
-			);
-		}
-	});
+	try {
+		transport.verify((error: any, success: any) => {
+			if (error) throw new Error();
+		});
+	} catch {
+		return Response.json(
+			{ message: 'Server error. Submit your info again.' },
+			{ status: 502 },
+		);
+	}
 	// Send both plaintext and HTML; HTML from stringer function
 	const emailMessage = {
 		from: process.env.PRIVATE_EMAIL_USER!,
@@ -95,6 +101,12 @@ export async function POST(req: NextRequest) {
 			{ status: 502 },
 		);
 	}
+	try {
+		transport.close();
+	} catch {
+		// Fail silent connection close error
+	}
+
 	return Response.json(
 		{ message: `Received. An email confirmation should arrive soon.` },
 		{ status: 201 },
