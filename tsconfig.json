@@ -1,6 +1,6 @@
 {
 	"compilerOptions": {
-		"target": "es6",
+		"target": "ES2020",
 		"lib": ["dom", "dom.iterable", "esnext"],
 		"allowJs": true,
 		"assumeChangesOnlyAffectDirectDependencies": true,
@@ -9,8 +9,8 @@
 		"incremental": false,
 		"isolatedModules": true,
 		"jsx": "preserve",
-		"module": "CommonJS",
-		"moduleResolution": "Node",
+		"module": "Node16",
+		"moduleResolution": "Node16",
 		"noEmit": true,
 		"noImplicitAny": true,
 		"resolveJsonModule": true,
