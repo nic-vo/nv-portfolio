@@ -4,6 +4,10 @@ This is a Next.js App router endeavor!
 
 ## CHANGELOG
 
+### 2.5.0
+
+- Update MixDelta page (now [live](https://www.mixdelta.xyz))
+
 ### 2.4.0
 
 - Address accessibility issues with sr text vs. aria-label
