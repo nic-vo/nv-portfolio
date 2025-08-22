@@ -42,7 +42,7 @@ const Footer = async () => {
 					<SRText>View my LinkedIn profile</SRText>
 				</a>
 			</div>
-			<div className='font-lato font-light flex items-center max-w-screen-lg gap-8'>
+			<div className='font-lato font-light flex items-center max-w-5xl gap-8'>
 				<span>v. {version}</span>
 				<p>&copy;{date} Nicolas Vo</p>
 			</div>

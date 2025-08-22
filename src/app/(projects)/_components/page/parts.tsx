@@ -54,7 +54,7 @@ const ProjectInfo = (props: {
 			</h1>
 			<section className='flex gap-4 w-11/12 max-w-prose'>
 				<h2 className='font-poppins font-bold text-3xl shrink-0'>The stack:</h2>
-				<ul className='flex flex-wrap w-11/12 max-w-screen-lg p-0 z-10 text-xl'>
+				<ul className='flex flex-wrap w-11/12 max-w-5xl p-0 z-10 text-xl'>
 					{techs.map((tech) => (
 						<li
 							key={tech}

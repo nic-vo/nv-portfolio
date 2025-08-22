@@ -71,7 +71,7 @@ const Duckies = () => {
 			onPointerOver={pointerOverHandler}
 			onPointerMove={pointerMoveHandler}
 			onPointerLeave={pointerLeaveHandler}
-			className='m-0 w-1/2 max-w-screen-lg h-full max-h-[50%] bg-sky-300 rounded-3xl origin-top-left'
+			className='m-0 w-1/2 max-w-5xl h-full max-h-[50%] bg-sky-300 rounded-3xl origin-top-left'
 			id='pond'>
 			{duckArr.map((slot, index) => {
 				return (

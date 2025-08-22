@@ -95,7 +95,7 @@ const ImageCarousel = (props: {
 		<>
 			<dialog
 				ref={viewerRef}
-				className='fixed z-20 h-svh w-full max-w-[100svw] max-h-[100svh] p-0 m-0 bg-transparent backdrop-blur backdrop-brightness-50'
+				className='fixed z-20 h-svh w-full max-w-svw max-h-svh p-0 m-0 bg-transparent backdrop-blur backdrop-brightness-50'
 				onKeyDown={viewKeyDownHandler}>
 				<div className='h-full w-full flex items-center justify-center bg-transparent px-8 gap-2'>
 					<CarouselButton
