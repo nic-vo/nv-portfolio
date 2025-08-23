@@ -6,14 +6,12 @@ import {
 	latoClass,
 	jbMonoClass,
 } from '@/styles/fonts';
-import Script from 'next/script';
 import { sharedRobots } from '@/data/metadata';
+import type { Metadata } from 'next';
 
 import { PropsWithChildren } from 'react';
 
 import '@/styles/globals.css';
-
-const reKey = process.env.NEXT_PUBLIC_CONTACT_FORM_RECAPTCHA_KEY;
 
 const RootLayout = (props: PropsWithChildren) => {
 	return (
@@ -27,10 +25,6 @@ const RootLayout = (props: PropsWithChildren) => {
 					silkscreenClass.variable,
 					'font-overpass',
 				].join(' ')}>
-				<Script
-					src={`https://www.google.com/recaptcha/api.js?render=${reKey}`}
-					strategy='lazyOnload'
-				/>
 				{props.children}
 				<Footer />
 			</body>
@@ -40,8 +34,7 @@ const RootLayout = (props: PropsWithChildren) => {
 
 export default RootLayout;
 
-export const metadata = {
-	metadataBase: new URL('https://nicvo.dev'),
+export const metadata: Metadata = {
 	keywords: [
 		'Front end',
 		'React',

@@ -1,6 +1,6 @@
 import { IoLogoGithub, IoLogoLinkedin } from 'react-icons/io5';
 import { SRText } from '@/components/global';
-import ContactForm from './ContactForm';
+// import ContactForm from './ContactForm';
 import { cache } from 'react';
 import path from 'path';
 import fs from 'fs/promises';
@@ -23,7 +23,7 @@ const Footer = async () => {
 		<footer
 			className='flex flex-col items-center w-full min-h-lvh py-12 bg-[linear-gradient(transparent,black)] gap-4'
 			id='footer'>
-			<ContactForm />
+			{/* <ContactForm /> */}
 			<div className='flex text-4xl gap-4 p-4'>
 				<a
 					href='https://github.com/nic-vo'
