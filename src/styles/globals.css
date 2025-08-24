@@ -1,40 +1,12 @@
 @import 'tailwindcss';
 
 @layer base {
-  html,
-  body {
-    font-family: sans-serif;
-    color: #d6e5e3;
-    background-color: #0f1a26;
-    overflow-x: hidden;
-  }
-
-  :root {
-    --fast-transition: 83ms;
-    --medium-transition: 250ms;
-    --slow-transition: 400ms;
-  }
-
-  * {
-    position: relative;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    html {
-      color-scheme: dark;
+    svg,
+    img {
+        display: block;
     }
-  }
 
-  .grecaptcha-badge {
-    visibility: hidden;
-  }
-
-  svg,
-  img {
-    display: block;
-  }
-
-  .thinscroll {
-    scrollbar-width: thin;
-  }
+    * {
+        scrollbar-width: thin;
+    }
 }
