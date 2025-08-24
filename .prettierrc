@@ -4,5 +4,5 @@
     "bracketSameLine": true,
     "singleAttributePerLine": true,
     "tabWidth": 4,
-    "endOfLine": "crlf"
+    "endOfLine": "lf"
 }
