@@ -1,44 +1,44 @@
 {
-	"name": "nv-portfolio",
-	"version": "2.5.0",
-	"private": true,
-	"scripts": {
-		"dev": "next dev",
-		"build": "next build",
-		"lint": "next lint"
-	},
-	"dependencies": {
-		"@svgr/webpack": "~8",
-		"isomorphic-dompurify": "^2.26.0",
-		"marked": "^16.2.0",
-		"mongoose": "^8.17.2",
-		"next": "^15.5.0",
-		"nodemailer": "^7.0.5",
-		"react": "18",
-		"react-dom": "18",
-		"react-icons": "^5.5.0",
-		"sass": "^1.90.0",
-		"svgo": "^4.0.0",
-		"zod": "^4.0.17"
-	},
-	"devDependencies": {
-		"@aws-sdk/client-s3": "^3.873.0",
-		"@aws-sdk/s3-request-presigner": "^3.873.0",
-		"@next/bundle-analyzer": "^15.5.0",
-		"@types/node": "^22.16",
-		"@types/nodemailer": "^7.0.1",
-		"@types/react": "~18",
-		"@types/react-dom": "~18",
-		"autoprefixer": "^10.4.21",
-		"eslint": "~8",
-		"eslint-config-next": "^15.5.0",
-		"postcss": "~8.4.37",
-		"prettier": "^3.6.2",
-		"puppeteer": "^24.17.0",
-		"sharp": "^0.34.3",
-		"tailwindcss": "^4.1.12",
-		"ts-node": "^10.9.2",
-		"typescript": "^5.9.2"
-	},
-	"packageManager": "yarn@4.9.3"
+    "name": "nv-portfolio",
+    "version": "2.5.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev --experimental-https",
+        "build": "next build",
+        "lint": "next lint"
+    },
+    "dependencies": {
+        "@svgr/webpack": "~8",
+        "isomorphic-dompurify": "^2.26.0",
+        "marked": "^16.2.0",
+        "mongoose": "^8.17.2",
+        "next": "^15.5.0",
+        "nodemailer": "^7.0.5",
+        "react": "18",
+        "react-dom": "18",
+        "react-icons": "^5.5.0",
+        "sass": "^1.90.0",
+        "svgo": "^4.0.0",
+        "zod": "^4.0.17"
+    },
+    "devDependencies": {
+        "@aws-sdk/client-s3": "^3.873.0",
+        "@aws-sdk/s3-request-presigner": "^3.873.0",
+        "@next/bundle-analyzer": "^15.5.0",
+        "@tailwindcss/postcss": "^4.1.12",
+        "@types/node": "^22.16",
+        "@types/nodemailer": "^7.0.1",
+        "@types/react": "~18",
+        "@types/react-dom": "~18",
+        "eslint": "~8",
+        "eslint-config-next": "^15.5.0",
+        "postcss": "~8.4.37",
+        "prettier": "^3.6.2",
+        "puppeteer": "^24.17.0",
+        "sharp": "^0.34.3",
+        "tailwindcss": "^4.1.12",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.9.2"
+    },
+    "packageManager": "yarn@4.9.3"
 }
