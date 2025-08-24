@@ -6,19 +6,19 @@ const title = 'Nicolas Vo | Front End Developer';
 const description = "Nicolas Vo's personal front-end development portfolio";
 
 const Homepage = () => {
-	return (
-		<main className='min-h-screen flex flex-col items-center w-full'>
-			<Hero />
-			<AboutMe />
-			<Nav />
-		</main>
-	);
+    return (
+        <main className='min-h-screen flex flex-col items-center w-full'>
+            <Hero />
+            <AboutMe />
+            <Nav />
+        </main>
+    );
 };
 
 export default Homepage;
 
 export const metadata: Metadata = {
-	title,
-	description,
-	openGraph: { ...sharedOGData, title, description },
+    title,
+    description,
+    openGraph: { ...sharedOGData, title, description },
 };

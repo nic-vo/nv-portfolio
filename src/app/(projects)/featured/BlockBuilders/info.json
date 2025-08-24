@@ -1,11 +1,6 @@
 {
-	"title": "Block Builders Gen. Contracting",
-	"slugline": "A React SPA for a small construction contracting business serving Los Angeles.",
-	"link": "https://blockbuildersgc.com",
-	"techs": [
-		"React",
-		"CSS3",
-		"AWS Lambda",
-		"AWS API Gateway"
-	]
+    "title": "Block Builders Gen. Contracting",
+    "slugline": "A React SPA for a small construction contracting business serving Los Angeles.",
+    "link": "https://blockbuildersgc.com",
+    "techs": ["React", "CSS3", "AWS Lambda", "AWS API Gateway"]
 }

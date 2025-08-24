@@ -1,45 +1,45 @@
 .empty {
-	pointer-events: none;
-	position: absolute;
-	width: 10%;
-	border-radius: 4px;
-	transform-origin: center;
-	animation-name: bobbing;
-	animation-iteration-count: infinite;
-	animation-timing-function: ease-in-out;
-	animation-duration: 5s;
+    pointer-events: none;
+    position: absolute;
+    width: 10%;
+    border-radius: 4px;
+    transform-origin: center;
+    animation-name: bobbing;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    animation-duration: 5s;
 }
 
 .empty svg {
-	pointer-events: none;
-	width: 100%;
-	height: auto;
+    pointer-events: none;
+    width: 100%;
+    height: auto;
 }
 
 .eager {
-	transition: translate 3.5s;
-	transition-timing-function: ease-out;
+    transition: translate 3.5s;
+    transition-timing-function: ease-out;
 }
 
 .sad {
-	transition: translate 6s;
-	transition-timing-function: ease-in-out;
+    transition: translate 6s;
+    transition-timing-function: ease-in-out;
 }
 
 @keyframes bobbing {
-	0% {
-		transform: translateX(-50%) translateY(-50%);
-	}
+    0% {
+        transform: translateX(-50%) translateY(-50%);
+    }
 
-	25% {
-		transform: translateX(-50%) translateY(-46%);
-	}
+    25% {
+        transform: translateX(-50%) translateY(-46%);
+    }
 
-	75% {
-		transform: translateX(-50%) translateY(-54%);
-	}
+    75% {
+        transform: translateX(-50%) translateY(-54%);
+    }
 
-	100% {
-		transform: translateX(-50%) translateY(-50%);
-	}
+    100% {
+        transform: translateX(-50%) translateY(-50%);
+    }
 }
