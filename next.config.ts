@@ -2,7 +2,7 @@ import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
 	poweredByHeader: false,
-	swcMinify: true,
+	allowedDevOrigins: [process.env.ALLOWED_DEV_ORIGIN ?? ''],
 	eslint: {
 		ignoreDuringBuilds: true,
 	},
