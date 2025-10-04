@@ -51,26 +51,7 @@ const generateCrosses = unstable_cache(
 
 const Hero = async () => {
     const pair = await generateCrosses(20);
-    return (
-        <HeaderTrackingRotate>
-            <Crosses pair={pair}>
-                <Headings />
-            </Crosses>
-        </HeaderTrackingRotate>
-    );
-};
-
-const StaticHero = () => {
-    return (
-        <header className='flex flex-col items-center justify-center w-full min-h-svh z-10 bg-[linear-gradient(black,transparent_80%)]'>
-            <h1 className='font-poppins text-6xl lg:text-9xl text-center font-bold m-0 z-10 '>
-                Nicolas Vo
-            </h1>
-            <h2 className='font-lato text-3xl lg:text-4xl text-center font-light m-0 z-10'>
-                Front End Developer
-            </h2>
-        </header>
-    );
+    return <HeaderTrackingRotate></HeaderTrackingRotate>;
 };
 
 export default Hero;

@@ -13,7 +13,7 @@ const Cross = (props: { coords: { x: number; y: number } }) => {
     const seed = useMemo(() => parseFloat(Math.random().toFixed(3)), []);
     return (
         <IoAdd
-            className={`block text-4xl text-white absolute bg-transparent z-0 ${crossLook.animated}`}
+            className={`block text-4xl bg-transparent text-white absolute  z-0 ${crossLook.animated}`}
             style={{
                 animationDelay: `${seed * 60 - 30}s`,
                 animationDuration: `${seed * 150 + 30}s`,
