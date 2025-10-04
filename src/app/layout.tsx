@@ -1,11 +1,5 @@
 import { Footer } from './_components/layout';
-import {
-    silkscreenClass,
-    overpassClass,
-    poppinsClass,
-    latoClass,
-    jbMonoClass,
-} from '@/styles/fonts';
+import { workSans } from '@/styles/fonts';
 import { sharedRobots } from '@/data/metadata';
 import type { Metadata } from 'next';
 
@@ -16,15 +10,7 @@ import '@/styles/globals.css';
 const RootLayout = (props: PropsWithChildren) => {
     return (
         <html lang='en'>
-            <body
-                className={[
-                    overpassClass.variable,
-                    poppinsClass.variable,
-                    latoClass.variable,
-                    jbMonoClass.variable,
-                    silkscreenClass.variable,
-                    'font-overpass',
-                ].join(' ')}>
+            <body className={[workSans.variable, 'font-ws'].join(' ')}>
                 {props.children}
                 <Footer />
             </body>

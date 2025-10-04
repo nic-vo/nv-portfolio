@@ -1,11 +1,7 @@
 @import 'tailwindcss';
 
 @theme {
-    --font-overpass: 'var(--font-overpass)', 'serif', 'ui-serif', 'system-ui';
-    --font-poppins:
-        'var(--font-poppins)', 'sans-serif', 'ui-sans-serif', 'system-ui';
-    --font-lato: 'var(--font-lato)', 'sans-serif', 'ui-sans-serif', 'system-ui';
-    --font-lato: 'var(--font-jbmono)', 'monospace', 'ui-monospace', 'system-ui';
+    --font-ws: 'var(--font-ws)', 'sans-serif', 'ui-sans-serif', 'system-ui';
 }
 
 @layer base {
