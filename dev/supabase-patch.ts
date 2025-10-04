@@ -29,11 +29,6 @@ const yarnUnpluggedDir = path.join(process.cwd(), '.yarn', 'unplugged');
         return;
     }
     const args = process.argv.slice(2);
-    console.log(args);
-    if (!/gen types typescript \-\-project\-id \w+/.test(args.join(' '))) {
-        console.log('Invalid args');
-        return;
-    }
 
     try {
         execFileSync(pathToSupabaseExe, args, { stdio: 'inherit' });

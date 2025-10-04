@@ -42,10 +42,6 @@ yarn-error.log*
 next-env.d.ts
 
 # dev stuff
-src/lib/dev
-src/pages/dev
-src/components/dev
-src/app/dev
 analyze
 
 certificates
