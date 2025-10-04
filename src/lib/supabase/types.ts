@@ -17,17 +17,44 @@ export type Database = {
             markdown_blocks: {
                 Row: {
                     content: string;
-                    id: number;
+                    id: string;
                     updated_at: string;
                 };
                 Insert: {
                     content: string;
-                    id?: number;
+                    id: string;
                     updated_at?: string;
                 };
                 Update: {
                     content?: string;
+                    id?: string;
+                    updated_at?: string;
+                };
+                Relationships: [];
+            };
+            posts: {
+                Row: {
+                    blocks: string[];
+                    created_at: string;
+                    id: number;
+                    name: string;
+                    slug: string;
+                    updated_at: string;
+                };
+                Insert: {
+                    blocks: string[];
+                    created_at?: string;
                     id?: number;
+                    name: string;
+                    slug: string;
+                    updated_at?: string;
+                };
+                Update: {
+                    blocks?: string[];
+                    created_at?: string;
+                    id?: number;
+                    name?: string;
+                    slug?: string;
                     updated_at?: string;
                 };
                 Relationships: [];
