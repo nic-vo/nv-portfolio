@@ -11,6 +11,7 @@
     "dependencies": {
         "@supabase/supabase-js": "^2.56.0",
         "@svgr/webpack": "~8",
+        "cloudinary": "^2.7.0",
         "isomorphic-dompurify": "^2.26.0",
         "marked": "^16.2.0",
         "mongoose": "^8.17.2",
@@ -20,8 +21,9 @@
         "react-dom": "18",
         "react-icons": "^5.5.0",
         "sass": "^1.90.0",
-        "supabase": "2.34.3",
+        "supabase": "2.39.2",
         "svgo": "^4.0.0",
+        "tailwind-merge": "^3.3.1",
         "zod": "^4.0.17"
     },
     "devDependencies": {
